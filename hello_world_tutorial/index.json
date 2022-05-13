@@ -1,6 +1,6 @@
 {
-  "title": "Kubernetes 1node",
-  "description": "Use a simple one node Kubernetes cluster and let user list all pods",
+  "title": "Keptn Trial",
+  "description": "Playing around with Killercoda and Keptn",
   "details": {
     "intro": {
       "title": "Intro Title",
