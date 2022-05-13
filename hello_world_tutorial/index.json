@@ -3,7 +3,9 @@
   "description": "Use a simple one node Kubernetes cluster and let user list all pods",
   "details": {
     "intro": {
+      "title": "Intro Title",
       "text": "intro.md"
+      "background": "scripts/install_script.sh"
     },
     "steps": [
       {
