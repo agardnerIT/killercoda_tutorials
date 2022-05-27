@@ -15,8 +15,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm install prometheus prometheus-community/prometheus --namespace monitoring \
 --set alertmanager.persistentVolume.enabled=false \
 --set server.persistentVolume.enabled=false \
---set pushgateway.enabled=false \
---wait
+--set pushgateway.enabled=false
 
 curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 # Install Keptn into 'keptn' namespace
@@ -26,7 +25,6 @@ helm repo add keptn https://charts.keptn.sh
 helm repo update
 helm upgrade --install keptn keptn/keptn --version $KEPTN_VERSION \
 -n keptn --create-namespace \
---wait \
 --set=control-plane.apiGatewayNginx.type=LoadBalancer
 
 KEPTN_API_PROTOCOL=http # or https
@@ -39,5 +37,5 @@ helm upgrade --install --create-namespace -n keptn-jes \
  
 kubectl apply -f https://raw.githubusercontent.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc/main/job-executor/workloadClusterRoles.yaml
  
-helm upgrade --install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/0.8.0/prometheus-service-0.8.0.tgz --wait
+helm upgrade --install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/0.8.0/prometheus-service-0.8.0.tgz
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.8.0/deploy/role.yaml -n monitoring
