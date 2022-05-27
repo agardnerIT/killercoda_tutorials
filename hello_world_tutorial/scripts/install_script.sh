@@ -25,7 +25,8 @@ helm repo add keptn https://charts.keptn.sh
 helm repo update
 helm upgrade --install keptn keptn/keptn --version $KEPTN_VERSION \
 -n keptn --create-namespace \
---set=control-plane.apiGatewayNginx.type=LoadBalancer
+--set=control-plane.apiGatewayNginx.type=LoadBalancer \
+--set=nats.nats.jetstream.fileStorage.enabled=false
 
 KEPTN_API_PROTOCOL=http # or https
 KEPTN_API_HOST=api-gateway-nginx.keptn
