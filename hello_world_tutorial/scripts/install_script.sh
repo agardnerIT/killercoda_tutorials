@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-KEPTN_VERSION=0.14.2
+KEPTN_VERSION=0.15.0
 
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 && \
     chmod 700 get_helm.sh && \
@@ -12,7 +12,7 @@ wget https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPT
 	
 kubectl create namespace monitoring
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm install prometheus prometheus-community/prometheus --namespace monitoring --wait
+helm install prometheus prometheus-community/prometheus --namespace monitoring --set persistentVolume.enabled=false --wait
 
 curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 # Install Keptn into 'keptn' namespace
