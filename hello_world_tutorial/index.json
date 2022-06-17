@@ -1,6 +1,6 @@
 {
-  "title": "Keptn Trial",
-  "description": "Playing around with Killercoda and Keptn",
+  "title": "Hello World Example",
+  "description": "Playing around with Killercoda",
   "details": {
     "intro": {
       "title": "Intro Title",
@@ -18,6 +18,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-2nodes"
+    "imageid": "ubuntu:2004"
   }
 }
