@@ -1,1 +1,1 @@
-Run `echo "hello world"`
+Run `echo "hello world"`{{exec}}
