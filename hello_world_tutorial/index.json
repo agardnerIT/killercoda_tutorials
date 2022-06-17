@@ -9,7 +9,7 @@
     },
     "steps": [
       {
-        "title": "List all pods",
+        "title": "Hello World",
         "text": "step1.md"
       }
     ],
