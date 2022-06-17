@@ -3,7 +3,7 @@
   "description": "Playing around with Killercoda",
   "details": {
     "intro": {
-      "title": "Intro Title",
+      "title": "Intro Title 1",
       "text": "intro.md",
       "background": "scripts/install_script.sh"
     },
@@ -17,10 +17,7 @@
       "text": "finish.md"
     },
     "assets": {
-      "host01": [{
-        "file": "test_file.txt",
-        "target": "~/"
-      }]
+      "host01": [{"file": "test_file.txt", "target": "~/"}]
     }
   },
   "backend": {
