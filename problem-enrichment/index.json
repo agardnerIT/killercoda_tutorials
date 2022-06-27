@@ -5,7 +5,8 @@
     "intro": {
       "title": "Problem Enrichment",
       "text": "intro.md",
-      "background": "assets/scripts/install_script.sh"
+      "background": "assets/scripts/install_script.sh",
+      "foreground": "assets/scripts/foreground.sh"
     },
     "steps": [
       {
