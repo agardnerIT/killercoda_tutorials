@@ -12,4 +12,4 @@ This playbook runs a process which, after a few moments, causes a problem in Dyn
 
 When you see the Dynatrace problem press `Ctrl + C` to end the playbook.
 
-![problem record](assets/images/problem1.png)
+![problem record](./assets/images/problem1.png)
