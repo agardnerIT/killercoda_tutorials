@@ -12,3 +12,5 @@ Imagine you have been asked to upgrade a system. Your colleague has told you to 
 Unknown to your colleague, the production release causes an issue and it is difficult to solve in Dynatrace as DT does not provide a root cause.
 
 Later sections of this tutorial will show an improved release process.
+
+*Hint: Ctrl + Shift + V works well to paste into the browser window.*
