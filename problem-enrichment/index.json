@@ -21,7 +21,7 @@
     },
     "assets": {
       "host01": [
-        {"file": "scripts/playbooks/**", "target": "~/playbooks"}
+        {"file": "scripts/playbooks/*", "target": "~/playbooks/*"}
       ]
     }
   },
