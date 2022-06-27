@@ -49,9 +49,9 @@
 
   - name: "Sending Release Event to DT"
     ansible.builtin.uri:
-      url: "{{ dt_tenant }}/api/v2/events/ingest"
+      url: "{{ dt_tenant }}/api/v1/events"
       method: POST
-      status_code: 201
+      status_code: 200
       body_format: json
       headers:
         Authorization: "Api-token {{dt_api_token}}"
@@ -62,12 +62,12 @@
           "timeout": 5,
           "entitySelector": "type(HOST),tag(host_group:at-demo-enrichment)",
           "properties": {
-            "operator": "{{ releaser_name }}"
-            "operator email": "{{ releaser_email }}"
+            "operator": "{{ releaser_name }}",
+            "operator email": "{{ releaser_email }}",
             "approver": "{{ approver_name }}",
             "approver email": "{{ approver_email }}",
             "escalation contact": "{{ emergency_contact_name }}",
-            "escalation contact number": "{{ emergency_contact_number }}"
+            "escalation contact number": "{{ emergency_contact_number }}",
             "ticket number": "{{ ticket_number }}",
             "ticket link": "https://myTicketSystem.com/{{ticket_number}}"
           }
