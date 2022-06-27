@@ -49,9 +49,9 @@
 
   - name: "Sending Release Event to DT"
     ansible.builtin.uri:
-      url: "{{ dt_tenant }}/api/v1/events"
+      url: "{{ dt_tenant }}/api/v2/events/ingest"
       method: POST
-      status_code: 200
+      status_code: 201
       body_format: json
       headers:
         Authorization: "Api-token {{dt_api_token}}"
