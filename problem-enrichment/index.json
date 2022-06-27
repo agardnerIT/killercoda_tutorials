@@ -20,7 +20,7 @@
       "text": "finish.md"
     },
     "assets": {
-      "host01": [{"file": "productionRelease.sh", "target": "~/"}]
+      "host01": [{"file": "scripts/productionRelease.sh", "target": "~/"}]
     }
   },
   "backend": {

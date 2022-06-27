@@ -1,3 +1,5 @@
-TODO
+Please run your production release now...
 
-Run `echo "hello world"`{{exec}}
+```
+~/productionRelease.sh
+```{{exec}}
