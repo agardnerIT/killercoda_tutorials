@@ -2,10 +2,9 @@
 #     Installing Software      #
 #        Please wait           #
 ################################
-apt update
-apt install software-properties-common
-apt-add-repository --yes --update ppa:ansible/ansible
-apt install ansible stress -y
+apt install -y software-properties-common
+apt-add-repository -y --update ppa:ansible/ansible
+apt install -y ansible stress
 
 ################################
 #  🎉 Installation Complete    #
