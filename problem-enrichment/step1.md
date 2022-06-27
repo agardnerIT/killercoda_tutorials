@@ -2,7 +2,7 @@
 
 Create a DT API token with the following permissions:
 
-1. `events.ingest` (Ingest events)
+1. `DataExport` (Access problem and event feed, metrics, and topology)
 2. `WriteConfig` (Write configuration)
 
 ## Install OneAgent
