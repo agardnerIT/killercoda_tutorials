@@ -1,12 +1,12 @@
 # Preparation
 
-Please create a DT API token with the following permissions:
+Create a DT API token with the following permissions:
 
 1. `events.ingest` (Ingest events)
 2. `WriteConfig` (Write configuration)
 
 # Install OneAgent
-Please install a Dynatrace OneAgent and set the hostgroup to `at-demo-enrichment`.
+Install a Dynatrace OneAgent and set the hostgroup to `at-demo-enrichment`.
 
 
 # (optional) Forgotten to Set Host Group?
@@ -24,4 +24,4 @@ Create an auto-tag rule to tag this host with the host group:
 ansible-playbook ~/playbooks/create-tag-rule.yaml
 ```{{exec}}
 
-Click `Next` when you have verified the OneAgent is installed and connected to the SaaS tenant.
+Click `Next` when you have verified the OneAgent is installed, connected to the SaaS tenant and correctly tagged.

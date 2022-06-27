@@ -18,14 +18,14 @@
   - name: "Create Auto Tag Rule"
     ansible.builtin.uri:
       url: "{{ dt_tenant }}/api/config/v1/autoTags"
-      method: POST
+      method: PUT
       status_code: 201
       body_format: json
       headers:
         Authorization: "Api-token {{dt_api_token}}"
       body: >-
         {
-          "name": "host_group",
+          "name": "at-host-group",
           "description": null,
           "rules": [{
             "type": "HOST",
