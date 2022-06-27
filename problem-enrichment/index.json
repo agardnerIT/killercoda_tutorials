@@ -5,7 +5,7 @@
     "intro": {
       "title": "Problem Enrichment",
       "text": "intro.md",
-      "background": "scripts/install_script.sh"
+      "background": "assets/scripts/install_script.sh"
     },
     "steps": [
       {
@@ -20,7 +20,9 @@
       "text": "finish.md"
     },
     "assets": {
-      "host01": [{"file": "scripts/productionRelease.sh", "target": "~/"}]
+      "host01": [
+        {"file": "scripts/playbooks/*", "target": "~/playbooks"}
+      ]
     }
   },
   "backend": {

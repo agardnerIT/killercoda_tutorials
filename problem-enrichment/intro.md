@@ -6,5 +6,9 @@ Imagine you have been asked to upgrade a system. Your colleague has told you to 
 
 
 1. Install a Dynatrace OneAgent
-2. Run the `productionRelease.sh` file which will perform the release for you
+2. Follow the provided instructions to run a production release
 3. Check Dynatrace to ensure no issues with the release
+
+Unknown to your colleague, the production release causes an issue and it is difficult to solve in Dynatrace as DT does not provide a root cause.
+
+Later sections of this tutorial will show an improved release process.
