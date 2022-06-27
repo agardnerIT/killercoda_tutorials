@@ -21,7 +21,10 @@
     },
     "assets": {
       "host01": [
-        {"file": "scripts/playbooks/*", "target": "~/playbooks/*"}
+        {"file": "scripts/playbooks/set-oneagent-host-group.yaml", "target": "~/playbooks/set-oneagent-host-group.yaml"},
+        {"file": "scripts/playbooks/create-tag-rule.yaml", "target": "~/playbooks/create-tag-rule.yaml"},
+        {"file": "scripts/playbooks/production-release.yaml", "target": "~/playbooks/production-release.yaml"},
+        {"file": "scripts/playbooks/improved-production-release.yaml", "target": "~/playbooks/improved-production-release.yaml"}
       ]
     }
   },
