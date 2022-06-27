@@ -18,7 +18,7 @@
   - name: "Create Auto Tag Rule"
     ansible.builtin.uri:
       url: "{{ dt_tenant }}/api/config/v1/autoTags"
-      method: PUT
+      method: POST
       status_code: 201
       body_format: json
       headers:
