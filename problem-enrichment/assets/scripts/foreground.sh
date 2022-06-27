@@ -22,6 +22,6 @@ apt-add-repository -y --update ppa:ansible/ansible
 apt install -y ansible
 
 ################################
-#  🎉 Installation Complete    #
+#   Installation Complete      #
 #        Please continue       #
 ################################
