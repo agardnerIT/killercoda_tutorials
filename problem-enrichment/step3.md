@@ -28,4 +28,4 @@ This time, the problem record **has a root cause**.
 
 When you see the Dynatrace problem press `Ctrl + C` to end the playbook.
 
-![problem with root cause](assets/images/problem2.png)
+![problem with root cause](./assets/images/problem2.png)

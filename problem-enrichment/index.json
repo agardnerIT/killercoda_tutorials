@@ -13,8 +13,11 @@
         "title": "Install OneAgent",
         "text": "step1.md"
       }, {
-        "title": "Perform release",
+        "title": "Perform Release",
         "text": "step2.md"
+      }, {
+        "title": "Enhanced Release",
+        "text": "step3.md"
       }
     ],
     "finish": {
