@@ -2,7 +2,9 @@
 
 Please create a DT API token with the following permissions:
 
-1. 
+1. `events.ingest` (Ingest events)
+2. `WriteConfig` (Write configuration)
+
 # Install OneAgent
 Please install a Dynatrace OneAgent and set the hostgroup to `at-demo-enrichment`.
 
