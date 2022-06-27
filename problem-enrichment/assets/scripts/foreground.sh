@@ -1,28 +1,9 @@
 #!/bin/bash
 
-################################
-#          v0.0.2              #
-#     Installing Software      #
-#        Please wait           #
-################################
+##############
+# Waiting for install to finish
+##############
 
-######################
-# Installing stress  #
-######################
-apt install -y stress
+while [ ! -f /tmp/finished ]; do sleep 1; done
 
-#########################
-# Adding ansible PPA    #
-#########################
-apt install -y software-properties-common
-apt-add-repository -y --update ppa:ansible/ansible
-
-#######################
-# Installing Ansible  #
-#######################
-apt install -y ansible
-
-################################
-#   Installation Complete      #
-#        Please continue       #
-################################
+# Installation complete...
