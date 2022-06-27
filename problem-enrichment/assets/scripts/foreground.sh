@@ -1,8 +1,13 @@
-echo "####################################################"
-echo "# Please wait while everything is installed...     #"
-echo "####################################################"
-while [ ! -f /tmp/finished ]; do sleep 1; done
-echo ""
-echo "####################################################"
-echo "# 🎉 Installation Complete. Please Continue...    #"
-echo "####################################################"
+################################
+#     Installing Software      #
+#        Please wait           #
+################################
+apt update
+apt install software-properties-common
+apt-add-repository --yes --update ppa:ansible/ansible
+apt install ansible stress -y
+
+################################
+#  🎉 Installation Complete    #
+#        Please continue       #
+################################
