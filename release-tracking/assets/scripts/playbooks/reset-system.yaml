@@ -29,6 +29,11 @@
     ansible.builtin.shell:
       cmd: "curl -sfL https://get.k3s.io | sh -s - --disable traefik"
 
+  - name: Create ~/.kube directory
+    file:
+      path: ~/.kube
+      state: directory
+      
   - name: Copy kubeconfig
     ansible.builtin.copy:
       remote_src: yes
