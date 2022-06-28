@@ -73,7 +73,7 @@
           "timeout": 5,
           "attachRules": {
             "tagRule": [{
-              "meTypes": [ "HOST" ],
+              "meTypes": [ "HOST", "PROCESS_GROUP_INSTANCE" ],
               "tags": [{
                 "context": "CONTEXTLESS",
                 "key": "at-host-group",
@@ -83,9 +83,12 @@
           },
           "source": "Ansible",
           "deploymentName": "{{ deployment_version}} deployment by {{ releaser_name}}",
-          "deploymentVersion": "{{ deployment_version}}",
+          "deploymentVersion": "{{ deployment_version  }}",
           "customProperties": {
-            "deployment version": "{{ deployment_version}}",
+            "deployment version": "{{ deployment_version  }}",
+            "deployment product": "{{ deployment_product }}",
+            "deployment build version": "{{ deployment_build_version }}",
+            "deployment stage": "{{ deployment_stage }}",
             "operator": "{{ releaser_name }}",
             "operator email": "{{ releaser_email }}",
             "approver": "{{ approver_name }}",

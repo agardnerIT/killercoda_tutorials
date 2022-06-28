@@ -16,7 +16,7 @@
         "title": "Track Releases",
         "text": "step2.md"
       }, {
-        "title": "TODO",
+        "title": "Expanded Release Monitoring",
         "text": "step3.md"
       }
     ],
@@ -27,7 +27,8 @@
       "host01": [
         {"file": "scripts/playbooks/set-oneagent-host-group.yaml", "target": "~/playbooks"},
         {"file": "scripts/playbooks/install-apache.yaml", "target": "~/playbooks"},
-        {"file": "scripts/playbooks/restart-apache.yaml", "target": "~/playbooks"}
+        {"file": "scripts/playbooks/restart-apache.yaml", "target": "~/playbooks"},
+        {"file": "scripts/playbooks/enhanced-release.yaml", "target": "~/playbooks"}
       ]
     }
   },

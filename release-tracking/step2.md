@@ -12,7 +12,7 @@ Apache is now running on port 80 ([click here to view]({{TRAFFIC_HOST1_80}}))
 
 ## Adding Environment Variables
 
-The [Dynatrace documentation](https://www.dynatrace.com/support/help/how-to-use-dynatrace/cloud-automation/release-monitoring/version-detection-strategies) lists 4 environment variables you can use to track software version.
+The [Dynatrace documentation](https://www.dynatrace.com/support/help/how-to-use-dynatrace/cloud-automation/release-monitoring/version-detection-strategies) lists 4 environment variables you can use to track software versions.
 
 1. `DT_RELEASE_VERSION` for Version
 2. `DT_RELEASE_STAGE` for Stage
@@ -32,7 +32,7 @@ export DT_RELEASE_STAGE=dev
 export DT_RELEASE_PRODUCT=product1
 export DT_RELEASE_BUILD_VERSION=6000
 EOF
-```
+```{{exec}}
 
 ## (optional) View envvars File
 
