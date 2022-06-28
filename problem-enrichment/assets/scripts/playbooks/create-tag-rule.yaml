@@ -32,7 +32,7 @@
             "enabled": true,
             "valueFormat": "{HostGroup:Name}",
             "normalization": "LEAVE_TEXT_AS_IS",
-            "propagationTypes": [],
+            "propagationTypes": [ "HOST_TO_PROCESS_GROUP_INSTANCE" ],
             "conditions": [{
               "key": {
                 "attribute": "HOST_GROUP_NAME",
