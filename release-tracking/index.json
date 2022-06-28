@@ -18,6 +18,9 @@
       }, {
         "title": "Expanded Release Monitoring",
         "text": "step3.md"
+      }, {
+        "title": "Kubernetes Release Monitoring",
+        "text": "step4.md"
       }
     ],
     "finish": {

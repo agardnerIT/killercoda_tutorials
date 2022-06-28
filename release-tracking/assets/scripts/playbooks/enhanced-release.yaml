@@ -78,6 +78,10 @@
                 "context": "CONTEXTLESS",
                 "key": "at-host-group",
                 "value": "at-demo-release"
+              }, {
+                "context": "CONTEXTLESS",
+                "key": "at-pg-tag",
+                "value": "webserver"
               }]
             }]
           },
