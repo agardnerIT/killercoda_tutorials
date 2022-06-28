@@ -1,15 +1,53 @@
-Please run your production release now...
+## Tracking Releases
+
+### Install Apache:
 
 ```
-ansible-playbook ~/playbooks/production-release.yaml
+ansible-playbook ~/playbooks/install-apache.yaml
 ```{{exec}}
 
-## What Happens?
+## View Apache
 
-This playbook runs a process which, after a few moments, causes a problem in Dynatrace. However the problem does not have a root cause and is hard to analyse.
+Apache is now running on port 80 ([click here to view]({{TRAFFIC_HOST1_80}}))
 
-*Hint: Run `top` to see Ansible is doing*
+## Adding Environment Variables
 
-When you see the Dynatrace problem press `Ctrl + C` to end the playbook.
+The [Dynatrace documentation](https://www.dynatrace.com/support/help/how-to-use-dynatrace/cloud-automation/release-monitoring/version-detection-strategies) lists 4 environment variables you can use to track software version.
 
-![problem record](./assets/images/problem1.png)
+1. `DT_RELEASE_VERSION` for Version
+2. `DT_RELEASE_STAGE` for Stage
+3. `DT_RELEASE_PRODUCT` for Product
+4. `DT_RELEASE_BUILD_VERSION` for Build version
+
+The target software will have different places you need to place these environment variables. There is no one-size-fits-all here. Work with your customer (or Google) to find out where these variables need to go.
+
+For `apache2` the file you need to modify is `/etc/apache2/envvars`
+
+Execute this snippet to add the following block at the end of the `/etc/apache2/envvars` file:
+
+```
+cat <<EOF >> /etc/apache2/envvars
+export DT_RELEASE_VERSION=v0.0.1
+export DT_RELEASE_STAGE=dev
+export DT_RELEASE_PRODUCT=product1
+export DT_RELEASE_BUILD_VERSION=6000
+EOF
+```
+
+## (optional) View envvars File
+
+```
+cat /etc/apache2/envvars
+```{{exec}}
+
+## Restart Apache
+
+```
+ansible-playbook ~/playbooks/restart-apache.yaml
+```{{exec}}
+
+## View in Dynatrace
+
+After a few minutes the releases screen in Dynatrace should be populated with your release information.
+
+![release screen](./assets/images/release1.png)
