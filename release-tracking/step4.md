@@ -4,16 +4,10 @@ Use this Ansible playbook to:
 
 1) Uninstall Apache
 2) Uninstall the existing host-based OneAgent
-2) Install k3d (lightweight kubernetes)
+2) Install k3s (lightweight kubernetes)
 
 ```
 ansible-playbook ~/playbooks/reset-system.yaml
-```{{exec}}
-
-## Start a Cluster
-
-```
-k3d cluster create mycluster -p "80:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
 ```{{exec}}
 
 ## Verify Cluster

@@ -9,7 +9,7 @@
   vars_prompt:
 
     - name: dt_cluster_name
-      prompt: What is your DT environment (Cluster must match the pattern [a-z]([-a-z0-9]*[a-z0-9]))?
+      prompt: What is your cluster name (Cluster must match the pattern [a-z]([-a-z0-9]*[a-z0-9]))?
       private: false
 
     - name: dt_api_token
@@ -25,19 +25,19 @@
 
   - name: "Set cluster name in dynakube.yaml"
     ansible.builtin.replace:
-      path: "~/dynakube.yaml"
+      path: "~/scripts/dynakube.yaml"
       regexp: "CLUSTER_NAME"
       replace: "{{ dt_cluster_name }}"
 
   - name: "Set DT API Token in dynakube.yaml"
     ansible.builtin.replace:
-      path: "~/dynakube.yaml"
+      path: "~/scripts/dynakube.yaml"
       regexp: "DT_API_TOKEN"
-      replace: "{{ dt_api_token }}"
+      replace: "{{ dt_api_token | b64encode }}"
 
   - name: "Set DT Tenant in dynakube.yaml"
     ansible.builtin.replace:
-      path: "~/dynakube.yaml"
+      path: "~/scripts/dynakube.yaml"
       regexp: "DT_TENANT"
       replace: "{{ dt_tenant }}"
 
