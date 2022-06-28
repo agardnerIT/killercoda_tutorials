@@ -11,7 +11,7 @@ Add labels to the deployment:
 Clicking the following code block will make these changes for you and re-deploy Nginx.
 
 ```
-cat << EOF >> ~/upgrade_nginx.yaml
+cat << EOF > ~/upgrade_nginx.yaml
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -39,17 +39,11 @@ spec:
         - containerPort: 80
         env:
         - name: DT_RELEASE_VERSION
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.labels['app.kubernetes.io/version']
+          value: "1.14.2"
         - name: DT_RELEASE_PRODUCT
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.labels['app.kubernetes.io/part-of']
+          value: "product2"
         - name: DT_RELEASE_STAGE
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.labels['dynatrace-release-stage']
+          value: "dev"
 ---
 apiVersion: v1
 kind: Service

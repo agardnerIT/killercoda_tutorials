@@ -3,6 +3,7 @@
 Use this Ansible playbook to:
 
 1) Uninstall Apache
+2) Uninstall the existing host-based OneAgent
 2) Install k3d (lightweight kubernetes)
 
 ```
@@ -19,11 +20,23 @@ k3d cluster create mycluster -p "80:80@loadbalancer" --k3s-arg "--no-deploy=trae
 
 `kubectl get nodes`{{exec}} should now work.
 
+## Install Kubernetes OneAgent
+
+Use this script to install the Dynatrace Operator. The only modification made is to lower the resources request for this small demo environment:
+```
+ansible-playbook ~/playbooks/install-operator.yaml
+```{{exec}}
+
+## Validate Dynatrace Installation
+
+1) Your cluster connection should show in Dynatrace
+2) All pods should be running in `dynatrace` namespace
+
 ## Deploy Nginx
 
 ```
 cd
-cat << EOF >> install_nginx.yaml
+cat << EOF > install_nginx.yaml
 ---
 apiVersion: apps/v1
 kind: Deployment

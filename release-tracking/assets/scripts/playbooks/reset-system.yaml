@@ -16,6 +16,12 @@
       name: apache2
       state: absent
 
+  - name: Uninstall OneAgent
+    ansible.builtin.shell:
+      cmd: ./uninstall.sh
+    args:
+      chdir: /opt/dynatrace/oneagent/agent
+
   - name: Install kubectl
     ansible.builtin.shell:
       cmd: "curl -LO https://dl.k8s.io/release/{{ kubernetes_cli_version }}/bin/linux/amd64/kubectl && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl"

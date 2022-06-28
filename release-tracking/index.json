@@ -35,7 +35,9 @@
         {"file": "scripts/playbooks/install-apache.yaml", "target": "~/playbooks"},
         {"file": "scripts/playbooks/restart-apache.yaml", "target": "~/playbooks"},
         {"file": "scripts/playbooks/enhanced-release.yaml", "target": "~/playbooks"},
-        {"file": "scripts/playbooks/reset-system.yaml", "target": "~/playbooks"}
+        {"file": "scripts/playbooks/reset-system.yaml", "target": "~/playbooks"},
+        {"file": "scripts/playbooks/install-operator.yaml", "target": "~/playbooks"},
+        {"file": "scripts/dynakube.yaml", "target": "~/scripts"}
       ]
     }
   },
