@@ -1,24 +1,25 @@
 ---
-- name: Set OneAgent Host Group
+- name: Reset System for Kubernetes Release Monitoring
   hosts: localhost
   connection: local
   gather_facts: false
   become: true
 
+  vars:
+    kubernetes_cli_version: "v1.22.6"
+    k3d_version: "v5.3.0"
+
   tasks:
 
-  - name: Stop OneAgent
-    ansible.builtin.service:
-      name: oneagent
-      state: stopped
+  - name: Uninstall Apache
+    ansible.builtin.package:
+      name: apache2
+      state: absent
 
-  - name: Set Host Group
+  - name: Install kubectl
     ansible.builtin.shell:
-      cmd: "./oneagentctl --set-host-group at-demo-release"
-    args:
-      chdir: /opt/dynatrace/oneagent/agent/tools
-
-  - name: Start OneAgent
-    ansible.builtin.service:
-      name: oneagent
-      state: started
+      cmd: "curl -LO https://dl.k8s.io/release/{{ kubernetes_cli_version }}/bin/linux/amd64/kubectl && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl"
+  
+  - name: Install k3d
+    ansible.builtin.shell:
+      cmd: "curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG={{ k3d_version }} bash"

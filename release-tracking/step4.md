@@ -61,7 +61,7 @@ spec:
       targetPort: 80
 EOF
 kubectl apply -f ~/install_nginx.yaml
-```
+```{{exec}}
 
 ## Check Progress and Verify Deployment
 

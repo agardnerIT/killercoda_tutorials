@@ -21,6 +21,9 @@
       }, {
         "title": "Kubernetes Release Monitoring",
         "text": "step4.md"
+      }, {
+        "title": "Track Deployments in DT",
+        "text": "step5.md"
       }
     ],
     "finish": {
@@ -31,7 +34,8 @@
         {"file": "scripts/playbooks/set-oneagent-host-group.yaml", "target": "~/playbooks"},
         {"file": "scripts/playbooks/install-apache.yaml", "target": "~/playbooks"},
         {"file": "scripts/playbooks/restart-apache.yaml", "target": "~/playbooks"},
-        {"file": "scripts/playbooks/enhanced-release.yaml", "target": "~/playbooks"}
+        {"file": "scripts/playbooks/enhanced-release.yaml", "target": "~/playbooks"},
+        {"file": "scripts/playbooks/reset-system.yaml", "target": "~/playbooks"}
       ]
     }
   },
