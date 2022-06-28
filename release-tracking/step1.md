@@ -15,4 +15,6 @@ If you forgot to set the host group, run the following playbook:
 ansible-playbook ~/playbooks/set-oneagent-host-group.yaml
 ```{{exec}}
 
+You should already have an auto tag rule created from the previous tutorial. Ensure your host is tagged as `at-host-group: at-demo-release`.
+
 Click `Next` when you have verified the OneAgent is installed, connected to the SaaS tenant and correctly tagged.
