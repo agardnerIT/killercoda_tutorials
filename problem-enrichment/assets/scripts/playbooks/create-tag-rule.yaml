@@ -15,7 +15,7 @@
 
   tasks:
 
-  - name: "Create Auto Tag Rule"
+  - name: "Create Host Group Auto Tag Rule"
     ansible.builtin.uri:
       url: "{{ dt_tenant }}/api/config/v1/autoTags"
       method: POST
@@ -48,4 +48,39 @@
                 }]
             }],
           "entitySelectorBasedRules": []
+        }
+
+  - name: "Create Process Group Auto Tag Rule"
+    ansible.builtin.uri:
+      url: "{{ dt_tenant }}/api/config/v1/autoTags"
+      method: POST
+      status_code: 201
+      body_format: json
+      headers:
+        Authorization: "Api-token {{dt_api_token}}"
+      body: >-
+        {
+          "name": "at-pg-tag",
+          "description": null,
+          "rules": [{
+            "type": "PROCESS_GROUP",
+            "enabled": true,
+            "valueFormat": "webserver",
+            "normalization": "LEAVE_TEXT_AS_IS",
+            "propagationTypes": [],
+            "conditions": [{
+              "key": {
+                "attribute": "PROCESS_GROUP_DETECTED_NAME",
+                "type": "STATIC"
+              },
+                "comparisonInfo": {
+                    "type": "STRING",
+                    "operator": "CONTAINS",
+                    "value": "apache",
+                    "negate": false,
+                    "caseSensitive": true
+                    }
+                  }]
+            }],
+            "entitySelectorBasedRules": []
         }
