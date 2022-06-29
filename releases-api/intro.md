@@ -1,6 +1,6 @@
 ### Dynatrace Releases API
 
-This hands on exercise will demonstrate how to use hte Dynatrace Releases API endpoint
+This hands on exercise will demonstrate how to use the Dynatrace Releases API endpoint
 
 *Hint: Ctrl + Shift + V works well to paste into the browser window.*
 

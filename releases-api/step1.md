@@ -7,14 +7,14 @@ Create a DT API token with the following permissions:
 ## Use Swagger
 
 1) Open the `Environment API v2` definition in the tenant REST API browser.
-2) Authorize with the your token.
+2) Authorize with your token.
 3) Scroll down to the `Releases` endpoint
 
 In the `releasesSelector` field use:
 
 ```
 releasesProduct(product2),releasesStage(dev),releasesVersion(1.14.2)
-```
+```{{copy}}
 
 Inspect the payload and notice the following:
 
