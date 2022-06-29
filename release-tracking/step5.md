@@ -28,9 +28,10 @@ spec:
     metadata:
       labels:
         app: nginx
-        app.kubernetes.io/version: 1.14.2
-        app.kubernetes.io/part-of: product2
-        dynatrace-release-stage: dev
+        app.kubernetes.io/version: "1.14.2"
+        app.kubernetes.io/part-of: "product2"
+        dynatrace-release-stage: "dev"
+        dynatrace-build-version: "6000"
     spec:
       containers:
       - name: nginx
@@ -44,6 +45,8 @@ spec:
           value: "product2"
         - name: DT_RELEASE_STAGE
           value: "dev"
+        - name: DT_RELEASE_BUILD_VERSION
+          value: "6000"
 ---
 apiVersion: v1
 kind: Service
@@ -60,3 +63,34 @@ spec:
 EOF
 kubectl apply -f ~/upgrade_nginx.yaml
 ```{{exec}}
+
+## Validate Deployment has Labels
+
+`kubectl describe pod -l app=nginx`{{exec}} should show:
+
+```
+...
+Labels:       app=nginx
+              app.kubernetes.io/part-of=product2
+              app.kubernetes.io/version=1.14.2
+              dynatrace-release-stage=dev
+Environment:
+  DT_RELEASE_VERSION:  1.14.2
+  DT_RELEASE_PRODUCT:  product2
+  DT_RELEASE_STAGE:    dev
+  DT_RELEASE_BUILD_VERSION: 6000
+...
+```
+
+## Wait for new pod ID to Show in Dynatrace
+
+When the pod is showing on the host screen, drilldown to the PGI screen and notice it is correctly tagged with the `DT_RELEASE_*` metadata.
+
+![release pod](./assets/images/release4.png)
+
+Navigate to the releases screen and see that the release is tracked properly.
+
+Again, the above method only uses the environment variables. As previously described, best practice suggests to use **both** environment variables and API for a holistic view.
+
+![release pod](./assets/images/release5.png)
+
