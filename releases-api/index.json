@@ -1,0 +1,22 @@
+{
+  "title": "Dynatrace Releases API",
+  "description": "Demonstrates the Dynatrace Releases API Endpoint",
+  "details": {
+    "intro": {
+      "title": "Release API",
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "DT Releases API",
+        "text": "step1.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu:2004"
+  }
+}
