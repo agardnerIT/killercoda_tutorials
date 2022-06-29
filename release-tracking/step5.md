@@ -94,3 +94,20 @@ Again, the above method only uses the environment variables. As previously descr
 
 ![release pod](./assets/images/release5.png)
 
+
+## Notes
+
+In a real environment:
+
+1) The environment variables would not be adjusted manually. The pipeline would pull these details from Git and make these changes automatically.
+2) The API calls would be performed automatically by pipeline or release tooling.
+
+
+## Exercise: Create Ansible script for a Robust Production Release Process
+
+Use the sample Ansible playbooks in `~/playbooks` as a starting point.
+
+Craft a release process that:
+
+1. Applies environment variables dynamically
+2. Leverages both environment variables and the Dynatrace API
