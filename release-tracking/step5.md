@@ -103,7 +103,7 @@ In a real environment:
 2) The API calls would be performed automatically by pipeline or release tooling.
 
 
-## Exercise: Create Ansible script for a Robust Production Release Process
+## Exercise: Create Robust Production Release Process with Ansible
 
 Use the sample Ansible playbooks in `~/playbooks` as a starting point.
 
