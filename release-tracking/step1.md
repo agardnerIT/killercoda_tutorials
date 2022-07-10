@@ -8,7 +8,9 @@ Create a DT API token with the following permissions:
 4. `settings.read` (v2: Read settings)
 5. `settings.write` (v2: Write settings)
 6. `entities.read` (v2: Read entities)
-7. `InstallerDownload` (PaaS scope)
+7. `events.ingest` (v2: Ingest events)
+8. `InstallerDownload` (PaaS scope)
+
 
 ## Install OneAgent
 Install a Dynatrace OneAgent and set the hostgroup to `at-demo-release`.
