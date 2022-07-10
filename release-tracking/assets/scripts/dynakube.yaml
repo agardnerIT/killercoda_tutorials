@@ -127,7 +127,8 @@ spec:
       # Available options: https://www.dynatrace.com/support/help/shortlink/linux-custom-installation
       # Limitations: https://www.dynatrace.com/support/help/shortlink/oneagent-docker#limitations
       #
-      # args: []
+      args:
+        - "--set-host-group=at-demo-release"
       
 
   # Configuration for ActiveGate instances.
