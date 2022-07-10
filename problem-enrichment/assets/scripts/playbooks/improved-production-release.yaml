@@ -49,30 +49,23 @@
 
   - name: "Sending Release Event to DT"
     ansible.builtin.uri:
-      url: "{{ dt_tenant }}/api/v1/events"
+      url: "{{ dt_tenant }}/api/v2/events/ingest"
       method: POST
-      status_code: 200
+      status_code: 201
       body_format: json
       headers:
         Authorization: "Api-token {{dt_api_token}}"
+        accept: "application/json; charset=utf-8"
       body: >-
         {
           "eventType": "CUSTOM_DEPLOYMENT",
+          "title": "{{ deployment_version}} deployment by {{ releaser_name}}",
           "timeout": 5,
-          "attachRules": {
-            "tagRule": [{
-              "meTypes": [ "HOST" ],
-              "tags": [{
-                "context": "CONTEXTLESS",
-                "key": "at-host-group",
-                "value": "at-demo-enrichment"
-              }]
-            }]
-          },
-          "source": "Ansible",
-          "deploymentName": "{{ deployment_version}} deployment by {{ releaser_name}}",
-          "deploymentVersion": "{{ deployment_version}}",
-          "customProperties": {
+          "entitySelector": "tag(at-host-group:at-demo-enrichment),type(HOST)",
+          "properties": {
+            "dt.event.source":"Ansible",
+            "dt.event.is_rootcause_relevant":"true",
+            "dt.event.allow_davis_merge":"true",
             "deployment version": "{{ deployment_version}}",
             "operator": "{{ releaser_name }}",
             "operator email": "{{ releaser_email }}",
