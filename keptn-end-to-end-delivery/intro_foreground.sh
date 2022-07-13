@@ -1,11 +1,11 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG=1
+DEBUG=2
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
-GH_CLI_VERSION=2.12.1
-KEPTN_VERSION=0.16.1
+GH_CLI_VERSION=2.14.1
+KEPTN_VERSION=0.17.0
 JOB_EXECUTOR_SERVICE_VERSION=0.2.3
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.3
 
