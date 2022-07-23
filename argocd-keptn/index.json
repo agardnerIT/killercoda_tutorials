@@ -5,7 +5,6 @@
     "intro": {
       "title": "ArgoCD and Keptn",
       "text": "intro.md",
-      "background": "assets/scripts/background.sh",
       "foreground": "assets/scripts/foreground.sh"
     },
     "steps": [{
