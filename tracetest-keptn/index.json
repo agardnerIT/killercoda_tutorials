@@ -1,0 +1,32 @@
+{
+
+	"title": "Keptn & Tracetest Demo",
+	"description": "Keptn and Tracetest demo",
+	"difficulty": "Medium",
+	"time": "10",
+	"details": {
+		"steps": [{
+				"title": "Step 1",
+				"text": "step1.md",
+				"background": "scripts/steps/step1/background.sh"
+			}
+        ],
+		"intro": {
+			"text": "intro.md",
+			"foreground": "scripts/intro/foreground.sh",
+			"background": "scripts/intro/background.sh"
+		},
+		"finish": {
+			"text": "finish.md",
+			"background": "scripts/finish/background.sh"
+		}
+	},
+	"environment": {
+		"showdashboard": true,
+		"dashboard": "Dashboard",
+		"uilayout": "terminal"
+	},
+	"backend": {
+		"imageid": "kubernetes-kubeadm-1node"
+	}
+}
