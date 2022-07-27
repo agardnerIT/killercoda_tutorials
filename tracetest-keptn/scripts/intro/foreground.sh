@@ -27,7 +27,8 @@ curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 # Install Keptn control plane
 helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace \
   --set=apiGatewayNginx.type=LoadBalancer \
-  --set=nats.nats.jetstream.fileStorage.size=1Gi
+  --set=nats.nats.jetstream.fileStorage.size=1Gi \
+  --set=mongo.persistence.size=1Gi
 
 # Install JES
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)
