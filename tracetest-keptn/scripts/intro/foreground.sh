@@ -41,19 +41,22 @@ git clone https://github.com/kubeshop/tracetest
 cd ~/tracetest
 
 # Customise setup.sh for killercoda
-# 1. Shrink postgres cpu requests and disk size from 8Gi to $PV_SIZE setting
-# 2. Shrink rabbitmq disk from 8Gi to $PV_SIZE setting
-# 3. Shrink redis disk from 8Gi to $PV_SIZE setting
-# 4. Remove instructions for port-forwarding
-# 5. Expose tracetest on LB :8080 (rather than port-forward)
+# 1. Add PV_SIZE variable to setup.sh
+# 2. Shrink postgres cpu requests and disk size from 8Gi to $PV_SIZE setting
+# 3. Shrink rabbitmq disk from 8Gi to $PV_SIZE setting
+# 4. Shrink redis disk from 8Gi to $PV_SIZE setting
+# 5. Remove instructions for port-forwarding
+# 6. Expose tracetest on LB :8080 (rather than port-forward)
+
+sed -i "/SKIP_BACKEND=\"\"/a PV_SIZE=$PV_SIZE" ~/tracetest/setup.sh
 
 # Add custom CPU requests
 # https://artifacthub.io/packages/helm/bitnami/postgresql
 # https://artifacthub.io/packages/helm/bitnami/rabbitmq
 # https://artifacthub.io/packages/helm/bitnami/redis
-sed -i "s#--set postgres.auth.username=ashketchum,postgres.auth.password=squirtle123,postgres.auth.database=pokeshop \\#--set postgres.auth.username=ashketchum,postgres.auth.password=squirtle123,postgres.auth.database=pokeshop,postgresql.primary.resources.requests.cpu=10m,postgresql.primary.persistence.size=$PV_SIZE \\#g" ~/tracetest/setup.sh
-sed -i "s#--set server.telemetry.dataStore=\"${TRACE_BACKEND}\"#--set server.telemetry.dataStore=\"${TRACE_BACKEND}\" --set postgresql.primary.resources.requests.cpu=10m,postgresql.primary.persistence.size=$PV_SIZE#g" ~/tracetest/setup.sh
-sed -i "s#--set rabbitmq.auth.username=guest,rabbitmq.auth.password=guest,rabbitmq.auth.erlangCookie=secretcookie \\#--set rabbitmq.auth.username=guest,rabbitmq.auth.password=guest,rabbitmq.auth.erlangCookie=secretcookie,rabbitmq.persistence.size=$PV_SIZE --set redis.master.persistence.size=$PV_SIZE \\#g" ~/tracetest/setup.sh
+sed -i "s#--set postgres.auth.username=ashketchum,postgres.auth.password=squirtle123,postgres.auth.database=pokeshop \\#--set postgres.auth.username=ashketchum,postgres.auth.password=squirtle123,postgres.auth.database=pokeshop,postgresql.primary.resources.requests.cpu=10m,postgresql.primary.persistence.size=\"${PV_SIZE}\" \\#g" ~/tracetest/setup.sh
+sed -i "s#--set server.telemetry.dataStore=\"${TRACE_BACKEND}\"#--set server.telemetry.dataStore=\"${TRACE_BACKEND}\" --set postgresql.primary.resources.requests.cpu=10m,postgresql.primary.persistence.size=\"${PV_SIZE}\"#g" ~/tracetest/setup.sh
+sed -i "s#--set rabbitmq.auth.username=guest,rabbitmq.auth.password=guest,rabbitmq.auth.erlangCookie=secretcookie \\#--set rabbitmq.auth.username=guest,rabbitmq.auth.password=guest,rabbitmq.auth.erlangCookie=secretcookie,rabbitmq.persistence.size=\"${PV_SIZE}\" --set redis.master.persistence.size=\"${PV_SIZE}\" \\#g" ~/tracetest/setup.sh
 
 # Remove final 13 lines (port-forward instructions)
 head -n -13 ~/tracetest/setup.sh > /tmp/setup.sh && mv /tmp/setup.sh ~/tracetest/setup.sh
