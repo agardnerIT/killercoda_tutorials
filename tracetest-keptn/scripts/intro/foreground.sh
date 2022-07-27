@@ -54,9 +54,9 @@ sed -i "/SKIP_BACKEND=\"\"/a PV_SIZE=$PV_SIZE" ~/tracetest/setup.sh
 # https://artifacthub.io/packages/helm/bitnami/postgresql
 # https://artifacthub.io/packages/helm/bitnami/rabbitmq
 # https://artifacthub.io/packages/helm/bitnami/redis
-sed -i "s#--set postgres.auth.username=ashketchum,postgres.auth.password=squirtle123,postgres.auth.database=pokeshop \\#--set postgres.auth.username=ashketchum,postgres.auth.password=squirtle123,postgres.auth.database=pokeshop,postgresql.primary.resources.requests.cpu=10m,postgresql.primary.persistence.size=\"${PV_SIZE}\" \\#g" ~/tracetest/setup.sh
-sed -i "s#--set server.telemetry.dataStore=\"${TRACE_BACKEND}\"#--set server.telemetry.dataStore=\"${TRACE_BACKEND}\" --set postgresql.primary.resources.requests.cpu=10m,postgresql.primary.persistence.size=\"${PV_SIZE}\"#g" ~/tracetest/setup.sh
-sed -i "s#--set rabbitmq.auth.username=guest,rabbitmq.auth.password=guest,rabbitmq.auth.erlangCookie=secretcookie \\#--set rabbitmq.auth.username=guest,rabbitmq.auth.password=guest,rabbitmq.auth.erlangCookie=secretcookie,rabbitmq.persistence.size=\"${PV_SIZE}\" --set redis.master.persistence.size=\"${PV_SIZE}\" \\#g" ~/tracetest/setup.sh
+sed -i 's#      --set postgres.auth.username=ashketchum,postgres.auth.password=squirtle123,postgres.auth.database=pokeshop \\#      --set postgres.auth.username=ashketchum,postgres.auth.password=squirtle123,postgres.auth.database=pokeshop,postgresql.primary.resources.requests.cpu=10m,postgresql.primary.persistence.size="${PV_SIZE}" \\#g' ~/tracetest/setup.sh
+sed -i 's#  --set server.telemetry.dataStore="${TRACE_BACKEND}"#  --set server.telemetry.dataStore="${TRACE_BACKEND}" --set postgresql.primary.resources.requests.cpu=10m,postgresql.primary.persistence.size="${PV_SIZE}"#g' ~/tracetest/setup.sh
+sed -i 's#      --set rabbitmq.auth.username=guest,rabbitmq.auth.password=guest,rabbitmq.auth.erlangCookie=secretcookie \\#      --set rabbitmq.auth.username=guest,rabbitmq.auth.password=guest,rabbitmq.auth.erlangCookie=secretcookie,rabbitmq.persistence.size="${PV_SIZE}" --set redis.master.persistence.size="${PV_SIZE}" \\#g' ~/tracetest/setup.sh
 
 # Remove final 13 lines (port-forward instructions)
 head -n -13 ~/tracetest/setup.sh > /tmp/setup.sh && mv /tmp/setup.sh ~/tracetest/setup.sh
