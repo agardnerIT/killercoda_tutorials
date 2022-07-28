@@ -54,7 +54,7 @@ helm install prometheus prometheus-community/prometheus --namespace monitoring -
 # -------------------------------------------#
 # Step 8/11: Installing Keptn Control Plane  #
 # -------------------------------------------#
-helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=apiGatewayNginx.type=LoadBalancer
+helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=apiGatewayNginx.type=LoadBalancer --set=statisticsService.enabled=false
 
 # --------------------------------------------#
 # Step 9/11: Installing Job Executor Service  #
