@@ -1,7 +1,7 @@
 {
 
 	"title": "Keptn End to End Delivery",
-	"description": "Keptn uses a declarative approach to build scalable automation for delivery and operations which can be scaled to a large number of services.",
+	"description": "0.18.next-0. Testing only. Use this instead: https://killercoda.com/keptn/scenario/keptn-end-to-end-delivery",
 	"difficulty": "Medium",
 	"time": "10",
 	"details": {
