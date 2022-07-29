@@ -4,12 +4,8 @@
 HELM_VERSION=v3.9.2
 KEPTN_VERSION=0.17.0
 JOB_EXECUTOR_SERVICE_VERSION=0.2.3
-
-# Set global variables
-HELM_VERSION=v3.9.2
-KEPTN_VERSION=0.17.0
-JOB_EXECUTOR_SERVICE_VERSION=0.2.3
 PV_SIZE=10G
+KUBECTL_VERSION=v1.24.3
 
 # Install helm
 wget https://get.helm.sh/helm-$HELM_VERSION-linux-386.tar.gz
@@ -17,19 +13,28 @@ gzip -d helm-$HELM_VERSION-linux-386.tar.gz
 tar -xf helm-$HELM_VERSION-linux-386.tar
 sudo cp linux-386/helm /usr/local/bin/helm
 
+# Install kubectl
+curl -LO https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+mkdir ~/.kube
+
 # Install k3s
 curl -sfL https://get.k3s.io | sh -
-mkdir ~/.kube
+wget https://github.com/k3s-io/k3s/releases/download/v1.24.3%2Bk3s1/k3s
+chmod +x k3s && sudo mv k3s /usr/local/bin
+nohup k3s server --etcd-disable-snapshots --disable metrics-server --disable traefik &
+sleep 10
 cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+
+# Install k3s
+#curl -sfL https://get.k3s.io | sh -
+#cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
 
 # Install keptn CLI
 curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 
 # Install Keptn control plane
-helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace \
-  --set=apiGatewayNginx.type=LoadBalancer \
-  --set=nats.nats.jetstream.fileStorage.size=$PV_SIZE \
-  --set=mongo.persistence.size=$PV_SIZE
+helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=apiGatewayNginx.type=LoadBalancer
 
 # Install JES
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)
@@ -70,7 +75,15 @@ echo "echo \"Customised tracetest setup.sh complete\"" >> ~/tracetest/setup.sh
 
 # Run customised tracetest setup.sh
 chmod +x ~/tracetest/setup.sh
-~/tracetest/setup.sh
+~/tracetest/setup.sh --skip-pma
+
+mkdir ~/app
+cd ~/app
+wget https://raw.githubusercontent.com/thschue/opentelemetry-demo-app/main/deploy/deploy.yaml
+sed -i 's#            value: "jaeger-demo-agent"#            value: "jaeger-query"#g' ~/app/deploy.yaml
+sed -i 's#            value: "6832"#            value: "16685"#g' ~/app/deploy.yaml
+kubectl apply -f ~/app/deploy.yaml
+
 
 
 # ---------------------------------------------#
