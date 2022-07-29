@@ -59,7 +59,7 @@ helm install keptn https://github.com/keptn/keptn/releases/download/$CLOUD_AUTOM
 -n ca --create-namespace \
 --timeout=5m --wait  \
 --set=apiGatewayNginx.type=LoadBalancer \
---set=control-plane.bridge.lookAndFeelUrl=https://d2ixiz0hn5ywb5.cloudfront.net/branding.zip
+--set=bridge.lookAndFeelUrl=https://d2ixiz0hn5ywb5.cloudfront.net/branding.zip
 
 # --------------------------------------------#
 # Step 9/11: Installing Job Executor Service  #
