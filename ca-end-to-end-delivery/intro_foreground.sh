@@ -22,7 +22,7 @@ dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git
 
 # -----------------------------------------#
-#      Step 3/11: Installing Keptn CLI     #
+#      Step 3/11: Installing CLI     #
 # -----------------------------------------#
 curl -sL https://get.keptn.sh | KEPTN_VERSION=$CLOUD_AUTOMATION_VERSION bash
 sudo mv /usr/local/bin/keptn /usr/local/bin/cloud_automation
