@@ -8,7 +8,7 @@ KEPTN_VERSION=0.17.0
 JOB_EXECUTOR_SERVICE_VERSION=0.2.3
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.3
 PROMETHEUS_VERSION=15.10.1
-DEBUG_VERSION=8
+DEBUG_VERSION=9
 
 # -----------------------------------------#
 #    Step 1/11: Installing GitHub CLI      #
@@ -51,9 +51,9 @@ helm repo update
 helm install gitea gitea-charts/gitea \
 --namespace gitea --create-namespace \
 --set image.pullPolicy=IfNotPresent \
+--set image.tag=1.17.0 \
 --set service.http.type=LoadBalancer \
---set service.http.port=3000 \
---set persistence.enabled=false
+--set service.http.port=3000
 
 # -----------------------------------------#
 #    Step 7/11: Installing Prometheus      #
