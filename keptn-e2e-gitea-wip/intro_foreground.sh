@@ -8,7 +8,7 @@ KEPTN_VERSION=0.17.0
 JOB_EXECUTOR_SERVICE_VERSION=0.2.3
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.3
 PROMETHEUS_VERSION=15.10.1
-DEBUG_VERSION=10
+DEBUG_VERSION=11
 
 # -----------------------------------------#
 #    Step 1/11: Installing GitHub CLI      #
@@ -56,7 +56,8 @@ helm install gitea gitea-charts/gitea \
 --set service.http.port=3000 \
 --set persistence.enabled=false \
 --set memcached.enabled=false \
---set postgresql.enabled=false
+--set postgresql.enabled=false \
+--set mariadb.enabled=true
 
 # -----------------------------------------#
 #    Step 7/11: Installing Prometheus      #
