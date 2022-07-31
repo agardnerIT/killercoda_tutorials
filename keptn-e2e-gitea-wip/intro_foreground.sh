@@ -33,16 +33,6 @@ curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && chmod 700 get_helm.sh
 ./get_helm.sh
 
-# WIP: Install Gitea
-helm repo add gitea-charts https://dl.gitea.io/charts/
-helm repo update
-helm install gitea gitea-charts/gitea \
---namespace gitea --create-namespace \
---set service.http.type=LoadBalancer \
---set gitea.admin.username-="keptn" \
---set gitea.admin.password="keptn" \
---set gitea.admin.email="keptn@keptn.sh"
-
 # ----------------------------------------#
 #      Step 5/11: Installing Kubectl      #
 # ----------------------------------------#
@@ -54,6 +44,16 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 # -----------------------------------------#
 curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=$K3D_VERSION bash
 k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
+
+# WIP: Install Gitea
+helm repo add gitea-charts https://dl.gitea.io/charts/
+helm repo update
+helm install gitea gitea-charts/gitea \
+--namespace gitea --create-namespace \
+--set service.http.type=LoadBalancer \
+--set gitea.admin.username-="keptn" \
+--set gitea.admin.password="keptn" \
+--set gitea.admin.email="keptn@keptn.sh"
 
 # -----------------------------------------#
 #    Step 7/11: Installing Prometheus      #
