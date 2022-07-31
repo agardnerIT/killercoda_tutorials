@@ -9,7 +9,6 @@ JOB_EXECUTOR_SERVICE_VERSION=0.2.3
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.3
 PROMETHEUS_VERSION=15.10.1
 
-
 # -----------------------------------------#
 #    Step 1/11: Installing GitHub CLI      #
 # -----------------------------------------#
@@ -34,13 +33,13 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 ./get_helm.sh
 
 # WIP: Install Gitea
-helm repo add gitea-charts https://dl.gitea.io/charts/
-helm repo update
-helm install gitea gitea-charts/gitea \
---set service.http.type=LoadBalancer \
---set gitea.admin.username-="keptn" \
---set gitea.admin.password="keptn" \
---set gitea.admin.email="keptn@keptn.sh"
+#helm repo add gitea-charts https://dl.gitea.io/charts/
+#helm repo update
+#helm install gitea gitea-charts/gitea \
+#--set service.http.type=LoadBalancer \
+#--set gitea.admin.username-="keptn" \
+#--set gitea.admin.password="keptn" \
+#--set gitea.admin.email="keptn@keptn.sh"
 
 # ----------------------------------------#
 #      Step 5/11: Installing Kubectl      #
@@ -53,7 +52,6 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 # -----------------------------------------#
 curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=$K3D_VERSION bash
 k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
-
 
 # -----------------------------------------#
 #    Step 7/11: Installing Prometheus      #
