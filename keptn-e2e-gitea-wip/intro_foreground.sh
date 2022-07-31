@@ -8,7 +8,7 @@ KEPTN_VERSION=0.17.0
 JOB_EXECUTOR_SERVICE_VERSION=0.2.3
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.3
 PROMETHEUS_VERSION=15.10.1
-DEBUG_VERSION=2
+DEBUG_VERSION=3
 
 # -----------------------------------------#
 #    Step 1/11: Installing GitHub CLI      #
@@ -51,7 +51,8 @@ helm repo update
 helm install gitea gitea-charts/gitea \
 --namespace gitea --create-namespace \
 --set service.http.type=LoadBalancer \
---set gitea.admin.username-="keptn" \
+--set service.http.port=4000 \
+--set gitea.admin.username-="giteauser" \
 --set gitea.admin.password="keptn" \
 --set gitea.admin.email="keptn@keptn.sh"
 
