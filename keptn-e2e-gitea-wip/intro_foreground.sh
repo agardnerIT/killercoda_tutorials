@@ -50,9 +50,11 @@ helm repo add gitea-charts https://dl.gitea.io/charts/
 helm repo update
 helm install gitea gitea-charts/gitea \
 --namespace gitea --create-namespace \
+--set image.pullPolicy=IfNotPresent \
 --set service.http.type=LoadBalancer \
 --set service.http.port=3000 \
---set gitea.admin.username-="giteauser" \
+--set memcached.enabled=false \
+--set gitea.admin.username="giteauser" \
 --set gitea.admin.password="keptn" \
 --set gitea.admin.email="keptn@keptn.sh"
 
