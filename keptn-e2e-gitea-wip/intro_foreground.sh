@@ -8,7 +8,7 @@ KEPTN_VERSION=0.17.0
 JOB_EXECUTOR_SERVICE_VERSION=0.2.3
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.3
 PROMETHEUS_VERSION=15.10.1
-DEBUG_VERSION=3
+DEBUG_VERSION=4
 
 # -----------------------------------------#
 #    Step 1/11: Installing GitHub CLI      #
@@ -43,7 +43,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 #    Step 6/11: Initialising Kubernetes    #
 # -----------------------------------------#
 curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=$K3D_VERSION bash
-k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
+k3d cluster create mykeptn -p "8080:80@loadbalancer" -p "3000:3000@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
 
 # WIP: Install Gitea
 helm repo add gitea-charts https://dl.gitea.io/charts/
@@ -51,7 +51,7 @@ helm repo update
 helm install gitea gitea-charts/gitea \
 --namespace gitea --create-namespace \
 --set service.http.type=LoadBalancer \
---set service.http.port=4000 \
+--set service.http.port=3000 \
 --set gitea.admin.username-="giteauser" \
 --set gitea.admin.password="keptn" \
 --set gitea.admin.email="keptn@keptn.sh"
