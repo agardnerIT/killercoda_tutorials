@@ -8,6 +8,8 @@ KEPTN_VERSION=0.17.0
 JOB_EXECUTOR_SERVICE_VERSION=0.2.3
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.3
 PROMETHEUS_VERSION=15.10.1
+GITEA_VERSION=
+
 
 # -----------------------------------------#
 #    Step 1/11: Installing GitHub CLI      #
@@ -31,6 +33,15 @@ curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 # ----------------------------------------#
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && chmod 700 get_helm.sh
 ./get_helm.sh
+
+# WIP: Install Gitea
+helm repo add gitea-charts https://dl.gitea.io/charts/
+helm repo update
+helm install gitea gitea-charts/gitea \
+--set service.http.type=LoadBalancer \
+--set gitea.admin.username-="keptn" \
+--set gitea.admin.password="keptn" \
+--set gitea.admin.email="keptn@keptn.sh"
 
 # ----------------------------------------#
 #      Step 5/11: Installing Kubectl      #
