@@ -8,7 +8,7 @@ KEPTN_VERSION=0.18.1
 JOB_EXECUTOR_SERVICE_VERSION=0.2.3
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.4
 PROMETHEUS_VERSION=15.10.1
-DEBUG_VERSION=3
+DEBUG_VERSION=4
 
 # -----------------------------------------#
 #    Step 1/11: Installing GitHub CLI      #
@@ -49,8 +49,8 @@ k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=trae
 # -----------------------------------------#
 #    Step 7/11: Installing Prometheus      #
 # -----------------------------------------#
-# helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-# helm install prometheus prometheus-community/prometheus --namespace monitoring --create-namespace --version ${PROMETHEUS_VERSION} --wait
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install prometheus prometheus-community/prometheus --namespace monitoring --create-namespace --version ${PROMETHEUS_VERSION} --wait
 
 # -------------------------------------------#
 # Step 8/11: Installing Keptn Control Plane  #
@@ -109,6 +109,6 @@ kubectl -n monitoring apply -f https://raw.githubusercontent.com/keptn-contrib/p
 kubectl apply -f ~/keptn-job-executor-delivery-poc/job-executor/workloadClusterRoles.yaml
 
 # ---------------------------------------------#
-#       🎉 Installation Complete 🎉          #
+#       🎉 Installation Complete 🎉           #
 #           Please proceed now...              #
 # ---------------------------------------------#
