@@ -1,12 +1,12 @@
 {
 
-	"title": "Cloud Automation End to End Delivery",
-	"description": "Cloud Automation uses a declarative approach to build scalable automation for delivery and operations which can be scaled to a large number of services.",
+	"title": "WIP 0.18.1 Keptn E2E",
+	"description": "TESTING. DO NOT USE. Keptn uses a declarative approach to build scalable automation for delivery and operations which can be scaled to a large number of services.",
 	"difficulty": "Medium",
 	"time": "10",
 	"details": {
 		"steps": [{
-				"title": "Cloud Automation Bridge",
+				"title": "Keptn Bridge",
 				"text": "step1.md",
 				"background": "step1_background.sh"
 			},
@@ -51,7 +51,7 @@
 				"target": "~/",
 				"chmod": "+x"
 			},{
-				"file": "scripts/setup_cloud_automation.sh",
+				"file": "scripts/setup_keptn.sh",
 				"target": "~/",
 				"chmod": "+x"
 			},{

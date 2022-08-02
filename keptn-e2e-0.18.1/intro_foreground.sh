@@ -4,9 +4,9 @@
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
 GH_CLI_VERSION=2.14.1
-CLOUD_AUTOMATION_VERSION=0.17.0
+KEPTN_VERSION=0.18.1
 JOB_EXECUTOR_SERVICE_VERSION=0.2.3
-CLOUD_AUTOMATION_PROMETHEUS_SERVICE_VERSION=0.8.3
+KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.4
 PROMETHEUS_VERSION=15.10.1
 
 # -----------------------------------------#
@@ -22,10 +22,9 @@ dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git
 
 # -----------------------------------------#
-#      Step 3/11: Installing CLI     #
+#      Step 3/11: Installing Keptn CLI     #
 # -----------------------------------------#
-curl -sL https://get.keptn.sh | KEPTN_VERSION=$CLOUD_AUTOMATION_VERSION bash
-sudo mv /usr/local/bin/keptn /usr/local/bin/cloud_automation
+curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 
 # ----------------------------------------#
 #      Step 4/11: Installing Helm         #
@@ -43,7 +42,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 #    Step 6/11: Initialising Kubernetes    #
 # -----------------------------------------#
 curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=$K3D_VERSION bash
-k3d cluster create mycloudautomation -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
+k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
 
 
 # -----------------------------------------#
@@ -52,27 +51,23 @@ k3d cluster create mycloudautomation -p "8080:80@loadbalancer" --k3s-arg "--no-d
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install prometheus prometheus-community/prometheus --namespace monitoring --create-namespace --version ${PROMETHEUS_VERSION} --wait
 
-# ------------------------------------------------------#
-# Step 8/11: Installing Cloud Automation Control Plane  #
-# ------------------------------------------------------#
-helm install keptn https://github.com/keptn/keptn/releases/download/$CLOUD_AUTOMATION_VERSION/keptn-$CLOUD_AUTOMATION_VERSION.tgz \
--n ca --create-namespace \
---timeout=5m --wait  \
---set=apiGatewayNginx.type=LoadBalancer \
---set=bridge.lookAndFeelUrl=https://d2ixiz0hn5ywb5.cloudfront.net/branding.zip
+# -------------------------------------------#
+# Step 8/11: Installing Keptn Control Plane  #
+# -------------------------------------------#
+helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=apiGatewayNginx.type=LoadBalancer
 
 # --------------------------------------------#
 # Step 9/11: Installing Job Executor Service  #
 # --------------------------------------------#
-CLOUD_AUTOMATION_API_TOKEN=$(kubectl get secret keptn-api-token -n ca -ojsonpath={.data.keptn-api-token} | base64 -d)
-helm install --namespace ca-jes --create-namespace --wait --timeout=4m --set=remoteControlPlane.api.hostname=api-gateway-nginx.ca --set=remoteControlPlane.api.token=$CLOUD_AUTOMATION_API_TOKEN --set=remoteControlPlane.topicSubscription="sh.keptn.event.je-deployment.triggered\,sh.keptn.event.je-test.triggered\,sh.keptn.event.action.triggered" \
+KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d)
+helm install --namespace keptn-jes --create-namespace --wait --timeout=4m --set=remoteControlPlane.api.hostname=api-gateway-nginx.keptn --set=remoteControlPlane.api.token=$KEPTN_API_TOKEN --set=remoteControlPlane.topicSubscription="sh.keptn.event.je-deployment.triggered\,sh.keptn.event.je-test.triggered\,sh.keptn.event.action.triggered" \
 job-executor-service https://github.com/keptn-contrib/job-executor-service/releases/download/$JOB_EXECUTOR_SERVICE_VERSION/job-executor-service-$JOB_EXECUTOR_SERVICE_VERSION.tgz
 
 # --------------------------------------------#
 # Step 10/11: Installing Prometheus Service   #
 # --------------------------------------------#
-helm install -n ca prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/$CLOUD_AUTOMATION_PROMETHEUS_SERVICE_VERSION/prometheus-service-$CLOUD_AUTOMATION_PROMETHEUS_SERVICE_VERSION.tgz --set resources.requests.cpu=25m
-kubectl -n monitoring apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/$CLOUD_AUTOMATION_PROMETHEUS_SERVICE_VERSION/deploy/role.yaml
+helm install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/$KEPTN_PROMETHEUS_SERVICE_VERSION/prometheus-service-$KEPTN_PROMETHEUS_SERVICE_VERSION.tgz --set resources.requests.cpu=25m
+kubectl -n monitoring apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/$KEPTN_PROMETHEUS_SERVICE_VERSION/deploy/role.yaml
 
 # ---------------------------------------------#
 # Step 11/11: Apply Cluster Admin Role for JES #

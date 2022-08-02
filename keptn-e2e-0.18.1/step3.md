@@ -25,11 +25,11 @@ Click the `production` link then inside the approval step, click ✅ to approve 
 
 ## Summary
 
-A new task was added to the shipyard file called `approval`. When it was time to action this task, Cloud Automation created and distributed a cloudevent of type `sh.keptn.event.approval.triggered`. The [approval service](https://github.com/keptn/keptn/tree/master/approval-service) is a Cloud Automation core microservice which listens for and actions this event.
+A new task was added to the shipyard file called `approval`. When it was time to action this task, Keptn created and distributed a cloudevent of type `sh.keptn.event.approval.triggered`. The [approval service](https://github.com/keptn/keptn/tree/master/approval-service) is a Keptn core microservice which listens for and actions this event.
 
 The `properties` block in the shipyard file tell the approval service that a manual approval is required regardless of the success / fail output of the preceding task.
 
-The `approval.finished` event will not be sent back to Cloud Automation until user input has been received and so the `je-deployment` task is not actioned until after a user clicks approve.
+The `approval.finished` event will not be sent back to keptn until user input has been received and so the `je-deployment` task is not actioned until after a user clicks approve.
 
 ----
 
@@ -39,4 +39,4 @@ Blindly promoting artifacts to production and requiring manual approvals before 
 
 Perhaps an artifact is allowed to go into production if it passes the evaluation but manual approval is required if the quality evaluation is a warning or a failure.
 
-In the next step, Cloud Automation will introduce "guard rails" in this process. The `helloservice` application will be monitored and releases will be programatically approved / declined based on a quality signature defined by you and calculated by Cloud Automation.
+In the next step, keptn will introduce "guard rails" in this process. The `helloservice` application will be monitored and releases will be programatically approved / declined based on a quality signature defined by you and calculated by keptn.

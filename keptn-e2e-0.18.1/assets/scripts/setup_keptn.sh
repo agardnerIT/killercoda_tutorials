@@ -29,26 +29,26 @@ EOF
 
 echo ""
 echo "================================================================================="
-echo " Creating CA project (fulltour) and a CA service (helloservice)            "
+echo " Creating Keptn project (fulltour) and a Keptn service (helloservice)            "
 echo "================================================================================="
-cloud_automation create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GITHUB_TOKEN
-cloud_automation create service helloservice --project=fulltour
+keptn create project fulltour --shipyard shipyard.yaml --git-remote-url $GIT_REPO --git-user $GIT_USER --git-token $GITHUB_TOKEN
+keptn create service helloservice --project=fulltour
 cd ~/keptn-job-executor-delivery-poc
 
 echo ""
 echo "================================================================================="
 echo "Adding Helm Chart (helloservice.tgz), Locust files and Job Executor Service files to Git"
 echo "================================================================================="
-cloud_automation add-resource --project=fulltour --service=helloservice --all-stages --resource=./helm/helloservice.tgz --resourceUri=charts/helloservice.tgz
-cloud_automation add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/basic.py
-cloud_automation add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/locust.conf
-cloud_automation add-resource --project=fulltour --service=helloservice --all-stages --resource=job-executor-config.yaml --resourceUri=job/config.yaml
+keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=./helm/helloservice.tgz --resourceUri=charts/helloservice.tgz
+keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/basic.py
+keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./locust/locust.conf
+keptn add-resource --project=fulltour --service=helloservice --all-stages --resource=job-executor-config.yaml --resourceUri=job/config.yaml
 
 echo ""
 echo "================================================================================="
 echo "Triggering Delivery of the helloservice v0.1.1 Artifact (Follow progress in the Bridge)"
 echo "================================================================================="
-cloud_automation trigger delivery \
+keptn trigger delivery \
 --project=fulltour \
 --service=helloservice \
 --image="ghcr.io/podtato-head/podtatoserver:v0.1.1" \

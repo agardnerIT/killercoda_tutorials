@@ -1,25 +1,25 @@
-In this step an automated go / no-go decision step will be added. If, based on your criteria, Cloud Automation decides the artifact is a `pass`, the release will be automatically promoted to production.
+In this step an automated go / no-go decision step will be added. If, based on your criteria, Keptn decides the artifact is a `pass`, the release will be automatically promoted to production.
 
 If the evaluation is a `failure`, the release will be blocked.
 
 Prometheus has already been installed on the cluster, running in the `monitoring` namespace.
 
-Cloud Automation currently supports the following providers:
+Keptn currently supports the following providers:
 
 - Prometheus
 - Dynatrace
 - Datadog
 - Any others (request an [SLI provider here](https://github.com/keptn/integrations/issues))
 
-Cloud Automation is unopinionated on the observability platform that provides metrics for the quality evaluations.
+Keptn is unopinionated on the observability platform that provides metrics for the quality evaluations.
 
-Each observability provider will, of course, have strengths, weaknesses and slightly differing setups but overall, the big picture of what can be achieved with Cloud Automation remains the same.
+Each observability provider will, of course, have strengths, weaknesses and slightly differing setups but overall, the big picture of what can be achieved with Keptn remains the same.
 
 ## Configure Prometheus and Run an SLO-based Quality Gated Release
 
 Run the following script which will:
 
-1. Configure the fulltour Cloud Automation project to use Prometheus
+1. Configure the fulltour Keptn project to use Prometheus
 2. Add a quality evaluation step to the `qa` stage. This is configured to **allow** `pass` or `warning` quality builds and **block** any `failed` quality builds
 3. Trigger a new delivery sequence
 
@@ -31,7 +31,7 @@ Refresh the bridge screen to watch progress.
 
 ## Outcome
 
-The artifact receives a warning score which we told Cloud Automation was still good enough to allow an automatic release. Cloud Automation stores a full history of every previous evaluation and will automatically compare new builds against old.
+The artifact receives a warning score which we told Keptn was still good enough to allow an automatic release. Keptn stores a full history of every previous evaluation and will automatically compare new builds against old.
 
 ![](./assets/qa-evaluation-1.jpg)
 ![](./assets/qa-evaluation-2.jpg)
@@ -47,11 +47,11 @@ Should show `v0.1.1` in both environments.
 
 ## Attempt to Release a Slow Build
 
-Now attempt to release a slow build. Cloud Automation will release the artifact to `qa` as there are no quality checks in `qa`.
+Now attempt to release a slow build. Keptn will release the artifact to `qa` as there are no quality checks in `qa`.
 The quality evaluation before production will fail (as it should), thus the slow artifact is never released to production - protecting users.
 
 ```
-cloud_automation trigger delivery \
+keptn trigger delivery \
 --project=fulltour \
 --service=helloservice \
 --image="ghcr.io/podtato-head/podtatoserver:v0.1.2" \

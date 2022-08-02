@@ -3,12 +3,12 @@
 Much like `kubectl`, the `keptn` CLI can be used to interact with the control plane.
 
 ```
-cloud_automation auth --endpoint={{TRAFFIC_HOST1_8080}}/api --api-token=$(kubectl get secret keptn-api-token -n ca -ojsonpath='{.data.keptn-api-token}' | base64 -d)
+keptn auth --endpoint={{TRAFFIC_HOST1_8080}}/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}' | base64 -d)
 ```{{exec}}
 
-# Cloud Automation Bridge
+# Keptn Bridge
 
-The bridge is the web-based interface for Cloud Automation.
+The bridge is the web-based interface for Keptn.
 
 Retrieve the login details for the bridge:
 

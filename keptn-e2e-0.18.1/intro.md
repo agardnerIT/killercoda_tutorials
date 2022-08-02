@@ -1,4 +1,4 @@
-# Cloud Automation Multistage Delivery and Self-Healing with Helm, Prometheus, Locust and SLO-based Quality Gates
+# Keptn Multistage Delivery and Self-Healing with Helm, Prometheus, Locust and SLO-based Quality Gates
 The goal of this tutorial is to:
 
 - Deploy a microservice (using [helm](https://helm.sh))
@@ -6,9 +6,9 @@ The goal of this tutorial is to:
 - Monitor the microservice (using [Prometheus](https://prometheus.io/))
 - Add approval gates into the delivery pipeline
 - Add automated SLO-based quality evaluations both pre and post release
-- Show how Cloud Automation can orchestrate self-healing patterns and tools (like scaling a helm deployment)
+- Show how Keptn can orchestrate self-healing patterns and tools (like scaling a helm deployment)
 
-Cloud Automation is not opinionated about tooling. A key strength of Cloud Automation is it allows you to bring the tooling and observability platforms you already use and with which you are familiar.
+Keptn is not opinionated about tooling. A key strength of Keptn is it allows you to bring the tooling and observability platforms you already use and with which you are familiar.
 
 That said, we needed to pick some tools, and Prometheus, Helm as well as Locust are commonly used tools.
 
@@ -30,7 +30,7 @@ The tutorial will progress in steps:
 
 While you have been reading, we have been busy installing everything. It is still happening and should only take a few minutes.
 
-While you wait, you will need a personal access token (PAT). We use this to create a new repository and so Cloud Automation has a place to store and manage files.
+While you wait, you will need a personal access token (PAT). We use this to create a new repository and so Keptn has a place to store and manage files.
 
 > Important: For security, invalidate this token immediately after you have finished this tutorial.
 

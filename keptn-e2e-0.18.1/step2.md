@@ -1,6 +1,6 @@
 ## Set Git Details
 
-Cloud Automation needs a brand new, uninitialised repo to store and manage configuration. We will create it automatically now.
+Keptn needs a brand new, uninitialised repo to store and manage configuration. We will create it automatically now.
 
 Run this script to set your details. If you make a mistake, just click this again to reset things:
 
@@ -10,17 +10,17 @@ Run this script to set your details. If you make a mistake, just click this agai
 . ~/set_git_details.sh
 ```{{exec}}
 
-## Create New Repository, CA Project and Trigger Artifact Delivery
+## Create New Repository, Keptn Project and Trigger Artifact Delivery
 
 Run the following script which will:
 
 1. Create a new uninitialised Git repo on your account
-2. Create a CA project and upload to the Git repo
-3. Add all resources that Cloud Automation, Locust and Helm need to run to your Git
+2. Create a Keptn project and upload to the Git repo
+3. Add all resources that Keptn, Locust and Helm need to run to your Git
 4. Triggers the first delivery sequence of the microservice into `qa` and `production`
 
 ```
-~/setup_cloud_automation.sh
+~/setup_keptn.sh
 ```{{exec}}
 
 ## 🎉 Delivery In Progress
@@ -43,7 +43,7 @@ Thought so! Here you are.
 
 While you are waiting for the release and load test to finish, why not have a look at your repo in a browser on GitHub.com.
   
-Notice Cloud Automation has created a branch per stage. Inside those branches are folders for each Cloud Automation service.
+Notice Keptn has created a branch per stage. Inside those branches are folders for each Keptn service.
 
 ## What Happened?
 
@@ -59,8 +59,8 @@ default               Active
 kube-system           Active
 kube-public           Active
 kube-node-lease       Active 
-ca                    Active  
-ca-jes                Active   
+keptn                 Active  
+keptn-jes             Active   
 fulltour-qa           Active   2m
 fulltour-production   Active   2m
 ```
@@ -74,12 +74,12 @@ kubectl -n fulltour-qa describe pod -l app=helloservice | grep Image:
 kubectl -n fulltour-production describe pod -l app=helloservice | grep Image:
 ```{{exec}}
 
-> Result: Cloud Automation orchestrated your deployment which was achieved using `helm` to deploy and `locust` to generate load.
+> Result: Keptn orchestrated your deployment which was achieved using `helm` to deploy and `locust` to generate load.
 
 ----
 
 ## What Next?
 
-Your application is being deployed into both QA and Production. This is great and indeed Cloud Automation works with ArgoCD and Flux in the same way to ensure code is always up to date.
+Your application is being deployed into both QA and Production. This is great and indeed Keptn works with ArgoCD and Flux in the same way to ensure code is always up to date.
 
 Sometimes, a manual approval step is required before an artifact is promoted to production. This is especially important right now as we are not testing the quality of the `helloservice` artifact. We will now add this.

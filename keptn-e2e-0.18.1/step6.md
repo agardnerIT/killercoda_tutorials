@@ -1,7 +1,7 @@
 So far, a fairly robust delivery pipeline has been built. Optional manual approval steps have been added, automated quality gates were then added to automate and improve on the previous manual approval.
 Finally, release validation was added to run quality evaluations **after** a production release and ensure quality software **in** production.
 
-This step adds the ability to Cloud Automation to self-heal your application based on problems sent to Cloud Automation.
+This step adds the ability to Keptn to self-heal your application based on problems sent to Keptn.
 
 ## Check Current Pod Counds
 
@@ -16,8 +16,8 @@ kubectl -n fulltour-production get pods
 
 Run this script which:
 
-1. Tells Cloud Automation to expect incoming problems of a certain type
-2. Tells Cloud Automation what to attempt in such scenarios (eg. scale)
+1. Tells Keptn to expect incoming problems of a certain type
+2. Tells Keptn what to attempt in such scenarios (eg. scale)
 3. Tells Job executor service to respond to these scaling requests
 4. Tells Job executor service that Helm should upgrade the deployment with the new replica count (2 pods not 1)
 5. Creates a dummy problem which we can use to repeatedly trigger this scenario
@@ -35,12 +35,12 @@ After the scaling has occurred:
 
 ## 🚩 Trigger a Problem
 
-In reality you would expect alerts from Prometheus alert manager or any external tool capable of informing Cloud Automation of problems.
+In reality you would expect alerts from Prometheus alert manager or any external tool capable of informing Keptn of problems.
 
-For the speed of the demo though, we will use a dummy problem. Send Cloud Automation the problem event and watch Cloud Automation scale the pods:
+For the speed of the demo though, we will use a dummy problem. Send Keptn the problem event and watch Keptn scale the pods:
 
 ```
-cloud_automation send event -f ~/remediation_trigger.json
+keptn send event -f ~/remediation_trigger.json
 ```{{exec}}
 
 When the sequence is complete, you should see:

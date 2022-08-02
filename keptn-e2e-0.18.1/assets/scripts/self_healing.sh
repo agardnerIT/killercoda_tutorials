@@ -50,8 +50,8 @@ spec:
                 timeframe: "2m"
 EOF
 git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
-git config --global user.email "demo@cloudautomation.io"
-git config --global user.name "Cloud Automation"
+git config --global user.email "keptn@keptn.sh"
+git config --global user.name "Keptn"
 git pull
 git add -A
 git commit -m "add self-healing to production"
@@ -59,7 +59,7 @@ git push
 
 echo ""
 echo "=============================="
-echo "Add Cloud Automation Remediation File"
+echo "Add Keptn Remediation File"
 echo "=============================="
 cd ~/$GIT_NEW_REPO_NAME
 git checkout --track origin/production
@@ -78,8 +78,8 @@ spec:
           value: "2"
 EOF
 git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
-git config --global user.email "demo@cloudautomation.io"
-git config --global user.name "Cloud Automation"
+git config --global user.email "keptn@keptn.sh"
+git config --global user.name "Keptn"
 git add -A
 git commit -m "add remediation file to production"
 git push
