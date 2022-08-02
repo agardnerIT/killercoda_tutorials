@@ -55,7 +55,40 @@ k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=trae
 # -------------------------------------------#
 # Step 8/11: Installing Keptn Control Plane  #
 # -------------------------------------------#
-helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=apiGatewayNginx.type=LoadBalancer
+helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz \
+-n keptn --create-namespace \
+--timeout=5m --wait \
+--set=apiGatewayNginx.type=LoadBalancer \
+--set=mongo.resources.requests.cpu=1m \
+--set=mongo.resources.requests.memory=1M \
+--set=nats.nats.resources.requests.cpu=1m \
+--set=nats.nats.resources.requests.memory=1M \
+--set=apiGatewayNginx.resources.requests.cpu=1m \
+--set=apiGatewayNginx.resources.requests.memory=1M \
+--set=remediationService.resources.requests.cpu=1m \
+--set=remediationService.resources.requests.memory=1M \
+--set=apiService.resources.requests.cpu=1m \
+--set=apiService.resources.requests.memory=1M \
+--set=bridge.resources.requests.cpu=1m \
+--set=bridge.resources.requests.memory=1M \
+--set=distributor.resources.requests.cpu=1m \
+--set=distributor.resources.requests.memory=1M \
+--set=shipyardController.resources.requests.cpu=1m \
+--set=shipyardController.resources.requests.memory=1M \
+--set=secretService.resources.requests.cpu=1m \
+--set=secretService.resources.requests.memory=1M \
+--set=resourceService.resources.requests.cpu=1m \
+--set=resourceService.resources.requests.memory=1M \
+--set=mongodbDatastore.resources.requests.cpu=1m \
+--set=mongodbDatastore.resources.requests.memory=1M \
+--set=lighthouseService.resources.requests.cpu=1m \
+--set=lighthouseService.resources.requests.memory=1M \
+--set=statisticsService.enabled=false \
+--set=approvalService.resources.requests.cpu=1m \
+--set=approvalService.resources.requests.memory=1M \
+--set=webhookService.resources.requests.cpu=1m \
+--set=webhookService.resources.requests.memory=1M
+
 
 # --------------------------------------------#
 # Step 9/11: Installing Job Executor Service  #
