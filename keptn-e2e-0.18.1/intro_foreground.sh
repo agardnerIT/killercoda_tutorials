@@ -8,7 +8,7 @@ KEPTN_VERSION=0.18.1
 JOB_EXECUTOR_SERVICE_VERSION=0.2.3
 KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.4
 PROMETHEUS_VERSION=15.10.1
-DEBUG_VERSION=INIT_CONTAINERS_1
+DEBUG_VERSION=INIT_CONTAINERS_2
 
 # -----------------------------------------#
 #    Step 1/11: Installing GitHub CLI      #
@@ -26,7 +26,6 @@ git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delive
 #      Step 3/11: Installing Keptn CLI     #
 # -----------------------------------------#
 curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
-
 
 # ----------------------------------------#
 #      Step 4/11: Installing Helm         #
