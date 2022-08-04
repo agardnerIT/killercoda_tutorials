@@ -73,6 +73,10 @@
 				"file": "scripts/self_healing.sh",
 				"target": "~/",
 				"chmod": "+x"
+			}, {
+				"file": "keptn-0.18.1.new.tgz",
+				"target": "~/",
+				"chmod": "+x"
 			}]
 		}
 	},
