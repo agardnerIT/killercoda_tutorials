@@ -1,5 +1,4 @@
 {
-
 	"title": "Keptn End to End Delivery",
 	"description": "description",
 	"difficulty": "Medium",
@@ -8,8 +7,7 @@
 		"steps": [{
 				"title": "Keptn Bridge",
 				"text": "step1.md"
-			}
-		],
+			}],
 		"intro": {
 			"text": "intro.md",
 			"foreground": "intro_foreground.sh"
