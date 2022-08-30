@@ -3,10 +3,10 @@
 # -----------------------------------------#
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
-GH_CLI_VERSION=2.14.7
-KEPTN_VERSION=0.18.2
-JOB_EXECUTOR_SERVICE_VERSION=0.2.5
-KEPTN_PROMETHEUS_SERVICE_VERSION=0.9.0
+GH_CLI_VERSION=2.14.1
+KEPTN_VERSION=0.17.0
+JOB_EXECUTOR_SERVICE_VERSION=0.2.3
+KEPTN_PROMETHEUS_SERVICE_VERSION=0.8.3
 PROMETHEUS_VERSION=15.10.1
 
 # -----------------------------------------#
@@ -44,6 +44,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=$K3D_VERSION bash
 k3d cluster create mykeptn -p "8080:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
 
+
 # -----------------------------------------#
 #    Step 7/11: Installing Prometheus      #
 # -----------------------------------------#
@@ -53,42 +54,7 @@ helm install prometheus prometheus-community/prometheus --namespace monitoring -
 # -------------------------------------------#
 # Step 8/11: Installing Keptn Control Plane  #
 # -------------------------------------------#
-helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz \
--n keptn --create-namespace \
---set=apiGatewayNginx.type=LoadBalancer \
---set mongo.resources.requests.cpu=0 \
---set mongo.resources.requests.memory=0 \
---set nats.nats.resources.requests.cpu=0 \
---set nats.nats.resources.requests.memory=0 \
---set apiGatewayNginx.resources.requests.cpu=0 \
---set apiGatewayNginx.resources.requests.memory=0 \
---set remediationService.resources.requests.cpu=0 \
---set remediationService.resources.requests.memory=0 \
---set apiService.resources.requests.cpu=0 \
---set apiService.resources.requests.memory=0 \
---set bridge.resources.requests.cpu=0 \
---set bridge.resources.requests.memory=0 \
---set distributor.resources.requests.cpu=0 \
---set distributor.resources.requests.memory=0 \
---set shipyardController.resources.requests.cpu=0 \
---set shipyardController.resources.requests.memory=0 \
---set secretService.resources.requests.cpu=0 \
---set secretService.resources.requests.memory=0 \
---set configurationService.resources.requests.cpu=0 \
---set configurationService.resources.requests.memory=0 \
---set resourceService.resources.requests.cpu=0 \
---set resourceService.resources.requests.memory=0 \
---set mongodbDatastore.resources.requests.cpu=0 \
---set mongodbDatastore.resources.requests.memory=0 \
---set lighthouseService.resources.requests.cpu=0 \
---set lighthouseService.resources.requests.memory=0 \
---set statisticsService.resources.requests.cpu=0 \
---set statisticsService.resources.requests.memory=0 \
---set approvalService.resources.requests.cpu=0 \
---set approvalService.resources.requests.memory=0 \
---set webhookService.resources.requests.cpu=0 \
---set webhookService.resources.requests.memory=0 \
---wait
+helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=apiGatewayNginx.type=LoadBalancer
 
 # --------------------------------------------#
 # Step 9/11: Installing Job Executor Service  #
@@ -100,7 +66,7 @@ job-executor-service https://github.com/keptn-contrib/job-executor-service/relea
 # --------------------------------------------#
 # Step 10/11: Installing Prometheus Service   #
 # --------------------------------------------#
-helm install prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/$KEPTN_PROMETHEUS_SERVICE_VERSION/prometheus-service-$KEPTN_PROMETHEUS_SERVICE_VERSION.tgz -n keptn --set resources.requests.cpu=25m
+helm install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/$KEPTN_PROMETHEUS_SERVICE_VERSION/prometheus-service-$KEPTN_PROMETHEUS_SERVICE_VERSION.tgz --set resources.requests.cpu=25m
 kubectl -n monitoring apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/$KEPTN_PROMETHEUS_SERVICE_VERSION/deploy/role.yaml
 
 # ---------------------------------------------#
@@ -109,6 +75,6 @@ kubectl -n monitoring apply -f https://raw.githubusercontent.com/keptn-contrib/p
 kubectl apply -f ~/keptn-job-executor-delivery-poc/job-executor/workloadClusterRoles.yaml
 
 # ---------------------------------------------#
-#       🎉 Installation Complete 🎉           #
+#       🎉 Installation Complete 🎉          #
 #           Please proceed now...              #
 # ---------------------------------------------#
