@@ -100,8 +100,7 @@ job-executor-service https://github.com/keptn-contrib/job-executor-service/relea
 # --------------------------------------------#
 # Step 10/11: Installing Prometheus Service   #
 # --------------------------------------------#
-helm install prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/$KEPTN_PROMETHEUS_SERVICE_VERSION/prometheus-service-$KEPTN_PROMETHEUS_SERVICE_VERSION.tgz /
--n keptn --set resources.requests.cpu=25m
+helm install prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/$KEPTN_PROMETHEUS_SERVICE_VERSION/prometheus-service-$KEPTN_PROMETHEUS_SERVICE_VERSION.tgz -n keptn --set resources.requests.cpu=25m
 kubectl -n monitoring apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/$KEPTN_PROMETHEUS_SERVICE_VERSION/deploy/role.yaml
 
 # ---------------------------------------------#
