@@ -1,3 +1,0 @@
-### ArgoCD & Keptn
-
-TODO...

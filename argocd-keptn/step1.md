@@ -1,3 +1,0 @@
-# Explore the Environment
-
-...
