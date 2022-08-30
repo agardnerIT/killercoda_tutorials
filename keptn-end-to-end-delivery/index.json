@@ -1,49 +1,21 @@
 {
 
 	"title": "Keptn End to End Delivery",
-	"description": "Keptn uses a declarative approach to build scalable automation for delivery and operations which can be scaled to a large number of services.",
+	"description": "description",
 	"difficulty": "Medium",
 	"time": "10",
 	"details": {
 		"steps": [{
 				"title": "Keptn Bridge",
-				"text": "step1.md",
-				"background": "step1_background.sh"
-			},
-			{
-				"title": "Multi Stage Delivery",
-				"text": "step2.md",
-				"background": "step2_background.sh"
-			},
-			{
-				"title": "Add Manual Approvals",
-				"text": "step3.md",
-				"background": "step3_background.sh"
-			},
-			{
-				"title": "Automated Approvals",
-				"text": "step4.md",
-				"background": "step4_background.sh"
-			},
-			{
-				"title": "Release Validation",
-				"text": "step5.md",
-				"background": "step5_background.sh"
-			},
-			{
-				"title": "Self Healing",
-				"text": "step6.md",
-				"background": "step6_background.sh"
+				"text": "step1.md"
 			}
 		],
 		"intro": {
 			"text": "intro.md",
-			"foreground": "intro_foreground.sh",
-			"background": "intro_background.sh"
+			"foreground": "intro_foreground.sh"
 		},
 		"finish": {
-			"text": "finish.md",
-			"background": "finish_background.sh"
+			"text": "finish.md"
 		},
 		"assets": {
 			"host01": [{
