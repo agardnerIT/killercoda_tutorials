@@ -86,8 +86,7 @@ helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSI
 --set mongodbDatastore.resources.requests.memory=0 \
 --set lighthouseService.resources.requests.cpu=0 \
 --set lighthouseService.resources.requests.memory=0 \
---set statisticsService.resources.requests.cpu=0 \
---set statisticsService.resources.requests.memory=0 \
+--set statisticsService.enabled=false \
 --set approvalService.resources.requests.cpu=0 \
 --set approvalService.resources.requests.memory=0 \
 --set webhookService.resources.requests.cpu=0 \
