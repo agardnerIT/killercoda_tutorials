@@ -54,7 +54,44 @@ helm install prometheus prometheus-community/prometheus --namespace monitoring -
 # -------------------------------------------#
 # Step 8/11: Installing Keptn Control Plane  #
 # -------------------------------------------#
-helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz -n keptn --timeout=5m --wait --create-namespace --set=apiGatewayNginx.type=LoadBalancer
+helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz \
+-n keptn --create-namespace \
+--timeout=5m \
+--wait \
+--set=apiGatewayNginx.type=LoadBalancer \
+--set mongo.resources.requests.cpu=0 \
+--set mongo.resources.requests.memory=0 \
+--set nats.nats.resources.requests.cpu=0 \
+--set nats.nats.resources.requests.memory=0 \
+--set nats.nats.jetstream.memStorage.size=0M \
+--set apiGatewayNginx.resources.requests.cpu=0 \
+--set apiGatewayNginx.resources.requests.memory=0 \
+--set remediationService.resources.requests.cpu=0 \
+--set remediationService.resources.requests.memory=0 \
+--set apiService.resources.requests.cpu=0 \
+--set apiService.resources.requests.memory=0 \
+--set bridge.resources.requests.cpu=0 \
+--set bridge.resources.requests.memory=0 \
+--set distributor.resources.requests.cpu=0 \
+--set distributor.resources.requests.memory=0 \
+--set shipyardController.resources.requests.cpu=0 \
+--set shipyardController.resources.requests.memory=0 \
+--set secretService.resources.requests.cpu=0 \
+--set secretService.resources.requests.memory=0 \
+--set configurationService.resources.requests.cpu=0 \
+--set configurationService.resources.requests.memory=0 \
+--set resourceService.resources.requests.cpu=0 \
+--set resourceService.resources.requests.memory=0 \
+--set mongodbDatastore.resources.requests.cpu=0 \
+--set mongodbDatastore.resources.requests.memory=0 \
+--set lighthouseService.resources.requests.cpu=0 \
+--set lighthouseService.resources.requests.memory=0 \
+--set statisticsService.resources.requests.cpu=0 \
+--set statisticsService.resources.requests.memory=0 \
+--set approvalService.resources.requests.cpu=0 \
+--set approvalService.resources.requests.memory=0 \
+--set webhookService.resources.requests.cpu=0 \
+--set webhookService.resources.requests.memory=0
 
 # --------------------------------------------#
 # Step 9/11: Installing Job Executor Service  #
