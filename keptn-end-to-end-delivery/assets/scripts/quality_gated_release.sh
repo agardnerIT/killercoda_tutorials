@@ -1,11 +1,11 @@
-cd ~/keptn-job-executor-delivery-poc
+cd
 echo ""
 echo "===================================================="
 echo "Configuring Keptn to Use Prometheus                 "
 echo "===================================================="
 
-keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
-keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=slo.yaml --resourceUri=slo.yaml
+keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./keptn_setup/prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
+keptn add-resource --project=fulltour --service=helloservice --stage=qa --resource=./quality_gated_release/slo.yaml --resourceUri=slo.yaml
 keptn configure monitoring prometheus --project=fulltour --service=helloservice
 
 cd ~/$GIT_NEW_REPO_NAME

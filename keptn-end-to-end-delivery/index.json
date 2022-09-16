@@ -111,6 +111,10 @@
 				"target": "~/quality_gated_release",
 				"chmod": "+x"
 			}, {
+				"file": "scripts/quality_gated_release/slo.yaml",
+				"target": "~/quality_gated_release",
+				"chmod": "+x"
+			}, {
 				"file": "scripts/release_validation/shipyard.yaml",
 				"target": "~/release_validation",
 				"chmod": "+x"

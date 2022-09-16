@@ -1,7 +1,7 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG_VERSION=3
+DEBUG_VERSION=4
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
 GH_CLI_VERSION=2.15.0
@@ -108,7 +108,6 @@ dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 # -----------------------------------------#
 #    Step 10/11: Retrieving demo files     #
 # -----------------------------------------#
-#git clone https://github.com/christian-kreuzberger-dtx/keptn-job-executor-delivery-poc.git
 kubectl apply -f ~/job-executor/workloadClusterRoles.yaml
 
 # -----------------------------------------#
