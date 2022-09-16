@@ -26,7 +26,7 @@ After the scaling has occurred:
 1. Load is generated on the service (this step would probably not be necessary in a real production environment)
 2. A further quality evaluation is executed - did scaling the pods actually help?
 
-> Note: The demo image doesn't actually have a problem pattern that resolves with scaling. So **expect** the quality gate to still provide a warning. Scaling the pods **will** be successful.
+> Note: The demo image doesn't actually have a problem pattern that resolves with scaling. So **expect** the quality gate to still provide a pass. Scaling the pods **will** be successful.
 > 
 ```
 ~/self_healing.sh

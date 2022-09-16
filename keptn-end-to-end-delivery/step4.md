@@ -31,7 +31,7 @@ Refresh the bridge screen to watch progress.
 
 ## Outcome
 
-The artifact receives a warning score which we told Keptn was still good enough to allow an automatic release. Keptn stores a full history of every previous evaluation and will automatically compare new builds against old.
+The artifact receives a pass score which we told Keptn was still good enough to allow an automatic release. Keptn stores a full history of every previous evaluation and will automatically compare new builds against old.
 
 ![](./assets/qa-evaluation-1.jpg)
 ![](./assets/qa-evaluation-2.jpg)
