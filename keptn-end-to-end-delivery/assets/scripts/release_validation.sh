@@ -19,39 +19,8 @@ echo "===================================================="
 echo " Add new test and evaluation tasks to production    "
 echo "===================================================="
 cd ~/$GIT_NEW_REPO_NAME
-cat << EOF > ~/$GIT_NEW_REPO_NAME/shipyard.yaml
-apiVersion: "spec.keptn.sh/0.2.2"
-kind: "Shipyard"
-metadata:
-  name: "shipyard-delivery"
-spec:
-  stages:
-    - name: "qa"
-      sequences:
-        - name: "delivery"
-          tasks:
-            - name: "je-deployment"
-            - name: "je-test"
-            - name: "evaluation"
-              properties:
-                timeframe: "2m"
+cp ~/release_validation/shipyard.yaml ~/$GIT_NEW_REPO_NAME/shipyard.yaml
 
-    - name: "production"
-      sequences:
-        - name: "delivery"
-          triggeredOn:
-            - event: "qa.delivery.finished"
-          tasks:
-            - name: "approval"
-              properties:
-                pass: "automatic"
-                warning: "automatic"
-            - name: "je-deployment"
-            - name: "je-test"
-            - name: "evaluation"
-              properties:
-                timeframe: "2m"
-EOF
 git remote set-url origin https://$GIT_USER:$GITHUB_TOKEN@github.com/$GIT_USER/$GIT_NEW_REPO_NAME.git
 git config --global user.email "keptn@keptn.sh"
 git config --global user.name "Keptn"

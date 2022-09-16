@@ -102,6 +102,34 @@
 				"file": "scripts/keptn_setup/prometheus/sli.yaml",
 				"target": "~/prometheus",
 				"chmod": "+x"
+			}, {
+				"file": "scripts/add_approval/shipyard.yaml",
+				"target": "~/add_approval",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/quality_gated_release/shipyard.yaml",
+				"target": "~/quality_gated_release",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/release_validation/shipyard.yaml",
+				"target": "~/release_validation",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/shipyard.yaml",
+				"target": "~/self_healing",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/remediation.yaml",
+				"target": "~/self_healing",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/remediation_trigger.json",
+				"target": "~/self_healing",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/job/config.yaml",
+				"target": "~/self_healing/job",
+				"chmod": "+x"
 			}]
 		}
 	},

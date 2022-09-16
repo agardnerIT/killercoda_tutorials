@@ -40,7 +40,7 @@ In reality you would expect alerts from Prometheus alert manager or any external
 For the speed of the demo though, we will use a dummy problem. Send Keptn the problem event and watch Keptn scale the pods:
 
 ```
-keptn send event -f ~/remediation_trigger.json
+keptn send event -f ~/self_healing/remediation_trigger.json
 ```{{exec}}
 
 When the sequence is complete, you should see:
