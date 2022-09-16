@@ -2,15 +2,14 @@ echo ""
 echo "===================================================="
 echo " Adding Prometheus SLIs and SLOs to production stage"
 echo "===================================================="
-cd ~/keptn-job-executor-delivery-poc
-keptn add-resource --project=fulltour --service=helloservice --stage=production --resource=prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
-keptn add-resource --project=fulltour --service=helloservice --stage=production --resource=slo.yaml --resourceUri=slo.yaml
+cd
+keptn add-resource --project=fulltour --service=helloservice --stage=production --resource=./prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
+keptn add-resource --project=fulltour --service=helloservice --stage=production --resource=./quality_gated_release/slo.yaml --resourceUri=slo.yaml
 
 echo ""
 echo "===================================================="
 echo " Adding Locust files to production stage            "
 echo "===================================================="
-cd ~/keptn-job-executor-delivery-poc
 keptn add-resource --project=fulltour --service=helloservice --stage=production --resource=./locust/basic.py
 keptn add-resource --project=fulltour --service=helloservice --stage=production --resource=./locust/locust.conf
 
