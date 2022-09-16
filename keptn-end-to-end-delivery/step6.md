@@ -3,7 +3,7 @@ Finally, release validation was added to run quality evaluations **after** a pro
 
 This step adds the ability to Keptn to self-heal your application based on problems sent to Keptn.
 
-## Check Current Pod Counds
+## Check Current Pod Counts
 
 Both `qa` and `production` should have 1 pod running. Validate this now:
 
