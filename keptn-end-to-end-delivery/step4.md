@@ -8,7 +8,8 @@ Keptn currently supports the following providers:
 
 - Prometheus
 - Dynatrace
-- Datadog
+- Datadog (experimental)
+- Sumologic (experimental)
 - Any others (request an [SLI provider here](https://github.com/keptn/integrations/issues))
 
 Keptn is unopinionated on the observability platform that provides metrics for the quality evaluations.
