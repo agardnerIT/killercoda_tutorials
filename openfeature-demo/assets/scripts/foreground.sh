@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEBUG_VERSION=4
+DEBUG_VERSION=5
 
 ###############################################
 # Step [1/3]: Install docker compose plugin
