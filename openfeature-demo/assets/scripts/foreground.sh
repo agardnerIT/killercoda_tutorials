@@ -1,3 +1,5 @@
+DEBUG_VERSION=1
+
 # Step [1/3]: Install docker compose
 sudo apt update
 sudo apt install -y docker-compose
