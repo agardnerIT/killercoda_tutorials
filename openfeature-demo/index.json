@@ -1,0 +1,46 @@
+{
+  "title": "OpenFeature Demo",
+  "description": "Demonstrates OpenFeature",
+  "details": {
+    "intro": {
+      "title": "Welcome to OpenFeature",
+      "text": "intro.md",
+      "foreground": "assets/scripts/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1.md"
+      }, {
+        "title": "Track Releases",
+        "text": "step2.md"
+      }, {
+        "title": "Expanded Release Monitoring",
+        "text": "step3.md"
+      }, {
+        "title": "Kubernetes Release Monitoring",
+        "text": "step4.md"
+      }, {
+        "title": "Track Deployments in DT",
+        "text": "step5.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "scripts/playbooks/set-oneagent-host-group.yaml", "target": "~/playbooks"},
+        {"file": "scripts/playbooks/install-apache.yaml", "target": "~/playbooks"},
+        {"file": "scripts/playbooks/restart-apache.yaml", "target": "~/playbooks"},
+        {"file": "scripts/playbooks/enhanced-release.yaml", "target": "~/playbooks"},
+        {"file": "scripts/playbooks/reset-system.yaml", "target": "~/playbooks"},
+        {"file": "scripts/playbooks/install-operator.yaml", "target": "~/playbooks"},
+        {"file": "scripts/dynakube.yaml", "target": "~/scripts"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
