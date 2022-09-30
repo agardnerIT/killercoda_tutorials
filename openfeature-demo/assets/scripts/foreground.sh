@@ -1,6 +1,8 @@
-DEBUG_VERSION=3
+DEBUG_VERSION=4
 
+###############################################
 # Step [1/3]: Install docker compose plugin
+###############################################
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg lsb-release
 sudo mkdir -p /etc/apt/keyrings
@@ -11,15 +13,18 @@ echo \
 sudo apt-get update
 sudo apt install -y docker-compose-plugin
 
+###############################################
 # Step [2/3]: Clone Repo and check out PR
+###############################################
 git clone https://github.com/open-feature/playground
 cd playground
 git pull origin pull/59/head
 sed -i 's#image: jaegertracing/all-in-one:1.38#image: docker.io/jaegertracing/all-in-one:1.38#g' ./docker-compose.yaml
 sed -i 's#image: thomaspoignant/go-feature-flag-relay-proxy:v0.3.0#image: docker.io/thomaspoignant/go-feature-flag-relay-proxy:v0.3.0#g' ./docker-compose.yaml
 
-
+###############################################
 # Step [3/3]: Start things up!
+###############################################
 # --no-build ? Perhaps when they push the latest version?
 # --detach ?
 # --quiet-pull ?
