@@ -8,13 +8,13 @@
 		"steps": [{
 				"title": "Preparation",
 				"text": "step1.md",
-				"background": "scripts/step1_background.sh"
+				"background": "assets/scripts/step1_background.sh"
 			}
 		],
 		"intro": {
 			"text": "intro.md",
-			"background": "scripts/intro_background.sh",
-			"foreground": "scripts/intro_foreground.sh"
+			"background": "assets/scripts/intro_background.sh",
+			"foreground": "assets/scripts/intro_foreground.sh"
 		},
 		"finish": {
 			"text": "finish.md"
