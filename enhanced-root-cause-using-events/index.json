@@ -1,0 +1,38 @@
+{
+
+	"title": "Enhanced Root Cause using Events",
+	"description": "Tutorial to demonstrate the power of eventing in Dynatrace",
+	"difficulty": "Medium",
+	"time": "10",
+	"details": {
+		"steps": [{
+				"title": "Preparation",
+				"text": "step1.md",
+				"background": "scripts/step1_background.sh"
+			}
+		],
+		"intro": {
+			"text": "intro.md",
+			"background": "scripts/intro_background.sh",
+			"foreground": "scripts/intro_foreground.sh"
+		},
+		"finish": {
+			"text": "finish.md"
+		}
+	},
+	"environment": {
+		"showdashboard": true,
+		"dashboard": "Dashboard",
+		"uilayout": "terminal"
+	},
+	"backend": {
+		"imageid": "ubuntu:2004"
+	},
+	"assets": {
+	  "host01": [
+		{"file": "scripts/setDetails.sh", "target": "~/setDetails.sh"},
+		{"file": "scripts/installOneAgent.sh", "target": "~/installOneAgent.sh"},
+		{"file": "scripts/endExperiment.sh", "target": "~/endExperiment.sh"}
+	  ]
+	}
+}
