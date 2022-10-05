@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DEBUG=7
+DEBUG=8
 
 ###########################
 # Installing components.  #
