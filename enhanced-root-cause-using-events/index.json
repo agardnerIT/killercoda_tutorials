@@ -29,7 +29,7 @@
 		"imageid": "ubuntu:2004"
 	},
 	"assets": {
-	  "host01": [
+	  "host1": [
 		{"file": "foo.txt", "target": "~/foo.txt"},
 		{"file": "scripts/setDetails.sh", "target": "~/setDetails.sh", "chmod": "+x"},
 		{"file": "/scripts/installOneAgent.sh", "target": "~/installOneAgent.sh", "chmod": "+x"},
