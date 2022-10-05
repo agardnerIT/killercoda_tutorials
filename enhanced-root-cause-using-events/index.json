@@ -9,6 +9,12 @@
 				"title": "Preparation",
 				"text": "step1.md",
 				"background": "assets/scripts/step1_background.sh"
+			}, {
+				"title": "Deployment Without Enrichment",
+				"text": "step2.md"
+			}, {
+				"title": "Deployment With Enrichment",
+				"text": "step3.md"
 			}
 		],
 		"intro": {
@@ -23,7 +29,8 @@
 			"host01": [
 			  {"file": "scripts/setDetails.sh", "target": "~", "chmod": "+x"},
 			  {"file": "scripts/installOneAgent.sh", "target": "~", "chmod": "+x"},
-			  {"file": "scripts/endExperiment.sh", "target": "~", "chmod": "+x"}
+			  {"file": "scripts/endExperiment.sh", "target": "~", "chmod": "+x"},
+			  {"file": "scripts/enrichedDeployment.sh", "target": "~", "chmod": "+x"}
 			]
 		}
 	},
