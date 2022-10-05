@@ -1,7 +1,10 @@
-# Step 1
+# Welcome to OpenFeature
 
-This is step 1. The tutorial can have as many steps as you like...
+The demo system has now started. You can access the link and the tutorial below.
 
-[Click here to open the OpenFeature Demo]({{TRAFFIC_HOST1_30000}})
+When you open the demo user interface, the box should appear and guide you through the tutorial.
 
-[OpenTelemetry Tracing is stored in Jaeger and available here]({{TRAFFIC_HOST1_16686}})
+OpenFeature is fully compatible with OpenTelemetry and the demo system emits trace data to Jaeger. Jaeger is available via these links:
+
+- [➡️ Open the OpenFeature Demo]({{TRAFFIC_HOST1_30000}})
+- [➡️ Open Jaeger to see OpenTelemetry traces]({{TRAFFIC_HOST1_16686}}).
