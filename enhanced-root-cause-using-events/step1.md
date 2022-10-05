@@ -24,6 +24,11 @@ source ./setDetails.sh
 ```{{exec}}
 
 When you are happy that everything looks OK, click the following box to install the Dynatrace OneAgent.
+
 ```
 ./installOneAgent.sh
 ```{{exec}}
+
+Navigate to the `Hosts` screen in Dynatrace and open your host page.
+
+![dynatrace host page](images/host_page.jpg)
