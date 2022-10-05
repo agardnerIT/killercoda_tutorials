@@ -1,4 +1,4 @@
-DEBUG_VERSION=10
+DEBUG_VERSION=11
 
 ###############################################
 # Step [1/3]: Install docker compose plugin
@@ -25,6 +25,6 @@ cd playground
 docker compose up --detach
 
 # ---------------------------------------------#
-#       🎉 Installation Complete 🎉             #
+#       🎉 Installation Complete 🎉              #
 #           Please proceed now...              #
 # ---------------------------------------------#
