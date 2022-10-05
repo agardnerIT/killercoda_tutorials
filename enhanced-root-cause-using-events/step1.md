@@ -2,11 +2,10 @@
 Gather your Dynatrace details:
 
 - Your Dynatrace environment in the form: `https://abc12345.live.dynatrace.com` (remove the trailing slash)
-- Create a 
-- Create an API token with the correct permissions (see below)
+- Create API tokens with the correct permissions (see below)
 
 ## Create API Tokens
-We need to create two API tokens. The first will provide permissions to download and install a OneAgent. The second will provide permissions to ingest (send) events to the Dynatrace API.
+You need to create two API tokens. The first will provide permissions to download and install a OneAgent. The second will provide permissions to ingest (send) events to the Dynatrace API.
 
 In Dynatrace, select the `Access tokens` menu option.
 

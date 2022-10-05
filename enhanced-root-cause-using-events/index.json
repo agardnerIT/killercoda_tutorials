@@ -21,10 +21,9 @@
 		},
 		"assets": {
 			"host01": [
-			  {"file": "foo.txt", "target": "~/foo.txt"},
-			  {"file": "scripts/setDetails.sh", "target": "~/setDetails.sh", "chmod": "+x"},
-			  {"file": "scripts/installOneAgent.sh", "target": "~/installOneAgent.sh", "chmod": "+x"},
-			  {"file": "scripts/endExperiment.sh", "target": "~/endExperiment.sh", "chmod": "+x"}
+			  {"file": "scripts/setDetails.sh", "target": "~", "chmod": "+x"},
+			  {"file": "scripts/installOneAgent.sh", "target": "~", "chmod": "+x"},
+			  {"file": "scripts/endExperiment.sh", "target": "~", "chmod": "+x"}
 			]
 		}
 	},
