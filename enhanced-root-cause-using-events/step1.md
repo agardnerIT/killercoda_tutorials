@@ -31,4 +31,4 @@ When you are happy that everything looks OK, click the following box to install 
 
 Navigate to the `Hosts` screen in Dynatrace and open your host page.
 
-![dynatrace host page](images/host_page.jpg)
+![dynatrace host page](assets/images/host_page.jpg)
