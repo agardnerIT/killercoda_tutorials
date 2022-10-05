@@ -18,6 +18,14 @@
 		},
 		"finish": {
 			"text": "finish.md"
+		},
+		"assets": {
+			"host01": [
+			  {"file": "foo.txt", "target": "~/foo.txt"},
+			  {"file": "scripts/setDetails.sh", "target": "~/setDetails.sh", "chmod": "+x"},
+			  {"file": "scripts/installOneAgent.sh", "target": "~/installOneAgent.sh", "chmod": "+x"},
+			  {"file": "scripts/endExperiment.sh", "target": "~/endExperiment.sh", "chmod": "+x"}
+			]
 		}
 	},
 	"environment": {
@@ -27,13 +35,5 @@
 	},
 	"backend": {
 		"imageid": "ubuntu:2004"
-	},
-	"assets": {
-	  "host1": [
-		{"file": "foo.txt", "target": "~/foo.txt"},
-		{"file": "scripts/setDetails.sh", "target": "~/setDetails.sh", "chmod": "+x"},
-		{"file": "/scripts/installOneAgent.sh", "target": "~/installOneAgent.sh", "chmod": "+x"},
-		{"file": "scripts/endExperiment.sh", "target": "~/endExperiment.sh", "chmod": "+x"}
-	  ]
 	}
 }
