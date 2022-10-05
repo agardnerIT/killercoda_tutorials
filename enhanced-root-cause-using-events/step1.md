@@ -17,8 +17,10 @@ For additional security, (optional) set the expiration date for tomorrow. The to
 ## Install OneAgent
 Click the following box to save your details.
 
+> Hint: `Ctrl + Shift + V` works well.
+
 ```
-./setDetails.sh
+source ./setDetails.sh
 ```{{exec}}
 
 When you are happy that everything looks OK, click the following box to install the Dynatrace OneAgent.
