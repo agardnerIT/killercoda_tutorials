@@ -30,9 +30,9 @@
 	},
 	"assets": {
 	  "host01": [
-		{"file": "scripts/setDetails.sh", "target": "~/setDetails.sh"},
-		{"file": "scripts/installOneAgent.sh", "target": "~/installOneAgent.sh"},
-		{"file": "scripts/endExperiment.sh", "target": "~/endExperiment.sh"}
+		{"file": "assets/scripts/setDetails.sh", "target": "~/setDetails.sh"},
+		{"file": "asset/scripts/installOneAgent.sh", "target": "~/installOneAgent.sh"},
+		{"file": "assets/scripts/endExperiment.sh", "target": "~/endExperiment.sh"}
 	  ]
 	}
 }
