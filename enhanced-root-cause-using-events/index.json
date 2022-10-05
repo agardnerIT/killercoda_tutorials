@@ -30,9 +30,10 @@
 	},
 	"assets": {
 	  "host01": [
-		{"file": "assets/scripts/setDetails.sh", "target": "~/setDetails.sh"},
-		{"file": "asset/scripts/installOneAgent.sh", "target": "~/installOneAgent.sh"},
-		{"file": "assets/scripts/endExperiment.sh", "target": "~/endExperiment.sh"}
+		{"file": "foo.txt", "target": "~/foo.txt"},
+		{"file": "scripts/setDetails.sh", "target": "~/setDetails.sh", "chmod": "+x"},
+		{"file": "/scripts/installOneAgent.sh", "target": "~/installOneAgent.sh", "chmod": "+x"},
+		{"file": "scripts/endExperiment.sh", "target": "~/endExperiment.sh", "chmod": "+x"}
 	  ]
 	}
 }
