@@ -31,6 +31,6 @@ cd playground
 docker compose up --detach
 
 # ---------------------------------------------#
-#       🎉 Installation Complete 🎉           #
+#       🎉 Installation Complete 🎉             #
 #           Please proceed now...              #
 # ---------------------------------------------#
