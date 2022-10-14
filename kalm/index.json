@@ -1,0 +1,23 @@
+{
+    "title": "Kalm Benchmark Demo",
+    "description": "Demonstrates https://github.com/dynatrace-oss/Kalm-Benchmark",
+    "details": {
+      "intro": {
+        "title": "Welcome to Kalm Benchmark",
+        "text": "intro.md",
+        "foreground": "assets/scripts/foreground.sh"
+      },
+      "steps": [
+        {
+          "title": "Step 1",
+          "text": "step1.md"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+  }
