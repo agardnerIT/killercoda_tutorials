@@ -10,7 +10,7 @@ flux create source git podinfo \
   --branch=master \
   --interval=30s \
   --export > ./clusters/my-cluster/podinfo-source.yaml
-```
+```{{exec}}
 
 The output is similar to:
 
@@ -34,7 +34,7 @@ Commit and push the `podinfo-source.yaml` file to your `fleet-infra` repository:
 ```
 git add -A && git commit -m "Add podinfo GitRepository"
 git push
-```
+```{{exec}}
 
 ## Deploy podinfo application
 
@@ -50,7 +50,7 @@ flux create kustomization podinfo \
   --prune=true \
   --interval=5m \
   --export > ./clusters/my-cluster/podinfo-kustomization.yaml
-```
+```{{exec}}
 
 The output is similar to:
 
@@ -75,7 +75,7 @@ spec:
 ```
 git add -A && git commit -m "Add podinfo Kustomization"
 git push
-```
+```{{exec}}
 
 The structure of the `fleet-infra` repo should be similar to:
 
@@ -97,7 +97,8 @@ Use the `flux get` command to watch the podinfo app:
 
 ```
 flux get kustomizations --watch
-```
+```{{exec}}
+
 The output is similar to:
 
 ```
@@ -110,7 +111,7 @@ podinfo       master/44157ec False      True    Applied revision: master/44157ec
 
 ```
 kubectl -n default get deployments,services
-```
+```{{exec}}
 
 The output is similar to:
 

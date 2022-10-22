@@ -15,9 +15,10 @@ EOF
 git add -A
 git commit -m "add space1 namespace"
 git push
-```
+```{{exec}}
 
 After a few moments, `kubectl get namespaces` should show `space1`:
 
 ```
+TODO
 ```

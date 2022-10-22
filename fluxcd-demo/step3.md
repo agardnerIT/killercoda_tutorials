@@ -23,5 +23,6 @@ Commit and push the `podinfo-kustomization.yaml` changes:
 ```
 git add -A && git commit -m "Increase podinfo minimum replicas"
 git push
-```
+```{{exec}}
+
 After the synchronization finishes, running `kubectl get pods` should display `3` pods.
