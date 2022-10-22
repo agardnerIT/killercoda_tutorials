@@ -1,0 +1,24 @@
+{
+    "title": "FluxCD: Get Started",
+    "description": "The FluxCD Getting started guide - in your browser",
+    "details": {
+      "intro": {
+        "title": "Welcome to FluxCD",
+        "text": "intro.md",
+        "foreground": "assets/scripts/foreground.sh"
+      },
+      "steps": [
+        {
+          "title": "Step 1",
+          "text": "step1.md"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+  }
+  
