@@ -4,7 +4,7 @@ Modify then run the following in the the terminal. Replace `<your-token>` and `<
 
 ```
 export GITHUB_TOKEN=<your-token>
-export GITHUB_USER=<YOUR-username>
+export GITHUB_USER=<your-username>
 ```{{copy}}
 
 # Install Flux onto Your Cluster
