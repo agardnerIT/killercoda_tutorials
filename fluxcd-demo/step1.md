@@ -19,7 +19,7 @@ flux bootstrap github \
   --branch=main \
   --path=./clusters/my-cluster \
   --personal
-```
+```{{exec}}
 
 The output is similar to:
 ```
@@ -57,4 +57,4 @@ Clone the `fleet-infra` repository:
 ```
 git clone https://github.com/$GITHUB_USER/fleet-infra
 cd fleet-infra
-```
+```{{exec}}

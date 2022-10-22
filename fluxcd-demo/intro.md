@@ -10,9 +10,9 @@ Try printing the namespaces:
 kubectl get namespaces
 ```
 
-## You Will Need...
+## You Will Need
 1. A GitHub account
-2. Create a GitHub Personal Access Token (PAT) with `repo` scope
+2. To create a GitHub Personal Access Token (PAT) with `repo` scope
 
 ## Get Started
 Click `Start` to begin the tutorial.

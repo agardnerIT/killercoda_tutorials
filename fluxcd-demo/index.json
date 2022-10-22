@@ -9,8 +9,17 @@
       },
       "steps": [
         {
-          "title": "Step 1",
-          "text": "step1.md"
+            "title": "Install Flux",
+            "text": "step1.md"
+        },{
+            "title": "Install podinfo",
+            "text": "step2.md"
+        },{
+            "title": "Customise podinfo",
+            "text": "step3.md"
+        }, {
+            "title": "Create Namespace",
+            "text": "step4.md"
         }
       ],
       "finish": {
