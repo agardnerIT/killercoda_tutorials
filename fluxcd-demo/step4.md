@@ -23,5 +23,12 @@ git push
 After a few moments, `kubectl get namespaces`{{exec}} should show `space1`:
 
 ```
-TODO
+$ kubectl get ns
+NAME              STATUS
+default           Active
+flux-system       Active
+kube-node-lease   Active
+kube-public       Active
+kube-system       Active
+space1            Active
 ```
