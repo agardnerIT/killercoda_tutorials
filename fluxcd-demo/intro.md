@@ -8,7 +8,7 @@ The terminal window on the right is a fully featured and interactive terminal wi
 Try printing the namespaces:
 ```
 kubectl get namespaces
-```
+```{{exec}}
 
 ## You Will Need
 1. A GitHub account
