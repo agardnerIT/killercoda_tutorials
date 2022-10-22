@@ -16,7 +16,7 @@ Add the following to the field spec of your `~/fleet-infra/clusters/my-cluster/p
       target:
         name: podinfo
         kind: HorizontalPodAutoscaler
-```
+```{{copy}}
 
 Commit and push the `podinfo-kustomization.yaml` changes:
 
@@ -25,4 +25,4 @@ git add -A && git commit -m "Increase podinfo minimum replicas"
 git push
 ```{{exec}}
 
-After the synchronization finishes, running `kubectl get pods` should display `3` pods.
+After the synchronization finishes, running `kubectl get pods`{{exec}} should display `3` pods.

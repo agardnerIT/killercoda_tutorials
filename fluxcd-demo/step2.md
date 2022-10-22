@@ -111,7 +111,7 @@ podinfo       master/44157ec False      True    Applied revision: master/44157ec
 
 ```
 kubectl -n default get deployments,services
-```{{exec}}
+```{{exec interrupt}}
 
 The output is similar to:
 

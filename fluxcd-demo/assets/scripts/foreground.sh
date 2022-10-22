@@ -1,4 +1,4 @@
-# TUTORIAL VERSION: 0.1.7
+# TUTORIAL VERSION: 0.1.8
 curl -s https://fluxcd.io/install.sh | sudo bash
 
 git config --global user.name "FluxCD Demo"

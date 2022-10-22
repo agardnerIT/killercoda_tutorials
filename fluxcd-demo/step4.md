@@ -9,7 +9,10 @@ cat << EOF > ~/fleet-infra/clusters/my-cluster/namespace.yaml
 ---
 apiVersion: v1
 kind: Namespace
-name: space1
+metadata:
+  name: space1
+  labels:
+    created-by: flux
 EOF
 
 git add -A
@@ -17,7 +20,7 @@ git commit -m "add space1 namespace"
 git push
 ```{{exec}}
 
-After a few moments, `kubectl get namespaces` should show `space1`:
+After a few moments, `kubectl get namespaces`{{exec}} should show `space1`:
 
 ```
 TODO
