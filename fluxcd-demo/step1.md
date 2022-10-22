@@ -55,6 +55,6 @@ The bootstrap command above does following:
 Clone the `fleet-infra` repository:
 
 ```
-git clone https://github.com/$GITHUB_USER/fleet-infra
+git clone https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$GITHUB_USER/fleet-infra
 cd fleet-infra
 ```{{exec}}

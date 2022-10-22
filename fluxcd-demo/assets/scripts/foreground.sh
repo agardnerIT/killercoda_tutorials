@@ -1,4 +1,4 @@
-# TUTORIAL VERSION: 0.1.4
+# TUTORIAL VERSION: 0.1.5
 curl -s https://fluxcd.io/install.sh | sudo bash
 
 # ---------------------------------------------#
