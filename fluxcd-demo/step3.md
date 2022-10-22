@@ -2,7 +2,7 @@
 
 To customize a deployment from a repository you don’t control, you can use Flux in-line patches. The following example shows how to use in-line patches to change the `podinfo` deployment.
 
-Add the following to the field spec of your `podinfo-kustomization.yaml` file:
+Add the following to the field spec of your `~/fleet-infra/clusters/my-cluster/podinfo-kustomization.yaml` file:
 
 ```
   patches:
