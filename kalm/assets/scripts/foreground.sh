@@ -1,4 +1,7 @@
-# DEBUG V1
+# DEBUG V2
+
+add-apt-repository -y ppa:deadsnakes/ppa
+apt install -y python3.10
 
 wget https://nodejs.org/dist/v16.18.0/node-v16.18.0-linux-x64.tar.xz
 tar -xf node-v16.18.0-linux-x64.tar.xz
@@ -11,5 +14,5 @@ git clone https://github.com/dynatrace-oss/Kalm-Benchmark
 
 poetry install
 
-echo PATH=/root/.local/bin:$PATH > ~/.bashrc
+echo PATH=/usr/bin/python3.10:/root/.local/bin:$PATH >> ~/.bashrc
 . ~/.bashrc

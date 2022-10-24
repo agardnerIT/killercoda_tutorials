@@ -1,0 +1,30 @@
+{
+    "title": "My First SBOM",
+    "description": "Generate and audit your very first Software Bill of Materials (SBOM)",
+    "details": {
+      "intro": {
+        "title": "My First SBOM",
+        "text": "intro.md",
+        "foreground": "assets/scripts/foreground.sh"
+      },
+      "steps": [
+        {
+            "title": "Generate an SBOM",
+            "text": "step1.md"
+        }, {
+            "title": "Audit SBOM",
+            "text": "step2.md"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [ {"file": "Dockerfile", "target": "~"} ]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+}
+  
