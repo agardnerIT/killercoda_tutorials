@@ -1,9 +1,9 @@
 {
-    "title": "My First SBOM",
+    "title": "SBOM First Steps",
     "description": "Generate and audit your very first Software Bill of Materials (SBOM)",
     "details": {
       "intro": {
-        "title": "My First SBOM",
+        "title": "SBOM First Steps",
         "text": "intro.md",
         "foreground": "assets/scripts/foreground.sh"
       },
