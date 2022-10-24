@@ -17,11 +17,8 @@
         "title": "Create SBOM for Docker Image",
         "text": "step3.md"
         }, {
-          "title": "Audit Dockerfile SBOM",
+          "title": "Audit SBOMs",
           "text": "step3.md"
-          }, {
-            "title": "Audit Docker Image SBOM",
-          "text": "step4.md"
           }],
       "finish": {
         "text": "finish.md"
