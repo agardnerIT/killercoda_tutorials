@@ -14,7 +14,7 @@ The output should show...
 No vulnerabilities found
 ```
 
-# Audit Docker Image SBOM
+## Audit Docker Image SBOM
 
 Use [grype](https://github.com/anchore/grype) again.
 
