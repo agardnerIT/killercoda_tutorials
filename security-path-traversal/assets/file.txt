@@ -1,0 +1,3 @@
+## Standard File
+
+This is a standard text file with content you are allowed to see...

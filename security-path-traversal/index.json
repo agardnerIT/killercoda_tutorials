@@ -1,0 +1,30 @@
+{
+    "title": "Path Traversal: Security Basics",
+    "description": "Learn how to perform path / directory traversal & ways to protect against it.",
+    "details": {
+      "intro": {
+        "title": "Path Traversal: Security Basics",
+        "text": "intro.md"
+      },
+      "steps": [{
+            "title": "What is Path Traversal?",
+            "text": "step1.md"
+        }, {
+          "title": "Get Traversing",
+          "text": "step2.md"
+        }],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [ {"file": "file.txt", "target": "~/" },
+            {"file": "app.py", "target": "~/" },
+            {"file": "assets/templates/*", "target": "~/assets/templates" }
+        ]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+}
+  
