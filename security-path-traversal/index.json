@@ -5,7 +5,7 @@
       "intro": {
         "title": "Path Traversal: Security Basics",
         "text": "intro.md",
-        "background": "assets/intro_background.sh"
+        "foreground": "assets/intro_foreground.sh"
       },
       "steps": [{
             "title": "What is Path Traversal?",
