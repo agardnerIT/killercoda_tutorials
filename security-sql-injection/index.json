@@ -1,0 +1,33 @@
+{
+    "title": "SQL Injection: Security Basics",
+    "description": "Learn how to perform SQL injection attacks & ways to protect against them.",
+    "details": {
+      "intro": {
+        "title": "SQL Injection: Security Basics",
+        "text": "intro.md"
+      },
+      "steps": [{
+            "title": "What is SQL Injection?",
+            "text": "step1.md"
+        }, {
+          "title": "Run a SQL Injection",
+          "text": "step2.md"
+        }, {
+        "title": "Mitigation Techniques",
+        "text": "step3.md"
+        }],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [
+            {"file": "app.py", "target": "~/app/app.py" },
+            {"file": "schema.sql", "target": "~/app/schema.sql" }
+        ]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+}
+  
