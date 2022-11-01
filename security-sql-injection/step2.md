@@ -6,8 +6,9 @@ This demo shows things running from the command line, but imagine instead that t
 
 ## Only SQL Affected?
 
-OWASP uses hte more generic term of "Injection" because actually, lots of technologies are vulnerable to similar attacks:
+OWASP uses the more generic term of "Injection" because actually, lots of technologies are vulnerable to similar attacks:
 
 - SQL
 - NoSQL
 - Object Relational Mapping (ORM) tools
+- etc.
