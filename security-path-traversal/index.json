@@ -4,7 +4,8 @@
     "details": {
       "intro": {
         "title": "Path Traversal: Security Basics",
-        "text": "intro.md"
+        "text": "intro.md",
+        "background": "assets/intro_background.sh"
       },
       "steps": [{
             "title": "What is Path Traversal?",
@@ -17,9 +18,11 @@
         "text": "finish.md"
       },
       "assets": {
-        "host01": [ {"file": "file.txt", "target": "~/" },
+        "host01": [ 
+            {"file": "file.txt", "target": "~/" },
             {"file": "app.py", "target": "~/" },
-            {"file": "assets/templates/*", "target": "~/assets/templates" }
+            {"file": "assets/templates/index.html", "target": "~/assets/templates" },
+            {"file": "assets/templates/viewfile.html", "target": "~/assets/templates" }
         ]
       }
     },
