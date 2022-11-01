@@ -1,0 +1,30 @@
+{
+    "title": "Command Injection: Security Basics",
+    "description": "Learn how to perform command injection attacks & ways to protect against them.",
+    "details": {
+      "intro": {
+        "title": "Command Injection: Security Basics",
+        "text": "intro.md"
+      },
+      "steps": [{
+            "title": "What is Command Injection?",
+            "text": "step1.md"
+        }, {
+          "title": "Run a Command Injection",
+          "text": "step2.md"
+        }, {
+        "title": "Mitigation Techniques",
+        "text": "step3.md"
+        }],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [ {"file": "app.py", "target": "~" } ]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+}
+  
