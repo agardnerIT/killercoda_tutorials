@@ -1,6 +1,6 @@
 {
     "title": "Command Injection: Security Basics",
-    "description": "Learn how to perform command injection attacks & ways to protect against them.",
+    "description": "Learn how to perform command line injection attacks & ways to protect against them.",
     "details": {
       "intro": {
         "title": "Command Injection: Security Basics",
