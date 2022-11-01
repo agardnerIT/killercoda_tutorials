@@ -19,7 +19,7 @@ The script pings `example.com` and exits.
 
 ## Dangerous?
 
-Instead of typing `example.com`. Type this instead: `example.com ; ls -l`
+Instead of typing `example.com`. Type this instead: `example.com ; ls -l`{{exec}}
 
 Again the script will ping `example.com` but it will then show you a directory listing on the server.
 
