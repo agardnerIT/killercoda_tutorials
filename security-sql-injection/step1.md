@@ -19,9 +19,9 @@ The demo database has accounts for:
 
 Using SQL I can retrieve the address of a specific user with a query like this:
 
-`SELECT Address FROM Accounts WHERE LastName="SomeLastName"`
+`SELECT Address FROM Accounts WHERE LastName="Bloggs"`
 
-The query will search the database and return the `Address` field for any row that matches the `LastName` of `SomeLastName`
+The query will search the database and return the `Address` field for any row that matches the `LastName` of `Bloggs`
 
 ## Try it
 
@@ -73,11 +73,11 @@ At first glance it doesn't look like it should work. `fake` isn't a valid `LastN
 
 ## Explanation
 
-`fake'` was used just to keep the SQL engine happy. The extra apostraphe closed the `LastName` brackets.
-`OR true` always evaluates to true. This is really the dangerous part.
+`fake'` was used just to keep the SQL engine happy. The extra apostrophe closed the `LastName` brackets.
+`OR true` always evaluates to `true`. This is really the dangerous part.
 
-You can now read this SQL statement as "give me the details from Accounts where "`LastName` equals `fake` OR everything". So of course you get everything. SQL is working as designed, you've just manipulated it.
+You can now read this SQL statement as "give me the details from Accounts where `LastName` equals `fake` OR just give me everything". Of course you get everything: SQL is working as designed, you have just manipulated it.
 
 The `;` is how you tell SQL to end the line. But remember, there is also a pesky extra apostraphe from the original SQL statement.
 
-Luckily, SQL has a handy operator (a double dash) which means "ignore everything after this".
+Luckily, SQL has a handy operator (a double dash) which means "ignore everything after this". Therefore the `;` is the last thing actually "used" by SQL. Everything is ignored.
