@@ -21,8 +21,8 @@
         "host01": [ 
             {"file": "file.txt", "target": "~/" },
             {"file": "app.py", "target": "~/" },
-            {"file": "templates/index.html", "target": "~/assets/templates" },
-            {"file": "templates/viewfile.html", "target": "~/assets/templates" }
+            {"file": "templates/index.html", "target": "~/templates" },
+            {"file": "templates/viewfile.html", "target": "~/templates" }
         ]
       }
     },
