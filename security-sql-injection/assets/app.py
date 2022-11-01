@@ -9,7 +9,7 @@ connection = sqlite3.connect("sql_injection_database.db")
 cursor = connection.cursor()
 
 def init_db():
-    with open('/app/schema.sql', mode='r') as f:
+    with open('schema.sql', mode='r') as f:
         cursor.executescript(f.read())
     connection.commit()
 
@@ -17,10 +17,12 @@ init_db()
 
 exit = False
 while not exit:
-    input = input("Enter your surname: ")
-    if input == "exit": exit = True
+    print("Type the word 'exit' (without quotes) at any time to exit...")
+    print()
+    user_input = input("Enter your surname: ")
+    if user_input == "exit": exit = True
 
-    select_statement = f"SELECT rowid, firstname, lastname, address FROM Accounts WHERE LastName='{input}'"
+    select_statement = f"SELECT rowid, firstname, lastname, address, balance FROM Accounts WHERE LastName='{user_input}'"
     print(f"Here is the SELECT statement that will be executed")
     print("-"*60)
     print(select_statement)

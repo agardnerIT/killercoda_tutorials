@@ -21,8 +21,8 @@
       },
       "assets": {
         "host01": [
-            {"file": "app.py", "target": "~/app" },
-            {"file": "schema.sql", "target": "~/app" }
+            {"file": "app.py", "target": "~" },
+            {"file": "schema.sql", "target": "~" }
         ]
       }
     },
