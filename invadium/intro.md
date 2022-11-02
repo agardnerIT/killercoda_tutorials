@@ -37,8 +37,8 @@ chmod +x ~/invadium/k8s-manifests/hooks/copy-data.sh
 # Restart backend to pick up data
 
 ```
-ki scale deployment invadium-backend --replicas=0
-ki scale deployment invadium-backend --replicas=1
+kubectl -n invadium scale deployment invadium-backend --replicas=0
+kubectl -n invadium scale deployment invadium-backend --replicas=1
 ```
 
 # Open Invadium
