@@ -1,6 +1,16 @@
-# Invadium Intro
+# Invadium
 
-Before continuing, wait until you see 🎉 Installation Complete 🎉...
+Invadium runs exploits against one or more target applications in an intuitive, reproducable, and well-defined manner. It focuses on bridging the gap between developers that write exploits and presenters that use them for demos or educational purposes.
+
+**Presenters** can easily navigate to the web UI of Invadium, chose from a selection of exploits and demo their individual attack steps, all within Invadium.
+
+**Exploit developers** define exploits by specifying a container image for it, environment variables for customization, and the individual commands that will be run at each step.
+
+Of course, Invadium is not only built for exploits, you may solve similar problems, e.g., showcasing new users how a tool of yours can be used, getting a web UI for a set of commands that developers may regularly encounter, etc.
+
+## Wait...
+
+Before continuing, wait until you see 🎉 Preparation Complete 🎉...
 
 ## Finalise Deployment
 
