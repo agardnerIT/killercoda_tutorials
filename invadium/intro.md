@@ -7,7 +7,7 @@ Before continuing, wait until you see 🎉 Installation Complete 🎉...
 Click this to update the deployment.
 
 ```
-sed -i 's#CHANGE-ME-PORT-3000#{{TRAFFIC_HOST1_3000}}#g' ~/invadium_full_rollout.yaml
+sed -i 's#CHANGE-ME-PORT-3000#{{TRAFFIC_HOST1_3000}}/#g' ~/invadium_full_rollout.yaml
 sed -i 's#CHANGE-ME-PORT-3001#{{TRAFFIC_HOST1_3001}}#g' ~/invadium_full_rollout.yaml
 ```{{exec}}
 
