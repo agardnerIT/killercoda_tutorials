@@ -1,6 +1,6 @@
 {
-  "title": "Invadium - WIP",
-  "description": "Work in progress. Will probably be broken. Ignore for now.",
+  "title": "Invadium",
+  "description": "Demonstrates Dynatrace OSS Project Invadium.",
   "details": {
     "intro": {
       "title": "Invadium",
