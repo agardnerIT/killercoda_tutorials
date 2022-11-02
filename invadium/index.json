@@ -1,0 +1,23 @@
+{
+  "title": "Invadium - WIP",
+  "description": "Work in progress. Will probably be broken. Ignore for now.",
+  "details": {
+    "intro": {
+      "title": "Release Tracking",
+      "text": "intro.md",
+      "foreground": "assets/intro_foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Invadium",
+        "text": "step1.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
