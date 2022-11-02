@@ -1,4 +1,6 @@
-# DEBUG_VERSION=1
+# DEBUG_VERSION=2
+K3D_VERSION=v5.3.0
+KUBECTL_VERSION=v1.22.6
 
 # kubectl
 curl -LO https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl

@@ -3,7 +3,7 @@
   "description": "Work in progress. Will probably be broken. Ignore for now.",
   "details": {
     "intro": {
-      "title": "Release Tracking",
+      "title": "Invadium",
       "text": "intro.md",
       "foreground": "assets/intro_foreground.sh"
     },
