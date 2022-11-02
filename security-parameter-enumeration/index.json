@@ -5,7 +5,7 @@
       "intro": {
         "title": "Parameter Enumeration: Security Basics",
         "text": "intro.md",
-        "foreground": "intro_foreground.sh"
+        "foreground": "assets/intro_foreground.sh"
       },
       "steps": [{
             "title": "Run an Attack",
