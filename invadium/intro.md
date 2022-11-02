@@ -1,8 +1,8 @@
 # Invadium Intro
 
-Wait until you see 🎉 Installation Complete 🎉
+## Preparation
 
-Then modify `~/invadium/invadium_total.yaml` (you can also use the editor) and search for `CHANGE-ME-PORT-3000` (line `207`{{}}).
+Modify `~/invadium_full_rollout.yaml` (you can also use the editor) and search for `CHANGE-ME-PORT-3000` (line `207`{{}}).
 
 Replace with: `{{TRAFFIC_HOST1_3000}}`
 
@@ -23,8 +23,13 @@ data:
 
 Save and exit the file.
 
+## Wait...
+
+Before continuing, wait until you see 🎉 Installation Complete 🎉...
+
+## Install Invadium
 ```
-kubectl apply -f ~/invadium/total.yaml
+kubectl apply -f ~/invadium_full_rollout.yaml
 ```
 
 # Copy Data into PersistentVolume
@@ -46,9 +51,3 @@ kubectl -n invadium scale deployment invadium-backend --replicas=1
 Invadium is now setup on your Kubernetes cluster.
 
 [Click here to open Invadium]({{TRAFFIC_HOST1_3000}})
-
-
-
-
-
-

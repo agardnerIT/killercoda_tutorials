@@ -1,0 +1,219 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: invadium
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: invadium-backend-sa
+  namespace: invadium
+  labels:
+    app.kubernetes.io/part-of: invadium
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: invadium-backend-sa
+  namespace: invadium
+  labels:
+    app.kubernetes.io/part-of: invadium
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - pods/exec
+    verbs:
+      - "*"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: invadium-backend-sa
+  namespace: invadium
+  labels:
+    app.kubernetes.io/part-of: invadium
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: invadium-backend-sa
+subjects:
+  - kind: ServiceAccount
+    name: invadium-backend-sa
+    namespace: invadium
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: invadium-pvc
+  namespace: invadium
+  labels:
+    app.kubernetes.io/component: data
+    app.kubernetes.io/part-of: invadium
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: invadium-frontend
+  namespace: invadium
+  labels:
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: invadium
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: invadium
+  ports:
+    - port: 3000
+      targetPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invadium-frontend
+  namespace: invadium
+  labels:
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: invadium
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: frontend
+      app.kubernetes.io/part-of: invadium
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: frontend
+        app.kubernetes.io/part-of: invadium
+    spec:
+      containers:
+        - name: invadium
+          image: ghcr.io/dynatrace-oss/invadium-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 100m
+            limits:
+              memory: 1Gi
+              cpu: 500m
+          readinessProbe:
+            timeoutSeconds: 5
+            initialDelaySeconds: 5
+            httpGet:
+              path: /
+              port: 3000
+          env:
+            - name: NEXT_BACKEND_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: invadium-config
+                  key: INVADIUM_BACKEND_API_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: invadium-backend
+  namespace: invadium
+  labels:
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: invadium
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: invadium
+  ports:
+    - port: 3001
+      targetPort: 3001
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invadium-backend
+  namespace: invadium
+  labels:
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: invadium
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: backend
+      app.kubernetes.io/part-of: invadium
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: backend
+        app.kubernetes.io/part-of: invadium
+    spec:
+      serviceAccountName: invadium-backend-sa
+      containers:
+        - name: invadium
+          image: ghcr.io/dynatrace-oss/invadium-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3001
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 100m
+            limits:
+              memory: 1Gi
+              cpu: 500m
+          readinessProbe:
+            timeoutSeconds: 5
+            initialDelaySeconds: 5
+            httpGet:
+              path: /api
+              port: 3001
+          envFrom:
+            - configMapRef:
+                name: invadium-config
+          volumeMounts:
+            - name: config
+              mountPath: /config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: invadium-pvc
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: invadium-config
+  namespace: invadium
+  labels:
+    app.kubernetes.io/component: config
+    app.kubernetes.io/part-of: invadium
+data:
+  INVADIUM_CONFIG_PATH: /config
+  INVADIUM_API_ROOT: "/api"
+  INVADIUM_API_PORT: "3001"
+  INVADIUM_CORS_ORIGINS: "[\"CHANGE-ME-PORT-3000\"]"
+  INVADIUM_BACKEND_API_URL: "CHANGE-ME-PORT-3001/api"
+
+  INVADIUM_EXPLOIT_RUNTIME: "kubernetes"
+  INVADIUM_EXPLOIT_TIMEOUT: "900"
+
+  INVADIUM_DOCKER_NETWORK: ""
+
+  INVADIUM_KUBERNETES_NAMESPACE: "invadium"
+  INVADIUM_KUBERNETES_POD_CPU_REQUESTS: "100m"
+  INVADIUM_KUBERNETES_POD_CPU_LIMITS: "500m"
+  INVADIUM_KUBERNETES_POD_MEMORY_REQUESTS: "250Mi"
+  INVADIUM_KUBERNETES_POD_MEMORY_LIMITS: "500Mi"
