@@ -1,45 +1,29 @@
 # Invadium Intro
 
-## Preparation
+Before continuing, wait until you see 🎉 Installation Complete 🎉...
 
-Modify `~/invadium_full_rollout.yaml` (you can also use the editor) and search for `CHANGE-ME-PORT-3000` (line `207`{{}}).
+## Finalise Deployment
 
-Replace with: `{{TRAFFIC_HOST1_3000}}`
-
-Search for `CHANGE-ME-PORT-3001` (line `208`{{}}).
-
-Replace with: `{{TRAFFIC_HOST1_3001}}`
-
-It should look similar to this:
+Click this to update the deployment.
 
 ```
-data:
-  INVADIUM_CONFIG_PATH: /config
-  INVADIUM_API_ROOT: "/api"
-  INVADIUM_API_PORT: "3001"
-  INVADIUM_CORS_ORIGINS: "[\"https://12345abc-1234-abcd-1111-3c6206d243d9-10-244-7-223-3000.papa.r.killercoda.com/\"]"
-  INVADIUM_BACKEND_API_URL: "https://12345abc-1234-abcd-1111-3c6206d243d9-10-244-7-223-3001.papa.r.killercoda.com/api"
-```{{}}
-
-Save and exit the file.
-
-## Wait...
-
-Before continuing, wait until you see 🎉 Installation Complete 🎉...
+sed -i 's#CHANGE-ME-PORT-3000#{{TRAFFIC_HOST1_3000}}#g' ~/invadium_full_rollout.yaml
+sed -i 's#CHANGE-ME-PORT-3001#{{TRAFFIC_HOST1_3001}}#g' ~/invadium_full_rollout.yaml
+```{{exec}}
 
 ## Install Invadium
 ```
 kubectl apply -f ~/invadium_full_rollout.yaml
-```
+```{{exec}}
 
 # Copy Data into PersistentVolume
-
 ```
 chmod +x ~/invadium/k8s-manifests/hooks/copy-data.sh
 ~/invadium/k8s-manifests/hooks/copy-data.sh ~/invadium/exploits/config
-```
+```{{exec}}
 
-# Restart backend to pick up data
+# Restart Backend
+Restart `backend`{{}} pods to pick up the exploit data.
 
 ```
 kubectl -n invadium scale deployment invadium-backend --replicas=0
