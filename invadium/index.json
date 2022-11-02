@@ -18,8 +18,8 @@
     },
     "assets": {
       "host01": [
-          {"file": "invadium_full_rollout.yaml.py", "target": "~" },
-  },
+          {"file": "invadium_full_rollout.yaml.py", "target": "~" }],
+    },
   "backend": {
     "imageid": "ubuntu"
   }
