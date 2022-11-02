@@ -1,0 +1,27 @@
+{
+    "title": "Parameter Enumeration: Security Basics",
+    "description": "Learn how to perform parameters enumeration attacks & ways to protect against them.",
+    "details": {
+      "intro": {
+        "title": "Parameter Enumeration: Security Basics",
+        "text": "intro.md",
+        "foreground": "intro_foreground.sh"
+      },
+      "steps": [{
+            "title": "Run an Attack",
+            "text": "step1.md"
+        }],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [ {"file": "app.py", "target": "~" },
+            {"file": "schema.sql", "target": "~" }
+        ]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+}
+  

@@ -1,0 +1,3 @@
+Imagine this is the email your received...
+
+[Click here to unsubscribe from our mailing list]({{TRAFFIC_HOST1_80}})
