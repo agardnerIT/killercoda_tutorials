@@ -4,7 +4,7 @@ Please login to Dynatrace and go to `Access Tokens`{{}}.
 
 Create a token with `openTelemetryTrace.ingest` scope.
 
-![dynatrace access token](assets/dt_access_token.jpg)
+![dynatrace access token](./assets/dt_access_token.jpg)
 
 Click this to set your details:
 
