@@ -21,7 +21,7 @@ The most basic setup has 3 components:
 
 Of course, you can have multiples of these components but above is the most basic setup.
 
-![](assets/basic_architecture.jpg)
+![basic otel architecture](./assets/basic_architecture.jpg)
 
 # What Will Be Built
 
@@ -33,4 +33,4 @@ The collector will be configured to pass the trace data to Dynatrace.
 
 In real life, `tracegen` would be replaced by your application(s). Of course, if you chose to install the OneAgent on your hosts, the OpenTelemetry collector becomes an optional component.
 
-![](assets/our_architecture.jpg)
+![our otel architecture](./assets/our_architecture.jpg)

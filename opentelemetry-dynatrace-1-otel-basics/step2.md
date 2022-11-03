@@ -8,7 +8,7 @@ That's a bit clunky so let's make life easier and create a new network called `t
 docker network create tracegen-demo-net
 ```{{exec}}
 
-You can see all docker networks by typing:
+You can see all docker networks with the following command. You should see 4 networks, one of which is `tracegen-demo-net`{{}}.
 
 ```
 docker network ls

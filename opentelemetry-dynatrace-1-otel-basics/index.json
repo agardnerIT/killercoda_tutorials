@@ -22,8 +22,8 @@
     "assets": {
       "host01": [
         {"file": "config.yaml", "target": "~/"},
-        {"file": "setDTDetails.sh", "target": "~/"},
-        {"file": "updateCollectorConfig.sh", "target": "~/"}
+        {"file": "setDTDetails.sh", "target": "~/", "chmod": "+x" },
+        {"file": "updateCollectorConfig.sh", "target": "~/", "chmod": "+x" }
       ]
     }
   },
