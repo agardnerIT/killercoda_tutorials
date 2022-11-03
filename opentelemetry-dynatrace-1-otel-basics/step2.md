@@ -34,7 +34,7 @@ Open a second terminal window; click the `+`{{}} next to `Tab 1` at the top of t
 
 Run the trace generator utility. Again give the container a name (just for consistency). Also set the network so the container runs in the same network. The following command does all that for you.
 
-Notice we're passing the endpoint as `otelcol:4317` which means "send trace data to the `otelcol` container on port `4317` (the default OpenTelemetry gRPC port).
+Notice we're passing the endpoint as `otelcol:4317` which means "send trace data to the `otelcol` container on port `4317`" (the default OpenTelemetry gRPC port).
 
 The `-otlp-insecure` flag is needed because we don't have a proper TLS cert configured on the demo system.
 
