@@ -1,0 +1,30 @@
+{
+  "title": "Ingest OpenTelemetry Traces into Dynatrace: OpenTelemetry Basics",
+  "description": "First steps with OpenTelemetry. How to generate traces and ingest into Dynatrace.",
+  "details": {
+    "intro": {
+      "title": "OpenTelemetry + Dynatrace = ❤️",
+      "text": "intro.md",
+      "background": "assets/intro_background.sh"
+    },
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "config.yaml", "target": "~/"},
+        {"file": "setDTDetails.sh", "target": "~/"},
+        {"file": "updateCollectorConfig.sh", "target": "~/"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
