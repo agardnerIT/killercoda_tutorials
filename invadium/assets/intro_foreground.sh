@@ -21,6 +21,6 @@ git clone https://github.com/dynatrace-oss/invadium
 cd invadium
 
 # ---------------------------------------------#
-#       🎉 Installation Complete 🎉           #
+#       🎉 Preparation Complete 🎉            #
 #           Please proceed now...              #
 # ---------------------------------------------#
