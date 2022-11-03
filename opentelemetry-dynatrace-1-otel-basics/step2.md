@@ -49,6 +49,8 @@ If it works, you should see lots of output that ends with: `stopping the exporte
 
 ## View Traces In Dynatrace
 
+![dynatrace distributed traces](./assets/dt_distributed_traces.jpg)
+
 Open Dynatrace and go to `Distributed Traces`{{}} then toggle over to `Ingested traces`{{}}.
 
 In a few seconds you should see a trace called `lets-go`{{}} (that's what `tracegen`{{}} names the traces it sends).
