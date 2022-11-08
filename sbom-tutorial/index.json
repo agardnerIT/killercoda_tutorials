@@ -23,7 +23,7 @@
         }],
       "finish": {
         "text": "finish.md",
-        "background": "finish_background.sh"
+        "background": "assets/scripts/finish_background.sh"
       },
       "assets": {
         "host01": [ {"file": "Dockerfile", "target": "~" } ]
