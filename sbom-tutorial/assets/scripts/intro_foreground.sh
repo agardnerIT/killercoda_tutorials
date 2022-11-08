@@ -1,4 +1,4 @@
-# TUTORIAL VERSION=1.0.0
+# TUTORIAL VERSION=1.0.1
 
 # Step 1/3: Install Syft
 curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
