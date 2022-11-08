@@ -11,15 +11,15 @@
       "steps": [{
             "title": "Generate an SBOM",
             "text": "step1.md",
-            "background": "step1_background.sh"
+            "background": "assets/scripts/step1_background.sh"
         }, {
           "title": "Create Docker Image",
           "text": "step2.md",
-          "background": "step2_background.sh"
+          "background": "assets/scripts/step2_background.sh"
         }, {
         "title": "Create SBOM for Docker Image",
         "text": "step3.md",
-        "background": "step3_background.sh"
+        "background": "assets/scripts/step3_background.sh"
         }],
       "finish": {
         "text": "finish.md",
