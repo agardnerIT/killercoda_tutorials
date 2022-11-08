@@ -5,23 +5,25 @@
       "intro": {
         "title": "SBOM First Steps",
         "text": "intro.md",
-        "foreground": "assets/scripts/foreground.sh"
+        "foreground": "assets/scripts/intro_foreground.sh",
+        "background": "assets/scripts/intro_background.sh"
       },
       "steps": [{
             "title": "Generate an SBOM",
-            "text": "step1.md"
+            "text": "step1.md",
+            "background": "step1_background.sh"
         }, {
           "title": "Create Docker Image",
-          "text": "step2.md"
+          "text": "step2.md",
+          "background": "step2_background.sh"
         }, {
         "title": "Create SBOM for Docker Image",
-        "text": "step3.md"
-        }, {
-          "title": "Audit SBOMs",
-          "text": "step3.md"
+        "text": "step3.md",
+        "background": "step3_background.sh"
         }],
       "finish": {
-        "text": "finish.md"
+        "text": "finish.md",
+        "background": "finish_background.sh"
       },
       "assets": {
         "host01": [ {"file": "Dockerfile", "target": "~" } ]
