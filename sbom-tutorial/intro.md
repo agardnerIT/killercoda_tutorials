@@ -1,6 +1,6 @@
 # First Steps: Software Bill of Materials
 
-Note: This is a companion hands-on exercise to [this blog post](https://example.com). For full context and background reading, please read that post.
+Note: This is a companion hands-on exercise to [this blog post](https://engineering.dynatrace.com/blog/get-started-with-software-bills-of-materials/). For full context and background reading, please read that post.
 
 ## Exercise Outline
 
