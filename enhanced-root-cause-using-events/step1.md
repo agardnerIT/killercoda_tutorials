@@ -31,4 +31,6 @@ When you are happy that everything looks OK, click the following box to install 
 
 Navigate to the `Hosts` screen in Dynatrace and open your host page.
 
+If you receive a `403` error, just wait a minute or so and refresh. Dynatrace is busy receiving data from the new OneAgent and settings things up for you.
+
 ![dynatrace host page](./assets/images/host_page.jpg)
