@@ -5,7 +5,10 @@
 	"difficulty": "Medium",
 	"time": "10",
 	"details": {
-		"steps": [],
+		"steps": [{
+            "title": "OpenFeature Operator",
+            "text": "step1.md"
+        }],
 		"intro": {
 			"text": "intro.md",
             "foreground": "assets/scripts/intro_foreground.sh"
