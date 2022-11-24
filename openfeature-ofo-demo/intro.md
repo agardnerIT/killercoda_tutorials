@@ -20,18 +20,21 @@ kubectl -n open-feature-demo port-forward --address 0.0.0.0 service/open-feature
 
 # View the Feature Flag Configuration
 
-The demo application pod is reading feature flag configurations from a CRD called `FeatureFlagConfiguration`{{}}. Show them now:
+The demo application pod is reading feature flag configurations from a CRD called `FeatureFlagConfiguration`{{}}.
+
+Leave the port-forward running. Open new terminal window and display the `featureflagconfigurations`:
 
 ```
 kubectl -n open-feature-demo get featureflagconfigurations
-```{{}}
+```{{exec}}
 
 # Update Application Color Flag
 
 Change the application color by updating the feature flag.
 
+The flag definition is already available as a YAML file.
 
-Modify line `28`{{}} of the `end-to-end.yaml` file and re-apply it.
+Modify line `28`{{}} of `~/end-to-end.yaml` file and re-apply it.
 
 You can use the built-in editor or a text editor like nano:
 ```
