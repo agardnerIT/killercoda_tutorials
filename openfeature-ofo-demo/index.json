@@ -5,11 +5,7 @@
 	"difficulty": "Medium",
 	"time": "10",
 	"details": {
-		"steps": [{
-				"title": "Preparation",
-				"text": "step1.md"
-			}
-		],
+		"steps": [],
 		"intro": {
 			"text": "intro.md",
             "foreground": "assets/scripts/intro_foreground.sh"
