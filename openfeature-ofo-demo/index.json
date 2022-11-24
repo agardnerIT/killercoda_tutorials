@@ -1,0 +1,29 @@
+{
+
+	"title": "OpenFeature Operator",
+	"description": "Tutorial for OpenFeature k8s Operator",
+	"difficulty": "Medium",
+	"time": "10",
+	"details": {
+		"steps": [{
+				"title": "Preparation",
+				"text": "step1.md"
+			}
+		],
+		"intro": {
+			"text": "intro.md",
+			"foreground": "assets/scripts/intro_foreground.sh"
+		},
+		"finish": {
+			"text": "finish.md"
+		}
+	},
+	"environment": {
+		"showdashboard": true,
+		"dashboard": "Dashboard",
+		"uilayout": "terminal"
+	},
+	"backend": {
+		"imageid": "kubernetes-kubeadm-1node"
+	}
+}
