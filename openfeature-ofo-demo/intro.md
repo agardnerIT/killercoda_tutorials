@@ -16,7 +16,7 @@ kubectl -n open-feature-demo port-forward --address 0.0.0.0 service/open-feature
 
 # Visit Application
 
-[View the OpenFeature Demo Application]({{ TRAFFIC_HOST1_30000 }})
+[View the OpenFeature Demo Application]({{TRAFFIC_HOST1_30000}})
 
 # View the Feature Flag Configuration
 
