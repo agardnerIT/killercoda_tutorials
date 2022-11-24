@@ -1,4 +1,4 @@
-OpenTelemetry is powerful, but difficult. You've read the documentation and probably spun up a demo system.
+OpenTelemetry is powerful, but can be difficult. You've read the documentation and probably spun up a demo system.
 
 But a lot of that is "magic". A lot happens behind the scenes and sometimes it is useful to strip it back and start from the basics to truly understand what is happening.
 
