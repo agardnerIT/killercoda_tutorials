@@ -11,8 +11,7 @@
 			}
 		],
 		"intro": {
-			"text": "intro.md",
-			"foreground": "assets/scripts/intro_foreground.sh"
+			"text": "intro.md"
 		},
 		"finish": {
 			"text": "finish.md"
