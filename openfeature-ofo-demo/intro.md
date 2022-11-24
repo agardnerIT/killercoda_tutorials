@@ -1,5 +1,3 @@
-# Intro
-
 # Hold Tight, Install In Progress...
 
 Everything is being installed on the k8s cluster.
