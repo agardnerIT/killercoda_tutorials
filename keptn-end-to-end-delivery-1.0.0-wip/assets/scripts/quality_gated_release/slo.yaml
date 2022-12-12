@@ -26,5 +26,5 @@ objectives:
       - criteria:
           - "<=30"
 total_score:
-  pass: "90%"
-  warning: "75%"
+  pass: "80%"
+  warning: "50%"
