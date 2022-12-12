@@ -9,10 +9,10 @@ objectives:
     displayName: "HTTP Response Time"
     pass:
       - criteria:
-          - "<=0.2"
+          - "<=1"
     warning:
       - criteria:
-          - "<=0.1"
+          - "<=1.5"
   - sli: request_throughput
     displayName: "Request Throughput"
     pass:

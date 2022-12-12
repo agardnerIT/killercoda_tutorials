@@ -108,14 +108,14 @@ dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
 # -----------------------------------------#
 #    Step 10/11: Retrieving demo files     #
 # -----------------------------------------#
-kubectl apply -f ~/job-executor/workloadClusterRoles.yaml
+#kubectl apply -f ~/job-executor/workloadClusterRoles.yaml
 
 # -----------------------------------------#
 #    Step 11/11: Wait for all pods         #
 # -----------------------------------------#
 kubectl -n monitoring wait --for condition=Available=True --timeout=5m deployment/prometheus-kube-state-metrics
-kubectl -n monitoring wait --for condition=Available=True --timeout=5m deployment/prometheus-pushgateway
-kubectl -n monitoring wait --for condition=Available=True --timeout=5m deployment/prometheus-alertmanager
+kubectl -n monitoring wait --for condition=Available=True --timeout=5m deployment/prometheus-prometheus-pushgateway
+#kubectl -n monitoring wait --for condition=Available=True --timeout=5m deployment/prometheus-alertmanager
 kubectl -n monitoring wait --for condition=Available=True --timeout=5m deployment/prometheus-server
 kubectl -n keptn-jes wait --for condition=Available=True --timeout=5m deployment/job-executor-service
 kubectl -n keptn wait --for condition=Available=True --timeout=5m deployment/api-gateway-nginx
