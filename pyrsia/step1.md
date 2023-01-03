@@ -34,7 +34,7 @@ We'll use `alpine:3.16.2` as an example. Your Docker installation is now configu
 
 When your Docker client pulls an image, it will make the request to your local Pyrsia node (because you configured it as a registry mirror) and it will fetch the artifact from a peer node in the Pyrsia network, verify it based on the transparency logs and return it to the Docker client.
 
-![Docker and Pyrsia architecture](assets/images/docker.png)
+![Docker and Pyrsia architecture](./assets/images/docker.png)
 
 Let's try this, but first make sure Alpine is not yet in your local Docker cache:
 
@@ -70,6 +70,6 @@ INFO  pyrsia::artifact_service::storage       > An artifact is being pulled from
 
 If you would repeat these steps, your local Pyrsia node will already have a copy of the requested artifact, so it won't be retrieved again:
 
-![local cache](assets/images/local-cache.png)
+![local cache](./assets/images/local-cache.png)
 
 This local cache is also used by your Pyrsia node to participate in the artifact distribution to other nodes.

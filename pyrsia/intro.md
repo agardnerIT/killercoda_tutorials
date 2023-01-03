@@ -33,7 +33,7 @@ But why not use Pyrsia and work together instead?
 ## How does Pyrsia work?
 Pyrsia works by designating a number of independent build nodes.
 
-![pyrsia architecture](assets/images/how-does-pyrsia-work-1.png)
+![pyrsia architecture](./assets/images/how-does-pyrsia-work-1.png)
 
 Those build nodes perform builds for all kinds of open source libraries (at this stage, Pyrsia is building support for Docker images and Maven artifacts, but more package types will be added soon). The trust in the built artifacts is reached because no single build node can publish an artifact on its own. It needs to ask all the other build nodes to verify the build (i.e. perform the same build and compare the result) and only when an absolute majority verified the build (also known as 'consensus' is reached), the artifact is published.
 
@@ -41,7 +41,7 @@ Pyrsia keeps a transparency log of those publications and distributes those in a
 
 Any other node in the network can access these logs and use them to verify binary artifacts that are downloaded from other nodes in the network. Whenever a node downloads an artifact, it can choose to participate in the content distribution and provide this artifact to other nodes itself.
 
-![pyrsia architecture](assets/images/how-does-pyrsia-work-2.png)
+![pyrsia architecture](./assets/images/how-does-pyrsia-work-2.png)
 
 ## While You've Been Reading
 
