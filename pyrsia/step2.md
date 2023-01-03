@@ -2,30 +2,15 @@
 
 Now, let's take a look at the transparency logs.
 
-If you ran through all the steps of the installation tutorial, the Pyrsia CLI tool will be available.
-
-You can use this CLI tool to configure your local Pyrsia node, but also to inspect the transparency logs for a given artifact.
-
-If you have started your Pyrsia node with default settings, you can skip this step. Otherwise configure the CLI tool with your required settings:
-
- pyrsia config -e
-
-And enter the correct values or accept the default:
-
-Enter host: [localhost]
-
-Enter port: [7888]
-
-Enter disk space to be allocated to pyrsia(Please enter with units ex: 10 GB): [10 GB]
-
-Node configuration Saved !!
-
 Next, let's take the alpine:3.16.2 example again:
 
+```
 pyrsia inspect-log docker --image alpine:3.16.2
+```{{exec}}
 
-This CLI command returns the transparency logs for all the Pyrsia artifacts that make up the Docker image alpine:3.16.2:
+This CLI command returns the transparency logs for all the Pyrsia artifacts that make up the Docker image `alpine:3.16.2`:
 
+```
 [
   {
     "id": "cc3dec20-8604-4d0a-8c18-ccb746769696",
@@ -88,3 +73,4 @@ This CLI command returns the transparency logs for all the Pyrsia artifacts that
     "node_public_key": "57130e5d-d0dc-450b-b80d-966cb71210ef"
   }
 ]
+```{{copy}}
