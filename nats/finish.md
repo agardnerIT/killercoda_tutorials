@@ -2,6 +2,8 @@
 
 You have successfully taken your first steps with NATS.
 
+There is, of course, a huge amount more that you can configure and achieve with NATs so hopefully this has inspired you to continue your NATS journey.
+
 Here are some next steps and handy links: 
 
 - [NATS Official Website](https://nats.io/)
