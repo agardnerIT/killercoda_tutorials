@@ -1,4 +1,4 @@
-# Prysia - The Decentralized Package Network
+# Pyrsia - The Decentralized Package Network
 
 ## What Is Pyrsia?
 
