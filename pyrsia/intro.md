@@ -9,7 +9,7 @@ Pyrsia is a network of two types of interconnected nodes:
 
 On top of this, both type of nodes participate in the peer-to-peer distribution of artifacts.
 
-![pyrsia architecture](./assets/images/pyrsia-architecture.svg)
+![pyrsia architecture](../assets/images/pyrsia-architecture.svg)
 
 The result is a high-available peer-to-peer network of trusted open source build artifacts that no single entity can control.
 
