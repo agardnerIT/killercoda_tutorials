@@ -11,7 +11,12 @@ On top of this, both type of nodes participate in the peer-to-peer distribution 
 
 ![pyrsia architecture](../assets/pyrsia-architecture.svg)
 
-v0.0.2
+arch
+
+![pyrsia architecture](../assets/images/arch.png)
+
+v0.0.3
+
 
 The result is a high-available peer-to-peer network of trusted open source build artifacts that no single entity can control.
 
