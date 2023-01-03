@@ -1,8 +1,6 @@
 ## Inspect the Pyrsia transparency log
 
-Now, let's take a look at the transparency logs.
-
-Next, let's take the alpine:3.16.2 example again:
+Now, let's take a look at the transparency logs for `alpine:3.16.2`:
 
 ```
 pyrsia inspect-log docker --image alpine:3.16.2

@@ -4,7 +4,7 @@ While it's Pyrsia intention to build and publish all official Docker images, the
 
 When you pull an image that is unknown, your local Pyrsia node will send a build request to one of the authorized build nodes, which schedules a build for the given Docker image.
 
-![request a build](./assets/request-a-build.svg)
+![request a build](./assets/images/request-a-build.png)
 
 Your Docker client will receive an error from Pyrsia at that point (your local Docker client might fall back to Docker Hub), but when the build is finished and the other build nodes inside the Pyrsia network reached consensus, your node will receive updated transparency logs via the blockchain and you will be able to pull the image from the Pyrsia network.
 
