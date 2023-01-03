@@ -1,0 +1,27 @@
+{
+    "title": "NATS.io",
+    "description": "Connective Technology for Adaptive Edge & Distributed Systems",
+    "details": {
+      "intro": {
+        "title": "Introduction to NATS",
+        "text": "intro.md",
+        "foreground": "assets/scripts/intro_foreground.sh"
+      },
+      "steps": [{
+            "title": "TODO",
+            "text": "step1.md",
+            "background": "assets/scripts/step1_background.sh"
+        }],
+      "finish": {
+        "text": "finish.md",
+        "background": "assets/scripts/finish_background.sh"
+      },
+      "assets": {
+        "host01": [ {"file": "PLACEHOLDER", "target": "~" } ]
+      }
+    },
+    "backend": {
+      "imageid": "kubernetes-kubeadm-1node"
+    }
+}
+  
