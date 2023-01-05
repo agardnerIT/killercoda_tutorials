@@ -28,7 +28,7 @@ nats sub test
 You should see output similar to this:
 
 ```
-my-nats-box-6b696cf559-x4c8r:~# 06:43:36 Subscribing on test
+06:43:36 Subscribing on test
 ```{{}}
 
 Open a new terminal window by clicking the <kbd>+</kbd> button. Connect again to the `nats-box` and publish a message to the `test` subject:
@@ -90,16 +90,24 @@ It should show something like this (3 subscribers are active to 3 subjects):
   215     6 root     T     1600   0%   0   0% top
 ```{{}}
 
-Open yet another terminal and publish a dog name. As expected, it is only received by the listeners on `names.dog`:
+Change back to Tab 1 (the terminal subscribing to the `test` subject) and press `ctrl + c` to stop listening on `test`.
 
+
+Now publish a dog name to `names.dog`:
 ```
-kubectl exec -n nats -it deployment/my-nats-box -- /bin/sh -l
 nats pub names.dog Lassie
-```{{exec}}
+```{{exec interrupt}}
 
 You should see:
 
 ```
 # nats pub names.dog Lassie
 07:12:04 Published 6 bytes to "names.dog"
+```{{}}
+
+and in the Tab 3 (the window subscribing to `names.dog`) you should see:
+
+```
+[#1] Received on "names.dog"
+Lassie
 ```{{}}
