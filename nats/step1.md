@@ -16,13 +16,13 @@ Enough reading, it is time to test out NATS.
 First, connect to the `nats-box` (this is a handy wrapper useful for quick demos). `nats-box` comes preconfigured with the CLI tools you need.
 
 ```
-kubectl exec -n default -it deployment/my-nats-box -- /bin/sh -l
+kubectl exec -n nats -it deployment/my-nats-box -- /bin/sh -l
 ```{{exec}}
 
-Now simulate a subscriber and subscribe to the `test` subject and keep the connection alive in the background (using the `&` character):
+Now simulate a subscriber and subscribe to the `test` subject:
 
 ```
-nats sub test &
+nats sub test
 ```{{exec}}
 
 You should see output similar to this:
@@ -31,18 +31,24 @@ You should see output similar to this:
 my-nats-box-6b696cf559-x4c8r:~# 06:43:36 Subscribing on test
 ```{{}}
 
-Finally, simulate a publisher and publish a message onto the `test` subject:
+Open a new terminal window by clicking the <kbd>+</kbd> button. Connect again to the `nats-box` and publish a message to the `test` subject:
+
 ```
+kubectl exec -n nats -it deployment/my-nats-box -- /bin/sh -l
 nats pub test "hello world"
 ```{{exec}}
 
-You should see output similar to this:
+You should see:
+
+```
+06:44:48 Published 11 bytes to "test"
+```{{}}
+
+Flick back to Tab 1 and you should see output similar to this:
 
 ```
 [#1] Received on "test"
 hello world
-
-06:44:48 Published 11 bytes to "test"
 ```{{}}
 
 ## Bonus: Experiment with Subjects
@@ -51,25 +57,27 @@ NATS recommends building subjects using dot separators eg: `io.nats.cities` or `
 
 A subject "exists" as soon as it has a subscriber (there is no implicit "create subject" command).
 
-Try subscribing to a new subject, for example: `names.dog`:
+Open a new terminal, connect to `nats-box` and subscribe to a new subject, for example: `names.dog`:
 
 ```
-nats sub names.dog &
+kubectl exec -n nats -it deployment/my-nats-box -- /bin/sh -l
+nats sub names.dog
 ```{{exec}}
 
-Next, subscribe to a different subject called: `names.cat`:
+Open another new terminal and subscribe to a different subject called: `names.cat`:
 
 ```
-nats sub names.cat &
+kubectl exec -n nats -it deployment/my-nats-box -- /bin/sh -l
+nats sub names.cat
 ```{{exec}}
 
-> Check your subscriptions at anytime by running `top`
+> Check your subscriptions at anytime by opening a terminal and running `top`
 
 ```
 top
 ```{{exec}}
 
-Should show something like this (3 subscribers are active to 3 subjects):
+It should show something like this (3 subscribers are active to 3 subjects):
 
 ```
   PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND
@@ -82,18 +90,16 @@ Should show something like this (3 subscribers are active to 3 subjects):
   215     6 root     T     1600   0%   0   0% top
 ```{{}}
 
-Publish a dog name and, as expected, it is only received by the listeners on `names.dog`:
+Open yet another terminal and publish a dog name. As expected, it is only received by the listeners on `names.dog`:
 
 ```
+kubectl exec -n nats -it deployment/my-nats-box -- /bin/sh -l
 nats pub names.dog Lassie
-```{{exec interrupt}}
+```{{exec}}
 
 You should see:
 
 ```
 # nats pub names.dog Lassie
-[#1] Received on "names.dog"
-Lassie
-
 07:12:04 Published 6 bytes to "names.dog"
 ```{{}}
