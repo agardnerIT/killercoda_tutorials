@@ -71,27 +71,7 @@ kubectl exec -n nats -it deployment/my-nats-box -- /bin/sh -l
 nats sub names.cat
 ```{{exec}}
 
-> Check your subscriptions at anytime by opening a terminal and running `top`
-
-```
-top
-```{{exec}}
-
-It should show something like this (3 subscribers are active to 3 subjects):
-
-```
-  PID  PPID USER     STAT   VSZ %VSZ CPU %CPU COMMAND
-  230     6 root     S     716m  36%   0   0% nats sub names.cat
-  223     6 root     S     716m  36%   0   0% nats sub names.dog
-  217     6 root     S     716m  36%   0   0% nats sub test
-    6     0 root     S     1696   0%   0   0% /bin/sh -l
-  236     6 root     R     1612   0%   0   0% top
-    1     0 root     S     1604   0%   0   0% tail -f /dev/null
-  215     6 root     T     1600   0%   0   0% top
-```{{}}
-
 Change back to Tab 1 (the terminal subscribing to the `test` subject) and press `ctrl + c` to stop listening on `test`.
-
 
 Now publish a dog name to `names.dog`:
 ```
