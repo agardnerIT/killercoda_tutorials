@@ -1,0 +1,36 @@
+{
+    "title": "Pyrsia Decentralized Package Network Demo",
+    "description": "Hands on demo for the Pyrsia decentralized package network",
+    "details": {
+      "intro": {
+        "title": "Introduction to Pyrsia",
+        "text": "intro.md",
+        "foreground": "assets/scripts/intro_foreground.sh",
+        "background": "assets/scripts/intro_background.sh"
+      },
+      "steps": [{
+            "title": "Pull an Image with Pyrsia",
+            "text": "step1.md",
+            "background": "assets/scripts/step1_background.sh"
+        }, {
+          "title": "Inspect Blockchain Transparency Logs",
+          "text": "step2.md",
+          "background": "assets/scripts/step2_background.sh"
+        }, {
+          "title": "Request a Build",
+          "text": "step3.md",
+          "background": "assets/scripts/step3_background.sh"
+        }],
+      "finish": {
+        "text": "finish.md",
+        "background": "assets/scripts/finish_background.sh"
+      },
+      "assets": {
+        "host01": [ {"file": "PLACEHOLDER", "target": "~" } ]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+}
+  
