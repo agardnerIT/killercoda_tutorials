@@ -17,3 +17,5 @@ pyrsia build docker --image alpine:3.16.3
 ```{{exec}}
 
 This will send the build request to one of the authorized build nodes, which will start a build. When consensus about that build is reached, it will be available in the transparency logs and can be retrieved by all nodes in the network.
+
+Read more about [Pyrsia Authority Nodes](https://pyrsia.io/blog/2023/01/05/authority_nodes) and [why Pyrsia uses a blockchain and how a blockchain does not equal cryptocurrency / gas / fees](https://pyrsia.io/blog/2022/10/10/why-does-pyrsia-use-a-blockchain).
