@@ -1,6 +1,6 @@
 ## Request a Build
 
-While it's Pyrsia intention to build and publish all official Docker images, there is a possibility that a Docker image is not yet built/available.
+While it's Pyrsia intention to build and publish all official Docker images, there is a possibility that a Docker image is not yet built /available.
 
 When you pull an image that is unknown, your local Pyrsia node will send a build request to one of the authorized build nodes, which schedules a build for the given Docker image.
 
