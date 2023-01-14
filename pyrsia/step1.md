@@ -59,7 +59,7 @@ cat /var/log/syslog | grep -e "pyrsia::docker::v2::handlers::manifests" -e "pyrs
 You will see something like this:
 
 ```
-DEBUG pyrsia::docker::v2::handlers::manifests > Fetching manifest for alpine with tag: 3.16
+DEBUG pyrsia::docker::v2::handlers::manifests > Fetching manifest for alpine with tag: 3.16.2
 INFO  pyrsia::artifact_service::storage       > An artifact is being pulled from the artifact manager b0ed9f25-f322-47ef-8dac-03154209cfcf
 ```{{}}
 

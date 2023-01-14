@@ -24,9 +24,6 @@
       "finish": {
         "text": "finish.md",
         "background": "assets/scripts/finish_background.sh"
-      },
-      "assets": {
-        "host01": [ {"file": "PLACEHOLDER", "target": "~" } ]
       }
     },
     "backend": {
