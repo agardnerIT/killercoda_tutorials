@@ -16,7 +16,7 @@ cat output.json
 
 Dive can be used in a CI process where thresholds are provided and if breached, the image is set to failed.
 
-Three metrics are supported: `lowestEfficiency`, `highestWastedBytes` and `highestUserWasterPercentage`
+Three metrics are supported: `lowestEfficiency`, `highestWastedBytes` and `highestUserWastedPercentage`
 
 Create a file called `.dive-ci`
 ```
