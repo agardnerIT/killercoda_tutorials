@@ -1,0 +1,23 @@
+{
+    "title": "Ortelius Demo (WIP)",
+    "description": "Work in progress. Expect this to be broken.",
+    "details": {
+      "intro": {
+        "title": "Welcome to Ortelius",
+        "text": "intro.md",
+        "foreground": "assets/scripts/intro_foreground.sh"
+      },
+      "steps": [
+        {
+          "title": "Step 1",
+          "text": "step1.md"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "kubernetes-kubeadm-1node"
+    }
+  }
