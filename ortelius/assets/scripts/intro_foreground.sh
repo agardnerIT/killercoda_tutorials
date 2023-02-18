@@ -5,6 +5,7 @@ DEBUG_VERSION=1
 K3D_VERSION=v5.3.0
 KUBECTL_VERSION=v1.22.6
 POD_WAIT_TIMEOUT_MINS=10
+ORTELIUS_VERSION=10.0.97
 
 # ----------------------------------------#
 #      Step 1/11: Installing Kubectl      #
