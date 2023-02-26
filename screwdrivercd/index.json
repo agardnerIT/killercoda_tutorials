@@ -1,0 +1,20 @@
+{
+    "title": "Screwdriver WIP",
+    "description": "Screwdriver WIP",
+    "details": {
+      "intro": {
+        "title": "Intro",
+        "text": "intro.md"
+      },
+      "steps": [{
+            "title": "Step 1",
+            "text": "step1.md"
+        }],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+}
