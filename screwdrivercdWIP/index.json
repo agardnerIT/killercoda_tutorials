@@ -1,22 +1,21 @@
 {
-    "title": "Screwdriver CD: WIP",
-    "description": "Work in progress. Expect this to be broken.",
-    "details": {
-      "intro": {
-        "title": "Introduction to Screwdriver",
-        "text": "intro.md",
-        "foreground": "assets/scripts/intro_foreground.sh"
-      },
-      "steps": [{
-            "title": "Step 1...",
-            "text": "step1.md"
-        }],
-      "finish": {
-        "text": "finish.md"
-      }
-    },
-    "backend": {
-      "imageid": "ubuntu"
-    }
+	"title": "Screwdriver CD: WIP",
+	"description": "Work in progress. Expect this to be broken.",
+	"details": {
+		"intro": {
+			"title": "Introduction to Screwdriver",
+			"text": "intro.md",
+			"foreground": "assets/scripts/intro_foreground.sh"
+		},
+		"steps": [{
+			"title": "Step 1...",
+			"text": "step1.md"
+		}],
+		"finish": {
+			"text": "finish.md"
+		}
+	},
+	"backend": {
+		"imageid": "ubuntu"
+	}
 }
-  
