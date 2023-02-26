@@ -22,3 +22,7 @@ Now start Screwdriver:
 ```
 docker-compose -p screwdriver up -d
 ```{{exec}}
+
+## Open UI
+
+[Click here to open Screwdriver...]({{TRAFFIC_HOST1_9001}})
