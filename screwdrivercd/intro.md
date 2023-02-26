@@ -1,3 +1,5 @@
+This is a work in progress. Expect a full tutorial / walkthrough here.
+
 Wait until prompted then enter the Git provider you want to use.
 
 You will then be prompted for your `client ID` and `client secret`.
