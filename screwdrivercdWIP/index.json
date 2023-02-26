@@ -1,5 +1,5 @@
 {
-	"title": "Screwdriver CD: WIP",
+	"title": "Screwdriver CD (WIP)",
 	"description": "Work in progress. Expect this to be broken.",
 	"details": {
 		"intro": {
@@ -8,7 +8,7 @@
 			"foreground": "assets/scripts/intro_foreground.sh"
 		},
 		"steps": [{
-			"title": "Step 1...",
+			"title": "Step 1",
 			"text": "step1.md"
 		}],
 		"finish": {
