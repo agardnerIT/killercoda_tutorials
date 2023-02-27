@@ -1,9 +1,7 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG_VERSION=1
-K3D_VERSION=v5.3.0
-KUBECTL_VERSION=v1.22.6
+DEBUG_VERSION=2
 GH_CLI_VERSION=2.23.0
 KEPTN_VERSION=1.2.0
 JOB_EXECUTOR_SERVICE_VERSION=0.3.0
@@ -14,7 +12,6 @@ POD_WAIT_TIMEOUT_MINS=10
 
 helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz \
 -n keptn --create-namespace \
---set=apiGatewayNginx.type=LoadBalancer \
 --set mongo.resources.requests.cpu=0 \
 --set mongo.resources.requests.memory=0 \
 --set nats.nats.resources.requests.cpu=0 \
@@ -69,3 +66,8 @@ curl -sL https://get.keptn.sh | KEPTN_VERSION=$KEPTN_VERSION bash
 wget -q https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.deb
 chmod +x gh_${GH_CLI_VERSION}_linux_amd64.deb
 dpkg -i gh_${GH_CLI_VERSION}_linux_amd64.deb
+
+#################################
+# 🎉 Installation Complete 🎉
+# Please proceed...
+#################################
