@@ -1,10 +1,11 @@
 {
-    "title": "Tekton WIP",
-    "description": "Tekton WIP",
+    "title": "Screwdriver WIP",
+    "description": "Screwdriver WIP",
     "details": {
       "intro": {
         "title": "Intro",
-        "text": "intro.md"
+        "text": "intro.md",
+        "foreground": "assets/scripts/intro_foreground.sh"
       },
       "steps": [{
             "title": "Step 1",
@@ -18,4 +19,3 @@
       "imageid": "ubuntu"
     }
 }
-  
