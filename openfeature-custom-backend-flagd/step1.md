@@ -6,4 +6,4 @@ git remote set-url origin {{TRAFFIC_HOST1_3000}}/openfeature/flags
 git push
 ```{{exec}}
 
-[Open Gitea]({{TRAFFIC_HOST1_3000}})
+[Open Gitea]({{TRAFFIC_HOST1_3000}}/user/login)
