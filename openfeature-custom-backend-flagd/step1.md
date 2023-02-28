@@ -22,7 +22,6 @@ ENABLE_PUSH_CREATE_USER = true
 DEFAULT_PUSH_CREATE_PRIVATE = false
 [security]
 INSTALL_LOCK = true
-
 EOF
 chown -R git:git /etc/gitea
 ```{{exec}}
