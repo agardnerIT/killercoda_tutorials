@@ -1,5 +1,17 @@
 GITEA_VERSION=1.19
 TEA_CLI_VERSION=0.9.2
+FLAGD_VERSION=0.3.7
+
+# Download and install flagd
+wget -O flagd.tar.gz https://github.com/open-feature/flagd/releases/download/v${FLAGD_VERSION}/flagd_${FLAGD_VERSION}_Linux_x86_64.tar.gz
+tar -xf flagd.tar.gz
+chmod +x flagd
+mv flagd /usr/local/bin
+
+# Download and install 'gitea' CLI: 'tea'
+wget -O tea https://dl.gitea.com/tea/${TEA_CLI_VERSION}/tea-${TEA_CLI_VERSION}-linux-amd64
+chmod +x tea
+mv tea /usr/local/bin
 
 #################
 # Install postgresql for Gitea
@@ -36,10 +48,15 @@ adduser \
    --home /home/git \
    git
 
+# Configure git for 'ubuntu' and 'git' users
+sudo -u git git config --global user.email "me@openfeature.dev"
+sudo -u git git config --global user.name "OpenFeature"
+
 # Download 'gitea'
 wget -O gitea https://dl.gitea.com/gitea/${GITEA_VERSION}/gitea-${GITEA_VERSION}-linux-amd64
 chmod +x gitea
 mv gitea /usr/local/bin
+chown git:git
 
 # Set up directory structure for 'gitea'
 mkdir -p /var/lib/gitea/{custom,data,log}
@@ -50,139 +67,405 @@ chown git:git /etc/gitea
 chmod 770 /etc/gitea
 
 # Create systemd service for 'gitea'
+# Ref: https://github.com/go-gitea/gitea/blob/main/contrib/systemd/gitea.service
 cat <<EOF > /etc/systemd/system/gitea.service
 [Unit]
 Description=Gitea (Git with a cup of tea)
 After=syslog.target
 After=network.target
-###
-# Don't forget to add the database service dependencies
-###
 
 Wants=postgresql.service
 After=postgresql.service
-###
-# If using socket activation for main http/s
-###
-#
-#After=gitea.main.socket
-#Requires=gitea.main.socket
-#
-###
-# (You can also provide gitea an http fallback and/or ssh socket too)
-#
-# An example of /etc/systemd/system/gitea.main.socket
-###
-##
-## [Unit]
-## Description=Gitea Web Socket
-## PartOf=gitea.service
-##
-## [Socket]
-## Service=gitea.service
-## ListenStream=<some_port>
-## NoDelay=true
-##
-## [Install]
-## WantedBy=sockets.target
-##
-###
 
 [Service]
-# Uncomment the next line if you have repos with lots of files and get a HTTP 500 error because of that
-# LimitNOFILE=524288:524288
 RestartSec=2s
 Type=simple
 User=git
 Group=git
 WorkingDirectory=/var/lib/gitea/
-# If using Unix socket: tells systemd to create the /run/gitea folder, which will contain the gitea.sock file
-# (manually creating /run/gitea doesn't work, because it would not persist across reboots)
-#RuntimeDirectory=gitea
 ExecStart=/usr/local/bin/gitea web --config /etc/gitea/app.ini
 Restart=always
 Environment=USER=git HOME=/home/git GITEA_WORK_DIR=/var/lib/gitea
-# If you install Git to directory prefix other than default PATH (which happens
-# for example if you install other versions of Git side-to-side with
-# distribution version), uncomment below line and add that prefix to PATH
-# Don't forget to place git-lfs binary on the PATH below if you want to enable
-# Git LFS support
-#Environment=PATH=/path/to/git/bin:/bin:/sbin:/usr/bin:/usr/sbin
-# If you want to bind Gitea to a port below 1024, uncomment
-# the two values below, or use socket activation to pass Gitea its ports as above
-###
-#CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-#AmbientCapabilities=CAP_NET_BIND_SERVICE
-###
-# In some cases, when using CapabilityBoundingSet and AmbientCapabilities option, you may want to
-# set the following value to false to allow capabilities to be applied on gitea process. The following
-# value if set to true sandboxes gitea service and prevent any processes from running with privileges
-# in the host user namespace.
-###
-#PrivateUsers=false
-###
 
 [Install]
 WantedBy=multi-user.target
 EOF
 
+# MOVED TO INTERACTIVE DUE TO EXT. LB INPUT
 # Preconfigure 'gitea'
 # Ref: https://github.com/go-gitea/gitea/blob/main/custom/conf/app.example.ini
-cat <<EOF > /etc/gitea/app.ini
-APP_NAME = "Gitea: Git with a cup of tea"
-RUN_USER = "git"
-[server]
-PROTOCOL = "http"
-DOMAIN = "https://8748a7e9-c8dc-4383-bf14-73eb63363e15-10-244-4-120-3000.papa.r.killercoda.com"
-ROOT_URL = "https://8748a7e9-c8dc-4383-bf14-73eb63363e15-10-244-4-120-3000.papa.r.killercoda.com"
-HTTP_ADDR = "0.0.0.0"
-HTTP_PORT = "3000"
-[database]
-DB_TYPE = "postgres"
-HOST = "0.0.0.0:5432"
-NAME = "giteadb"
-USER = "gitea"
-PASSWD = "gitea"
-[security]
-INSTALL_LOCK = true
-EOF
-chown -R git:git /etc/gitea
+# cat <<EOF > /etc/gitea/app.ini
+# APP_NAME = "Gitea: Git with a cup of tea"
+# RUN_USER = "git"
+# [server]
+# PROTOCOL = "http"
+# DOMAIN = "https://1bf76cde-c9bd-41f9-a0e9-34018429b4b6-10-244-3-224-3000.papa.r.killercoda.com/"
+# ROOT_URL = "https://1bf76cde-c9bd-41f9-a0e9-34018429b4b6-10-244-3-224-3000.papa.r.killercoda.com/"
+# HTTP_ADDR = "0.0.0.0"
+# HTTP_PORT = "3000"
+# [database]
+# DB_TYPE = "postgres"
+# HOST = "0.0.0.0:5432"
+# NAME = "giteadb"
+# USER = "gitea"
+# PASSWD = "gitea"
+# [security]
+# INSTALL_LOCK = true
+# EOF
+# chown -R git:git /etc/gitea
 
-# Start 'gitea' service
-systemctl start gitea
+# MOVED TO INTERACTIVE
+# # Start 'gitea' service
+# systemctl start gitea
 
-# Initialise 'gitea' database
-# Note: 'gitea' cannot run as root so first login as 'git' user
+# MOVED TO INTERACTIVE
+# # Initialise 'gitea' database
+# # Note: 'gitea' cannot run as root so first login as 'git' user
+# su -l git
+# gitea migrate -c=/etc/gitea/app.ini
+
+# MOVED TO INTERACTIVE
+# # Create a 'gitea' user called 'openfeature'
+# # This user is not forced to change their password
+# gitea admin user create \
+#   --username=openfeature \
+#   --password=openfeature \
+#   --email=me@openfeature.dev \
+#   --must-change-password=false \
+#   -c=/etc/gitea/app.ini
+
+# MOVED TO INTERACTIVE
+# # Generate an access token with 'repo' scope
+# # For use 'openfeature'
+# # The '--raw' flag promises only to output the token
+# # But it seems to ALSO output additional lines
+# # So pipe to a temporary file
+# # Then immediately read the last line (token) into an env_var
+# # And immediately delete the file
+# gitea admin user generate-access-token \
+#   --username=openfeature \
+#   --scopes=repo \
+#   -c=/etc/gitea/app.ini \
+#   --raw > /tmp/output.log
+# ACCESS_TOKEN=$(tail -n 1 /tmp/output.log)
+# rm /tmp/output.log
+# echo $ACCESS_TOKEN
+
+# Create repo
 su -l git
-gitea migrate -c=/etc/gitea/app.ini
+cd ~
+git init flags
+cd flags
+cat <<EOF > flags.json
+{
+  "flags": {
+    "myBoolFlag": {
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "on"
+    },
+    "myStringFlag": {
+      "state": "ENABLED",
+      "variants": {
+        "key1": "val1",
+        "key2": "val2"
+      },
+      "defaultVariant": "key1"
+    },
+    "myFloatFlag": {
+      "state": "ENABLED",
+      "variants": {
+        "one": 1.23,
+        "two": 2.34
+      },
+      "defaultVariant": "one"
+    },
+    "myIntFlag": {
+      "state": "ENABLED",
+      "variants": {
+        "one": 1,
+        "two": 2
+      },
+      "defaultVariant": "one"
+    },
+    "myObjectFlag": {
+      "state": "ENABLED",
+      "variants": {
+        "object1": {
+          "key": "val"
+        },
+        "object2": {
+          "key": true
+        }
+      },
+      "defaultVariant": "object1"
+    },
+    "isColorYellow": {
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off",
+      "targeting": {
+        "if": [
+          {
+            "==": [
+              {
+                "var": [
+                  "color"
+                ]
+              },
+              "yellow"
+            ]
+          },
+          "on",
+          "off"
+        ]
+      }
+    },
+    "fibAlgo": {
+      "variants": {
+        "recursive": "recursive",
+        "memo": "memo",
+        "loop": "loop",
+        "binet": "binet"
+      },
+      "defaultVariant": "recursive",
+      "state": "ENABLED",
+      "targeting": {
+        "if": [
+          {
+            "$ref": "emailWithFaas"
+          }, "binet", null
+        ]
+      }
+    },
+    "headerColor": {
+      "variants": {
+        "red": "#FF0000",
+        "blue": "#0000FF",
+        "green": "#00FF00",
+        "yellow": "#FFFF00"
+      },
+      "defaultVariant": "red",
+      "state": "ENABLED",
+      "targeting": {
+        "if": [
+          {
+            "$ref": "emailWithFaas"
+          },
+          {
+            "fractionalEvaluation": [
+              "email",
+              [
+                "red",
+                25
+              ],
+              [
+                "blue",
+                25
+              ],
+              [
+                "green",
+                25
+              ],
+              [
+                "yellow",
+                25
+              ]
+            ]
+          }, null
+        ]
+      }
+    }
+  },
+  "$evaluators": {
+    "emailWithFaas": {
+      "in": ["@faas.com", {
+        "var": ["email"]
+      }]
+    }
+  }
+}
+EOF
 
-# Create a 'gitea' user called 'openfeature'
-
-gitea admin user create \
-  --username=openfeature \
-  --password=openfeature \
-  --email=me@openfeature.dev \
-  --must-change-password=false \
-  -c /etc/gitea/app.ini
-exit
-
-# Download and install flagd
-wget -O flagd.tar.gz https://github.com/open-feature/flagd/releases/download/v0.3.7/flagd_0.3.7_Linux_x86_64.tar.gz
-tar -xf flagd.tar.gz
-chmod +x flagd
-mv flagd /usr/local/bin
-
-# Download and install 'gitea' CLI: 'tea'
-wget -O tea https://dl.gitea.com/tea/${TEA_CLI_VERSION}/tea-${TEA_CLI_VERSION}-linux-amd64
-chmod +x tea
-mv tea /usr/local/bin
-
-# Authenticate CLI
 tea login add \
   --name=openfeature \
   --user=openfeature \
   --password=openfeature \
-  --url=https://8748a7e9-c8dc-4383-bf14-73eb63363e15-10-244-4-120-3000.papa.r.killercoda.com
+  --url=https://fbd25e58-623b-45ff-b2e2-be6857cb6750-10-244-4-162-3000.papa.r.killercoda.com/ \
+  --token=$ACCESS_TOKEN
 
-# Create repo
+# # Uneccessary due to above creation
+# tea repo create \
+#   --name=flags \
+#   --init
 
+# tea clone openfeature/flags
+# cd flags
+# cat <<EOF > flags.json
+# {
+#   "flags": {
+#     "myBoolFlag": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "on": true,
+#         "off": false
+#       },
+#       "defaultVariant": "on"
+#     },
+#     "myStringFlag": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "key1": "val1",
+#         "key2": "val2"
+#       },
+#       "defaultVariant": "key1"
+#     },
+#     "myFloatFlag": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "one": 1.23,
+#         "two": 2.34
+#       },
+#       "defaultVariant": "one"
+#     },
+#     "myIntFlag": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "one": 1,
+#         "two": 2
+#       },
+#       "defaultVariant": "one"
+#     },
+#     "myObjectFlag": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "object1": {
+#           "key": "val"
+#         },
+#         "object2": {
+#           "key": true
+#         }
+#       },
+#       "defaultVariant": "object1"
+#     },
+#     "isColorYellow": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "on": true,
+#         "off": false
+#       },
+#       "defaultVariant": "off",
+#       "targeting": {
+#         "if": [
+#           {
+#             "==": [
+#               {
+#                 "var": [
+#                   "color"
+#                 ]
+#               },
+#               "yellow"
+#             ]
+#           },
+#           "on",
+#           "off"
+#         ]
+#       }
+#     },
+#     "fibAlgo": {
+#       "variants": {
+#         "recursive": "recursive",
+#         "memo": "memo",
+#         "loop": "loop",
+#         "binet": "binet"
+#       },
+#       "defaultVariant": "recursive",
+#       "state": "ENABLED",
+#       "targeting": {
+#         "if": [
+#           {
+#             "$ref": "emailWithFaas"
+#           }, "binet", null
+#         ]
+#       }
+#     },
+#     "headerColor": {
+#       "variants": {
+#         "red": "#FF0000",
+#         "blue": "#0000FF",
+#         "green": "#00FF00",
+#         "yellow": "#FFFF00"
+#       },
+#       "defaultVariant": "red",
+#       "state": "ENABLED",
+#       "targeting": {
+#         "if": [
+#           {
+#             "$ref": "emailWithFaas"
+#           },
+#           {
+#             "fractionalEvaluation": [
+#               "email",
+#               [
+#                 "red",
+#                 25
+#               ],
+#               [
+#                 "blue",
+#                 25
+#               ],
+#               [
+#                 "green",
+#                 25
+#               ],
+#               [
+#                 "yellow",
+#                 25
+#               ]
+#             ]
+#           }, null
+#         ]
+#       }
+#     }
+#   },
+#   "$evaluators": {
+#     "emailWithFaas": {
+#       "in": ["@faas.com", {
+#         "var": ["email"]
+#       }]
+#     }
+#   }
+# }
+# EOF
+# # username: openfeature
+# # password: openfeature
+# git add -A && git commit -m "add flags" && git push
+
+
+# flagd start \
+#   --port 8013 \
+#   --uri https://fbd25e58-623b-45ff-b2e2-be6857cb6750-10-244-4-162-3000.papa.r.killercoda.com/openfeature/foo/raw/branch/main/flags.json
+
+
+# # Open a new terminal
+# curl -X POST http://localhost:8013/schema.v1.Service/ResolveString \
+#   -H "Content-Type: application/json" \
+#   -d '{"flagKey": "headerColor", "context": {}}'
+
+# curl -X POST http://localhost:8013/schema.v1.Service/ResolveString \
+#   -H "Content-Type: application/json" \
+#   -d '{"flagKey": "headerColor", "context": { "email": "user@faas.com"}}'
+
+# BACKUP
+# tea login add \
+#   --name=openfeature \
+#   --user=openfeature \
+#   --password=openfeature \
+#   --url={{TRAFFIC_HOST1_3000}} \
+#   --token=$ACCESS_TOKEN
