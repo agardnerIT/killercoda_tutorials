@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEBUG_VERSION=2
+DEBUG_VERSION=3
 GITEA_VERSION=1.19
 TEA_CLI_VERSION=0.9.2
 FLAGD_VERSION=0.3.7
@@ -108,17 +108,9 @@ INSTALL_LOCK = true
 EOF
 chown -R git:git /etc/gitea
 
-
-echo "========================="
-echo "       GOT HERE 1    "
-echo "========================="
 # Set up gitea DB
 sudo -u postgres -H -- psql --command "CREATE ROLE gitea WITH LOGIN PASSWORD 'gitea';" > /dev/null 2>&1
 sudo -u postgres -H -- psql --command "CREATE DATABASE giteadb WITH OWNER gitea TEMPLATE template0 ENCODING UTF8 LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';" > /dev/null 2>&1
-
-echo "========================="
-echo "    GOT HERE 2     "
-echo "========================="
 
 # Start gitea
 systemctl start gitea
