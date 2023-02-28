@@ -32,7 +32,7 @@ chown -R git:git /etc/gitea
 Start up and initialise Gitea:
 ```
 systemctl start gitea
-sudo -u git gitea migrate -c=/etc/gitea/app.ini
+
 ```{{exec}}
 
 ## Create Gitea User
@@ -68,14 +68,11 @@ tea login add \
 
 ```
 cd ~
-tea repo create --name=flags --init=true
+tea repo create --name=flags --init=false
 git clone https://github.com/agardnerIT/template
 cd ~/template
-git remote -v {{TRAFFIC_HOST1_3000}}/openfeature/flags
-```{{exec}}
-
-```
-git add -A && git commit -m "add flags" && git push
+git remote set-url origin {{TRAFFIC_HOST1_3000}}/openfeature/flags
+git push
 ```{{exec}}
 
 [Open Gitea]({{TRAFFIC_HOST1_3000}})
