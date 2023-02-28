@@ -68,6 +68,12 @@ tea login add \
 
 ```
 cd ~
-tea create repo --name=flags --init=true
-tea clone openfeature/flags
+tea repo create --name=flags --init=true
+git clone https://github.com/agardnerIT/template
+cd ~/template
+git remote -v {{TRAFFIC_HOST1_3000}}/openfeature/flags
+```{{exec}}
+
+```
+git add -A && git commit -m "add flags" && git push
 ```{{exec}}
