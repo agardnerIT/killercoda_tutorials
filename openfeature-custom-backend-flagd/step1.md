@@ -77,3 +77,5 @@ git remote -v {{TRAFFIC_HOST1_3000}}/openfeature/flags
 ```
 git add -A && git commit -m "add flags" && git push
 ```{{exec}}
+
+[Open Gitea]({{TRAFFIC_HOST1_3000}})
