@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DEBUG_VERSION=2
 GITEA_VERSION=1.19
 TEA_CLI_VERSION=0.9.2
@@ -118,8 +120,13 @@ echo "========================="
 echo "    GOT HERE 2     "
 echo "========================="
 
+# Start gitea
 systemctl start gitea
+# Migrate the DB to create all required tables and config
+sudo -u git gitea migrate -c=/etc/gitea/app.ini 
 
+# Create a user called 'openfeature'
+# With password 'openfeature'
 sudo -u git gitea admin user create \
    --username=openfeature \
    --password=openfeature \
@@ -135,9 +142,19 @@ sudo -u git gitea admin user generate-access-token \
 
 ACCESS_TOKEN=$(tail -n 1 /tmp/output.log)
 
+# Authenticate the 'tea' CLI
 tea login add \
    --name=openfeature \
    --user=openfeature \
    --password=openfeature \
    --url=http://0.0.0.0:3000 \
    --token=$ACCESS_TOKEN > /dev/null 2>&1
+
+# Create an empty repo called 'flags'
+# Clone the template repo
+cd ~
+tea repo create --name=flags --init=false
+git clone https://github.com/agardnerIT/template
+
+# During the hands on in step1 we will take the template files and push them up to Gitea
+# This needs to be interactive because git remove needs the public URL
