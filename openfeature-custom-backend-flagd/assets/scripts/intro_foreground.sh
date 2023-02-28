@@ -56,7 +56,7 @@ sudo -u git git config --global user.name "OpenFeature"
 wget -O gitea https://dl.gitea.com/gitea/${GITEA_VERSION}/gitea-${GITEA_VERSION}-linux-amd64
 chmod +x gitea
 mv gitea /usr/local/bin
-chown git:git
+chown git:git /usr/local/bin/gitea
 
 # Set up directory structure for 'gitea'
 mkdir -p /var/lib/gitea/{custom,data,log}
@@ -111,6 +111,7 @@ EOF
 # PASSWD = "gitea"
 # [security]
 # INSTALL_LOCK = true
+
 # EOF
 # chown -R git:git /etc/gitea
 
@@ -151,154 +152,154 @@ EOF
 # rm /tmp/output.log
 # echo $ACCESS_TOKEN
 
-# Create repo
-su -l git
-cd ~
-git init flags
-cd flags
-cat <<EOF > flags.json
-{
-  "flags": {
-    "myBoolFlag": {
-      "state": "ENABLED",
-      "variants": {
-        "on": true,
-        "off": false
-      },
-      "defaultVariant": "on"
-    },
-    "myStringFlag": {
-      "state": "ENABLED",
-      "variants": {
-        "key1": "val1",
-        "key2": "val2"
-      },
-      "defaultVariant": "key1"
-    },
-    "myFloatFlag": {
-      "state": "ENABLED",
-      "variants": {
-        "one": 1.23,
-        "two": 2.34
-      },
-      "defaultVariant": "one"
-    },
-    "myIntFlag": {
-      "state": "ENABLED",
-      "variants": {
-        "one": 1,
-        "two": 2
-      },
-      "defaultVariant": "one"
-    },
-    "myObjectFlag": {
-      "state": "ENABLED",
-      "variants": {
-        "object1": {
-          "key": "val"
-        },
-        "object2": {
-          "key": true
-        }
-      },
-      "defaultVariant": "object1"
-    },
-    "isColorYellow": {
-      "state": "ENABLED",
-      "variants": {
-        "on": true,
-        "off": false
-      },
-      "defaultVariant": "off",
-      "targeting": {
-        "if": [
-          {
-            "==": [
-              {
-                "var": [
-                  "color"
-                ]
-              },
-              "yellow"
-            ]
-          },
-          "on",
-          "off"
-        ]
-      }
-    },
-    "fibAlgo": {
-      "variants": {
-        "recursive": "recursive",
-        "memo": "memo",
-        "loop": "loop",
-        "binet": "binet"
-      },
-      "defaultVariant": "recursive",
-      "state": "ENABLED",
-      "targeting": {
-        "if": [
-          {
-            "$ref": "emailWithFaas"
-          }, "binet", null
-        ]
-      }
-    },
-    "headerColor": {
-      "variants": {
-        "red": "#FF0000",
-        "blue": "#0000FF",
-        "green": "#00FF00",
-        "yellow": "#FFFF00"
-      },
-      "defaultVariant": "red",
-      "state": "ENABLED",
-      "targeting": {
-        "if": [
-          {
-            "$ref": "emailWithFaas"
-          },
-          {
-            "fractionalEvaluation": [
-              "email",
-              [
-                "red",
-                25
-              ],
-              [
-                "blue",
-                25
-              ],
-              [
-                "green",
-                25
-              ],
-              [
-                "yellow",
-                25
-              ]
-            ]
-          }, null
-        ]
-      }
-    }
-  },
-  "$evaluators": {
-    "emailWithFaas": {
-      "in": ["@faas.com", {
-        "var": ["email"]
-      }]
-    }
-  }
-}
-EOF
+# # Create repo
+# su -l git
+# cd ~
+# git init flags
+# cd flags
+# cat <<EOF > flags.json
+# {
+#   "flags": {
+#     "myBoolFlag": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "on": true,
+#         "off": false
+#       },
+#       "defaultVariant": "on"
+#     },
+#     "myStringFlag": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "key1": "val1",
+#         "key2": "val2"
+#       },
+#       "defaultVariant": "key1"
+#     },
+#     "myFloatFlag": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "one": 1.23,
+#         "two": 2.34
+#       },
+#       "defaultVariant": "one"
+#     },
+#     "myIntFlag": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "one": 1,
+#         "two": 2
+#       },
+#       "defaultVariant": "one"
+#     },
+#     "myObjectFlag": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "object1": {
+#           "key": "val"
+#         },
+#         "object2": {
+#           "key": true
+#         }
+#       },
+#       "defaultVariant": "object1"
+#     },
+#     "isColorYellow": {
+#       "state": "ENABLED",
+#       "variants": {
+#         "on": true,
+#         "off": false
+#       },
+#       "defaultVariant": "off",
+#       "targeting": {
+#         "if": [
+#           {
+#             "==": [
+#               {
+#                 "var": [
+#                   "color"
+#                 ]
+#               },
+#               "yellow"
+#             ]
+#           },
+#           "on",
+#           "off"
+#         ]
+#       }
+#     },
+#     "fibAlgo": {
+#       "variants": {
+#         "recursive": "recursive",
+#         "memo": "memo",
+#         "loop": "loop",
+#         "binet": "binet"
+#       },
+#       "defaultVariant": "recursive",
+#       "state": "ENABLED",
+#       "targeting": {
+#         "if": [
+#           {
+#             "$ref": "emailWithFaas"
+#           }, "binet", null
+#         ]
+#       }
+#     },
+#     "headerColor": {
+#       "variants": {
+#         "red": "#FF0000",
+#         "blue": "#0000FF",
+#         "green": "#00FF00",
+#         "yellow": "#FFFF00"
+#       },
+#       "defaultVariant": "red",
+#       "state": "ENABLED",
+#       "targeting": {
+#         "if": [
+#           {
+#             "$ref": "emailWithFaas"
+#           },
+#           {
+#             "fractionalEvaluation": [
+#               "email",
+#               [
+#                 "red",
+#                 25
+#               ],
+#               [
+#                 "blue",
+#                 25
+#               ],
+#               [
+#                 "green",
+#                 25
+#               ],
+#               [
+#                 "yellow",
+#                 25
+#               ]
+#             ]
+#           }, null
+#         ]
+#       }
+#     }
+#   },
+#   "$evaluators": {
+#     "emailWithFaas": {
+#       "in": ["@faas.com", {
+#         "var": ["email"]
+#       }]
+#     }
+#   }
+# }
+# EOF
 
-tea login add \
-  --name=openfeature \
-  --user=openfeature \
-  --password=openfeature \
-  --url=https://fbd25e58-623b-45ff-b2e2-be6857cb6750-10-244-4-162-3000.papa.r.killercoda.com/ \
-  --token=$ACCESS_TOKEN
+# tea login add \
+#   --name=openfeature \
+#   --user=openfeature \
+#   --password=openfeature \
+#   --url=https://7349f003-be2a-45e8-a4d0-c79ef237ee1a-10-244-6-86-3000.saci.r.killercoda.com/ \
+#   --token=$ACCESS_TOKEN
 
 # # Uneccessary due to above creation
 # tea repo create \
