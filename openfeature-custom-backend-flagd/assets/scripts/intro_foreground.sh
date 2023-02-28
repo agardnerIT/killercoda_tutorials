@@ -30,10 +30,6 @@ sudo apt-get update
 # If you want a specific version, use 'postgresql-12' or similar instead of 'postgresql':
 sudo apt-get -y install postgresql
 
-# Set up gitea DB
-sudo -u postgres -H -- psql --command "CREATE ROLE gitea WITH LOGIN PASSWORD 'gitea';" > /dev/null 2>&1
-sudo -u postgres -H -- psql --command "CREATE DATABASE giteadb WITH OWNER gitea TEMPLATE template0 ENCODING UTF8 LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';" > /dev/null 2>&1
-
 # Add 'git' user
 adduser \
   --system \
@@ -110,4 +106,38 @@ INSTALL_LOCK = true
 EOF
 chown -R git:git /etc/gitea
 
+
+echo "========================="
+echo "       GOT HERE 1    "
+echo "========================="
+# Set up gitea DB
+sudo -u postgres -H -- psql --command "CREATE ROLE gitea WITH LOGIN PASSWORD 'gitea';" > /dev/null 2>&1
+sudo -u postgres -H -- psql --command "CREATE DATABASE giteadb WITH OWNER gitea TEMPLATE template0 ENCODING UTF8 LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';" > /dev/null 2>&1
+
+echo "========================="
+echo "    GOT HERE 2     "
+echo "========================="
+
 systemctl start gitea
+
+sudo -u git gitea admin user create \
+   --username=openfeature \
+   --password=openfeature \
+   --email=me@openfeature.dev \
+   --must-change-password=false \
+   -c=/etc/gitea/app.ini
+
+sudo -u git gitea admin user generate-access-token \
+  --username=openfeature \
+  --scopes=repo \
+  -c=/etc/gitea/app.ini \
+  --raw > /tmp/output.log
+
+ACCESS_TOKEN=$(tail -n 1 /tmp/output.log)
+
+tea login add \
+   --name=openfeature \
+   --user=openfeature \
+   --password=openfeature \
+   --url=http://0.0.0.0:3000 \
+   --token=$ACCESS_TOKEN > /dev/null 2>&1
