@@ -30,8 +30,8 @@ sudo apt-get update
 sudo apt-get -y install postgresql
 
 # Set up gitea DB
-sudo -u postgres -H -- psql --command "CREATE ROLE gitea WITH LOGIN PASSWORD 'gitea';"
-sudo -u postgres -H -- psql --command "CREATE DATABASE giteadb WITH OWNER gitea TEMPLATE template0 ENCODING UTF8 LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';"
+sudo -u postgres -H -- psql --command "CREATE ROLE gitea WITH LOGIN PASSWORD 'gitea';" > /dev/null 2>&1
+sudo -u postgres -H -- psql --command "CREATE DATABASE giteadb WITH OWNER gitea TEMPLATE template0 ENCODING UTF8 LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';" > /dev/null 2>&1
 
 # Add 'git' user
 adduser \
