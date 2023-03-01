@@ -146,7 +146,7 @@ tea login add \
 # Clone the template repo
 cd ~
 tea repo create --name=flags --init=false
-git clone https://github.com/agardnerIT/template
+git clone https://github.com/agardnerIT/OpenFeatureFlagsTemplate
 
 # ---------------------------------------------#
 #       🎉 Installation Complete 🎉           #
