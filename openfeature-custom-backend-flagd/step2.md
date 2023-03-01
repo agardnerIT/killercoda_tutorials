@@ -1,4 +1,4 @@
-[flagd](https://github.com/open-feature/flagd) is a tool created by OpenFeature to demonstrate feature flag usage. flagd is OpenFeature compliant and can read flag configurations from many sources including `files`, `http(s)` endpoints and `Kubernetes`.
+[flagd](https://github.com/open-feature/flagd) is a tool created by OpenFeature to demonstrate feature flag usage. flagd is OpenFeature compliant and can read flag configurations from many sources including `files`, `http(s)` endpoints and `kubernetes`.
 
 flagd reads a source of feature flags, interprets them and presents an OpenFeature compliant API endpoint that can be queried.
 

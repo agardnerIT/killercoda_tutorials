@@ -1,6 +1,6 @@
 We will now simulate what your application would do to retrieve a flag value.
 
-Open a new tab and run this command:
+Open a new tab (click the `+`{{}} icon near the top of the right hand panel) and run this command:
 
 ```
 curl -X POST {{TRAFFIC_HOST1_8013}}/schema.v1.Service/ResolveString \
@@ -14,15 +14,15 @@ This should return `red` because the `defaultVariant` is set to `red` in Git ([s
 
 Using GitOps, change the `defaultVariant` from `red` to `yellow`:
 
-Edit `~/template/flags.json` (or do it via the UI). Gitea username and password is `openfeature` for both.
-
-Line `91` should now look like this:
+Edit `~/template/flags.json`{{}} (or do it via the UI) then `git commit and git push`{{}}. Remember that the username and password is `openfeature` for both.
 
 ```
-      "defaultVariant": "yellow",
-```{{}}
+cd ~/template
+sed -i 's/"defaultVariant": "red"/"defaultVariant": "yellow"/g' ~/template/flags.json
+git add flags.json && git commit -m "update header color" && git push
+```
 
-Commit the changes.
+Line `91` should now be `"defaultVariant": "yellow",`
 
 ## Retrieve the Flag Value Again
 
