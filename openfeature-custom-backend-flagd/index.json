@@ -18,6 +18,9 @@
 		}, {
 			"title": "Fractional Evaluations",
 			"text": "step5.md"
+		}, {
+			"title": "Next and TODO",
+			"text": "step6.md"
 		}],
 		"intro": {
 			"text": "intro.md",
