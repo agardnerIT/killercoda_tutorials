@@ -1,6 +1,6 @@
 Need *even more* flexibility? Fractional evaluations allow for even more powerful flag targeting.
 
-Look again at the [headerColor]({{TRAFFIC_HOST1_3000}}/openfeature/flags/src/branch/main/flags.json#L84) flag.
+Look at the [headerColor]({{TRAFFIC_HOST1_3000}}/openfeature/flags/src/branch/main/flags.json#L84-L121) flag.
 
 The available variants are `red`, `blue`, `green` and `yellow`. The `defaultVariant` should now be `yellow` (you changed it from `red` in the previous step).
 
@@ -47,3 +47,11 @@ curl -X POST {{TRAFFIC_HOST1_8013}}/schema.v1.Service/ResolveString \
 ```{{exec}}
 
 Feel free to change the email address to experiment with the behaviour.
+
+Finally, prove that the `defaultVariant` is working (request the flag value without providing an `email`) and returns `yellow`:
+
+```
+curl -X POST {{TRAFFIC_HOST1_8013}}/schema.v1.Service/ResolveString \
+  -H "Content-Type: application/json" \
+  -d '{"flagKey": "headerColor", "context": { } }'
+```{{exec}}
