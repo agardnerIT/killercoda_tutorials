@@ -33,7 +33,7 @@ This should return `red` because the `defaultVariant` is set to `red` in Git ([s
 
 Using GitOps, change the `defaultVariant` from `red` to `yellow`:
 
-Edit `~/template/flags.json` (or do it via the UI).
+Edit `~/template/flags.json` (or do it via the UI). Gitea username and password is `openfeature` for both.
 
 Line `95` should now look like this:
 
