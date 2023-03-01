@@ -1,8 +1,8 @@
-Fractional evaluations allow for even more powerful flag targeting.
+Need even more flexibility? Fractional evaluations allow for even more powerful flag targeting.
 
 Look again at the [headerColor]({{TRAFFIC_HOST1_3000}}/openfeature/flags/src/branch/main/flags.json#L84) flag.
 
-The available variants are `red`, `blue`, `green` and `yellow`. The `defaultVariant` should now be `yellow` (you changed it from `red` above).
+The available variants are `red`, `blue`, `green` and `yellow`. The `defaultVariant` should now be `yellow` (you changed it from `red` in the previous step).
 
 So everyone receives `yellow`, right? No. There is a targeting rule which can be read like this:
 
@@ -16,7 +16,7 @@ If an `email` field is NOT present during evaluation:
 - 100% of these users get `yellow` (ie. fallback to `defaultVariant`)
 
 ### Fractional Evaluations are Sticky
-Fractional evaluations are "sticky". The first time an `email` is evaluated, it is psuedo-randomly assigned to a bucket (either `red`, `blue`, `green` or `yellow`).
+The first time an `email` is evaluated, it is psuedo-randomly assigned to a bucket (either `red`, `blue`, `green` or `yellow`).
 
 Any further evaluations for the same `email` will always give the same value.
 

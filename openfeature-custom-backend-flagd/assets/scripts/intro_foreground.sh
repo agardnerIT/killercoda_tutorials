@@ -148,5 +148,7 @@ cd ~
 tea repo create --name=flags --init=false
 git clone https://github.com/agardnerIT/template
 
-# During the hands on in step1 we will take the template files and push them up to Gitea
-# This needs to be interactive because git remove needs the public URL
+# ---------------------------------------------#
+#       🎉 Installation Complete 🎉           #
+#           Please proceed now...              #
+# ---------------------------------------------#
