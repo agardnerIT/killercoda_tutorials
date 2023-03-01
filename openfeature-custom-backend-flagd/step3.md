@@ -20,9 +20,9 @@ Edit `~/template/flags.json`{{}} (or do it via the UI) then `git commit and git 
 cd ~/template
 sed -i 's/"defaultVariant": "red"/"defaultVariant": "yellow"/g' ~/template/flags.json
 git add flags.json && git commit -m "update header color" && git push
-```
+```{{exec}}
 
-Line `91` should now be `"defaultVariant": "yellow",`
+[Line 91]({{TRAFFIC_HOST1_3000}}/openfeature/flags/src/branch/main/flags.json#L91) should now be `"defaultVariant": "yellow",`
 
 ## Retrieve the Flag Value Again
 

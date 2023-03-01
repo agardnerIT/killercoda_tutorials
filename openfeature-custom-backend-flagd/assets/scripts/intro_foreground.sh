@@ -43,8 +43,8 @@ adduser \
   git
 
 # Configure git for 'ubuntu' and 'git' users
-sudo -u git git config --global user.email "me@openfeature.dev"
-sudo -u git git config --global user.name "OpenFeature"
+git config --system user.email "me@openfeature.dev"
+git config --system user.name "OpenFeature"
 
 # Download 'gitea'
 wget -O gitea https://dl.gitea.com/gitea/${GITEA_VERSION}/gitea-${GITEA_VERSION}-linux-amd64

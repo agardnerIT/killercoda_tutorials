@@ -2,7 +2,7 @@ So far you've seen a very basic feature flag. But often you need more flexibilit
 
 For this, OpenFeature provides a concept of targeting rules. Targeting rules allow you to be more specific in *who* receives a given flag value.
 
-For example, look at [targetedFlag]({{TRAFFIC_HOST1_3000}}/openfeature/flags/src/branch/main/flags.json#L122). 
+For example, look at [targetedFlag]({{TRAFFIC_HOST1_3000}}/openfeature/flags/src/branch/main/flags.json#L122-L145). 
 
 The rules can be read like this:
 
@@ -16,18 +16,18 @@ This command should return the `first` variant with a value of `AAA`.
 curl -X POST {{TRAFFIC_HOST1_8013}}/schema.v1.Service/ResolveString \
   -H "Content-Type: application/json" \
   -d '{"flagKey": "targetedFlag", "context": {} }'
-```
+```{{exec}}
 
 This command should return the `second` variant with a value of `BBB`.
 ```
 curl -X POST {{TRAFFIC_HOST1_8013}}/schema.v1.Service/ResolveString \
   -H "Content-Type: application/json" \
   -d '{"flagKey": "targetedFlag", "context": { "email": "me@openfeature.dev" } }'
-```
+```{{exec}}
 
 This command should return the `third` variant with a value of `CCC`.
 ```
 curl -X POST {{TRAFFIC_HOST1_8013}}/schema.v1.Service/ResolveString \
   -H "Content-Type: application/json" \
   -d '{"flagKey": "targetedFlag", "context": { "userAgent": "Chrome 1.2.3" } }'
-```
+```{{exec}}
