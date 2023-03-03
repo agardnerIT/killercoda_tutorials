@@ -1,11 +1,12 @@
 # -----------------------------------------#
 #        Setting Global variables          #
 # -----------------------------------------#
-DEBUG_VERSION=1
+DEBUG_VERSION=2
 #K3D_VERSION=v5.3.0
 #KUBECTL_VERSION=v1.22.6
 POD_WAIT_TIMEOUT_MINS=10
 ORTELIUS_VERSION=10.0.132
+NGINX_PORT=30000
 
 # ----------------------------------------#
 #      Step 1/11: Installing Kubectl      #
@@ -27,11 +28,18 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 
 helm upgrade --install \
 -n ortelius --create-namespace \
-ortelius https://github.com/ortelius/ortelius-charts/releases/download/ortelius-$ORTELIUS_VERSION/ortelius-$ORTELIUS_VERSION.tgz \
---set ms-nginx.ingress.nodePort=30000 \
---set ms-general.dbhost=ortelius-postgresql.ortelius.svc.cluster.local \
---set ms-general.dbuser=postgres \
---set ms-general.dbpass=postgres
+--set ms-nginx.ingress.nodePort=$NGINX_PORT \
+--set global.postgresql.enabled=true \
+ortelius https://github.com/ortelius/ortelius-charts/releases/download/ortelius-$ORTELIUS_VERSION/ortelius-$ORTELIUS_VERSION.tgz
+
+
+#helm upgrade --install \
+#-n ortelius --create-namespace \
+#ortelius https://github.com/ortelius/ortelius-charts/releases/download/ortelius-$ORTELIUS_VERSION/ortelius-$ORTELIUS_VERSION.tgz \
+#--set ms-nginx.ingress.nodePort=30000 \
+#--set ms-general.dbhost=ortelius-postgresql.ortelius.svc.cluster.local \
+#--set ms-general.dbuser=postgres \
+#--set ms-general.dbpass=postgres
 
 #################################
 # 🎉 Installation Complete 🎉
