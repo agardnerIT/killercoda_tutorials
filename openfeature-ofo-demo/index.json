@@ -21,6 +21,10 @@
                 "file": "end-to-end.yaml",
                 "chmod": "+x",
                 "target": "~"
+            },{
+                "file": "feature-flag-configuration.yaml",
+                "chmod": "+x",
+                "target": "~"
             }]
         }
 	},

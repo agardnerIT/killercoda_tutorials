@@ -1,9 +1,3 @@
-# Expose the application
-
-```
-kubectl -n open-feature-demo port-forward --address 0.0.0.0 service/open-feature-demo-service 30000
-```{{exec}}
-
 # Visit Application
 
 [View the OpenFeature Demo Application]({{TRAFFIC_HOST1_30000}})
@@ -24,18 +18,13 @@ Change the application color by updating the feature flag.
 
 The flag definition is already available as a YAML file.
 
-Modify line `28`{{}} of `~/end-to-end.yaml` file and re-apply it.
+Modify line `23`{{}} of `~/feature-flag-configuration.yaml` file and re-apply it.
 
-You can use the built-in editor or a text editor like nano:
-```
-nano ~/end-to-end.yaml
-```{{exec}}
-
-Change `defaultVariant: blue` to `defaultVariant: green`.
-
-Apply those changes:
+You can use the built-in editor or just click this::
+Change `defaultVariant: blue`{{}} to `defaultVariant: green`{{}} and apply the changes.
 
 ```
+sed -i 's/"defaultVariant": "blue"/"defaultVariant": "green"/g' ~/feature-flag-configuration.yaml
 kubectl apply -f ~/end-to-end.yaml
 ```{{exec}}
 
