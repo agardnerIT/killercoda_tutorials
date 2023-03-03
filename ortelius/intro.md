@@ -1,4 +1,4 @@
-# Welcome to Ortelius.
+# Welcome to Ortelius
 
 ![ortelius](./assets/images/supplychaincatalog.png)
 
