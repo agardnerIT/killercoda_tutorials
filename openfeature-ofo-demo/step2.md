@@ -1,42 +1,3 @@
-# Visit Application
-
-[View the OpenFeature Demo Application]({{TRAFFIC_HOST1_30000}})
-
-# View the Feature Flag Configuration
-
-The demo application pod is reading feature flag configurations from a CRD of type `FeatureFlagConfiguration`{{}} called `end-to-end.yaml`. The application uses this CRD to update the application configuration.
-
-Changing the CRD will automatically adjust the applications behaviour.
-
-Display the `featureflagconfigurations`:
-
-```
-kubectl -n open-feature-demo get featureflagconfigurations
-```{{exec}}
-
-For convenience, this is stored on disk at `~/feature-flag-configuration.yaml`{{}}.
-
-# Update Application Color Flag
-
-Change the application color by updating the feature flag.
-
-The flag definition is already available as a YAML file.
-
-Modify line `23`{{}} of `~/feature-flag-configuration.yaml` file and re-apply it.
-
-You can use the built-in editor or just click this the following code snippet.
-
-Change `defaultVariant: blue`{{}} to `defaultVariant: green`{{}} and apply the changes:
-
-```
-sed -i 's/defaultVariant: blue/defaultVariant: green/g' ~/feature-flag-configuration.yaml
-kubectl apply -f ~/feature-flag-configuration.yaml
-```{{exec}}
-
-# View Changes
-
-View the application again and within a few seconds the app should turn green.
-
 # OpenFeature Hooks
 
 [Exploring the code](https://github.com/open-feature/playground/blob/0b74b12fe84421f2d12dd14767e77fb3450ee539/packages/app/src/app/hex-color/hex-color.service.ts#L9) you may notice that an `after` hook has been defined. [Hooks](https://docs.openfeature.dev/docs/reference/concepts/hooks/) are a powerful feature that can be used to extend OpenFeature capabilities. In this case, the code is expecting a valid CSS hex color value. However, the person configuring the feature flag in a remote feature flag management tool may not be aware of this requirement. That's where a validation hook could be used to ensure only valid CSS values are returned. 
@@ -54,5 +15,6 @@ If we try to use the `yellow`{{}} variant, we should expect the `after`{{}} hook
 Try this now:
 
 ```
-
+sed -i 's/defaultVariant: green/defaultVariant: yellow/g' ~/feature-flag-configuration.yaml
+kubectl apply -f ~/feature-flag-configuration.yaml
 ```
