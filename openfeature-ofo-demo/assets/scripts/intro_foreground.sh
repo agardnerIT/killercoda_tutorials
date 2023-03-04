@@ -1,5 +1,5 @@
 
-DEBUG_VERSION=2
+DEBUG_VERSION=3
 DEMO_APP_PORT=30000
 
 #########################################################
@@ -25,7 +25,6 @@ helm install ofo openfeature/open-feature-operator --wait
 # 3/3: Deploying OpenFeature CRDS and Demo Application  #
 #########################################################
 kubectl apply -f ~/end-to-end.yaml
-sleep 5
 kubectl wait pods -n open-feature-demo -l app=open-feature-demo --for condition=Ready --timeout=30s
 
 #########################################################
