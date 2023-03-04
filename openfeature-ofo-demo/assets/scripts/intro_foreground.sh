@@ -30,6 +30,7 @@ kubectl wait pods -n open-feature-demo -l app=open-feature-demo --for condition=
 #########################################################
 # 3/3: Exposing demo application                        #
 #########################################################
+sleep 10
 nohup kubectl -n open-feature-demo port-forward --address 0.0.0.0 service/open-feature-demo-service ${DEMO_APP_PORT} &
 
 # ---------------------------------------------#
