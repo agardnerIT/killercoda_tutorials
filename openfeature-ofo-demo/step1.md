@@ -6,7 +6,7 @@
 
 The demo application pod is reading feature flag configurations from a CRD called `FeatureFlagConfiguration`{{}}.
 
-Leave the port-forward running. Open new terminal window and display the `featureflagconfigurations`:
+Open new terminal window and display the `featureflagconfigurations`:
 
 ```
 kubectl -n open-feature-demo get featureflagconfigurations
@@ -24,8 +24,8 @@ You can use the built-in editor or just click this::
 Change `defaultVariant: blue`{{}} to `defaultVariant: green`{{}} and apply the changes.
 
 ```
-sed -i 's/"defaultVariant": "blue"/"defaultVariant": "green"/g' ~/feature-flag-configuration.yaml
-kubectl apply -f ~/end-to-end.yaml
+sed -i 's/defaultVariant: blue/defaultVariant: green/g' ~/feature-flag-configuration.yaml
+kubectl apply -f ~/feature-flag-configuration.yaml
 ```{{exec}}
 
 # View Changes
