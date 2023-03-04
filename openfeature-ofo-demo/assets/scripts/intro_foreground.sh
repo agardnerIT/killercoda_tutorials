@@ -34,6 +34,6 @@ kubectl wait pods -n open-feature-demo -l app=open-feature-demo --for condition=
 nohup kubectl -n open-feature-demo port-forward --address 0.0.0.0 service/open-feature-demo-service ${DEMO_APP_PORT} &
 
 # ---------------------------------------------#
-#       🎉 Installation Complete 🎉           #
+#       🎉 Installation Complete 🎉             #
 #           Please proceed now...              #
 # ---------------------------------------------#
