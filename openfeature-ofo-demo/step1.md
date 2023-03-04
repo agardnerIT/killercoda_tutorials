@@ -11,8 +11,7 @@ Changing the CRD will automatically adjust the applications behaviour.
 Display the `featureflagconfigurations`{{}}:
 
 ```
-kubectl -n open-feature-demo \
-get featureflagconfigurations
+kubectl -n open-feature-demo get featureflagconfigurations
 ```{{exec}}
 
 For convenience, this is stored on disk at `~/feature-flag-configuration.yaml`{{}}.
