@@ -6,7 +6,7 @@
 
 The demo application pod is reading feature flag configurations from a CRD called `FeatureFlagConfiguration`{{}}.
 
-Open new terminal window and display the `featureflagconfigurations`:
+Display the `featureflagconfigurations`:
 
 ```
 kubectl -n open-feature-demo get featureflagconfigurations
