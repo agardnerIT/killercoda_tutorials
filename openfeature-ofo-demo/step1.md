@@ -14,7 +14,7 @@ Display the `featureflagconfigurations`:
 kubectl -n open-feature-demo get featureflagconfigurations
 ```{{exec}}
 
-For convenience, this is stored on disk at `~/feature-flag-configuration.yaml`.
+For convenience, this is stored on disk at `~/feature-flag-configuration.yaml`{{}}.
 
 # Update Application Color Flag
 
