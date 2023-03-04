@@ -4,7 +4,9 @@
 
 # View the Feature Flag Configuration
 
-The demo application pod is reading feature flag configurations from a CRD called `FeatureFlagConfiguration`{{}}.
+The demo application pod is reading feature flag configurations from a CRD of type `FeatureFlagConfiguration`{{}} called `end-to-end.yaml`. The application uses this CRD to update the application configuration.
+
+Changing the CRD will automatically adjust the application's behaviour.
 
 Display the `featureflagconfigurations`:
 
