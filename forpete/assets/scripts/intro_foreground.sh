@@ -1,4 +1,4 @@
-# DEBUG VERSION: 2
+# DEBUG VERSION: 3
 
 curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
 apt install -y nodejs < /dev/null
