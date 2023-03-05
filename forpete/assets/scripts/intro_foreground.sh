@@ -1,3 +1,5 @@
+# DEBUG VERSION: 2
+
 curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
 apt install -y nodejs < /dev/null
 apt install -y jq < /dev/null
