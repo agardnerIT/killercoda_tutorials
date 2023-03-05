@@ -1,0 +1,28 @@
+{
+    "title": "Pete demo",
+    "description": "Demo for Pete. Ignore.",
+    "details": {
+      "intro": {
+        "title": "Introduction",
+        "text": "intro.md",
+        "foreground": "assets/scripts/intro_foreground.sh"
+      },
+      "steps": [{
+            "title": "TODO",
+            "text": "step1.md"
+        }],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [
+            {"file": "files/app.js", "target": "~" },
+            {"file": "files/app2.js", "target": "~" }
+         ]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+}
+  
