@@ -5,7 +5,7 @@ Run the server which runs on `3333`{{}}
 node ~/app/app.js
 ```{{exec}}
 
-Open the page and / or open a new Tab and click this:
+[Open the page in a browser]({{TRAFFIC_HOST1_3333}}) and / or open a new Tab and click this:
 
 ```
 curl http://localhost:3333
