@@ -16,8 +16,8 @@
       },
       "assets": {
         "host01": [
-            {"file": "files/app.js", "target": "~/app" },
-            {"file": "files/app2.js", "target": "~/app" }
+            {"file": "app.js", "target": "~/app" },
+            {"file": "app2.js", "target": "~/app" }
          ]
       }
     },
