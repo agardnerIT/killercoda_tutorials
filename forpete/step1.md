@@ -16,3 +16,13 @@ Flick back to tab 1 and run the new server:
 ```
 node ~/app/app2.js
 ```{{exec interrupt}}
+
+# Enable Cowsay
+
+Obviously we need real content here to explain...
+
+Run with cowsay enabled:
+
+```
+node ~/app/app3.js
+```{{exec interrupt}}
