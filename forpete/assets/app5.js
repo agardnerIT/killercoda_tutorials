@@ -16,7 +16,6 @@ const FLAG_CONFIGURATION = {
 const featureFlagProvider = new MinimalistProvider(FLAG_CONFIGURATION)
 
 OpenFeature.setProvider(featureFlagProvider)
-const featureFlags = OpenFeature.getClient()
 
 routes.get('/', async (req, res) => {
   const withCows = await featureFlags.getBooleanValue('with-cows', false)
