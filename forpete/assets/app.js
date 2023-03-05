@@ -1,4 +1,4 @@
-import * as express from 'express'
+import express from 'express'
 import Router from 'express-promise-router'
 
 const app = express()
