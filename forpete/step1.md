@@ -1,28 +1,76 @@
-# Step 1
+## Hello, world
+
+Here's the service we'll be working on:
+
+```
+cat ~/app/app.js
+```{{exec}}
+
+Pretty much the most basic express server you can imagine - a single endpoint at / that returns a plaintext “Hello, world!” response.
 
 Run the server which runs on `3333`{{}}
 ```
 node ~/app/app.js
 ```{{exec}}
 
-[Open the page in a browser]({{TRAFFIC_HOST1_3333}}) and / or open a new Tab and click this:
+[Open the page in a browser]({{TRAFFIC_HOST1_3333}}) and / or open a new Tab.
+
+We can test that is works:
 
 ```
 curl http://localhost:3333
 ```{{exec}}
 
-Flick back to tab 1 and run the new server:
+## With cows, please
+Let's imagine that we're adding a new, experimental feature to this hello world service. We're going to upgrade the format of the server's response, using cowsay!
+
+However, we're not 100% sure that this cowsay formatting is going to work out, so for now we'll protect it behind a conditional:
 
 ```
-node ~/app/app2.js
-```{{exec interrupt}}
+import 'cowsay'
+...
+routes.get('/', async (req, res) => {
+  // set this to true to test our new
+  // cow-based greeting system
+  const withCow = false
+  if(withCow){
+    res.send(cowsay.say({text:'Hello, world!'}))
+  }else{
+    res.send("Hello, world!")
+  }
+})
+```{{}}
 
-# Enable Cowsay
+See the entire code:
 
-Obviously we need real content here to explain...
+```
+cat ~/app/app2.js
+```{{exec}}
 
-Run with cowsay enabled:
+By default, our service continues to work exactly as it did before, but if we change `withCow`{{}} to `true`{{}} then our response comes in an exciting new format:
+
+```
+$> curl http://localhost:3333
+ _______________
+< Hello, world! >
+ ---------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```{{}}
+
+Flick back to tab 1 and try out the new code (with cows!):
 
 ```
 node ~/app/app3.js
 ```{{exec interrupt}}
+
+Flick over again to tab 2 and `curl`{{}} the endpoint
+```
+curl http://localhost:3333
+```{{exec}}
+
+# The Crudest Flag
+That `withCow` boolean and its accompanying conditional check are a very basic feature flag - they let us hide an experimental or unfinished feature, but also easily switch the feature on while we're building and testing it.

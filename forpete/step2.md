@@ -1,7 +1,121 @@
-# Install OpenFeature SDK
+## Introducing OpenFeature
+
+Managing these flags by changing hardcoded constants gets old fast though. A team that uses feature flags in any significant way soon reaches for a feature flagging framework. Let's move in that direction by setting up the [OpenFeature|https://openfeature.dev] SDK:
+
 ```
 npm install @openfeature/js-sdk
 ```{{exec interrupt}}
+
+The code looks like this:
+
+```
+import { OpenFeature } from '@openfeature/js-sdk'
+
+...
+
+const featureFlags = OpenFeature.getClient()
+
+...
+
+routes.get('/', async (req, res) => {
+  const withCows = await featureFlags.getBooleanValue('with-cows', false)
+  if(withCows){
+    res.send(cowsay.say({text:'Hello, world!'}))
+  }else{
+    res.send("Hello, world!")
+  }
+})
+```
+
+Or show the entire server:
+
+```
+cat ~/app/app4.js
+```{{exec}}
+
+We've installed and imported the `@openfeature/js-sdk` npm module, and used it to create an OpenFeature client called `featureFlags`. We then call `getBooleanValue` on that client to find out if the `with-cows` feature flag is `true` or `false`. Depending on what we get back we either show the new cow-based output, or the traditional plaintext format.
+
+Run the new server code now:
+
+```
+node ~/app/app4.js
+```{{exec interrupt}}
+
+Note that when we call `getBooleanValue` we also provide a default value of false. Since we haven't configured the OpenFeature SDK with a feature flag provider yet, it will always return that default value:
+
+```
+$> curl http://localhost:3333
+Hello, world!
+```{{}}
+
+Flick over to tab 2 and try it:
+
+```
+curl http://localhost:333
+```{{exec}}
+
+# Configuring OpenFeature
+Without a feature flagging provider [OpenFeature|https://openfeature.dev] is pretty pointless - it'll just return default values. Instead we want to connect our OpenFeature SDK to a full-fledged feature flagging system - a commercial product such as LaunchDarkly or Split, an open-source system like [FlagD|https://github.com/open-feature/flagd], or perhaps a custom internal system - so that it can provide flagging decisions from that system.
+
+Connecting OpenFeature to one of these backends is very straightforward, but it does require that we have an actual flagging framework set up. For now, just to get started, let's just configure a really, really simple provider that doesn't need a backend. It looks like this:
+
+```
+import { MinimalistProvider } from '@moredip/openfeature-minimalist-provider'
+
+const FLAG_CONFIGURATION = {
+  'with-cows':true
+}
+
+const featureFlagProvider = new MinimalistProvider(FLAG_CONFIGURATION)
+
+OpenFeature.setProvider(featureFlagProvider)
+const featureFlags = OpenFeature.getClient()
+```{{}}
+
+Install `openfeature-minimalist-provider` now:
+
+```
+npm install --force @moredip/openfeature-minimalist-provider
+```{{exec}}
+
+This minimalist provider is exactly that - you give it a hard-coded set of feature flag values, and it provides those values via the OpenFeature SDK.
+
+In our `FLAG_CONFIGURATION` above we've harded-coded that `with-cows` feature flag to `true`, which means that conditional predicate in our express app will now evaluate to true, which means that our service will now start providing bovine output:
+
+```
+$> curl http://localhost:3333
+ _______________
+< Hello, world! >
+ ---------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```{{}}
+
+Try it:
+
+```
+curl http://localhost:3333
+```{{exec}}
+
+If we change that `with-cows` value to `false` (as we have in `~/app/app6.js`) we'd see the more boring response:
+
+```
+$> curl http://localhost:3333
+Hello, world!
+```{{}}
+
+Try it now. Launch `app6.js` in tab 1
+```
+node ~/app/app6.js
+```{{exec interrupt}}
+
+Then `curl` once again on tab 2:
+```
+curl http://localhost:3333
+```
 
 Run the OpenFeature instrumented app:
 
@@ -16,13 +130,16 @@ npm install @moredip/openfeature-minimalist-provider
 node ~/app/app5.js
 ```{{exec interrupt}}
 
-Change `with-cows:true` to `with-cows:false` and restart the server.
+The only difference between `app5.js` and `app6.js` is that `with-cows:true` has been changed to `with-cows:false`.
 
+Start that new version and you'll see the more boring response.
+
+(in tab 1)
 ```
-sed -i 's/\'with-cows\':true/'with-cows':false/g' ~/app/app5.js
-node ~/app/app5.js
+node ~/app/app6.js
 ```{{exec interrupt}}
 
-[Refresh the browser]({{TRAFFIC_HOST1_3333}}) and you should be back to plain old `Hello, world!`{{}}. Feature flags in action.
-
-All this text is to be replaced.
+(in tab 2)
+```
+curl http://localhost:3333
+```{{exec}}
