@@ -8,6 +8,9 @@
 		"steps": [{
             "title": "OpenFeature Operator",
             "text": "step1.md"
+        }, {
+            "title": "OpenFeature Hooks",
+            "text": "step2.md"
         }],
 		"intro": {
 			"text": "intro.md",
