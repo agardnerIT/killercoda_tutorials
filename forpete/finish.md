@@ -1,6 +1,6 @@
 ## Congratulations
 
-We can get started with feature flags with low investment and low risk, and once we’re ready, it’s just a few lines of code to transition to a full-featured, scalable backend.
+We can get started with feature flags with low investment and low risk, and once we're ready, it's just a few lines of code to transition to a full-featured, scalable backend.
 
 ## Next Steps
 

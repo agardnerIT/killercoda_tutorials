@@ -1,5 +1,3 @@
-## Introducing OpenFeature
-
 Managing these flags by changing hardcoded constants gets old fast though. A team that uses feature flags in any significant way soon reaches for a feature flagging framework. Let's move in that direction by setting up the [OpenFeature|https://openfeature.dev] SDK:
 
 ```

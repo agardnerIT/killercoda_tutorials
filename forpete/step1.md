@@ -1,5 +1,3 @@
-## Hello, world
-
 Here's the service we'll be working on:
 
 ```
