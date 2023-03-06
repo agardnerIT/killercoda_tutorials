@@ -4,14 +4,14 @@ Here's the service we'll be working on:
 cat ~/app/app.js
 ```{{exec}}
 
-Pretty much the most basic express server you can imagine - a single endpoint at / that returns a plaintext “Hello, world!” response.
+Pretty much the most basic express server you can imagine - a single endpoint at `/` that returns a plaintext `"Hello, world!"` response.
 
-Run the server which runs on `3333`{{}}
+Start the server:
 ```
 node ~/app/app.js
 ```{{exec}}
 
-[Open the page in a browser]({{TRAFFIC_HOST1_3333}}) and / or open a new Tab.
+[Open the page in a browser]({{TRAFFIC_HOST1_3333}}) and / or open a new terminal Tab (click `+` next to `Tab 1`).
 
 We can test that is works:
 
@@ -45,6 +45,12 @@ See the entire code:
 cat ~/app/app2.js
 ```{{exec}}
 
+Flick back to tab 1 and try out the new code:
+
+```
+node ~/app/app2.js
+```{{exec interrupt}}
+
 By default, our service continues to work exactly as it did before, but if we change `withCow`{{}} to `true`{{}} then our response comes in an exciting new format:
 
 ```
@@ -59,13 +65,15 @@ $> curl http://localhost:3333
                 ||     ||
 ```{{}}
 
-Flick back to tab 1 and try out the new code (with cows!):
+`app3.js` changes the value of this flag to `true`.
+
+Flick over again to tab 1 and execute the new feature (with cows):
 
 ```
 node ~/app/app3.js
 ```{{exec interrupt}}
 
-Flick over again to tab 2 and `curl`{{}} the endpoint
+Flick back to tab 2 and curl the endpoint. You should see the new `cowsay` output:
 ```
 curl http://localhost:3333
 ```{{exec}}
