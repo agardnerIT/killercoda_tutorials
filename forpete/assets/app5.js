@@ -10,7 +10,7 @@ app.use(routes);
 
 const featureFlags = OpenFeature.getClient()
 const FLAG_CONFIGURATION = {
-  'with-cows':false
+  'with-cows':true
 }
 
 const featureFlagProvider = new MinimalistProvider(FLAG_CONFIGURATION)

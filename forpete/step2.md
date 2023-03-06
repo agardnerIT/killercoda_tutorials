@@ -25,7 +25,7 @@ cat ~/app/app4.js
 
 We've installed and imported the `@openfeature/js-sdk` npm module, and used it to create an OpenFeature client called `featureFlags`. We then call `getBooleanValue` on that client to find out if the `with-cows` feature flag is `true` or `false`. Depending on what we get back we either show the new cow-based output, or the traditional plaintext format.
 
-Run the new server code now:
+Head back to Tab 1 and run the new server:
 
 ```
 node ~/app/app4.js
@@ -41,7 +41,7 @@ Hello, world!
 Flick over to tab 2 and try it:
 
 ```
-curl http://localhost:333
+curl http://localhost:3333
 ```{{exec}}
 
 ## Configuring OpenFeature
@@ -78,6 +78,11 @@ $> curl http://localhost:3333
                 ||     ||
 ```{{}}
 
+In Tab 1, run this latest app version:
+```
+node ~/app/app5.js
+```{{exec interrupt}}
+
 Try it (in tab 2):
 
 ```
@@ -91,7 +96,7 @@ $> curl http://localhost:3333
 Hello, world!
 ```{{}}
 
-Try it now. Launch `app6.js`{{}} in tab 1
+Try it now. In Tab 1, launch `app6.js`{{}}:
 ```
 node ~/app/app6.js
 ```{{exec interrupt}}
@@ -100,3 +105,11 @@ Then `curl`{{}} once again on tab 2:
 ```
 curl http://localhost:3333
 ```{{exec}}
+
+## Verify the difference
+
+To verify that we really did only change that value, ask for the difference of `app5.js`{{}} (set to `true`{{}}) and `app6.js`{{}} (set to `false`{{}}):
+
+```
+diff ~/app/app5.js ~/app/app6.js
+```{{exec interrupt}}
