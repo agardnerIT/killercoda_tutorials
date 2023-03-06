@@ -1,6 +1,6 @@
 {
-    "title": "Pete demo",
-    "description": "Demo for Pete. Ignore.",
+    "title": "Five Minutes to Feature Flags",
+    "description": "Add feature flags to a NodeJS app with OpenFeature.",
     "details": {
       "intro": {
         "title": "Feature Flagging in 5 Minutes",
