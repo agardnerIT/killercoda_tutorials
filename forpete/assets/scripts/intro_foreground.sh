@@ -1,4 +1,4 @@
-# DEBUG VERSION: 4
+# DEBUG VERSION: 5
 
 # -----------------------------------
 # Step 1/4: Installing Node
@@ -17,6 +17,8 @@ apt install -y jq < /dev/null
 npm install express --save
 npm install express-promise-router --save
 npm install cowsay --save
+npm install @openfeature/js-sdk --save
+npm install --force @moredip/openfeature-minimalist-provider
 
 # -----------------------------------
 # Step 4/4: Initialising NPM package

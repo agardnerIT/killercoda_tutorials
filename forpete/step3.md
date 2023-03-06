@@ -1,5 +1,10 @@
-We've gotten started with OpenFeature using a very simple but extremely limited provider. The beauty of OpenFeature is that we can transition to a real feature-flagging system when we're ready, without any change to how we evaluate flags. It's as simple as configuring a different provider. For example:
+We've gotten started with OpenFeature using a very simple but extremely limited provider.
 
+The beauty of OpenFeature is that we can transition to a real feature-flagging system when we're ready, without any change to how we evaluate flags.
+
+It's as simple as configuring a different provider.
+
+For example:
 
 ### LaunchDarkly
 ```

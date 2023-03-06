@@ -1,19 +1,11 @@
-Managing these flags by changing hardcoded constants gets old fast though. A team that uses feature flags in any significant way soon reaches for a feature flagging framework. Let's move in that direction by setting up the [OpenFeature|https://openfeature.dev] SDK:
-
-```
-npm install @openfeature/js-sdk
-```{{exec interrupt}}
+Managing these flags by changing hardcoded constants gets old fast though. A team that uses feature flags in any significant way soon reaches for a feature flagging framework. Let's move in that direction by setting up the [OpenFeature](https://openfeature.dev) SDK:
 
 The code looks like this:
 
 ```
 import { OpenFeature } from '@openfeature/js-sdk'
 
-...
-
 const featureFlags = OpenFeature.getClient()
-
-...
 
 routes.get('/', async (req, res) => {
   const withCows = await featureFlags.getBooleanValue('with-cows', false)
@@ -52,8 +44,8 @@ Flick over to tab 2 and try it:
 curl http://localhost:333
 ```{{exec}}
 
-# Configuring OpenFeature
-Without a feature flagging provider [OpenFeature|https://openfeature.dev] is pretty pointless - it'll just return default values. Instead we want to connect our OpenFeature SDK to a full-fledged feature flagging system - a commercial product such as LaunchDarkly or Split, an open-source system like [FlagD|https://github.com/open-feature/flagd], or perhaps a custom internal system - so that it can provide flagging decisions from that system.
+## Configuring OpenFeature
+Without a feature flagging provider [OpenFeature](https://openfeature.dev) is pretty pointless - it'll just return default values. Instead we want to connect our OpenFeature SDK to a full-fledged feature flagging system - a commercial product such as LaunchDarkly or Split, an open-source system like [FlagD](https://github.com/open-feature/flagd), or perhaps a custom internal system - so that it can provide flagging decisions from that system.
 
 Connecting OpenFeature to one of these backends is very straightforward, but it does require that we have an actual flagging framework set up. For now, just to get started, let's just configure a really, really simple provider that doesn't need a backend. It looks like this:
 
@@ -70,15 +62,9 @@ OpenFeature.setProvider(featureFlagProvider)
 const featureFlags = OpenFeature.getClient()
 ```{{}}
 
-Install `openfeature-minimalist-provider` now:
-
-```
-npm install --force @moredip/openfeature-minimalist-provider
-```{{exec}}
-
 This minimalist provider is exactly that - you give it a hard-coded set of feature flag values, and it provides those values via the OpenFeature SDK.
 
-In our `FLAG_CONFIGURATION` above we've harded-coded that `with-cows` feature flag to `true`, which means that conditional predicate in our express app will now evaluate to true, which means that our service will now start providing bovine output:
+In our `FLAG_CONFIGURATION`{{}} above we've harded-coded that `with-cows`{{}} feature flag to `true`{{}}, which means that conditional predicate in our express app will now evaluate to true, which means that our service will now start providing bovine output:
 
 ```
 $> curl http://localhost:3333
@@ -92,52 +78,25 @@ $> curl http://localhost:3333
                 ||     ||
 ```{{}}
 
-Try it:
+Try it (in tab 2):
 
 ```
 curl http://localhost:3333
 ```{{exec}}
 
-If we change that `with-cows` value to `false` (as we have in `~/app/app6.js`) we'd see the more boring response:
+If we change that `with-cows`{{}} value to `false`{{}} (as we have in `~/app/app6.js`{{}}) we'd see the more boring response:
 
 ```
 $> curl http://localhost:3333
 Hello, world!
 ```{{}}
 
-Try it now. Launch `app6.js` in tab 1
+Try it now. Launch `app6.js`{{}} in tab 1
 ```
 node ~/app/app6.js
 ```{{exec interrupt}}
 
-Then `curl` once again on tab 2:
-```
-curl http://localhost:3333
-```
-
-Run the OpenFeature instrumented app:
-
-```
-node ~/app/app4.js
-```{{exec interrupt}}
-
-But that's pretty pointless... Text explaining minimalist provider.
-
-```
-npm install @moredip/openfeature-minimalist-provider
-node ~/app/app5.js
-```{{exec interrupt}}
-
-The only difference between `app5.js` and `app6.js` is that `with-cows:true` has been changed to `with-cows:false`.
-
-Start that new version and you'll see the more boring response.
-
-(in tab 1)
-```
-node ~/app/app6.js
-```{{exec interrupt}}
-
-(in tab 2)
+Then `curl`{{}} once again on tab 2:
 ```
 curl http://localhost:3333
 ```{{exec}}
