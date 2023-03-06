@@ -1,6 +1,7 @@
 
 DEBUG_VERSION=1
 DEMO_APP_PORT=30000
+CERT_MANAGER_VERSION=v1.11.0
 
 #########################################################
 # 1/3: Installing Cert Manager                          #
@@ -11,7 +12,7 @@ helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.10.1 \
+  --version ${CERT_MANAGER_VERSION} \
   --set installCRDs=true \
   --wait
 
