@@ -1,7 +1,7 @@
-Here's the service we'll be working on:
+Here's the service we'll be working on:js
 
 ```
-bat ~/app/app.js
+cat ~/app/app.js
 ```{{exec}}
 
 Pretty much the most basic express server you can imagine - a single endpoint at `/`{{}} that returns a plaintext `"Hello, world!"`{{}} response.
@@ -42,7 +42,7 @@ routes.get('/', async (req, res) => {
 See the entire code:
 
 ```
-bat ~/app/app2.js
+cat ~/app/app2.js
 ```{{exec interrupt}}
 
 Flick back to tab 1 and try out the new code:

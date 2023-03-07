@@ -20,7 +20,7 @@ routes.get('/', async (req, res) => {
 Or show the entire server:
 
 ```
-bat ~/app/app3.js
+cat ~/app/app3.js
 ```{{exec}}
 
 We've installed and imported the `@openfeature/js-sdk`{{}} npm module, and used it to create an OpenFeature client called `featureFlags`{{}}. We then call `getBooleanValue`{{}} on that client to find out if the `with-cows` feature flag is `true` or `false`. Depending on what we get back we either show the new cow-based output, or the traditional plaintext format.
@@ -65,7 +65,7 @@ const featureFlags = OpenFeature.getClient()
 
 This minimalist provider is exactly that - you give it a hard-coded set of feature flag values, and it provides those values via the OpenFeature SDK.
 
-In our `FLAG_CONFIGURATION`{{}} above we've hard-coded that `with-cows`{{}} feature flag to `true`{{}}, which means that conditional predibate in our express app will now evaluate to true, which means that our service will now start providing bovine output:
+In our `FLAG_CONFIGURATION`{{}} above we've hard-coded that `with-cows`{{}} feature flag to `true`{{}}, which means that conditional predicate in our express app will now evaluate to true, which means that our service will now start providing bovine output:
 
 ```
 $> curl http://localhost:3333
