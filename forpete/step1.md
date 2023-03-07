@@ -1,14 +1,14 @@
 Here's the service we'll be working on:js
 
 ```
-cat ~/app/app.js
+cat ~/app/01_vanilla.js
 ```{{exec}}
 
 Pretty much the most basic express server you can imagine - a single endpoint at `/`{{}} that returns a plaintext `"Hello, world!"`{{}} response.
 
 Start the server:
 ```
-node ~/app/app.js
+node ~/app/01_vanilla.js
 ```{{exec}}
 
 [Open the page in a browser]({{TRAFFIC_HOST1_3333}}) and / or open a new terminal Tab (click `+`{{}} next to `Tab 1`{{}}).
@@ -42,13 +42,13 @@ routes.get('/', async (req, res) => {
 See the entire code:
 
 ```
-cat ~/app/app2.js
+cat ~/app/02_basic_flags.js
 ```{{exec interrupt}}
 
 Flick back to tab 1 and try out the new code:
 
 ```
-node ~/app/app2.js
+node ~/app/02_basic_flags.js
 ```{{exec interrupt}}
 
 Back to tab 2 to re-curl the server:
@@ -71,14 +71,14 @@ $> curl http://localhost:3333
                 ||     ||
 ```{{}}
 
-Open the editor and inside the `app`{{}} folder, open `app2.js`{{}}.
+Open the editor and inside the `app`{{}} folder, open `02_basic_flags.js`{{}}.
 
 Change `false`{{}} on line `12`{{}} to `true`
 
 Flick over again to tab 1 and restart the server:
 
 ```
-node ~/app/app2.js
+node ~/app/02_basic_flags.js
 ```{{exec interrupt}}
 
 Flick back to tab 2 and curl the endpoint. You should see the new `cowsay`{{}} output:

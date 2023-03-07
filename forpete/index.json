@@ -23,10 +23,10 @@
       },
       "assets": {
         "host01": [
-            {"file": "app.js", "target": "~/app" },
-            {"file": "app2.js", "target": "~/app" },
-            {"file": "app3.js", "target": "~/app" },
-            {"file": "app4.js", "target": "~/app" }
+            {"file": "01_vanilla.js", "target": "~/app" },
+            {"file": "02_basic_flags.js", "target": "~/app" },
+            {"file": "03_openfeature.js", "target": "~/app" },
+            {"file": "04_openfeature_with_provider.js", "target": "~/app" }
          ]
       }
     },
