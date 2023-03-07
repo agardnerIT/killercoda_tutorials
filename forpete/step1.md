@@ -71,7 +71,7 @@ $> curl http://localhost:3333
                 ||     ||
 ```{{}}
 
-Open the editor and inside the `app` folder, open `app2.js`.
+Open the editor and inside the `app`{{}} folder, open `app2.js`{{}}.
 
 Change `false`{{}} on line `12`{{}} to `true`
 

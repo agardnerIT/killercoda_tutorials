@@ -23,7 +23,7 @@ Or show the entire server:
 cat ~/app/app3.js
 ```{{exec}}
 
-We've installed and imported the `@openfeature/js-sdk` npm module, and used it to create an OpenFeature client called `featureFlags`. We then call `getBooleanValue` on that client to find out if the `with-cows` feature flag is `true` or `false`. Depending on what we get back we either show the new cow-based output, or the traditional plaintext format.
+We've installed and imported the `@openfeature/js-sdk`{{}} npm module, and used it to create an OpenFeature client called `featureFlags`{{}}. We then call `getBooleanValue`{{}} on that client to find out if the `with-cows` feature flag is `true` or `false`. Depending on what we get back we either show the new cow-based output, or the traditional plaintext format.
 
 Head back to Tab 1 and run the new server:
 
@@ -31,7 +31,7 @@ Head back to Tab 1 and run the new server:
 node ~/app/app3.js
 ```{{exec interrupt}}
 
-Note that when we call `getBooleanValue` we also provide a default value of `false`{{}}. Since we haven't configured the OpenFeature SDK with a feature flag provider yet, it will always return that default value:
+Note that when we call `getBooleanValue`{{}} we also provide a default value of `false`{{}}. Since we haven't configured the OpenFeature SDK with a feature flag provider yet, it will always return that default value:
 
 ```
 $> curl http://localhost:3333
@@ -90,7 +90,7 @@ Try it (in tab 2):
 curl http://localhost:3333
 ```{{exec}}
 
-Open the editor again and edit `~/app/app4.js`{{}}. On line `14`{{}}, change `true`{{}} to `false`.
+Open the editor again and edit `~/app/app4.js`{{}}. On line `13`{{}}, change `true`{{}} to `false`.
 
 Restart the server and you'll see the more boring response:
 
