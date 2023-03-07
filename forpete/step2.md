@@ -94,6 +94,12 @@ Open the editor again and edit `~/app/app4.js`{{}}. On line `14`{{}}, change `tr
 Restart the server and you'll see the more boring response:
 
 ```
+$> curl http://localhost:3333
+Hello, world!
+```{{}}
+
+Try it now. In Tab 1, relaunch `app4.js`{{}}:
+```
 node ~/app/app4.js
 ```{{exec interrupt}}
 

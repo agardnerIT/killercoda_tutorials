@@ -11,7 +11,7 @@ app.use(routes);
 const featureFlags = OpenFeature.getClient()
 // This simulates a real feature flag backend database, file or SaaS provider
 const FLAG_CONFIGURATION = {
-  'with-cows':true
+  'with-cows':false
 }
 
 const featureFlagProvider = new MinimalistProvider(FLAG_CONFIGURATION)
