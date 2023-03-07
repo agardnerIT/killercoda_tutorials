@@ -1,16 +1,35 @@
 # -----------------------------------
-# Step 1/4: Installing Node
+# Step 1/6: APT Update
+# ----------------------------------- 
+apt update
+
+# -----------------------------------
+# Step 2/6: Installing bat
+# -----------------------------------
+apt install -y batcat
+# Symlink: Make 'batcat' available as 'bat' command
+ln -s /usr/bin/batcat /usr/sbin/bat
+# Alias 'cat' to 'bat' so running: 'cat ~/myfile.txt' uses 'bat' instead
+# Bonus points for using 'bat' to do this :)
+bat <<EOF >> ~/.bashrc
+alias cat=bat
+EOF
+# Refresh source
+source ~/.bashrc
+
+# -----------------------------------
+# Step 3/6: Installing Node
 # -----------------------------------
 curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
 apt install -y nodejs < /dev/null
 
 # -----------------------------------
-# Step 2/4: Installing jq
+# Step 4/6: Installing jq
 # -----------------------------------
 apt install -y jq < /dev/null
 
 # -----------------------------------
-# Step 3/4: Installing NPM packages
+# Step 5/6: Installing NPM packages
 # -----------------------------------
 npm install express --save
 npm install express-promise-router --save
@@ -19,7 +38,7 @@ npm install @openfeature/js-sdk --save
 npm install --force @moredip/openfeature-minimalist-provider
 
 # -----------------------------------
-# Step 4/4: Initialising NPM package
+# Step 6/6: Initialising NPM package
 # -----------------------------------
 cd app
 npm init -y
