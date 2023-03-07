@@ -6,7 +6,7 @@ apt update
 # -----------------------------------
 # Step 2/6: Installing bat
 # -----------------------------------
-apt install -y bat
+apt install -y bat < /dev/null
 # Symlink: Make 'batcat' available as 'bat' command
 ln -s /usr/bin/batcat /usr/sbin/bat
 # Alias 'cat' to 'bat' so running: 'cat ~/myfile.txt' uses 'bat' instead
