@@ -73,7 +73,7 @@ $> curl http://localhost:3333
 
 Open the editor window and navigation into the `~/app` folder.
 
-Click on `app2.js` and on line `12`{{}} change `false`{{}} to `true`{{}}
+Click on `app2.js` and on line `12`{{}} change `false`{{}} to `true`
 
 Flick over again to tab 1 and restart the server:
 

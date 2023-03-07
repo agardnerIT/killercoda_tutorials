@@ -89,7 +89,7 @@ Try it (in tab 2):
 curl http://localhost:3333
 ```{{exec}}
 
-Open the editor again and edit `~/app/app4.js`{{}}. On line `13`{{}}, change `true`{{}} to `false`{{}}.
+Open the editor again and edit `~/app/app4.js`{{}}. On line `14`{{}}, change `true`{{}} to `false`.
 
 Restart the server and you'll see the more boring response:
 
