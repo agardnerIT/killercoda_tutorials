@@ -26,9 +26,7 @@
             {"file": "app.js", "target": "~/app" },
             {"file": "app2.js", "target": "~/app" },
             {"file": "app3.js", "target": "~/app" },
-            {"file": "app4.js", "target": "~/app" },
-            {"file": "app5.js", "target": "~/app" },
-            {"file": "app6.js", "target": "~/app" }
+            {"file": "app4.js", "target": "~/app" }
          ]
       }
     },

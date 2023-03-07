@@ -1,4 +1,4 @@
-# DEBUG VERSION: 5
+# DEBUG VERSION: 6
 
 # -----------------------------------
 # Step 1/4: Installing Node
