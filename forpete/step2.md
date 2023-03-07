@@ -31,7 +31,7 @@ Head back to Tab 1 and run the new server:
 node ~/app/app3.js
 ```{{exec interrupt}}
 
-Note that when we call `getBooleanValue` we also provide a default value of false. Since we haven't configured the OpenFeature SDK with a feature flag provider yet, it will always return that default value:
+Note that when we call `getBooleanValue` we also provide a default value of `false`{{}}. Since we haven't configured the OpenFeature SDK with a feature flag provider yet, it will always return that default value:
 
 ```
 $> curl http://localhost:3333
@@ -45,7 +45,8 @@ curl http://localhost:3333
 ```{{exec}}
 
 ## Configuring OpenFeature
-Without a feature flagging provider [OpenFeature](https://openfeature.dev) is pretty pointless - it'll just return default values. Instead we want to connect our OpenFeature SDK to a full-fledged feature flagging system - a commercial product such as LaunchDarkly or Split, an open-source system like [FlagD](https://github.com/open-feature/flagd), or perhaps a custom internal system - so that it can provide flagging decisions from that system.
+
+Without a feature flagging provider, [OpenFeature](https://openfeature.dev) is pretty pointless - it'll just return default values. Instead we want to connect our OpenFeature SDK to a full-fledged feature flagging system - a commercial product such as LaunchDarkly or Split, an open-source system like [FlagD](https://github.com/open-feature/flagd), or perhaps a custom internal system - so that it can provide flagging decisions from that system.
 
 Connecting OpenFeature to one of these backends is very straightforward, but it does require that we have an actual flagging framework set up. For now, just to get started, let's just configure a really, really simple provider that doesn't need a backend. It looks like this:
 
@@ -53,7 +54,7 @@ Connecting OpenFeature to one of these backends is very straightforward, but it 
 import { MinimalistProvider } from '@moredip/openfeature-minimalist-provider'
 
 const FLAG_CONFIGURATION = {
-  'with-cows':true
+  'with-cows': true
 }
 
 const featureFlagProvider = new MinimalistProvider(FLAG_CONFIGURATION)
@@ -64,7 +65,7 @@ const featureFlags = OpenFeature.getClient()
 
 This minimalist provider is exactly that - you give it a hard-coded set of feature flag values, and it provides those values via the OpenFeature SDK.
 
-In our `FLAG_CONFIGURATION`{{}} above we've harded-coded that `with-cows`{{}} feature flag to `true`{{}}, which means that conditional predicate in our express app will now evaluate to true, which means that our service will now start providing bovine output:
+In our `FLAG_CONFIGURATION`{{}} above we've hard-coded that `with-cows`{{}} feature flag to `true`{{}}, which means that conditional predicate in our express app will now evaluate to true, which means that our service will now start providing bovine output:
 
 ```
 $> curl http://localhost:3333

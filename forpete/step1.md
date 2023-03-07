@@ -71,14 +71,14 @@ $> curl http://localhost:3333
                 ||     ||
 ```{{}}
 
-`app3.js`{{}} changes the value of this flag to `true`{{}}.
+Open the editor and inside the `app` folder, open `app2.js`.
 
-Click on `app2.js` and on line `12`{{}} change `false`{{}} to `true`
+Change `false`{{}} on line `12`{{}} to `true`
 
 Flick over again to tab 1 and restart the server:
 
 ```
-node ~/app/app3.js
+node ~/app/app2.js
 ```{{exec interrupt}}
 
 Flick back to tab 2 and curl the endpoint. You should see the new `cowsay`{{}} output:
