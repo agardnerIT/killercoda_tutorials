@@ -1,5 +1,6 @@
 import express from 'express'
 import Router from 'express-promise-router'
+import cowsay from 'cowsay'
 
 const app = express()
 const routes = Router();
@@ -17,3 +18,5 @@ routes.get('/', async (req, res) => {
 })
 
 app.listen(3333)
+
+console.log("Server running on port 3333")

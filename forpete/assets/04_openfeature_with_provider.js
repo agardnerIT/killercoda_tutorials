@@ -10,7 +10,7 @@ app.use(routes);
 
 const featureFlags = OpenFeature.getClient()
 const FLAG_CONFIGURATION = {
-  'with-cows':true
+  'with-cows': true
 }
 
 const featureFlagProvider = new MinimalistProvider(FLAG_CONFIGURATION)
@@ -27,3 +27,5 @@ routes.get('/', async (req, res) => {
 })
 
 app.listen(3333)
+
+console.log("Server running on port 3333")
