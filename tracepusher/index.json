@@ -13,6 +13,9 @@
         }, {
             "title": "Push Traces",
             "text": "step2.md"
+        }, {
+            "title": "Shell Script Tracing",
+            "text": "step3.md"
         }],
       "finish": {
         "text": "finish.md"
