@@ -22,7 +22,8 @@
       },
       "assets": {
         "host01": [ 
-            {"file": "config.yaml", "target": "~/" }
+            {"file": "config.yaml", "target": "~/" },
+            {"file": "run.sh", "target": "~/" }
         ]
       }
     },
