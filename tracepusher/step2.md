@@ -2,11 +2,14 @@ It is now time to generate some trace data. tracepusher will generate the trace 
 
 ## Generate a Trace
 
-Click the following to generate a trace:
+Create a new Tab by clicking the `+`{{}} button next to `Tab 1`{{}} at the top of the terminal window.
+
+When tab 2 has loaded, switch over to it and click the following to generate a trace:
 
 ```
 docker run \
 --add-host=host.docker.internal:host-gateway \
+gardnera/tracepusher:v0.4.0 \
 --endpoint=http://host.docker.internal:4318 \
 --service-name=killercoda \
 --span-name=span1 \

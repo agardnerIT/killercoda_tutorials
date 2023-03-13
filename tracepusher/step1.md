@@ -2,7 +2,7 @@ The terminal window opposite represents an Ubuntu VM that you have full control 
 
 We have already downloaded the OpenTelemetry (OTEL) collector and docker is installed. You'll see a file called `config.yaml`{{}} which contains the configuration required to run the OTEL collector.
 
-We need somewhere to
+tracepusher will generate a trace and send it to the collector. We then need a trace backend. We will use the Observability platform Dynatrace to store and visualise trace data.
 
 ## Generate an Access Token
 
