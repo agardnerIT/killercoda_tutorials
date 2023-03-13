@@ -8,8 +8,11 @@
         "foreground": "assets/scripts/intro_foreground.sh"
       },
       "steps": [{
-            "title": "Step 1",
+            "title": "Setup and Collector Configuration",
             "text": "step1.md"
+        }, {
+            "title": "Push Traces",
+            "text": "step2.md"
         }],
       "finish": {
         "text": "finish.md"

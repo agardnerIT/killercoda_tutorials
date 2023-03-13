@@ -6,3 +6,8 @@ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 tar -xf otelcol-contrib_${OTELCOL_VERSION}_linux_amd64.tar.gz
 mv otelcol-contrib otelcol
 rm otelcol-contrib_${OTELCOL_VERSION}_linux_amd64.tar.gz
+
+# ---------------------------------------------#
+#       🎉 Installation Complete 🎉             #
+#           Please proceed now...              #
+# ---------------------------------------------#
