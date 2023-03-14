@@ -142,7 +142,7 @@ tea login add \
    --user=openfeature \
    --password=openfeature \
    --url=http://0.0.0.0:3000 \
-   --token=$ACCESS_TOKEN > /dev/null 2>&1
+   --token=$ACCESS_TOKEN
 
 # Create an empty repo called 'flags'
 # Clone the template repo
