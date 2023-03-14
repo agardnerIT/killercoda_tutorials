@@ -11,6 +11,7 @@ git clone https://github.com/agardnerit/tracepusher
 cd tracepusher
 git checkout feat/subspans
 docker build -t tp:ss .
+cd
 
 # ---------------------------------------------#
 #       🎉 Installation Complete 🎉             #
