@@ -146,9 +146,14 @@ tea login add \
 
 # Create an empty repo called 'flags'
 # Clone the template repo
-tea repo create --name=flags --init=false
-git clone https://0.0.0.0:3000/flags
-wget -O ~/flags/example_flags.flagd.json https://github.com/open-feature/flagd/blob/main/config/samples/example_flags.flagd.json
+tea repo create --name=flags --branch=main --init=true
+git clone http://openfeature:openfeature@0.0.0.0:3000/openfeature/flags
+wget -O ~/flags/example_flags.flagd.json https://raw.githubusercontent.com/open-feature/flagd/main/config/samples/example_flags.flagd.json
+cd ~/flags
+git config credential.helper cache
+git add -A
+git commit -m "add flags"
+git push
 
 # ---------------------------------------------#
 #       🎉 Installation Complete 🎉           #
