@@ -1,9 +1,9 @@
 #!/bin/bash
 
-DEBUG_VERSION=1
+DEBUG_VERSION=2
 GITEA_VERSION=1.19
 TEA_CLI_VERSION=0.9.2
-FLAGD_VERSION=0.3.7
+FLAGD_VERSION=0.4.0
 
 # Download and install flagd
 wget -O flagd.tar.gz https://github.com/open-feature/flagd/releases/download/v${FLAGD_VERSION}/flagd_${FLAGD_VERSION}_Linux_x86_64.tar.gz
@@ -43,7 +43,7 @@ adduser \
   git
 
 # Configure git for 'ubuntu' and 'git' users
-git config --system user.email "me@openfeature.dev"
+git config --system user.email "me@faas.com"
 git config --system user.name "OpenFeature"
 
 # Download 'gitea'
@@ -62,50 +62,52 @@ chmod 770 /etc/gitea
 
 # Create systemd service for 'gitea'
 # Ref: https://github.com/go-gitea/gitea/blob/main/contrib/systemd/gitea.service
-cat <<EOF > /etc/systemd/system/gitea.service
-[Unit]
-Description=Gitea (Git with a cup of tea)
-After=syslog.target
-After=network.target
+mv ~/gitea.service /etc/systemd/system/gitea.service
+# cat <<EOF > /etc/systemd/system/gitea.service
+# [Unit]
+# Description=Gitea (Git with a cup of tea)
+# After=syslog.target
+# After=network.target
 
-Wants=postgresql.service
-After=postgresql.service
+# Wants=postgresql.service
+# After=postgresql.service
 
-[Service]
-RestartSec=2s
-Type=simple
-User=git
-Group=git
-WorkingDirectory=/var/lib/gitea/
-ExecStart=/usr/local/bin/gitea web --config /etc/gitea/app.ini
-Restart=always
-Environment=USER=git HOME=/home/git GITEA_WORK_DIR=/var/lib/gitea
+# [Service]
+# RestartSec=2s
+# Type=simple
+# User=git
+# Group=git
+# WorkingDirectory=/var/lib/gitea/
+# ExecStart=/usr/local/bin/gitea web --config /etc/gitea/app.ini
+# Restart=always
+# Environment=USER=git HOME=/home/git GITEA_WORK_DIR=/var/lib/gitea
 
-[Install]
-WantedBy=multi-user.target
-EOF
+# [Install]
+# WantedBy=multi-user.target
+# EOF
 
-cat <<EOF > /etc/gitea/app.ini
-APP_NAME = "Gitea: Git with a cup of tea"
-RUN_USER = "git"
-[server]
-PROTOCOL = "http"
-DOMAIN = "http://0.0.0.0:3000"
-ROOT_URL = "http://0.0.0.0:3000"
-HTTP_ADDR = "0.0.0.0"
-HTTP_PORT = "3000"
-[database]
-DB_TYPE = "postgres"
-HOST = "0.0.0.0:5432"
-NAME = "giteadb"
-USER = "gitea"
-PASSWD = "gitea"
-[repository]
-ENABLE_PUSH_CREATE_USER = true
-DEFAULT_PUSH_CREATE_PRIVATE = false
-[security]
-INSTALL_LOCK = true
-EOF
+mv ~/gitea.app.ini /etc/gitea/app.ini
+# cat <<EOF > /etc/gitea/app.ini
+# APP_NAME = "Gitea: Git with a cup of tea"
+# RUN_USER = "git"
+# [server]
+# PROTOCOL = "http"
+# DOMAIN = "http://0.0.0.0:3000"
+# ROOT_URL = "http://0.0.0.0:3000"
+# HTTP_ADDR = "0.0.0.0"
+# HTTP_PORT = "3000"
+# [database]
+# DB_TYPE = "postgres"
+# HOST = "0.0.0.0:5432"
+# NAME = "giteadb"
+# USER = "gitea"
+# PASSWD = "gitea"
+# [repository]
+# ENABLE_PUSH_CREATE_USER = true
+# DEFAULT_PUSH_CREATE_PRIVATE = false
+# [security]
+# INSTALL_LOCK = true
+# EOF
 chown -R git:git /etc/gitea
 
 # Set up gitea DB
@@ -122,7 +124,7 @@ sudo -u git gitea migrate -c=/etc/gitea/app.ini
 sudo -u git gitea admin user create \
    --username=openfeature \
    --password=openfeature \
-   --email=me@openfeature.dev \
+   --email=me@faas.com \
    --must-change-password=false \
    -c=/etc/gitea/app.ini
 
@@ -144,9 +146,9 @@ tea login add \
 
 # Create an empty repo called 'flags'
 # Clone the template repo
-cd ~
 tea repo create --name=flags --init=false
-git clone https://github.com/agardnerIT/OpenFeatureFlagsTemplate
+git clone https://0.0.0.0:3000/flags
+wget -O ~/flags/example_flags.flagd.json https://github.com/open-feature/flagd/blob/main/config/samples/example_flags.flagd.json
 
 # ---------------------------------------------#
 #       🎉 Installation Complete 🎉           #
