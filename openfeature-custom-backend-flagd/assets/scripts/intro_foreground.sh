@@ -136,6 +136,10 @@ sudo -u git gitea admin user generate-access-token \
 
 ACCESS_TOKEN=$(tail -n 1 /tmp/output.log)
 
+# Wait for Gitea to be available
+# Timeout after 2mins
+timeout 120 bash -c 'while [[ "$(curl --insecure -s -o /dev/null -w ''%{http_code}'' http://0.0.0.0:3000)" != "200" ]]; do sleep 5; done'
+
 # Authenticate the 'tea' CLI
 tea login add \
    --name=openfeature \
