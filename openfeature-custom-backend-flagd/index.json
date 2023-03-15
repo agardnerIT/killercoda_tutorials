@@ -7,7 +7,7 @@
             "title": "Initial Setup and Configuration",
             "text": "step1.md"
         }, {
-			"title": "flagd",
+			"title": "What is flagd?",
 			"text": "step2.md"
 		}, {
 			"title": "Flag Evaluation and GitOps Changes",
