@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEBUG_VERSION=4
+DEBUG_VERSION=5
 GITEA_VERSION=1.19
 TEA_CLI_VERSION=0.9.2
 FLAGD_VERSION=0.4.0
@@ -146,11 +146,11 @@ tea login add \
    --user=openfeature \
    --password=openfeature \
    --url=http://0.0.0.0:3000 \
-   --token=$ACCESS_TOKEN
+   --token=$ACCESS_TOKEN > /dev/null 2>&1
 
 # Create an empty repo called 'flags'
 # Clone the template repo
-tea repo create --name=flags --branch=main --init=true
+tea repo create --name=flags --branch=main --init=true > /dev/null 2>&1
 git clone http://openfeature:openfeature@0.0.0.0:3000/openfeature/flags
 wget -O ~/flags/example_flags.flagd.json https://raw.githubusercontent.com/open-feature/flagd/main/config/samples/example_flags.flagd.json
 cd ~/flags
