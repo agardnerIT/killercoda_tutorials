@@ -7,7 +7,7 @@ flagd is a open source self-contained feature flag evaluation engine which also 
 
 flagd doesn't just read a source of feature flags and present the information to you, flagd is **active**. flagd has built in ruleset capabilities and can (if you wish) **evaluate**. This tutorial will explore these capabilities later.
 
-flagd is a fully featured reference implementation of OpenFeature. Use it to run your feature flag system at scale or as a stepping stne to a paid-for vendor.
+flagd is a fully featured reference implementation of OpenFeature. Use it to run your feature flag system at scale or as a stepping stone to a paid-for vendor.
 
 > If you are familiar with OpenTelemetry, flagd is Prometheus or Jaeger.
 
