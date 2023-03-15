@@ -6,6 +6,7 @@ For example, look at [targetedFlag]({{TRAFFIC_HOST1_3000}}/openfeature/flags/src
 
 The rules can be read like this:
 
+- By default, everyone receieves the flag `first` with the value of `AAA` **except**...
 - When an `email` key is present containing `@openfeature.dev`, the returned flag is `second` with a value of `BBB`.
 - When an `userAgent` key is present containing `Chrome`, the returned flag is `third` with a value of `CCC`.
 

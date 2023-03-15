@@ -48,4 +48,12 @@ flagd start \
 
 ## Retrieve Flag
 
-Change back to tab 2 and again try to retrieve the flag value. This time you should see: `{"value":"this", "reason":"STATIC", "variant":"A"}`{{}}
+Change back to tab 2 and again try to retrieve the flag value.
+
+```
+curl -X POST {{TRAFFIC_HOST1_8013}}/schema.v1.Service/ResolveString \
+  -H "Content-Type: application/json" \
+  -d '{"flagKey": "brandNewFlag", "context": {} }'
+```{{exec}}
+
+This time you should see: `{"value":"this", "reason":"STATIC", "variant":"A"}`{{}}
