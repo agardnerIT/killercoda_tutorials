@@ -1,0 +1,24 @@
+{
+
+	"title": "Ignore",
+	"description": "Dummy. Ignore",
+	"details": {
+		"steps": [],
+		"intro": {
+			"text": "intro.md",
+            "foreground": "assets/scripts/intro_foreground.sh",
+			"background": "assets/scripts/intro_background.sh"
+		},
+		"finish": {
+			"text": "finish.md"
+		}
+	},
+	"environment": {
+		"showdashboard": true,
+		"dashboard": "Dashboard",
+		"uilayout": "terminal"
+	},
+	"backend": {
+		"imageid": "ubuntu"
+	}
+}
