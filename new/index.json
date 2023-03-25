@@ -1,17 +1,35 @@
 {
 
-	"title": "Ignore",
-	"description": "Dummy. Ignore",
+	"title": "TESTING GROUND",
+	"description": "Scenario used for testing. Ignore. Expect to be broken.",
+	"difficulty": "Medium",
+	"time": "10",
 	"details": {
-		"steps": [],
+		"steps": [{
+            "title": "OpenFeature Operator",
+            "text": "step1.md"
+        }, {
+            "title": "OpenFeature Hooks",
+            "text": "step2.md"
+        }],
 		"intro": {
 			"text": "intro.md",
-            "foreground": "assets/scripts/intro_foreground.sh",
-			"background": "assets/scripts/intro_background.sh"
+            "foreground": "assets/scripts/intro_foreground.sh"
 		},
 		"finish": {
 			"text": "finish.md"
-		}
+		},
+        "assets": {
+            "host01": [{
+                "file": "end-to-end.yaml",
+                "chmod": "+x",
+                "target": "~"
+            },{
+                "file": "feature-flag-configuration.yaml",
+                "chmod": "+x",
+                "target": "~"
+            }]
+        }
 	},
 	"environment": {
 		"showdashboard": true,
@@ -19,6 +37,6 @@
 		"uilayout": "terminal"
 	},
 	"backend": {
-		"imageid": "ubuntu"
+		"imageid": "kubernetes-kubeadm-1node"
 	}
 }
