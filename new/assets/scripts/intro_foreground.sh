@@ -1,8 +1,8 @@
-DEBUG_VERSION=1
+DEBUG_VERSION=3
 
-###############################################
+#################################################################
 # Step [1/3]: Install docker compose plugin
-###############################################
+#################################################################
 sudo apt update  < "/dev/null"
 sudo apt install -y ca-certificates curl gnupg lsb-release  < "/dev/null"
 sudo mkdir -p /etc/apt/keyrings
@@ -13,16 +13,17 @@ echo \
 sudo apt update  < "/dev/null"
 sudo apt install -y docker-compose-plugin  < "/dev/null"
 
-###############################################
-# Step [2/3]: Clone Repo and check out PR
-###############################################
+###################################################################
+# Step [2/3]: Clone Repo and checkout feat/client-flags branch
+###################################################################
 git clone https://github.com/open-feature/playground
 cd playground
 git checkout feat/client-flags
+cp .env.example .env
 
-###############################################
+###################################################################
 # Step [3/3]: Start things up!
-###############################################
+###################################################################
 docker compose up --detach
 
 # ---------------------------------------------#
