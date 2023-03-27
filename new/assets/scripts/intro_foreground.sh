@@ -24,7 +24,7 @@ cp .env.example .env
 ###################################################################
 # Step [3/3]: Start things up!
 ###################################################################
-docker compose up --detach
+docker compose up --build --detach
 
 # ---------------------------------------------#
 #       🎉 Installation Complete 🎉           #
