@@ -21,9 +21,9 @@ spec:
       hex-color:
         state: ENABLED
         variants:
-          red: CC0000
-          green: 00CC00
-          blue: 0000CC
+          red: c05543
+          green: 2f5230
+          blue: 0d507b
           yellow: yellow
         defaultVariant: blue
       fib-algo:
@@ -68,7 +68,7 @@ spec:
       serviceAccountName: open-feature-demo-sa
       containers:
         - name: open-feature-demo
-          image: ghcr.io/open-feature/playground-app:v0.4.0
+          image: ghcr.io/open-feature/playground-app:v0.6.3
           args:
             - flagd
           ports:
