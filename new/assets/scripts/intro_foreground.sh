@@ -1,4 +1,4 @@
-DEBUG_VERSION=3
+DEBUG_VERSION=4
 
 #################################################################
 # Step [1/3]: Install docker compose plugin
