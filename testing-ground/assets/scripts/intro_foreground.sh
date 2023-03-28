@@ -1,4 +1,8 @@
-DEBUG_VERSION=7
+DEBUG_VERSION=8
+PLAYGROUND_APP_VERSION=v0.7.1
+JAEGER_VERSION=1.42
+FLAGD_VERSION=v0.4.4
+GO_FEATURE_FLAG_VERSION=v1.4.0
 
 #################################################################
 # Step [1/3]: Install docker compose plugin
@@ -19,12 +23,20 @@ sudo apt install -y docker-compose-plugin  < "/dev/null"
 git clone https://github.com/open-feature/playground
 cd playground
 git fetch --all --tags
-git checkout tags/v0.6.3
+git checkout tags/${PLAYGROUND_APP_VERSION}
+
+# Pull images for faster startup
+docker pull ghcr.io/open-feature/playground-app:${PLAYGROUND_APP_VERSION}
+docker pull ghcr.io/open-feature/playground-fib-service:${PLAYGROUND_APP_VERSION}
+docker pull jaegertracing/all-in-one:${JAEGER_VERSION}
+docker pull ghcr.io/open-feature/flagd:${FLAGD_VERSION}
+docker pull thomaspoignant/go-feature-flag-relay-proxy:${GO_FEATURE_FLAG_VERSION}
+
 
 ###################################################################
 # Step [3/3]: Start things up!
 ###################################################################
-docker compose up --detach
+#docker compose up --detach
 
 # ---------------------------------------------#
 #       🎉 Installation Complete 🎉           #
