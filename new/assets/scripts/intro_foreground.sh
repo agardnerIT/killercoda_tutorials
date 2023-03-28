@@ -20,7 +20,6 @@ git clone https://github.com/open-feature/playground
 cd playground
 git fetch --all --tags
 git checkout tags/v0.6.3 -b main
-#git checkout feat/client-flags
 cp .env.example .env
 
 ###################################################################
