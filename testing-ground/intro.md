@@ -2,6 +2,12 @@
 
 Of course, all this content is temporary and indicative only...
 
+## We're Getting Warmed Up
+
+Please be patient. As you can see on the right, we're getting things all prepared.
+
+Wait until you see `🎉 Preparation Complete 🎉` before proceeding.
+
 ## Configure and Start Application
 Some text about why client-side is better...
 This could also be a great opportunity to let users bring their own vendor API keys?
