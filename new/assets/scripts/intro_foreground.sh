@@ -1,4 +1,4 @@
-DEBUG_VERSION=4
+DEBUG_VERSION=5
 
 #################################################################
 # Step [1/3]: Install docker compose plugin
@@ -18,13 +18,15 @@ sudo apt install -y docker-compose-plugin  < "/dev/null"
 ###################################################################
 git clone https://github.com/open-feature/playground
 cd playground
-git checkout feat/client-flags
+git fetch --all --tags
+git checkout tags/v0.6.3 -b main
+#git checkout feat/client-flags
 cp .env.example .env
 
 ###################################################################
 # Step [3/3]: Start things up!
 ###################################################################
-docker compose up --build --detach
+docker compose up --detach
 
 # ---------------------------------------------#
 #       🎉 Installation Complete 🎉           #
