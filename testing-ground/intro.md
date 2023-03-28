@@ -1,5 +1,7 @@
 # Intro.md
 
+Of course, all this content is temporary and indicative only...
+
 ## Configure and Start Application
 Some text about why client-side is better...
 This could also be a great opportunity to let users bring their own vendor API keys?
