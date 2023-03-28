@@ -68,6 +68,11 @@ HARNESS_KEY_WEB=
 FLAGD_HOST_WEB={{TRAFFIC_HOST1_8013}}
 EOF
 docker compose up --detach
+
+# Waiting for application to start
+timeout 60 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' {{TRAFFIC_HOST1_30000}})" != "200" ]]; do sleep 5; done' || false
+
+# Application is running and available: {{TRAFFIC_HOST1_30000}}) 
 ```{{exec}}
 
 ## Visit Application
