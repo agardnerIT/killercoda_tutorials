@@ -39,6 +39,6 @@ docker pull thomaspoignant/go-feature-flag-relay-proxy:${GO_FEATURE_FLAG_VERSION
 #docker compose up --detach
 
 # ---------------------------------------------#
-#       🎉 Installation Complete 🎉           #
+#       🎉 Preparation Complete 🎉            #
 #           Please proceed now...              #
 # ---------------------------------------------#
