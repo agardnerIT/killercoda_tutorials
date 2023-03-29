@@ -14,7 +14,13 @@ This could also be a great opportunity to let users bring their own vendor API k
 
 The demo application evaluates feature flags from the client. [This page](https://example.com) explains the benefits of this approach.
 
-The application needs know the flag evaluation endpoint.
+The application needs know the flag evaluation endpoint. We will do that by creating an environments variable file called `.env`{{}} and passing it to the application on startup.
+
+The code snippet below will:
+  - Create a file called `.env` and populated it with the flagd endpoint
+  - Use docker compose to start up the application
+  - Ensure the application is runnings successfully
+  - Print the URL of the application that you can access in your browser.
 
 Click the following text to configure and start the application now:
 
