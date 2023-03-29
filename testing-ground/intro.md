@@ -81,6 +81,7 @@ HARNESS_KEY_WEB=
 # The domain name or IP address of flagd
 # @default localhost
 FLAGD_HOST_WEB=${trimmedURL}
+FLAGD_PORT_WEB=443 
 FLAGD_TLS_WEB=true
 EOF
 docker compose up --detach

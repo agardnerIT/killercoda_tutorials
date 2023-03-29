@@ -1,4 +1,4 @@
-DEBUG_VERSION=14
+DEBUG_VERSION=15
 PLAYGROUND_APP_VERSION=v0.8.0
 JAEGER_VERSION=1.42
 FLAGD_VERSION=v0.4.4
@@ -18,7 +18,7 @@ sudo apt update  < "/dev/null"
 sudo apt install -y docker-compose-plugin  < "/dev/null"
 
 ###################################################################
-# Step [2/3]: Clone Repo and checkout feat/client-flags branch
+# Step [2/3]: Clone Repo and checkout correct tag
 ###################################################################
 git clone https://github.com/open-feature/playground
 cd playground
