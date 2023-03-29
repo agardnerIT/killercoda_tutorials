@@ -1,5 +1,7 @@
 # Intro.md
 
+`v0.9.0`
+
 Of course, all this content is temporary and indicative only...
 
 ## We're Getting Warmed Up
