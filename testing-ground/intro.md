@@ -25,6 +25,7 @@ The code snippet below will:
 Click the following text to configure and start the application now:
 
 ```
+trimmedURL=$(echo {{TRAFFIC_HOST1_8013}} | sed -e "s#^https://*##")
 cat <<EOF > .env
 ###############################################
 ##
@@ -79,7 +80,7 @@ HARNESS_KEY_WEB=
 
 # The domain name or IP address of flagd
 # @default localhost
-FLAGD_HOST_WEB={{TRAFFIC_HOST1_8013}}
+FLAGD_HOST_WEB=${trimmedURL}
 FLAGD_TLS_WEB=true
 EOF
 docker compose up --detach
