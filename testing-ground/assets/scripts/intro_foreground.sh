@@ -1,4 +1,4 @@
-DEBUG_VERSION=11
+DEBUG_VERSION=12
 PLAYGROUND_APP_VERSION=v0.7.1
 JAEGER_VERSION=1.42
 FLAGD_VERSION=v0.4.4
@@ -25,18 +25,14 @@ cd playground
 git fetch --all --tags
 git checkout tags/${PLAYGROUND_APP_VERSION}
 
-# Pull images for faster startup
+###################################################################
+# Step [3/3]: Pull images for faster startup
+###################################################################
 docker pull ghcr.io/open-feature/playground-app:${PLAYGROUND_APP_VERSION}
 docker pull ghcr.io/open-feature/playground-fib-service:${PLAYGROUND_APP_VERSION}
 docker pull jaegertracing/all-in-one:${JAEGER_VERSION}
 docker pull ghcr.io/open-feature/flagd:${FLAGD_VERSION}
 docker pull thomaspoignant/go-feature-flag-relay-proxy:${GO_FEATURE_FLAG_VERSION}
-
-
-###################################################################
-# Step [3/3]: Start things up!
-###################################################################
-#docker compose up --detach
 
 # ---------------------------------------------#
 #       🎉 Preparation Complete 🎉            #
