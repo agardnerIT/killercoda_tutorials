@@ -1,0 +1,24 @@
+{
+
+	"title": "KLT TESTING GROUND",
+	"description": "Scenario used for testing. Ignore. Expect to be broken.",
+	"difficulty": "Medium",
+	"time": "10",
+	"details": {
+		"steps": [],
+		"intro": {
+			"text": "intro.md"
+		},
+		"finish": {
+			"text": "finish.md"
+		}
+	},
+	"environment": {
+		"showdashboard": true,
+		"dashboard": "Dashboard",
+		"uilayout": "terminal"
+	},
+	"backend": {
+		"imageid": "kubernetes-kubeadm-2nodes"
+	}
+}
