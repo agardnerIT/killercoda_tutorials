@@ -1,7 +1,7 @@
-DEBUG_VERSION=15
+DEBUG_VERSION=16
 PLAYGROUND_APP_VERSION=v0.9.0
 JAEGER_VERSION=1.42
-FLAGD_VERSION=v0.4.4
+FLAGD_VERSION=v0.4.5
 GO_FEATURE_FLAG_VERSION=v1.4.0
 
 #################################################################
