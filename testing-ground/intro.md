@@ -1,99 +1,55 @@
-# Intro.md
+# Keptn Multistage Delivery and Self-Healing with Helm, Prometheus, Locust and SLO-based Quality Gates
+The goal of this tutorial is to:
 
-`v0.9.0`
+- Deploy a microservice (using [helm](https://helm.sh))
+- Generate load on the deployed service (using [Locust](https://locust.io))
+- Monitor the microservice (using [Prometheus](https://prometheus.io/))
+- Add approval gates into the delivery pipeline
+- Add automated SLO-based quality evaluations both pre and post release
+- Show how Keptn can orchestrate self-healing patterns and tools (like scaling a helm deployment)
 
-Of course, all this content is temporary and indicative only...
+Keptn is not opinionated about tooling. A key strength of Keptn is it allows you to bring the tooling and observability platforms you already use and with which you are familiar.
 
-## We're Getting Warmed Up
+That said, we needed to pick some tools, and Prometheus, Helm as well as Locust are commonly used tools.
 
-Please be patient. As you can see on the right, we're getting things all prepared.
+The Prometheus observability platform is used to provide data for our exercise. The process is very similar if you use a different data source (integrations are also currently available for Dynatrace and DataDog).
 
-Wait until you see `🎉 Preparation Complete 🎉` before proceeding.
+Helm is used to deploy a microservice to a Kubernetes cluster. While other deployment strategies and tools can be used (e.g., argo, kubectl), this tutorial is very specific to Helm.
 
-## Configure and Start Application
-Some text about why client-side is better...
-This could also be a great opportunity to let users bring their own vendor API keys?
+Last but not least, Locust is a modern Python based load testing tool. You can exchange it with any other load testing tool (integrations for JMeter, artillery, k6, and NeoLoad are available).
 
-The demo application evaluates feature flags from the client. [This page](https://example.com) explains the benefits of this approach.
+The tutorial will progress in steps:
 
-The application needs know the flag evaluation endpoint. We will do that by creating an environments variable file called `.env`{{}} and passing it to the application on startup.
+1. Run automated tests that release our software into `qa` and `production` stages
+2. Add an approval step to ensure a human must always click “go” before a production release
+3. Replace the manual approval step with an automated quality gate. Add Prometheus to the cluster to monitor the workloads. Add SLO-based quality evaluations to ensure no bad build ever makes it to production
+5. Add a quality evaluation in production, post rollout
+6. Add a remediation action that will be taken by a remediation provider if an evaluation of the production stage fails. In the demo, this means helm scales the deployment
 
-The code snippet below will:
-  - Create a file called `.env`{{}} and populated it with the `flagd`{{}} endpoint
-  - Use docker compose to start up the application
-  - Ensure the application is runnings successfully
-  - Print the URL of the application that you can access in your browser.
+## While You're Waiting...
 
-Click the following text to configure and start the application now:
+While you have been reading, we have been busy installing everything. It is still happening and should only take a few minutes.
 
-```
-trimmedURL=$(echo {{TRAFFIC_HOST1_8013}} | sed -e "s#^https://*##")
-cat <<EOF > .env
-###############################################
-##
-## Feature Flag Environment Variables
-##
-###############################################
+While you wait, you will need a personal access token (PAT). We use this to create a new repository and so Keptn has a place to store and manage files.
 
-# Options: recursive, memo, loop, binet, default
-FIB_ALGO=default
+> Important: For security, invalidate this token immediately after you have finished this tutorial.
 
-###############################################
-##
-## Feature Flag SDK keys (server)
-##
-###############################################
+You can use any Git provider but assuming you're using GitHub.com:
 
-# Split IO server-side API key
-SPLIT_KEY=
+- Go to GitHub token's [setting page](https://github.com/settings/tokens) and generate a personal access token with full `Repo` permissions
 
-# CloudBees App Key
-CLOUDBEES_APP_KEY=
+![repo](./assets/repo-token.png)
 
-# LaunchDarkly SDK Key
-LD_KEY=
+## Relax...
 
-# Flagsmith Environment key (v2)
-FLAGSMITH_ENV_KEY=
+You have everything you need now and just need to wait for us to finish the installation.
 
-# Harness SDK Key
-HARNESS_KEY=
+Please wait here until you see the text `Installation Complete 🎉. Please proceed now.` in the console.
 
-###############################################
-##
-## Feature Flag SDK keys (web)
-##
-###############################################
+While you wait, here is a visual of what you are about to build.
 
-# Split IO server-side API key
-SPLIT_KEY_WEB=
+![keptn-cloud-native](./assets/overview_image.drawio.png)
 
-# CloudBees App Key
-CLOUDBEES_APP_KEY_WEB=
+It should only take a few more minutes...
 
-# LaunchDarkly SDK Key
-LD_KEY_WEB=
-
-# Flagsmith Environment key (v2)
-FLAGSMITH_ENV_KEY_WEB=
-
-# Harness SDK Key
-HARNESS_KEY_WEB=
-
-# The domain name or IP address of flagd
-# @default localhost
-FLAGD_HOST_WEB=${trimmedURL}
-FLAGD_PORT_WEB=443 
-FLAGD_TLS_WEB=true
-EOF
-docker compose up --detach
-
-# Waiting for application to start
-timeout 60 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' {{TRAFFIC_HOST1_30000}})" != "200" ]]; do sleep 5; done' || false
-
-# Application is running and available: {{TRAFFIC_HOST1_30000}}
-```{{exec}}
-
-## Visit Application
-
-[View the OpenFeature Demo Application]({{TRAFFIC_HOST1_30000}})
+*Be aware that this environment is invalidated after 60 minutes or 20 minutes of keyboard inactivity, whichever comes first*
