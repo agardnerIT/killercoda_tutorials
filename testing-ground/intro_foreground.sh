@@ -28,7 +28,6 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 # -------------------------------------------#
 helm install keptn https://github.com/keptn/keptn/releases/download/$KEPTN_VERSION/keptn-$KEPTN_VERSION.tgz \
 -n keptn --create-namespace \
---set=apiGatewayNginx.type=LoadBalancer \
 --set mongo.resources.requests.cpu=0 \
 --set mongo.resources.requests.memory=0 \
 --set nats.nats.resources.requests.cpu=0 \
