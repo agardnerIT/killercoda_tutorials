@@ -136,7 +136,7 @@
 				"chmod": "+x"
 			}, {
 				"file": "scripts/portforward.sh",
-				"target": "~/portforward.sh",
+				"target": "~/",
 				"chmod": "+x"
 			}]
 		}
