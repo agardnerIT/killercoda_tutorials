@@ -45,7 +45,7 @@ cat ~/lifecycle-toolkit-examples/sample-app/base/manifest.yaml
 
 ## Step 3: Create KeptnApp Custom Resource
 
-In real-life, your "application" rarely consists of only a single `Deployment`. Your `application` will be made up from a set of related `Deployment` manifests.
+In real-life, your "application" rarely consists of only a single `Deployment`{{}}. Your `application`{{}} will most be a set of related `Deployment`{{}} manifests.
 
 Kubernetes does not (yet) have the concept of an application, so `KeptnApp` is a Custom Resource that allows you to bundle multiple workloads into a single logical application.
 
@@ -59,9 +59,7 @@ cat ~/lifecycle-toolkit-examples/sample-app/base/app.yaml
 
 ## Step 4: Pre and Post Deployment Actions
 
-**These actions are at the core of why KLT exists. Please read and understand this section carefully.**
-
-KLT allows two types of pre-deployment action on both the (individual) workload level and at the KeptnApp level:
+KLT allows two types of pre and post deployment action on both the (individual) workload level and at the KeptnApp level:
 
 - Tasks
 - Evaluations
