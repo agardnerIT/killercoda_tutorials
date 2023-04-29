@@ -18,7 +18,7 @@ Available steps (applicable to both workload and application entities):
 
 # Please Wait...
 
-We are installing the KLT and cloning the demo code. These commands are automatically being executed for you on the right, but for reference, the commands to do so are:
+We are installing the KLT, cloning the demo code and installing observability tooling. These commands are automatically being executed for you on the right, but for reference, the commands to do so are:
 
 ```
 helm repo add klt https://charts.lifecycle.keptn.sh
