@@ -1,152 +1,23 @@
-## Prefer to read code?
-If you prefer to dig through the code, you'll find it in the various folders here: `cd ~/lifecycle-toolkit-examples/sample-app/`{{exec}}.
+## Putting It All Together
 
-## Step 1: Namespace Annotation
+Version 1 of the application has been deployed. A pre-deployment task is defined on each workload (except frontend) which forces each workload to wait until the frontend is first running.
 
-The Lifecycle toolkit first relies on the target namespace being annotated. This causes KLT to act upon that namespace. Describe the `podtato-kubectl`{{}} namespace:
+A pre-deployment evaluation is defined at the KeptnApp level which retrieves the `available-cpus`{{}} metric from `prometheus`{{}} and ensures that the number of available CPUs is greater than `100`{{}}.
+
+**If this check fails, all of the pods in the KeptnApp will not be allowed to be scheduled and remain in a pending state.**
+
+## Why is it Pending?
 
 ```
-kubectl describe namespace podtato-kubectl
+kubectl -n podtato-kubectl get pods
 ```{{exec}}
 
-It has an annotation: `keptn.sh/lifecycle-toolkit: enabled`{{}}
+Shows that all pods are pending. Why?
 
-You can see this in the demo code:
+Because the pre-deployment task failed. We do not have > 100 CPUs available and so the pods are still pending.
 
-```
-head -n 7 ~/lifecycle-toolkit-examples/sample-app/base/manifest.yaml
-```{{exec}}
+**This is the desired behaviour.**
 
-## Step 2: Workload Labels
+As previously explained, in a real scenario you would use pre-checks to ensure downstream systems or third parties are operational before allowing a deployment. Here we simulate the fact that you **should not** be allowed to deploy.
 
-Keptn only targets workloads with certain labels.
-
-You can either use the Kubernetes recommended labels:
-
-```
-app.kubernetes.io/part-of: myAwesomeAppName
-app.kubernetes.io/name: myAwesomeWorkload
-app.kubernetes.io/version: myAwesomeWorkloadVersion
-```
-
-or use Keptn ones. Both sets are equivalent - choose whichever you prefer:
-
-```
-keptn.sh/app: myAwesomeAppName
-keptn.sh/workload: myAwesomeWorkload
-keptn.sh/version: myAwesomeWorkloadVersion
-```
-
-You can see this in the demo code:
-
-```
-cat ~/lifecycle-toolkit-examples/sample-app/base/manifest.yaml
-```{{exec}}
-
-## Step 3: Create KeptnApp Custom Resource
-
-In real-life, your "application" rarely consists of only a single `Deployment`{{}}. Your `application`{{}} will most be a set of related `Deployment`{{}} manifests.
-
-Kubernetes does not (yet) have the concept of an application, so `KeptnApp` is a Custom Resource that allows you to bundle multiple workloads into a single logical application.
-
-The `name`{{}} and `version`{{}} fields must match the labels you applied above.
-
-You can see a sample here:
-
-```
-cat ~/lifecycle-toolkit-examples/sample-app/base/app.yaml
-```{{exec}}
-
-## Step 4: Pre and Post Deployment Actions
-
-KLT allows two types of pre and post deployment action on both the (individual) workload level and at the KeptnApp level:
-
-- Tasks
-- Evaluations
-
-Pre-deployment actions fire **before** the pod has been bound to the node. If pre-deployment actions fail, the pod will not be allowed to be bound and will result in a pending pod.
-
-Pre-deployment actions are useful for:
-
-- Checking that dependencies are available
-- Ensuring you are not in a maintenance window
-- Checking any other pre-conditions that may prevent or hinder a successful deployment.
-
-Post-deployment actions fire **after** the pod has been successfully bound to the node and is in a running state.
-
-Post-deployment actions are useful for:
-
-- Performing arbitrary, complex logic (beyond the scope of Kubernetes readiness probes) to ensure the application is actually running and useful for users
-- Ensuring downstream systems and third parties are still operational
-- Checking SLOs to ensure the deployment hasn't caused a service degradation 
-
-Workload level actions fire before application level actions.
-
-Looking at the `v1`{{}} manifest, notice a label applied to each workload:
-
-```
-keptn.sh/pre-deployment-tasks: pre-deployment-check-frontend
-```{{copy}}
-
-View the file by clicking this text:
-
-```
-cat ~/lifecycle-toolkit-examples/sample-app/version-1/manifest.yaml
-```{{exec}}
-
-This references a `KeptnTaskDefinition`{{}} called `pre-deployment-check-frontend`{{}}  which you write. Multiple (comma separated) tasks are allowed.
-
-View all `KeptnTaskDefinition`{{}} in a given namespace:
-
-```
-kubectl -n podtato-kubectl get keptntaskdefinitions
-```{{exec}}
-
-Inspect the KeptnTaskDefinition:
-
-```
-kubectl -n podtato-kubectl describe keptntaskdefinition pre-deployment-check-frontend
-```{{exec}}
-
-This task takes a parameter (the URL) and a remotely hosted JavaScript function which simply does a fetch of the application endpoint in the cluster to check it is running.
-
-A post-deployment task is configured using the label: `keptn.sh/post-deployment-tasks`{{copy}}.
-
-## Pre and Post Deployment Evaluations
-
-Similar to tasks, evaluations can occur at both the workload and application levels. 
-
-During evaluations, KLT will retrieve metrics from a metric source (eg. Prometheus or any other metric storage solution) and evaluate a condition.
-
-In the demo system, the workloads do not have any evaluations, but the `KeptnApp`{{}} does.
-
-```
-cat ~/lifecycle-toolkit-examples/sample-app/version-1/app.yaml 
-```{{exec}}
-
-An evaluation called `app-pre-deploy-eval-1`{{}} is attached at the application level.
-
-View the definition:
-
-```
-kubectl -n podtato-kubectl describe keptnevaluationdefinition app-pre-deploy-eval-1
-```{{exec}}
-
-The evaluation uses a `KeptnMetric`{{}} called `available-cpus`{{}} and has a threshold of `>100`{{}}. If the value of `available-cpus`{{}} is `<=100`{{}} this pre-evaluation will fail and thus the pod will remain in a pending state.
-
-To understand **where** the `available-cpus`{{}} data is retrieved from, look at the `KeptnMetric`{{}}.
-
-```
-kubectl -n podtato-kubectl describe keptnmetric available-cpus
-```{{exec}}
-
-Data is retrieved from Prometheus with the query: `sum(kube_node_status_capacity{resource='cpu'})`{{}}
-
-
-`KeptnMetricsProvider`{{}} CRDs describe metric sources. Take a look at the `prometheus` one:
-
-```
-kubectl -n podtato-kubectl describe keptnmetricsprovider prometheus
-```{{exec}}
-
-The `targetServer`{{}} field shows where the data is being retrieved from. KLT supports retrieval from **any** metric storage system.
+KLT has protected the deployment because we do not have the desired resources.

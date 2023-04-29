@@ -1,10 +1,10 @@
-# Install the required observability features
+# The Demo Application
+For this demonstration, we use [the PodTatoHead application](https://github.com/podtato-head/podtato-head).
 
-The Keptn Lifecycle Toolkit emits OpenTelemetry data as standard but the toolkit does not come pre-bundled with Observability backend tooling. This is deliberate as it provides flexibility for you to bring your own Observability backend that consumes this emitted data.
+Let's attempt to deploy version 1 of the application now:
 
-In order to use the observability features of the lifecycle toolkit, we need a monitoring and tracing backend.
+```
+make deploy-version-1
+```{{exec}}
 
-In this guide, we use:
-
-- Prometheus for Metrics
-- Jaeger for Traces
+In the first version of the demo application, the Keptn Lifecycle Toolkit evaluates metrics provided by Prometheus mockserver and checks if the specified amount of CPUs are available before deploying the application.
