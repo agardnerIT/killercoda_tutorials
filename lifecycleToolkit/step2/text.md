@@ -122,7 +122,7 @@ Similar to tasks, evaluations can occur at both the workload and application lev
 
 During evaluations, KLT will retrieve metrics from a metric source (eg. Prometheus or any other metric storage solution) and evaluate a condition.
 
-In the demo system, the workloads do not have any evaluations, but the `KeptnApp`{{}} does.
+In the demo system, the workloads do not have any evaluations, but the `KeptnApp`{{}} has a single `preDeploymentEvaluation`.
 
 ```
 cat ~/lifecycle-toolkit-examples/sample-app/version-1/app.yaml 
