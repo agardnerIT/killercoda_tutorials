@@ -9,8 +9,8 @@ It will take a few moments for the frontend to start and until that time, the pr
 After a few moments though, all pods should start successfully.
 
 ```
-kubectl -n podtato-kubectl get pods
-```{{}}
+kubectl -n podtato-kubectl wait pods --for condition=Ready --timeout=120s
+```{{exec}}
 
 should look like this:
 
@@ -39,17 +39,17 @@ Version 2 of the `KeptnApp`{{}} has a different pre-evaluation check configured.
 cat ~/lifecycle-toolkit-examples/sample-app/version-2/app.yaml
 ```{{exec}}
 
-The definition shows that the threshold for `available-cpus`{{}} has been lowered from `>100`{{}} to `>1`{{}}
+The definition shows that the `evaluationTarget`{{}} for `available-cpus`{{}} has been lowered from `>100`{{}} to `>1`{{}}
 
 ```
 cat ~/lifecycle-toolkit-examples/sample-app/version-2/app-pre-deploy-eval.yaml
-```{{}}
+```{{exec}}
 
 Retrieving the metric shows the current value to be `4`{{}}
 
 ```
 kubectl -n podtato-kubectl get keptnmetrics
-```{{}}
+```{{exec}}
 
 The pre-condition check is **met** and so the pods are allowed to be bound to the node.
 
