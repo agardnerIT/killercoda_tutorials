@@ -14,7 +14,7 @@ It has an annotation: `keptn.sh/lifecycle-toolkit: enabled`{{}}
 You can see this in the demo code:
 
 ```
-cat ~/lifecycle-toolkit-examples/sample-app/base/manifest.yaml
+head -n 7 ~/lifecycle-toolkit-examples/sample-app/base/manifest.yaml
 ```{{exec}}
 
 ## Step 2: Workload Labels
@@ -150,5 +150,3 @@ kubectl -n podtato-kubectl describe keptnmetricsprovider prometheus
 ```{{exec}}
 
 The `targetServer`{{}} field shows where the data is being retrieved from. KLT supports retrieval from **any** metric storage system.
-
-

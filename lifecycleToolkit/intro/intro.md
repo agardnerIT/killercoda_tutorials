@@ -1,6 +1,9 @@
-# What is Keptn Lifecycle Tookit (KLT):
 
-It is a toolkit for cloud-native application lifecycle management. The Keptn Lifecycle Toolkit (KLT) “wraps” a standard Kubernetes deployment and provides both workload (single service) tests and SLO evaluations. Multiple workloads can also be logically grouped (and evaluated) as a single cohesive unit: a Keptn Application. In other words, an application is a collection of multiple workloads.
+The Keptn Lifecycle Toolkit extends the Kubernetes API to offer 3 usecases:
+
+1. [Deployment Observability](https://lifecycle.keptn.sh/#deployment-observability)
+2. [Deployment Data Access](https://lifecycle.keptn.sh/#data-access)
+3. [Deployment Check Orchestration](https://lifecycle.keptn.sh/#deployment-check-orchestration)
 
 The Keptn Lifecycle Toolkit is a tool and vendor-neutral mechanism - it does not depend on particular GitOps tooling - ArgoCD, Flux, Gitlab or others - KLT works with them all.
 
@@ -10,40 +13,10 @@ Available steps (applicable to both workload and application entities):
 
 - Pre-Deployment Tasks: e.g. checking for dependant services, checking if the cluster is ready for the deployment, etc.
 - Pre-Deployment Evaluations: e.g. evaluate metrics before your application gets deployed (e.g. layout of the cluster)
+- Post-Deployment Tasks: e.g. arbitrary, scriptable logic written in TypeScript. Send notifications, close tickets, trigger tests, perform any action you can write in JavaScript.
+- Post-Deployment Evaluations: e.g. Ensure workload and application level SLOs are met.
 
-
-# This demo covers:
-
-- Use the Keptn Lifecycle Toolkit to control the deployment of your application
-- Connect the lifecycle-toolkit to Prometheus
-- Use pre-deployment tasks to check if a dependency is met before deploying a workload
-
-# The demo is divided into steps:
-
-1. Install the Keptn Lifecycle Toolkit
-2. Install the required observability features
-3. Install the first version of demo application
-4. Install the second version of demo application
-
-# Requirements:
-
-Keptn Lifecycle Toolkit requires a kubernetes cluster of more than or equal to 1.24 version and kubectl installed to come into action.
-In this demo we already have this configured.
-
-To check the version just run:
-
-`kubectl version --short`{{exec}}
-
-The output should be of the format:
-
-`Flag --short has been deprecated, and will be removed in the future. The --short output will become the default.
-Client Version: v1.26.1
-Kustomize Version: v4.5.7
-Server Version: v1.26.1 `
-
-As you see the version above is 1.26 which is the version provided by the killercoda envirnoment which might change with time and might be different from the above desired output, but as long as the version is above 1.24 you are good to go.
-
-# Be Patient
+# Please Wait...
 
 We are installing the KLT and cloning the demo code. These commands are automatically being executed for you on the right, but for reference, the commands to do so are:
 
@@ -52,6 +25,9 @@ helm repo add klt https://charts.lifecycle.keptn.sh
 helm repo update
 helm upgrade --install keptn klt/klt -n keptn-lifecycle-toolkit-system --create-namespace --wait
 git clone https://github.com/keptn-sandbox/lifecycle-toolkit-examples.git
+cd ~/lifecycle-toolkit-examples
+make install-observability
+make restart-lifecycle-toolkit
 ```{{copy}}
 
 Wait until you see `# 🎉 Installation Complete 🎉` before continuing.
