@@ -1,0 +1,35 @@
+{
+  "title": "Setting up the environment for Keptn Lifecycle Toolkit",
+  "description": "Toolkit for cloud-native application lifecycle management.",
+  "details": {
+    "intro": {
+      "title":"Getting Started",
+      "text": "intro/intro.md",
+      "foreground": "assets/scripts/intro_foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Install the Keptn Lifecycle Toolkit",
+        "text": "step1/text.md"
+      },
+      {
+        "title": "Install the required observability features",
+        "text": "step2/text.md"
+      },
+      {
+        "title": "Deploy the Demo application (Version 1)",
+        "text": "step3/text.md"
+      },
+      {
+        "title": "Deploy the Demo application (Version 2)",
+        "text": "step4/text.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
