@@ -1,11 +1,11 @@
 
-The Keptn Lifecycle Toolkit extends the Kubernetes API to offer 3 usecases:
+The Keptn Lifecycle Toolkit is an open source, vendor-neutral tool that extends the Kubernetes API to offer 3 usecases:
 
 1. [Deployment Observability](https://lifecycle.keptn.sh/#deployment-observability)
 2. [Deployment Data Access](https://lifecycle.keptn.sh/#data-access)
 3. [Deployment Check Orchestration](https://lifecycle.keptn.sh/#deployment-check-orchestration)
 
-The Keptn Lifecycle Toolkit is a tool and vendor-neutral mechanism - it does not depend on particular GitOps tooling - ArgoCD, Flux, Gitlab or others - KLT works with them all.
+KLT t does not depend on particular GitOps tooling - ArgoCD, Flux, Gitlab or others - KLT works with them all.
 
 The Keptn Lifecycle Toolkit emits signals at every stage (k8s events, OpenTelemetry metrics and traces) to ensure your deployments are observable.
 
