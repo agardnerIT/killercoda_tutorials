@@ -38,4 +38,4 @@ As previously explained, in a real scenario you would use pre-checks to ensure y
 
 Version 1 of the demo application simulates a scenario whereby you **should not** be allowed to deploy.
 
-KLT has protected the deployment because we do not have the desired resources.
+KLT has **protected the cluster by preventing the deployment** because we do not have the desired resources.
