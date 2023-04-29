@@ -18,8 +18,8 @@ To get all the required details before making the deployement we need to get dif
 - Install OpenTelemetry Collector
 - Install Prometheus Mockserver
 
-`make install-observability`{{exec}}
-
-After all these steps are completed restart the Lifecycle Toolkit using:
-
-`make restart-lifecycle-toolkit`{{exec}}
+```
+cd ~/lifecycle-toolkit-examples
+make install-observability
+make restart-lifecycle-toolkit
+```{{exec}}
