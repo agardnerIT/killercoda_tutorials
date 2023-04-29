@@ -15,7 +15,7 @@ You can see this in the demo code:
 
 ```
 cat ~/lifecycle-toolkit-examples/sample-app/base/manifest.yaml
-```
+```{{exec}}
 
 ## Step 2: Workload Labels
 
@@ -37,7 +37,7 @@ keptn.sh/workload: myAwesomeWorkload
 keptn.sh/version: myAwesomeWorkloadVersion
 ```
 
-You can see this in our demo code:
+You can see this in the demo code:
 
 ```
 cat ~/lifecycle-toolkit-examples/sample-app/base/manifest.yaml
