@@ -34,6 +34,8 @@ The system does not have > 100 CPUs available, it has 4. The pre-deployment chec
 
 **This is the desired behaviour.**
 
-As previously explained, in a real scenario you would use pre-checks to ensure your infrastructure is ready, downstream systems or third parties are operational before allowing a deployment. Here we simulate the fact that you **should not** be allowed to deploy.
+As previously explained, in a real scenario you would use pre-checks to ensure your infrastructure is ready and capable of the upcoming deployment, downstream systems or third parties are operational before allowing a deployment.
+
+Version 1 of the demo application simulates a scenario whereby you **should not** be allowed to deploy.
 
 KLT has protected the deployment because we do not have the desired resources.
