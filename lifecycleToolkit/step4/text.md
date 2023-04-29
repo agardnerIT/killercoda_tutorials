@@ -6,7 +6,7 @@ make deploy-version-2
 
 It will take a few moments for the frontend to start and until that time, the pre-deploy checks for the other pods will error and the other pods will stay pending.
 
-After a few moments though, all pods should start successfully.
+After a few moments, all pods should start successfully.
 
 ```
 kubectl -n podtato-kubectl wait pods --for condition=Ready --timeout=120s
