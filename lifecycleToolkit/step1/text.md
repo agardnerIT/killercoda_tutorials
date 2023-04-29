@@ -1,29 +1,25 @@
+# Install the required observability features
 
-<br>
-This is the initial step in which we will set up the Keptn Lifecycle Toolkit using helm and fetch the data of demo app from the GitHub repo.
-<br>
+The Keptn Lifecycle Toolkit emits OpenTelemetry data as standard but the toolkit does not come pre-bundled with Observability backend tooling. This is deliberate as it provides flexibility for you to bring your own Observability backend that consumes this emitted data.
 
-# Install the Keptn Lifecycle Toolkit:
+In order to use the observability features of the lifecycle toolkit, we need a monitoring and tracing backend.
 
-Add the Keptn Lifecycle Toolkit in the scenario with the use of helm charts.
+In this guide, we use:
 
-```
-helm repo add klt https://charts.lifecycle.keptn.sh
-helm repo update
-helm upgrade --install keptn klt/klt -n keptn-lifecycle-toolkit-system --create-namespace --wait
-```{{exec}}
+- Prometheus for Metrics
+- Jaeger for Traces
 
-Now check the status of the namespace if it is deployed or not by running:
+# Install these with the following commands:
 
-`helm list -A`{{exec}}
+To get all the required details before making the deployement we need to get different observability data, running this command might take a little while to complete processing. The following command does the following steps:
 
-# Fetch Demo Applications:
+- Create Namespace and install CertManager
+- Create Namespace and install Jaeger
+- Install OpenTelemetry Collector
+- Install Prometheus Mockserver
 
-For the further progress of this demo, we need a sample applications as well as some helpers which make it easier for you to set up your environment. These things can be found in our Getting Started repository which can be checked out as follows:
+`make install-observability`{{exec}}
 
-```
-git clone https://github.com/keptn-sandbox/lifecycle-toolkit-examples.git
-cd lifecycle-toolkit-examples
-```{{exec}}
+After all these steps are completed restart the Lifecycle Toolkit using:
 
-## We have successfully made the setup of Keptn Lifecycle Toolkit and the demo app.
+`make restart-lifecycle-toolkit`{{exec}}

@@ -1,6 +1,3 @@
-<br>
-
-
 # What is Keptn Lifecycle Tookit (KLT):
 
 It is a toolkit for cloud-native application lifecycle management. The Keptn Lifecycle Toolkit (KLT) “wraps” a standard Kubernetes deployment and provides both workload (single service) tests and SLO evaluations. Multiple workloads can also be logically grouped (and evaluated) as a single cohesive unit: a Keptn Application. In other words, an application is a collection of multiple workloads.
@@ -23,7 +20,7 @@ Available steps (applicable to both workload and application entities):
 
 # The demo is divided into steps:
 
-1.  Install the Keptn Lifecycle Toolkit
+1. Install the Keptn Lifecycle Toolkit
 2. Install the required observability features
 3. Install the first version of demo application
 4. Install the second version of demo application
@@ -45,4 +42,16 @@ Kustomize Version: v4.5.7
 Server Version: v1.26.1 `
 
 As you see the version above is 1.26 which is the version provided by the killercoda envirnoment which might change with time and might be different from the above desired output, but as long as the version is above 1.24 you are good to go.
-## Here we are at the end of the introduction and ready to begin with the real fun. 
+
+# Be Patient
+
+We are installing the KLT and cloning the demo code. These commands are automatically being executed for you on the right, but for reference, the commands to do so are:
+
+```
+helm repo add klt https://charts.lifecycle.keptn.sh
+helm repo update
+helm upgrade --install keptn klt/klt -n keptn-lifecycle-toolkit-system --create-namespace --wait
+git clone https://github.com/keptn-sandbox/lifecycle-toolkit-examples.git
+```{{copy}}
+
+Wait until you see `# 🎉 Installation Complete 🎉` before continuing.

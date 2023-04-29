@@ -9,3 +9,8 @@ helm upgrade --install keptn klt/klt -n keptn-lifecycle-toolkit-system --create-
 # 2/2: Clone Example Code
 ##############################################
 git clone https://github.com/keptn-sandbox/lifecycle-toolkit-examples.git
+
+#################################
+# 🎉 Installation Complete 🎉
+# Please proceed...
+#################################

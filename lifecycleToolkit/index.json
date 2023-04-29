@@ -9,20 +9,28 @@
     },
     "steps": [
       {
-        "title": "Install the Keptn Lifecycle Toolkit",
+        "title": "Intro",
         "text": "step1/text.md"
       },
       {
-        "title": "Install the required observability features",
+        "title": "Deploy Version 1",
         "text": "step2/text.md"
       },
       {
-        "title": "Deploy the Demo application (Version 1)",
+        "title": "How KLT Works",
         "text": "step3/text.md"
       },
       {
-        "title": "Deploy the Demo application (Version 2)",
+        "title": "Step 4",
         "text": "step4/text.md"
+      },
+      {
+        "title": "Step 5",
+        "text": "step5/text.md"
+      },
+      {
+        "title": "Step 6",
+        "text": "step6/text.md"
       }
     ],
     "finish": {

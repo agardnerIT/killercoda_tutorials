@@ -1,23 +1,23 @@
-<br>
-In this section of the demo we will try to deploy the second version of the application and try to pass all the evaluations to make the application running.
-<br>
+## Putting It All Together
 
-# Deploy the Demo Application (Version 2)
+Version 1 of the application has been deployed. A pre-deployment task is defined on each workload (except frontend) which forces each workload to wait until the frontend is first running.
 
-`make deploy-version-2`{{exec}}
+A pre-deployment evaluation is defined at the KeptnApp level which retrieves the available-cpus metric from prometheus and ensures that the number of available CPUs is greater than 100.
 
-# Checking the status of the pods after making second deployment
-After making the second deployment of the application when you hit the following the command you will notice that the creation of the pre-deployment check containers begins.
+If this fails, all of the pods in the KeptnApp will not be allowed to be scheduled and remain in a pending state.
 
-`kubectl get pods -n podtato-kubectl`{{exec}}
+## Why is it Pending?
 
-After the processing of the command is completed we see on the terminal that creation of keptn pre-deployement check containers is completed and all the pods of the application starts running.
+```
+kubectl -n podtato-kubectl get pods
+```{{exec}}
 
-# Checking the status of both the applications
+Shows that all pods are pending. Why?
 
-Now to check the details regarding the pre-deployment of the two versions of the applications we run the following command:
+Because the pre-deployment task failed. We do not have > 100 CPUs available and so the pods are still pending.
 
-`kubectl get keptnappversions -A -owide`{{exec}}
+**This is the desired behaviour.**
 
-In the output we see that the first version pre-deployment evaluations fails while the second version is succeeded.
+As previously explained, in a real scenario you would use pre-checks to ensure downstream systems or third parties are operation before allowing a deployment. Here we simulate the fact that you **should not** be allowed to deploy.
 
+KLT has protected the deployment because we do not have the desired resources.
