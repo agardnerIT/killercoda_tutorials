@@ -129,12 +129,6 @@ An evaluation called `app-pre-deploy-eval-1`{{}} is attached at the application 
 View the definition:
 
 ```
-kubectl -n podtato-kubectl get keptnevaluationdefinitions
-```{{exec}}
-
-and display the definition
-
-```
 kubectl -n podtato-kubectl describe keptnevaluationdefinition app-pre-deploy-eval-1
 ```{{exec}}
 
@@ -149,7 +143,7 @@ kubectl -n podtato-kubectl describe keptnmetric available-cpus
 Data is retrieved from Prometheus with the query: `sum(kube_node_status_capacity{resource='cpu'})`{{}}
 
 
-`KeptnMetricsProvider`s{{}} describe metric sources. Take a look at the `prometheus` one:
+`KeptnMetricsProvider`{{}} CRDs describe metric sources. Take a look at the `prometheus` one:
 
 ```
 kubectl -n podtato-kubectl describe keptnmetricsprovider prometheus
