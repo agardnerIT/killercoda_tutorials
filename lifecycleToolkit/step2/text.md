@@ -29,7 +29,7 @@ app.kubernetes.io/name: myAwesomeWorkload
 app.kubernetes.io/version: myAwesomeWorkloadVersion
 ```
 
-or use Keptn ones. Both sets are equivalent - choose whichever you prefer:
+or Keptn ones. Both sets are equivalent - choose whichever you prefer:
 
 ```
 keptn.sh/app: myAwesomeAppName
@@ -64,13 +64,17 @@ KLT allows two types of pre and post deployment action on both the (individual) 
 - Tasks
 - Evaluations
 
-Pre-deployment actions fire **before** the pod has been bound to the node. If pre-deployment actions fail, the pod will not be allowed to be bound and will result in a pending pod.
+### Pre-Deployment Actions
+
+Pre-deployment actions fire **before** the pod has been bound to the node. Tasks fire before evaluations. If pre-deployment actions fail, the pod will not be allowed to be bound and will result in a pending pod.
 
 Pre-deployment actions are useful for:
 
 - Checking that dependencies are available
 - Ensuring you are not in a maintenance window
 - Checking any other pre-conditions that may prevent or hinder a successful deployment.
+
+### Post-Deployment Actions
 
 Post-deployment actions fire **after** the pod has been successfully bound to the node and is in a running state.
 
