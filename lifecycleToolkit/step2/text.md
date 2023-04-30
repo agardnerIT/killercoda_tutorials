@@ -128,8 +128,6 @@ In the demo system, the workloads do not have any evaluations, but the [KeptnApp
 cat ~/lifecycle-toolkit-examples/sample-app/version-1/app.yaml 
 ```{{exec}}
 
-A [KeptnEvaluationDefinition]() called `app-pre-deploy-eval-1`{{}} is attached at the application level.
-
 View the definition:
 
 ```
