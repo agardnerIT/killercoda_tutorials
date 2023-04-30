@@ -120,7 +120,7 @@ A post-deployment task is configured using the label: `keptn.sh/post-deployment-
 
 Similar to tasks, evaluations can occur at both the workload and application levels. 
 
-During evaluations, KLT will retrieve [KeptnMetrics](https://lifecycle.keptn.sh/docs/concepts/metrics/#keptn-metric) from a [KeptnMetricsProvider]((https://lifecycle.keptn.sh/docs/concepts/metrics) source (eg. Prometheus or any other metric storage solution) and evaluate a condition.
+During evaluations, KLT will retrieve [KeptnMetrics](https://lifecycle.keptn.sh/docs/concepts/metrics/#keptn-metric) from a [KeptnMetricsProvider](https://lifecycle.keptn.sh/docs/concepts/metrics) source (eg. Prometheus or any other metric storage solution) and evaluate a condition.
 
 In the demo system, the workloads do not have any evaluations, but the [KeptnApp](https://lifecycle.keptn.sh/docs/concepts/apps) has a single `preDeploymentEvaluation`.
 
