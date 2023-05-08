@@ -1,21 +1,19 @@
 {
-    "title": "Testing group",
+    "title": "Testing ground",
     "description": "Space for tests / WIP. Expect to be broken.",
     "details": {
       "intro": {
         "title": "Intro",
-        "text": "intro.md"
+        "text": "intro.md",
+        "foreground": "intro_foreground.sh"
       },
-      "steps": [{
-            "title": "Step 1",
-            "text": "step1.md"
-        }],
+      "steps": [],
       "finish": {
         "text": "finish.md"
       }
     },
     "backend": {
-      "imageid": "kubernetes-kubeadm-2nodes"
+      "imageid": "ubuntu"
     }
 }
   
