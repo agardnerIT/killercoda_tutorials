@@ -1,7 +1,8 @@
-# Launch Jaeger
+# Open Observability Tooling
 
-```
-make port-forward-jaeger
-```{{exec}}
+The observability tooling stack is now available:
 
-Now [Launch Jaeger]({{TRAFFIC_HOST1_16686}})
+- [Open Jaeger]({{TRAFFIC_HOST1_16686}})
+- [Open Prometheus]({{TRAFFIC_HOST1_9090}})
+- [Open ArgoCD]({{TRAFFIC_HOST1_8080}})
+- [Open Grafana]({{TRAFFIC_HOST1_3000}})
