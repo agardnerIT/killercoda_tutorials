@@ -71,8 +71,8 @@ make install-observability
 # 6/8: Prevent Annoying "got empty response" errors (noise).
 # https://github.com/helm/helm/issues/11772#issuecomment-1416558925
 ##############################################
-kubectl delete apiservices v1beta1.custom.metrics.k8s.io
-kubectl delete apiservices v1beta2.custom.metrics.k8s.io
+kubectl delete apiservices metrics.k8s.io/v1beta1
+kubectl delete apiservices custom.metrics.k8s.io/v1beta2
 
 ##############################################
 # 7/8: Restart toolkit
