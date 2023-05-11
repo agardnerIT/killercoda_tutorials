@@ -1,10 +1,10 @@
-DEBUG_VERSION=5
+DEBUG_VERSION=6
 YQ_VERSION=v4.33.3
 
 ##############################################
 # 1/8: Download tools
 ##############################################
-wget -O ~/usr/bin/yq https://github.com/mikefarah/yq/releases/download/$(YQ_VERSION)/yq_linux_amd64
+wget -O ~/usr/bin/yq https://github.com/mikefarah/yq/releases/download/$YQ_VERSION/yq_linux_amd64
 
 ##############################################
 # 2/8: Install Keptn Lifecycle Toolkit
