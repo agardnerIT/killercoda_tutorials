@@ -1,6 +1,8 @@
 ## 🎉 Congratulations 🎉
 You have:
 
+- Used the Keptn Metrics server to federate metrics from any backend system
+- Gained deployment DORA metrics and visualised those in a dashboarding tool
 - Used KLT to secure your deployment by pre-testing using Keptn Lifecycle Toolkit
 - Created and added a post-deployment task which performs an action after a deployment
 
