@@ -1,4 +1,4 @@
-DEBUG_VERSION=6
+DEBUG_VERSION=7
 YQ_VERSION=v4.33.3
 
 ##############################################
@@ -17,7 +17,6 @@ helm upgrade --install keptn klt/klt -n keptn-lifecycle-toolkit-system --create-
 # 3/8: Clone Example Code
 ##############################################
 git clone https://github.com/keptn-sandbox/lifecycle-toolkit-examples.git
-
 
 ##############################################
 # 4/8: Killercoda fix: lower CPU and memory requests
@@ -87,11 +86,9 @@ make restart-lifecycle-toolkit
 ##############################################
 sed -i "s#kubectl port-forward -n \"\$(TOOLKIT_NAMESPACE)\" svc/jaeger-query 16686#kubectl port-forward -n \"\$(TOOLKIT_NAMESPACE)\" --address 0.0.0.0 svc/jaeger-query 16686#g" ~/lifecycle-toolkit-examples/support/observability/Makefile
 sed -i "s#kubectl -n monitoring port-forward svc/prometheus-k8s 9090#kubectl -n monitoring port-forward --address 0.0.0.0 svc/prometheus-k8s 9090#g" ~/lifecycle-toolkit-examples/support/observability/Makefile
-sed -i "s#kubectl port-forward svc/argocd-server -n \"\$(ARGO_NAMESPACE)\" 8080:443#kubectl port-forward svc/argocd-server -n \"\$(ARGO_NAMESPACE)\" --address 0.0.0.0 8080:443#g" ~/lifecycle-toolkit-examples/Makefile
 sed -i "s#kubectl -n monitoring port-forward svc/grafana \$(GRAFANA_PORT_FORWARD):3000#kubectl -n monitoring port-forward --address 0.0.0.0 svc/grafana \$(GRAFANA_PORT_FORWARD):3000#g" ~/lifecycle-toolkit-examples/support/observability/Makefile
 nohup make port-forward-jaeger &
 nohup make port-forward-prometheus &
-nohup make port-forward-argocd &
 nohup make port-forward-grafana &
 
 ##############################################
