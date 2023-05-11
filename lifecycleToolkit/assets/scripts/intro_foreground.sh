@@ -1,4 +1,4 @@
-DEBUG_VERSION=7
+DEBUG_VERSION=8
 YQ_VERSION=v4.33.3
 
 ##############################################
@@ -88,8 +88,8 @@ sed -i "s#kubectl port-forward -n \"\$(TOOLKIT_NAMESPACE)\" svc/jaeger-query 166
 sed -i "s#kubectl -n monitoring port-forward svc/prometheus-k8s 9090#kubectl -n monitoring port-forward --address 0.0.0.0 svc/prometheus-k8s 9090#g" ~/lifecycle-toolkit-examples/support/observability/Makefile
 sed -i "s#kubectl -n monitoring port-forward svc/grafana \$(GRAFANA_PORT_FORWARD):3000#kubectl -n monitoring port-forward --address 0.0.0.0 svc/grafana \$(GRAFANA_PORT_FORWARD):3000#g" ~/lifecycle-toolkit-examples/support/observability/Makefile
 nohup make port-forward-jaeger &
-nohup make port-forward-prometheus &
 nohup make port-forward-grafana &
+(cd ~/lifecycle-toolkit-examples/support/observability && nohup make port-forward-prometheus &)
 
 ##############################################
 # 🎉 Installation Complete 🎉
