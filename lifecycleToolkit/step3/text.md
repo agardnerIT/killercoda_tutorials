@@ -90,7 +90,7 @@ Looking at the `v1`{{}} manifest, notice a label applied to each workload:
 
 ```
 keptn.sh/pre-deployment-tasks: pre-deployment-check-frontend
-```{{copy}}
+```{{}}
 
 View the file by clicking this text:
 
@@ -114,7 +114,7 @@ kubectl -n podtato-kubectl describe keptntaskdefinition pre-deployment-check-fro
 
 This task takes a parameter (the URL) and a [remotely hosted JavaScript function](https://raw.githubusercontent.com/keptn-sandbox/lifecycle-controller/main/functions-runtime/samples/ts/http.ts) which simply does a fetch of the application endpoint in the cluster to check it is running.
 
-A post-deployment task is configured using the label: `keptn.sh/post-deployment-tasks`{{copy}}.
+A post-deployment task is configured using the label: `keptn.sh/post-deployment-tasks`{{}}.
 
 ## Pre and Post Deployment Evaluations
 

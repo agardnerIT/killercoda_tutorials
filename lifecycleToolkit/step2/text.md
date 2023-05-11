@@ -1,7 +1,8 @@
-# Open Observability Tooling
+# The Demo Application
+For this demonstration, we use [the PodTatoHead application](https://github.com/podtato-head/podtato-head).
 
-The observability tooling stack is now available:
+Let's attempt to deploy version 1 of the application now:
 
-- [Open Jaeger]({{TRAFFIC_HOST1_16686}})
-- [Open Prometheus]({{TRAFFIC_HOST1_9090}})
-- [Open Grafana]({{TRAFFIC_HOST1_3000}})
+```
+make deploy-version-1
+```{{exec}}
