@@ -1,19 +1,19 @@
-DEBUG_VERSION=2
+DEBUG_VERSION=3
 
 ##############################################
-# 1/5: Install Keptn Lifecycle Toolkit
+# 1/6: Install Keptn Lifecycle Toolkit
 ##############################################
 helm repo add klt https://charts.lifecycle.keptn.sh
 helm repo update
 helm upgrade --install keptn klt/klt -n keptn-lifecycle-toolkit-system --create-namespace --wait
 
 ##############################################
-# 2/5: Clone Example Code
+# 2/6: Clone Example Code
 ##############################################
 git clone https://github.com/keptn-sandbox/lifecycle-toolkit-examples.git
 
 ##############################################
-# 3/5: Install Observability Tooling
+# 3/6: Install Observability Tooling
 # cert-manager
 # OpenTelemetry Collector
 # Jaeger
@@ -21,17 +21,22 @@ git clone https://github.com/keptn-sandbox/lifecycle-toolkit-examples.git
 ##############################################
 cd ~/lifecycle-toolkit-examples
 make install-observability
-make restart-lifecycle-toolkit
 
 ##############################################
-# 4/5: Prevent Annoying "got empty response" errors (noise).
+# 4/6: Prevent Annoying "got empty response" errors (noise).
 # https://github.com/helm/helm/issues/11772#issuecomment-1416558925
 ##############################################
 kubectl delete apiservices v1beta1.custom.metrics.k8s.io
 kubectl delete apiservices v1beta2.custom.metrics.k8s.io
 
 ##############################################
-# 5/5: Killercoda fix: Port Forwarding needs 0.0.0.0
+# 5/6: Restart toolkit
+# to re-read ConfigMaps
+##############################################
+make restart-lifecycle-toolkit
+
+##############################################
+# 5/6: Killercoda fix: Port Forwarding needs 0.0.0.0
 # Note: This is only a fix for killercoda
 ##############################################
 sed -i "s#kubectl port-forward -n \"\$(TOOLKIT_NAMESPACE)\" svc/jaeger-query 16686#kubectl port-forward -n \"\$(TOOLKIT_NAMESPACE)\" --address 0.0.0.0 svc/jaeger-query 16686#g" ~/lifecycle-toolkit-examples/support/observability/Makefile
