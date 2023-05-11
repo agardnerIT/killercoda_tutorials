@@ -29,7 +29,11 @@ podtato-head-right-arm-66878d7d9b-8thbh     1/1     Running     0          11m
 
 Version two has one crucial difference.
 
-Try to find out why version 2 is allowed to start (hint: `KeptnEvaluationDefinition`{{copy}} called `app-pre-deploy-eval-2`{{copy}}).
+Try to find out why version 2 is allowed to start.
+
+Hint:
+
+- `KeptnEvaluationDefinition`{{copy}} called `app-pre-deploy-eval-2`{{copy}}).
 
 ## Explanation
 
@@ -47,7 +51,7 @@ Look for the `Evaluation Target`{{}} in the output of this command:
 kubectl -n podtato-kubectl describe keptnevaluationdefinition app-pre-deploy-eval-2
 ```{{exec}}
 
-Retrieving the metric shows the current value to be `4`{{}}
+Retrieving the metric shows the current value to be `>1`{{}}
 
 ```
 kubectl -n podtato-kubectl get keptnmetrics

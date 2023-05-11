@@ -145,7 +145,7 @@ kubectl -n podtato-kubectl describe keptnmetric available-cpus
 Data is retrieved from Prometheus with the query: `sum(kube_node_status_capacity{resource='cpu'})`{{}}
 
 
-[KeptnMetricsProvider](https://lifecycle.keptn.sh/docs/concepts/metrics/) CRDs describe metric sources. Take a look at the `prometheus` one:
+[KeptnMetricsProvider](https://lifecycle.keptn.sh/docs/concepts/metrics/) CRDs describe metric sources. Take a look at the `prometheus`{{}} one:
 
 ```
 kubectl -n podtato-kubectl describe keptnmetricsprovider prometheus
