@@ -1,25 +1,25 @@
-DEBUG_VERSION=8
+DEBUG_VERSION=9
 YQ_VERSION=v4.33.3
 
 ##############################################
-# 1/8: Download tools
+# 1/7: Download tools
 ##############################################
 wget -O ~/usr/bin/yq https://github.com/mikefarah/yq/releases/download/$YQ_VERSION/yq_linux_amd64
 
 ##############################################
-# 2/8: Install Keptn Lifecycle Toolkit
+# 2/7: Install Keptn Lifecycle Toolkit
 ##############################################
-helm repo add klt https://charts.lifecycle.keptn.sh
-helm repo update
-helm upgrade --install keptn klt/klt -n keptn-lifecycle-toolkit-system --create-namespace --wait
+#helm repo add klt https://charts.lifecycle.keptn.sh
+#helm repo update
+#helm upgrade --install keptn klt/klt -n keptn-lifecycle-toolkit-system --create-namespace --wait
 
 ##############################################
-# 3/8: Clone Example Code
+# 3/7: Clone Example Code
 ##############################################
 git clone https://github.com/keptn-sandbox/lifecycle-toolkit-examples.git
 
 ##############################################
-# 4/8: Killercoda fix: lower CPU and memory requests
+# 4/7: Killercoda fix: lower CPU and memory requests
 # YQ expression from here: https://github.com/mikefarah/yq/issues/513#issuecomment-862617657
 ##############################################
 
@@ -58,30 +58,23 @@ yq eval '. | select(.kind == "Deployment") as $deployment | select(.kind != "Dep
 
 
 ##############################################
-# 5/8: Install Observability Tooling
+# 5/7: Install Observability Tooling
 # cert-manager
 # OpenTelemetry Collector
 # Jaeger
 # Prometheus Mockserver
 ##############################################
 cd ~/lifecycle-toolkit-examples
-make install-observability
+make install
 
 ##############################################
-# 6/8: Prevent Annoying "got empty response" errors (noise).
-# https://github.com/helm/helm/issues/11772#issuecomment-1416558925
-##############################################
-kubectl delete apiservices metrics.k8s.io/v1beta1
-kubectl delete apiservices custom.metrics.k8s.io/v1beta2
-
-##############################################
-# 7/8: Restart toolkit
+# 6/7: Restart toolkit
 # to re-read ConfigMaps
 ##############################################
 make restart-lifecycle-toolkit
 
 ##############################################
-# 8/8: Killercoda fix: Port Forwarding needs 0.0.0.0
+# 7/7: Killercoda fix: Port Forwarding needs 0.0.0.0
 # Note: This is only a fix for killercoda
 ##############################################
 sed -i "s#kubectl port-forward -n \"\$(TOOLKIT_NAMESPACE)\" svc/jaeger-query 16686#kubectl port-forward -n \"\$(TOOLKIT_NAMESPACE)\" --address 0.0.0.0 svc/jaeger-query 16686#g" ~/lifecycle-toolkit-examples/support/observability/Makefile
