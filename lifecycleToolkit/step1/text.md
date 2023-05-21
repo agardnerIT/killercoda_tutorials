@@ -7,6 +7,12 @@ Let's attempt to deploy version 1 of the application now:
 make deploy-version-1
 ```{{exec}}
 
+Now view the pods:
+
+```
+kubectl -n podtato-kubectl get pods
+```{{exec}}
+
 ## Expected Result
 
 Version 1 has an issue meaning the pods are pending. We will now use the observability tooling to help understand why.
