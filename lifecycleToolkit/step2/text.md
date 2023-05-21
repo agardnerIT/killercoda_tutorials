@@ -9,7 +9,7 @@ make deploy-version-1
 
 ## Expected Result
 
-Version 1 has an issue meaning the pods are pending. We will now use the Observability tooling to help understand why.
+Version 1 has an issue meaning the pods are pending. We will now use the observability tooling to help understand why.
 
 ## View Observability Data
 
