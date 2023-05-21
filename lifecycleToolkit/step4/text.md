@@ -1,41 +1,62 @@
-## Putting It All Together
+## Deploy Version 2
 
-Version 1 of the application has been deployed. A pre-deployment task is defined on each workload (except frontend) which forces each workload to wait until the frontend is first running.
+```
+make deploy-version-2
+```{{exec}}
 
-A pre-deployment evaluation is defined at the KeptnApp level which retrieves the `available-cpus`{{}} metric from `prometheus`{{}} and ensures that the number of available CPUs is greater than `100`{{}}.
+It will take a few moments for the frontend to start and until that time, the pre-deploy checks for the other pods will error and the other pods will stay pending.
 
-**If this check fails, all of the pods in the KeptnApp will not be allowed to be scheduled and remain in a pending state.**
-
-## Why is it Pending?
+After a few moments, all pods should start successfully.
 
 ```
 kubectl -n podtato-kubectl get pods
 ```{{exec}}
 
-Shows that all pods are pending. Why?
-
-Because the pre-deployment task failed. 
-
-You can check the status of any `KeptnApp`{{}} with this command:
+should look like this:
 
 ```
-kubectl -n podtato-kubectl get keptnappversions -o wide
-```{{exec}}
+NAME                                        READY   STATUS      RESTARTS   AGE
+klc-pre-pre-deployment-check--77384-6hnlt   0/1     Completed   3          2m49s
+klc-pre-pre-deployment-check--79731-zzpn5   0/1     Completed   2          2m44s
+klc-pre-pre-deployment-check--80182-2c9cp   0/1     Completed   2          2m48s
+podtato-head-frontend-5d4dc47-94bbl         1/1     Running     0          11m
+podtato-head-hat-d5f5d5f64-sm2ck            1/1     Running     0          11m
+podtato-head-left-arm-7775846574-zpjzr      1/1     Running     0          11m
+podtato-head-right-arm-66878d7d9b-8thbh     1/1     Running     0          11m
+```{{}}
 
-Notice that the `predeploymentevaluationstatus`{{}} is `failed`{{}}
+## What is Different?
 
-Recall that the pre-evaluation step is checking a metric called `available-cpus`{{}} to ensure the value is `>100`{{}}. You can see the actual value of the metric with this command (look for the `.Status.Value`{{}} field):
+Version two has one crucial difference.
+
+Try to find out why version 2 is allowed to start.
+
+Hint:
+
+- `KeptnEvaluationDefinition`{{copy}} called `app-pre-deploy-eval-2`{{copy}}).
+
+## Explanation
+
+Version 2 of the `KeptnApp`{{}} has a different pre-evaluation check configured.
 
 ```
-kubectl -n podtato-kubectl describe keptnmetric available-cpus
+cat ~/lifecycle-toolkit-examples/sample-app/version-2/app.yaml
 ```{{exec}}
 
-The system does not have > 100 CPUs available. The pre-deployment check failed and so the pods are still pending.
+The definition shows that the `evaluationTarget`{{}} for `available-cpus`{{}} has been lowered from `>100`{{}} to `>1`{{}},
 
-**This is the desired behaviour.**
+Look for the `Evaluation Target`{{}} in the output of this command:
 
-As previously explained, in a real scenario you would use pre-checks to ensure your infrastructure is ready and capable of the upcoming deployment, downstream systems or third parties are operational before allowing a deployment.
+```
+kubectl -n podtato-kubectl describe keptnevaluationdefinition app-pre-deploy-eval-2
+```{{exec}}
 
-Version 1 of the demo application simulates a scenario whereby you **should not** be allowed to deploy.
+Retrieving the metric shows the current value to be `>1`{{}}
 
-KLT has **protected the cluster by preventing the deployment** because we do not have the desired resources.
+```
+kubectl -n podtato-kubectl get keptnmetrics
+```{{exec}}
+
+The pre-condition check is **met** and so the pods are allowed to be bound to the node.
+
+
