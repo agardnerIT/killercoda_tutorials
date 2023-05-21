@@ -62,7 +62,7 @@ yq eval '. | select(.kind == "Deployment") as $deployment | select(.kind != "Dep
 # cert-manager
 # OpenTelemetry Collector
 # Jaeger
-# Prometheus Mockserver
+# Prometheus
 ##############################################
 cd ~/lifecycle-toolkit-examples
 make install

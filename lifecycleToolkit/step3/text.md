@@ -2,7 +2,7 @@
 
 Version 1 of the application has been deployed. A pre-deployment task is defined on each workload (except frontend) which forces each workload to wait until the frontend is first running.
 
-A pre-deployment evaluation is defined at the KeptnApp level which retrieves the `available-cpus`{{}} metric from `prometheus`{{}} and ensures that the number of available CPUs is greater than `100`{{}}.
+A pre-deployment evaluation is defined at the KeptnApp level which retrieves the `available-cpus`{{}} metric from prometheus and ensures that the number of available CPUs is greater than `100`{{}}.
 
 **If this check fails, all of the pods in the KeptnApp will not be allowed to be scheduled and remain in a pending state.**
 
