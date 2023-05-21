@@ -19,7 +19,7 @@ Version 1 has an issue meaning the pods are pending. We will now use the observa
 
 ## View Observability Data
 
-View the [Keptn Applications Grafana dashboard]({{TRAFFIC_HOST1_3000}}/d/nbiPNgN4z/keptn-applications?orgId=1&refresh=5s}}). Username = `admin`, password = `admin`.
+View the [Keptn Applications Grafana dashboard]({{TRAFFIC_HOST1_3000}}/d/nbiPNgN4z/keptn-applications?orgId=1&refresh=5s). Username = `admin`, password = `admin`.
 
 The overview panels show the current status of the deployment. The traces table shows a list of OTEL traces for each deployment. Clicking a trace will take you to Jaeger.
 
