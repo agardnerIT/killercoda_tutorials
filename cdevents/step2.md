@@ -10,21 +10,21 @@ What follows is a non-exhaustive list of CDEvent examples.
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type pipelinerun_queued
+  --event-type pipelinerun_queued
 ```{{exec}}
 
 ```
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type pipelinerun_started
+  --event-type pipelinerun_started
 ```{{exec}}
 
 ```
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type pipelinerun_finished
+  --event-type pipelinerun_finished
 ```{{exec}}
 
 ### Signal Service Events (deployed, rolledback, removed)
@@ -33,35 +33,35 @@ python3 ~/cdeventsender.py \
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type service_deployed
+  --event-type service_deployed
 ```{{exec}}
 
 ```
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type service_upgraded
+  --event-type service_upgraded
 ```{{exec}}
 
 ```
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type service_rolledback
+  --event-type service_rolledback
 ```{{exec}}
 
 ```
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type service_removed
+  --event-type service_removed
 ```{{exec}}
 
 ```
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type service_published
+  --event-type service_published
 ```{{exec}}
 
 ### Incident Events (detected, reported, resolved)
@@ -70,19 +70,19 @@ python3 ~/cdeventsender.py \
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type incident_detected
+  --event-type incident_detected
 ```{{exec}}
 
 ```
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type incident_reported
+  --event-type incident_reported
 ```{{exec}}
 
 ```
 python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type incident_resolved
+  --event-type incident_resolved
 ```{{exec}}

@@ -30,7 +30,7 @@ if endpoint is None:
     endpoint = "localhost:4222"
 
 # Build message from file
-with open(f"/spec/examples/{event_type}.json", "r") as file:
+with open(f"spec/examples/{event_type}.json", "r") as file:
     message = json.load(file)
     # Set new id and timestamp field to be unique and "now"
     iso_timestamp = datetime.datetime.now().isoformat()
