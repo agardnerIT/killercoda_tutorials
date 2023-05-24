@@ -1,9 +1,9 @@
 {
-    "title": "Dive Demo",
-    "description": "Demonstrates https://github.com/wagoodman/dive",
+    "title": "Continuous Delivery Events",
+    "description": "Demonstrates CDEvents Usage using NATs message bus",
     "details": {
       "intro": {
-        "title": "Welcome to Dive",
+        "title": "Welcome to CDEvents",
         "text": "intro.md",
         "foreground": "assets/scripts/intro_foreground.sh"
       },
@@ -15,6 +15,11 @@
       ],
       "finish": {
         "text": "finish.md"
+      },
+      "assets": {
+        "host01": [
+          {"file": "cdeventsender.py", "target": "~/"}
+        ]
       }
     },
     "backend": {
