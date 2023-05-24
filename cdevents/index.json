@@ -1,6 +1,6 @@
 {
     "title": "Continuous Delivery Events",
-    "description": "Demonstrates CDEvents Usage using NATs message bus",
+    "description": "Demonstrates CDEvents Usage using the NATs message bus",
     "details": {
       "intro": {
         "title": "Welcome to CDEvents",
@@ -11,6 +11,9 @@
         {
           "title": "Step 1",
           "text": "step1.md"
+        },{
+          "title": "Step 2",
+          "text": "step2.md"
         }
       ],
       "finish": {

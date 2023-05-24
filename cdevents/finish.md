@@ -1,6 +1,3 @@
 # 🎉 Congratulations!
 
-You have taken your first steps with [Dive](https://github.com/wagoodman/dive).
-
-## Useful Links
-- [Dive](https://github.com/wagoodman/dive)
+You have taken your first steps with [Continuous Delivery Events](https://cdevents.dev).

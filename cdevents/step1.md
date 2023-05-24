@@ -37,8 +37,10 @@ Switch back to the first terminal window and notice that you've received the mes
 A helper Python script has been created to send any CDEvent:
 
 ```
-python3 cdeventsender.py \
+python3 ~/cdeventsender.py \
   --endpoint localhost:4222 \
   --subject demo.cdevents \
-  --type pipelinerun.queued
+  --type pipelinerun_queued
 ```{{exec}}
+
+Possible types are available [here](https://github.com/cdevents/spec/tree/main/examples). Types should be given in the format `<subject>_<predicate>`{{}} for example `branch_deleted`{{}}

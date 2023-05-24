@@ -2,13 +2,8 @@ import asyncio
 import nats
 import argparse
 import json
-import pickle
-import secrets
-
-# CDEvent Types
-TYPE_PIPELINERUN_QUEUED = "pipelinerun.queued"
-TYPE_PIPELINERUN_STARTED = "pipelinerun.started"
-TYPE_PIPELINERUN_FINISHED = "pipelinerun.finished"
+import uuid
+import datetime
 
 parser = argparse.ArgumentParser()
 
@@ -21,40 +16,39 @@ parser = argparse.ArgumentParser()
 # Hence args.dry_run will work but args.d won't
 parser.add_argument('-ep', '--endpoint', required=False)
 parser.add_argument('-sub', '--subject', required=True)
-parser.add_argument('-t', '--type', required=True)
+parser.add_argument('-t', '--event-type', required=True)
 
 args = parser.parse_args()
 
 endpoint = args.endpoint
 subject = args.subject
-type = args.type
+event_type = args.event_type
 message = {} # The CDEvent, built below
 
 # Default to localhost:4222
 if endpoint is None:
     endpoint = "localhost:4222"
 
-if type == TYPE_PIPELINERUN_QUEUED:
+# Build message from file
+with open(f"/spec/examples/{event_type}.json", "r") as file:
+    message = json.load(file)
+    # Set new id and timestamp field to be unique and "now"
+    iso_timestamp = datetime.datetime.now().isoformat()
+    id = uuid.uuid4()
 
-    id = secrets.token_hex(16)
-
-    message = {
-        "id": id,
-        "type": "pipelinerun.queued"
-    }
+    message['context']['id'] = str(id)
+    message['context']['timestamp'] = iso_timestamp
 
 
-print(f"Sending message type: {type} to subject: {subject} on endpoint: {endpoint}")
+print(f"Sending message type: {event_type} to subject: {subject} on endpoint: {endpoint}")
 print(f"Message body: {message}")
-print(type(message))
-print(pickle.dumps(message))
 
 async def main():
 
     # Connect to NATS endpoint
     nc = await nats.connect(f"nats://{endpoint}")
     # Publish message
-    await nc.publish(subject, pickle.dumps(message))
+    await nc.publish(subject, json.dumps(message).encode('utf-8'))
 
 if __name__ == '__main__':
     asyncio.run(main())
