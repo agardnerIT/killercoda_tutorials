@@ -1,0 +1,23 @@
+{
+    "title": "Dive Demo",
+    "description": "Demonstrates https://github.com/wagoodman/dive",
+    "details": {
+      "intro": {
+        "title": "Welcome to Dive",
+        "text": "intro.md",
+        "foreground": "assets/scripts/intro_foreground.sh"
+      },
+      "steps": [
+        {
+          "title": "Step 1",
+          "text": "step1.md"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+  }
