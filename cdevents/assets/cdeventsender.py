@@ -3,6 +3,7 @@ import nats
 import argparse
 import json
 import pickle
+import secrets
 
 # CDEvent Types
 TYPE_PIPELINERUN_QUEUED = "pipelinerun.queued"
@@ -34,23 +35,26 @@ if endpoint is None:
     endpoint = "localhost:4222"
 
 if type == TYPE_PIPELINERUN_QUEUED:
-    print("PLRQ")
+
+    id = secrets.token_hex(16)
+
     message = {
+        "id": id,
         "type": "pipelinerun.queued"
     }
 
 
 print(f"Sending message type: {type} to subject: {subject} on endpoint: {endpoint}")
 print(f"Message body: {message}")
-print(pickle.dumps(json.dumps(message)))
+print(type(message))
+print(pickle.dumps(message))
 
 async def main():
 
     # Connect to NATS endpoint
     nc = await nats.connect(f"nats://{endpoint}")
     # Publish message
-    await nc.publish(subject, str.encode(message))
-    await nc.publish(subject, pickle.dumps(json.dumps(message)))
+    await nc.publish(subject, pickle.dumps(message))
 
 if __name__ == '__main__':
     asyncio.run(main())
