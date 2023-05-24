@@ -26,18 +26,21 @@ nats publish demo.cdevents '
   "foo": "bar"
 }
 '
+```{{exec}}
+
+## View Event
+
+Switch back to the first terminal window and notice that you've received the message.
+
+## Send CDEvents
+
+A helper Python script has been created to send any CDEvent:
+
 ```
-
-## View CDEvent
-
-Switch back to the first terminal window and notice that you've received the CDEvent.
-
-## Send Other CDEvents
-
-A helper shell script has been created to send any CDEvent:
-
-```
-./helper.sh pipelinerun.queued
+python3 cdeventsender.py
+  --endpoint localhost:4222
+  --subject demo.cdevents
+  --type pipelinerun.queued
 ```{{exec}}
 
 Analyse the `nginx:latest` image and write the output to a file:
