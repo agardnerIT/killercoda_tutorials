@@ -4,6 +4,11 @@ What follows is a non-exhaustive list of CDEvent examples.
 
 [The specification](https://cdevents.dev/docs/) contains all possible events.
 
+Remember:
+
+- **SEND** the events (by clicking the code snippets below) on Tab 2.
+- **VIEW** the received events on Tab 1.
+
 ### Signal Pipeline State (queued, started and finished)
 
 ```

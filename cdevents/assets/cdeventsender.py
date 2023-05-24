@@ -41,7 +41,6 @@ with open(f"spec/examples/{event_type}.json", "r") as file:
 
 
 print(f"Sending message type: {event_type} to subject: {subject} on endpoint: {endpoint}")
-print(f"Message body: {message}")
 
 async def main():
 
