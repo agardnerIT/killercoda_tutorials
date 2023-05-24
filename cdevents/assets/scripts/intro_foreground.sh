@@ -6,6 +6,9 @@ dpkg -i nats-server-v2.9.17-amd64.deb
 wget https://github.com/nats-io/natscli/releases/download/v0.0.35/nats-0.0.35-amd64.deb
 dpkg -i nats-0.0.35-amd64.deb
 
+# Install Python NATS Package
+pip install nats-py
+
 #################################
 # 🎉 Installation Complete 🎉
 # Please proceed...
