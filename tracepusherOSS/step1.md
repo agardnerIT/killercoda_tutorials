@@ -26,9 +26,9 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:1.45
 ```{{exec}}
 
-[Open Jaeger UI by clicking here]({{TRAFFIC_HOST1_16686}})
-
 ## Run tracepusher
+
+Use tracepusher to generate and send a trace to Jaeger via the OpenTelemetry collector that is built into the Jaeger "all-in-one" image (and exposed on port 4318).
 
 ```
 docker run --network demo gardnera/tracepusher:v0.5.0 \
@@ -40,6 +40,13 @@ docker run --network demo gardnera/tracepusher:v0.5.0 \
 
 ## View Traces in Jaeger
 
-Open Jaeger, select `service1`{{}} from the `Service`{{}} dropdown (you may need to refresh the page).
+[Open Jaeger UI by clicking here]({{TRAFFIC_HOST1_16686}}), select "service1" from the "Service" dropdown (you may need to refresh the page). Then click the span.
 
-Then click the span.
+## What Happened?
+
+1. A docker network was created so that the two containers could talk to each other
+2. Jaeger all-in-one image was started. This image is a demo-ready system which includes an OpenTelemetry collector and a storage database
+3. tracepusher generated a span and sent it to "http://jaeger:4318"
+4. The OpenTelemetry collector forwarded the span to Jaeger
+5. Jaeger stored the span in the database
+6. You used the Jaeger UI to retrieve and view the span
