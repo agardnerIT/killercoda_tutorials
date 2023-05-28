@@ -32,15 +32,15 @@ Use tracepusher to generate and send a trace to Jaeger via the OpenTelemetry col
 
 ```
 docker run --network demo gardnera/tracepusher:v0.5.0 \
-  --endpoint=http://jaeger:4318 \
-  --service-name=service1 \
-  --span-name=span1 \
-  --duration=2
+  --endpoint http://jaeger:4318 \
+  --service-name service1 \
+  --span-name span1 \
+  --duration 2
 ```{{exec}}
 
 ## View Traces in Jaeger
 
-[Open Jaeger UI by clicking here]({{TRAFFIC_HOST1_16686}}), select "service1" from the "Service" dropdown (you may need to refresh the page). Then click the span.
+To view the trace, [Open Jaeger UI by clicking here]({{TRAFFIC_HOST1_16686/search?service=service1}}), then click the span.
 
 ## What Happened?
 
