@@ -5,7 +5,7 @@
       "intro": {
         "title": "Tracepusher",
         "text": "intro.md",
-        "foreground": "assets/scripts/foreground.sh"
+        "foreground": "assets/intro_foreground.sh"
       },
       "steps": [
         {
