@@ -1,6 +1,6 @@
 {
-    "title": "tracepusher",
-    "description": "tracepusher WIP",
+    "title": "tracepusher with Dynatrace",
+    "description": "Use tracepusher to push traces to Dynatrace",
     "details": {
       "intro": {
         "title": "Intro",
