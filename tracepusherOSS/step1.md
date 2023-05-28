@@ -26,7 +26,7 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:1.45
 ```{{exec}}
 
-[Open Jaeger UI by clicking here]({{TRAFFIC_HOST_16686}})
+[Open Jaeger UI by clicking here]({{TRAFFIC_HOST1_16686}})
 
 ## Run tracepusher
 
