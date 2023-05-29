@@ -34,16 +34,18 @@ do
   
 done
 
-time_end=$SECONDS
+main_time_end=$SECONDS
+
+duration=$(( (main_time_end - main_time_start) + 1))
 
 docker run --network demo gardnera/tracepusher:v0.5.0 \
   --endpoint http://jaeger:4318 \
   --service-name service1 \
   --span-name script.sh \
-  --duration 2 \
-  --trace-id=${trace_id} \
-  --span-id=${span_id} \
-  --time-shift=True &
+  --duration ${duration} \
+  --trace-id ${trace_id} \
+  --span-id ${span_id} \
+  --time-shift=True
 
 echo "================================="
 echo "script.sh completed successfully."
