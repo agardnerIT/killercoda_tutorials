@@ -7,10 +7,9 @@ Create a new Tab by clicking the `+`{{}} button next to `Tab 1`{{}} at the top o
 When tab 2 has loaded, switch over to it and click the following to generate a trace:
 
 ```
-docker run \
---add-host=host.docker.internal:host-gateway \
+docker run --network host \
 gardnera/tracepusher:v0.5.0 \
---endpoint http://host.docker.internal:4318 \
+--endpoint http://0.0.0.0:4318 \
 --service-name killercoda \
 --span-name span1 \
 --duration 5
@@ -23,7 +22,7 @@ You should see "<Response [200]>". That means the span has successfully been sen
 That's a big command so let's break it down:
 
 - `docker run`{{}}: Docker, please run a container
-- `--add-host=host.docker.internal:host-gateway`{{}}: The OTEL collector is running on the Ubuntu machine, but tracepusher is running inside a container. tracepusher needs a way to "speak" to the OTEL collector endpoint. This creates a special URL on the docker container called `host.docker.internal`{{}} which points to `localhost`{{}} on the VM.
+- `--network host`{{}}: The OTEL collector is running on the Ubuntu machine, but tracepusher is running inside a container. tracepusher needs a way to "speak" to the OTEL collector endpoint. This flag allows docker to share the host network. The collector is available on `0.0.0.0:4318`{{}}.
 - `--service-name`{{}}: The service name of the generated OpenTelemetry trace
 - `--span-name`{{}}: The span name of the generated OpenTelemetry trace
 - `--duration`{{}}: The duration (in seconds) of the trace
