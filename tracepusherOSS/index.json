@@ -11,10 +11,20 @@
         {
           "title": "Use Tracepusher & Jaeger",
           "text": "step1.md"
+        }, {
+          "title": "Trace a .sh Script",
+          "text": "step2.md"
         }
       ],
       "finish": {
         "text": "finish.md"
+      },
+      "assets": {
+        "host01": [{
+          "file": "script.sh",
+          "target": "~/",
+          "chmod": "+x"
+        }]
       }
     },
     "backend": {

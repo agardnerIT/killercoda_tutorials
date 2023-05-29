@@ -7,8 +7,3 @@ docker pull gardnera/tracepusher:${TRACEPUSHER_VERSION}
 #       🎉 Installation Complete 🎉             #
 #           Please proceed now...              #
 # ---------------------------------------------#
-
-#
-#
-#
-
