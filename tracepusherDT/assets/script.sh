@@ -1,52 +1,52 @@
-#!/bin/sh
-time_now=$SECONDS
-echo "main() time now: ${time_now}"
+#!/bin/bash
 
-# Generate parent trace id
-trace_id=$(openssl rand -hex 16)
-span_id=$(openssl rand -hex 8)
+echo "Starting script.sh"
+echo "This should take about 4 seconds to complete..."
 
-do_work() {
-    echo "doing work..."
-    echo "parent trace id: $1"
-    echo "parent span id: $2"
-    echo "loop counter: $3"
-    sleep 1
-    time_now=$SECONDS
-    echo "do_work() time now: ${time_now}"
-    # Push child span
-    echo "pushing child span with parent trace id set to ${1} and parent span id set to ${2}"
-    docker run \
-    --add-host=host.docker.internal:host-gateway \
-    gardnera/tracepusher:v0.5.0 \
-    --endpoint=http://host.docker.internal:4318 \
-    --service-name=killercoda \
-    --span-name=loop${2} \
-    --duration=${time_now} \
-    --time-shift=True \
-    --parent-span-id=${1} \
-    --trace-id=${3}
-    
-}
+trace_id=$(hexdump -vn16 -e'4/4 "%08X" 1 "\n"' /dev/urandom)
+span_id=$(hexdump -vn8 -e'4/4 "%08X" 1 "\n"' /dev/urandom)
+
+main_time_start=0
 
 counter=1
-while [ $counter -le 2 ]
+limit=3
+
+while [ $counter -le $limit ]
 do
-  do_work $trace_id $span_id $counter
-  counter=$((counter+1))
+  # This is unique to this span
+  sub_span_id=$(hexdump -vn8 -e'4/4 "%08X" 1 "\n"' /dev/urandom)
+  time_start=$SECONDS
+  sleep 1
+  time_end=$SECONDS
+  duration=$(( $time_end - $time_start ))
+
+  docker run --network demo gardnera/tracepusher:v0.5.0 \
+    --endpoint=http://jaeger:4318 \
+    --service-name=serviceA \
+    --span-name="subspan${counter}" \
+    --duration=${duration} \
+    --trace-id=${trace_id} \
+    --parent-span-id=${span_id} \
+    --span-id=${sub_span_id} \
+    --time-shift=True &
+
+  counter=$(( $counter + 1 ))
+  
 done
 
-time_now=$SECONDS
-echo "main() end time_now: ${time_now}"
+main_time_end=$SECONDS
 
-echo "pushing main trace with trace_id: ${trace_id} and span id: ${span_id}"
-docker run \
---add-host=host.docker.internal:host-gateway \
-gardnera/tracepusher:v0.5.0 \
---endpoint=http://host.docker.internal:4318 \
---service-name=killercoda \
---span-name=run.sh \
---duration=${time_now} \
---time-shift=True \
---trace-id=${trace_id} \
---span-id=${span_id}
+duration=$(( (main_time_end - main_time_start) + 1))
+
+docker run --network demo gardnera/tracepusher:v0.5.0 \
+  --endpoint http://jaeger:4318 \
+  --service-name service1 \
+  --span-name script.sh \
+  --duration ${duration} \
+  --trace-id ${trace_id} \
+  --span-id ${span_id} \
+  --time-shift=True
+
+echo "================================="
+echo "script.sh completed successfully."
+echo "================================="

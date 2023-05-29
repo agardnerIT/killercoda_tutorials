@@ -3,11 +3,11 @@
 In Tab 2, click the following:
 
 ```
-cat ~/run.sh
-./run.sh
-```
+cat ~/script.sh
+./script.sh
+```{{exec}}
 
-This shell script does nothing fancy. It sleeps for 2 seconds then pushes a trace using hte same method as before. Notice one new parameter: `--time-shift`{{}}
+This shell script does nothing fancy. It sleeps for 2 seconds then pushes a trace using the same method as before. Notice one new parameter: `--time-shift`{{}}
 
 ## Time Shifting Explained
 
