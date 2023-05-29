@@ -22,13 +22,13 @@ do
 
   docker run --network demo gardnera/tracepusher:v0.5.0 \
     --endpoint=http://jaeger:4318 \
-    --service-name=serviceA \
-    --span-name="subspan${counter}" \
-    --duration=${duration} \
-    --trace-id=${trace_id} \
-    --parent-span-id=${span_id} \
-    --span-id=${sub_span_id} \
-    --time-shift=True &
+    --service-name service1 \
+    --span-name "subspan${counter}" \
+    --duration ${duration} \
+    --trace-id ${trace_id} \
+    --parent-span-id ${span_id} \
+    --span-id ${sub_span_id} \
+    --time-shift True &
 
   counter=$(( $counter + 1 ))
   
@@ -45,7 +45,7 @@ docker run --network demo gardnera/tracepusher:v0.5.0 \
   --duration ${duration} \
   --trace-id ${trace_id} \
   --span-id ${span_id} \
-  --time-shift=True
+  --time-shift True
 
 echo "================================="
 echo "script.sh completed successfully."
