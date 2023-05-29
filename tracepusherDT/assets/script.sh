@@ -18,6 +18,7 @@ do_work() {
     echo "pushing child span with parent trace id set to ${1} and parent span id set to ${2}"
     docker run \
     --add-host=host.docker.internal:host-gateway \
+    gardnera/tracepusher:v0.5.0 \
     --endpoint=http://host.docker.internal:4318 \
     --service-name=killercoda \
     --span-name=loop${2} \
@@ -25,6 +26,7 @@ do_work() {
     --time-shift=True \
     --parent-span-id=${1} \
     --trace-id=${3}
+    
 }
 
 counter=1
@@ -40,7 +42,7 @@ echo "main() end time_now: ${time_now}"
 echo "pushing main trace with trace_id: ${trace_id} and span id: ${span_id}"
 docker run \
 --add-host=host.docker.internal:host-gateway \
-tp:ss \
+gardnera/tracepusher:v0.5.0 \
 --endpoint=http://host.docker.internal:4318 \
 --service-name=killercoda \
 --span-name=run.sh \

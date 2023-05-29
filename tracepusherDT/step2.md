@@ -9,11 +9,11 @@ When tab 2 has loaded, switch over to it and click the following to generate a t
 ```
 docker run \
 --add-host=host.docker.internal:host-gateway \
-gardnera/tracepusher:v0.4.0 \
---endpoint=http://host.docker.internal:4318 \
---service-name=killercoda \
---span-name=span1 \
---duration=5
+gardnera/tracepusher:v0.5.0 \
+--endpoint http://host.docker.internal:4318 \
+--service-name killercoda \
+--span-name span1 \
+--duration 5
 ```{{exec}}
 
 ## Explanation
@@ -28,4 +28,4 @@ That's a big command so let's break it down:
 
 ## View Trace
 
-In your Dynatrace environment, go to `Distributed Traces`{{}} and you will see your trace.
+In your Dynatrace environment, go to "Distributed Traces" and you will see your trace.
