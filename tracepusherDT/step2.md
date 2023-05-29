@@ -16,6 +16,8 @@ gardnera/tracepusher:v0.5.0 \
 --duration 5
 ```{{exec}}
 
+You should see "<Response [200]>". That means the span has successfully been sent to the collector. The collector will then automatically forward the span to Dynatrace.
+
 ## Explanation
 
 That's a big command so let's break it down:
