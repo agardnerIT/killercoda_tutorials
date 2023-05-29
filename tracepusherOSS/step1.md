@@ -40,7 +40,7 @@ docker run --network demo gardnera/tracepusher:v0.5.0 \
 
 ## View Traces in Jaeger
 
-To view the trace, [Open Jaeger UI by clicking here]({{TRAFFIC_HOST1_16686/search?service=service1}}), then click the span.
+To view the trace, [Open Jaeger UI by clicking here]({{TRAFFIC_HOST1_16686}}/search?service=service1), then click the span.
 
 ## What Happened?
 
