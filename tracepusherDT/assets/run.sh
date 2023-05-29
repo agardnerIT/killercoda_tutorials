@@ -18,7 +18,6 @@ do_work() {
     echo "pushing child span with parent trace id set to ${1} and parent span id set to ${2}"
     docker run \
     --add-host=host.docker.internal:host-gateway \
-    tp:ss \
     --endpoint=http://host.docker.internal:4318 \
     --service-name=killercoda \
     --span-name=loop${2} \
