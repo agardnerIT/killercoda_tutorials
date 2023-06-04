@@ -36,7 +36,7 @@ docker run --network demo gardnera/tracepusher:v0.6.0 \
   --service-name service1 \
   --span-name span1 \
   --duration 2 \
-  --span-attrs app=killercoda-demo
+  --span-attributes app=killercoda-demo
 ```{{exec}}
 
 ## View Traces in Jaeger
