@@ -8,11 +8,12 @@ When tab 2 has loaded, switch over to it and click the following to generate a t
 
 ```
 docker run --network host \
-gardnera/tracepusher:v0.5.0 \
+gardnera/tracepusher:v0.6.0 \
 --endpoint http://0.0.0.0:4318 \
 --service-name killercoda \
 --span-name span1 \
---duration 5
+--duration 5 \
+--span-attributes app=killercoda-demo
 ```{{exec}}
 
 You should see "<Response [200]>". That means the span has successfully been sent to the collector. The collector will then automatically forward the span to Dynatrace.
@@ -26,6 +27,7 @@ That's a big command so let's break it down:
 - `--service-name`{{}}: The service name of the generated OpenTelemetry trace
 - `--span-name`{{}}: The span name of the generated OpenTelemetry trace
 - `--duration`{{}}: The duration (in seconds) of the trace
+- `--span-attributes`{{}}: Adds "key=value" information pairs to spans. Multiple "key=value" pairs can be added (separated by a space)
 
 ## View Trace
 
