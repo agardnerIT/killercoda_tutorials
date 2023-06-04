@@ -31,16 +31,21 @@ docker run -d --name jaeger \
 Use tracepusher to generate and send a trace to Jaeger via the OpenTelemetry collector that is built into the Jaeger "all-in-one" image (and exposed on port 4318).
 
 ```
-docker run --network demo gardnera/tracepusher:v0.5.0 \
+docker run --network demo gardnera/tracepusher:v0.6.0 \
   --endpoint http://jaeger:4318 \
   --service-name service1 \
   --span-name span1 \
-  --duration 2
+  --duration 2 \
+  --span-attrs app=killercoda-demo
 ```{{exec}}
 
 ## View Traces in Jaeger
 
 To view the trace, [Open Jaeger UI by clicking here]({{TRAFFIC_HOST1_16686}}/search?service=service1), then click the span.
+
+Notice that the span also has a *string* attribute added called "app: killercoda-demo".
+
+For instructions on how to push other types of span attribute (Integers, booleans etc.) see [span attribute types](https://agardnerit.github.io/tracepusher/reference/span-attribute-types/).
 
 ## What Happened?
 
