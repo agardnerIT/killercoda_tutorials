@@ -1,0 +1,36 @@
+{
+    "title": "logpusher Open Source (uses Loki)",
+    "description": "Use logpusher with Loki to create and view logs.",
+    "details": {
+      "intro": {
+        "title": "Logpusher",
+        "text": "intro.md",
+        "foreground": "assets/intro_foreground.sh"
+      },
+      "steps": [
+        {
+          "title": "Send Logs using Logpusher",
+          "text": "step1.md"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [{
+          "file": "docker-compose.yaml",
+          "target": "~/"
+        }, {
+          "file": "loki-config.yaml",
+          "target": "~/"
+        },{
+          "file": "otelcol-config.yaml",
+          "target": "~/"
+        }]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+  }
+  
