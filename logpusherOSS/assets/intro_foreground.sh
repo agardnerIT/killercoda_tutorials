@@ -13,7 +13,7 @@ docker pull grafana/loki:${LOKI_VERSION}
 docker pull grafana/grafana:${GRAFANA_VERSION}
 docker pull minio/minio:${MINIO_VERSION}
 docker pull otel/opentelemetry-collector-contrib:${OTELCOL_VERSION}
-docker pull gardner/logpushe:${LOGPUSHER_VERSION}
+docker pull gardner/logpusher:${LOGPUSHER_VERSION}
 
 # Install docker-compose
 curl -o docker-compose -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-linux-x86_64
