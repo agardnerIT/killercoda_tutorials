@@ -30,7 +30,7 @@ For instructions on how to push other types of log attribute (Integers, booleans
 
 1. Docker compose created the components. A docker network called `root_loki` was created by docker compose.
 2. The logging stack was started
-3. logpusher generated a log and sent it to "http://otel-col:4318"
-4. The OpenTelemetry collector forwarded the span to Loki
-5. Loki stored the log using MinIO
-6. You used the Grafana UI to retrieve and view the log
+3. logpusher generated the content and sent it to "http://otel-col:4318"
+4. The OpenTelemetry collector forwarded the log line(s) to Loki
+5. Loki stored the log(s) using MinIO
+6. You used the Grafana UI to retrieve and view the log(s)
