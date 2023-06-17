@@ -46,7 +46,7 @@ services:
       <<: *loki-dns
 
   minio:
-    image: minio/minio
+    image: minio/minio:latest
     entrypoint:
       - sh
       - -euc
