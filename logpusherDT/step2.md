@@ -32,7 +32,7 @@ Documentation for the acceptable types can be found here.
 docker run --network host \
 gardnera/logpusher:v0.1.0 \
  --endpoint http://0.0.0.0:4318 \
- --content "This is my log line" \
+ --content "This is my second log line with attributes" \
  --attributes foo=bar userID=123=intValue
 ```{{exec}}
 
