@@ -4,7 +4,7 @@ It is now time to generate some log data. logpusher will generate the log line a
 
 Create a new Tab by clicking the `+`{{}} button next to `Tab 1`{{}} at the top of the terminal window.
 
-When tab 2 has loaded, switch over to it and click the following to generate a trace:
+When tab 2 has loaded, switch over to it and click the following to generate a log line:
 
 ```
 docker run --network host \
