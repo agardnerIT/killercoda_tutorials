@@ -1,6 +1,6 @@
 It is now time to generate some log data. logpusher will generate the log line and push it to the collector. The collector will then forward the line to the OpenTelemetry backend (Dynatrace in this case).
 
-## Generate a Trace
+## Generate a Log Line
 
 Create a new Tab by clicking the `+`{{}} button next to `Tab 1`{{}} at the top of the terminal window.
 
