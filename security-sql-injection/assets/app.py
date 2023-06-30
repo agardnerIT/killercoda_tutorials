@@ -22,7 +22,7 @@ while not exit:
     user_input = input("Enter your surname: ")
     if user_input == "exit": exit = True
 
-    select_statement = f"SELECT rowid, firstname, lastname, address, balance FROM Accounts WHERE LastName='{user_input}'"
+    select_statement = f"SELECT rowid, firstname, lastname, address, accounttype, balance FROM Accounts WHERE LastName='{user_input}'"
     print(f"Here is the SELECT statement that will be executed")
     print("-"*60)
     print(select_statement)

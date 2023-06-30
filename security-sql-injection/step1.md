@@ -10,6 +10,7 @@ Imagine a SQL table called `Accounts` containing user accounts. This table has t
 - FirstName
 - LastName
 - Address
+- AccountType ('Student', 'Basic' or 'Platinum')
 - Balance
 
 The demo database has accounts for:
@@ -78,6 +79,6 @@ At first glance it doesn't look like it should work. `fake` isn't a valid `LastN
 
 You can now read this SQL statement as "give me the details from Accounts where `LastName` equals `fake` OR just give me everything". Of course you get everything: SQL is working as designed, you have just manipulated it.
 
-The `;` is how you tell SQL to end the line. But remember, there is also a pesky extra apostraphe from the original SQL statement.
+The `;` is how you tell SQL to end the line. But remember, there is also a pesky extra apostrophe from the original SQL statement.
 
 Luckily, SQL has a handy operator (a double dash) which means "ignore everything after this". Therefore the `;` is the last thing actually "used" by SQL. Everything is ignored.
