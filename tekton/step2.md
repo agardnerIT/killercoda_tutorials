@@ -23,8 +23,22 @@ kubectl apply --filename ~/files/hello-goodbye-pipeline.yaml
 kubectl apply --filename ~/files/hello-goodbye-pipeline-run.yaml
 ```{{exec}}
 
-## Show PipelineRun Logs
+Repeatedly run the following command until it shows "Succeeded: True":
 
 ```
-kubectl get logs... TODO
+kubectl get pipelineruns
+```{{exec}}
+
+## Show PipelineRun Logs
+
+Use the [tkn CLI](https://tekton.dev/docs/cli/) to retrieve the PipeLine run logs:
+
+```
+tkn pipelinerun logs hello-goodbye-run -f -n default
+```{{exec}}
+
+Alternatively, use kubectl:
+
+```
+kubectl logs -l=tekton.dev/pipeline=hello-goodbye
 ```{{exec}}
