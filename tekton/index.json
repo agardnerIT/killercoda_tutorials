@@ -18,10 +18,10 @@
           {"file": "files/hello-world.yaml", "target": "~/files", "chmod": "+x"},
           {"file": "files/hello-world-run.yaml", "target": "~/files", "chmod": "+x"}
         ]
-    },
+    }
+  },
     "backend": {
       "imageid": "kubernetes-kubeadm-1node"
     }
-  }
 }
   
