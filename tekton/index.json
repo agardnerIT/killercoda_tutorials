@@ -10,6 +10,9 @@
       "steps": [{
             "title": "Step 1",
             "text": "step1.md"
+        },{
+          "title": "Step 2",
+          "text": "step1.md"
         }],
       "finish": {
         "text": "finish.md"
@@ -17,7 +20,9 @@
       "assets": {
         "host01": [
           {"file": "files/hello-world.yaml", "target": "~/files", "chmod": "+x"},
-          {"file": "files/hello-world-run.yaml", "target": "~/files", "chmod": "+x"}
+          {"file": "files/hello-world-run.yaml", "target": "~/files", "chmod": "+x"},
+          {"file": "files/goodbye-world.yaml", "target": "~/files", "chmod": "+x"},
+          {"file": "files/hello-goodbye-pipeline.yaml", "target": "~/files", "chmod": "+x"}
         ]
     }
   },
