@@ -12,10 +12,14 @@
         }],
       "finish": {
         "text": "finish.md"
-      }
+      },
+      "assets": {
+        "host01": [
+          {"file": "files/hello-world.yaml", "target": "~/files", "chmod": "+x"},
+          {"file": "files/hello-world-run.yaml", "target": "~/files", "chmod": "+x"}]
     },
     "backend": {
-      "imageid": "ubuntu"
+      "imageid": "kubernetes-kubeadm-1node"
     }
 }
   
