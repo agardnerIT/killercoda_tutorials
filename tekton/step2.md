@@ -6,7 +6,6 @@ This tutorial shows you how to:
 - Create a Pipeline containing your Tasks.
 - Use `PipelineRun`{{}} to instantiate and run the Pipeline containing your Tasks.
 
-
 ## Apply Goodbye World Task
 
 ```
