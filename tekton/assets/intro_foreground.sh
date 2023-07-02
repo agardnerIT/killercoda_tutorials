@@ -1,4 +1,4 @@
-DEBUG_VERSION=2
+DEBUG_VERSION=3
 POD_WAIT_TIMEOUT_MINS=5
 
 kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
