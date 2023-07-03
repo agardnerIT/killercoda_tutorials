@@ -13,6 +13,9 @@
         },{
           "title": "Step 2",
           "text": "step2.md"
+        },{
+          "title": "Step 3",
+          "text": "step3.md"
         }],
       "finish": {
         "text": "finish.md"
