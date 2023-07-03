@@ -23,7 +23,11 @@
           {"file": "files/hello-world-run.yaml", "target": "~/files", "chmod": "+x"},
           {"file": "files/goodbye-world.yaml", "target": "~/files", "chmod": "+x"},
           {"file": "files/hello-goodbye-pipeline.yaml", "target": "~/files", "chmod": "+x"},
-          {"file": "files/hello-goodbye-pipeline-run.yaml", "target": "~/files", "chmod": "+x"}
+          {"file": "files/hello-goodbye-pipeline-run.yaml", "target": "~/files", "chmod": "+x"},
+          {"file": "files/trigger-binding.yaml", "target": "~/files", "chmod": "+x"},
+          {"file": "files/trigger-template.yaml", "target": "~/files", "chmod": "+x"},
+          {"file": "files/event-listener.yaml", "target": "~/files", "chmod": "+x"},
+          {"file": "files/rbac.yaml", "target": "~/files", "chmod": "+x"}
         ]
     }
   },
