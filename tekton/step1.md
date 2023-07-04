@@ -7,6 +7,8 @@ ls -al
 
 The **Editor** tab can be used as a file browser.
 
+New tabs can be opened by clicking the "+" button.
+
 ## Create and run a basic Task
 
 A Task, represented in the API as an object of kind Task, defines a series of Steps that run sequentially to perform logic that the Task requires. Every Task runs as a pod on the Kubernetes cluster, with each step running in its own container.

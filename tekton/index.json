@@ -1,6 +1,6 @@
 {
-    "title": "Tekton WIP",
-    "description": "Tekton WIP",
+    "title": "Tekton",
+    "description": "Tekton Hands-on tutorial. https://tekton.dev",
     "details": {
       "intro": {
         "title": "Intro",
@@ -8,13 +8,13 @@
         "foreground": "assets/intro_foreground.sh"
       },
       "steps": [{
-            "title": "Step 1",
+            "title": "Getting started with Tasks",
             "text": "step1.md"
         },{
-          "title": "Step 2",
+          "title": "Getting started with Pipelines",
           "text": "step2.md"
         },{
-          "title": "Step 3",
+          "title": "Getting started with Triggers",
           "text": "step3.md"
         }],
       "finish": {
