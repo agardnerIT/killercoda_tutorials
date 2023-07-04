@@ -1,4 +1,4 @@
-# Create and run your first Tekton Pipeline
+## Create and run your first Tekton Pipeline
 
 This tutorial shows you how to:
 
@@ -6,13 +6,21 @@ This tutorial shows you how to:
 - Create a Pipeline containing your Tasks.
 - Use `PipelineRun`{{}} to instantiate and run the Pipeline containing your Tasks.
 
-## Apply Goodbye World Task
+## Create and run a Second Task
+
+You already have a “Hello World!” Task. To create a second “Goodbye!” Task, apply this YAML file:
 
 ```
 kubectl apply --filename ~/files/goodbye-world.yaml
 ```{{exec}}
 
+This Task takes one parameter, username. Whenever this Task is used a value for that parameter must be passed to the Task. When a Task is part of a Pipeline, Tekton creates a TaskRun object for every task in the Pipeline.
+
 ## Create and run a Pipeline
+
+A Pipeline defines an ordered series of Tasks arranged in a specific execution order as part of the CI/CD workflow.
+
+In this section you are going to create your first Pipeline, that will include both the “Hello World!” and “Goodbye!” Tasks.
 
 The Pipeline defines the parameter `username`{{}}, which is then passed to the `goodbye`{{}} Task.
 

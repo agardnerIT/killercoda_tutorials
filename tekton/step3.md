@@ -10,7 +10,7 @@ An optional `ClusterInterceptor`{{}} object can be added to validate and process
 
 You are going to create a Tekton Trigger to run the `hello-goodbye`{{}} Pipeline when the `EventListener`{{}} detects an event.
 
-![tekton trigger flow](assets/images/TriggerFlow.svg)
+![tekton trigger flow](assets/images/TriggerFlow.png)
 
 ## Install Tekton Triggers
 
