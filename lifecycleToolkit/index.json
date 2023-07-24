@@ -1,0 +1,39 @@
+{
+  "title": "Keptn Lifecycle Toolkit WIP",
+  "description": "Toolkit for cloud-native application lifecycle management.",
+  "details": {
+    "intro": {
+      "title":"Introduction to KLT",
+      "text": "intro/intro.md",
+      "foreground": "assets/scripts/intro_foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1/text.md"
+      },
+      {
+        "title": "Step 2",
+        "text": "step2/text.md"
+      },
+      {
+        "title": "Step 3",
+        "text": "step3/text.md"
+      },
+      {
+        "title": "Step 4",
+        "text": "step4/text.md"
+      },
+      {
+        "title": "Step 5",
+        "text": "step5/text.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}

@@ -1,0 +1,21 @@
+# Receive logs from logpusher on http
+receivers:
+  otlp:
+    protocols:
+      http:
+
+# export logs to the gateway on 3100
+# see docker-compose.yaml for gateway path rewrite rules
+# which maps incoming traffic to write:3100
+exporters:
+  loki:
+    endpoint: http://gateway:3100/loki/api/v1/push
+  logging:
+    verbosity: detailed
+
+service:
+  pipelines:
+    logs:
+      receivers: [otlp]
+      processors: []
+      exporters: [loki, logging]

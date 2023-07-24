@@ -1,0 +1,34 @@
+{
+    "title": "tracepusher Open Source (uses Jaeger)",
+    "description": "Use tracepusher with Jaeger to create and view spans.",
+    "details": {
+      "intro": {
+        "title": "Tracepusher",
+        "text": "intro.md",
+        "foreground": "assets/intro_foreground.sh"
+      },
+      "steps": [
+        {
+          "title": "Use Tracepusher & Jaeger",
+          "text": "step1.md"
+        }, {
+          "title": "Trace a .sh Script",
+          "text": "step2.md"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [{
+          "file": "script.sh",
+          "target": "~/",
+          "chmod": "+x"
+        }]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+  }
+  

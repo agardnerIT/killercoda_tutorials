@@ -1,13 +1,9 @@
 # Intro
 
-```
-helm repo add klt https://charts.lifecycle.keptn.sh
-helm repo update
-```{{exec}}
-
-Install:
+Test with:
 
 ```
+<<<<<<< HEAD
 helm upgrade --install keptn klt/klt -n keptn-lifecycle-toolkit-system --create-namespace --wait
 ```{{exec}}
 
@@ -37,4 +33,7 @@ kubectl create ns observability
 kubectl apply -f https://github.com/jaegertracing/jaeger-operator/releases/download/v1.42.0/jaeger-operator.yaml -n observability
 kubectl wait --for=condition=available deployment/jaeger-operator -n observability --timeout=300s
 kubectl apply -f ~/lifecycle-toolkit-examples/support/observability/config/jaeger.yaml -n keptn-lifecycle-toolkit-system
+=======
+pyrsia --version
+>>>>>>> 1a6304457566d7d05a20c715b79fee489dd9a8c1
 ```{{exec}}

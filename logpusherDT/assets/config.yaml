@@ -1,0 +1,22 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  logging:
+    verbosity: detailed
+
+  otlphttp:
+    endpoint: https://abc12345.live.dynatrace.com/api/v2/otlp
+    headers:
+      Authorization: "Api-Token dt0c01.sample.secret"
+
+service:
+  extensions: []
+  pipelines:
+    logs:
+      receivers: [otlp]
+      processors: []
+      exporters: [otlphttp, logging]

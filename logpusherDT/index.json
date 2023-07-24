@@ -1,0 +1,31 @@
+{
+    "title": "logpusher with Dynatrace",
+    "description": "Use logpusher to push logs to Dynatrace",
+    "details": {
+      "intro": {
+        "title": "Intro",
+        "text": "intro.md",
+        "foreground": "assets/scripts/intro_foreground.sh"
+      },
+      "steps": [{
+            "title": "Setup and Collector Configuration",
+            "text": "step1.md"
+        }, {
+            "title": "Push Logs",
+            "text": "step2.md"
+        }],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [ 
+            {"file": "config.yaml", "target": "~/" },
+            {"file": "script.sh", "target": "~/", "chmod": "+x" }
+        ]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+}
+  

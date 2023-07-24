@@ -1,0 +1,34 @@
+{
+    "title": "tracepusher with Dynatrace",
+    "description": "Use tracepusher to push traces to Dynatrace",
+    "details": {
+      "intro": {
+        "title": "Intro",
+        "text": "intro.md",
+        "foreground": "assets/scripts/intro_foreground.sh"
+      },
+      "steps": [{
+            "title": "Setup and Collector Configuration",
+            "text": "step1.md"
+        }, {
+            "title": "Push Traces",
+            "text": "step2.md"
+        }, {
+            "title": "Shell Script Tracing",
+            "text": "step3.md"
+        }],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [ 
+            {"file": "config.yaml", "target": "~/" },
+            {"file": "script.sh", "target": "~/", "chmod": "+x" }
+        ]
+      }
+    },
+    "backend": {
+      "imageid": "ubuntu"
+    }
+}
+  
