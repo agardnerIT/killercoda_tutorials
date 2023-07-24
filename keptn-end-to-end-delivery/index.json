@@ -1,0 +1,148 @@
+{
+
+	"title": "Keptn End to End Delivery",
+	"description": "Keptn uses a declarative approach to build automation for delivery and operations which can be scaled to a large number of services.",
+	"difficulty": "Medium",
+	"time": "10",
+	"details": {
+		"steps": [{
+				"title": "Keptn Bridge",
+				"text": "step1.md",
+				"background": "step1_background.sh"
+			},
+			{
+				"title": "Multi Stage Delivery",
+				"text": "step2.md",
+				"background": "step2_background.sh"
+			},
+			{
+				"title": "Add Manual Approvals",
+				"text": "step3.md",
+				"background": "step3_background.sh"
+			},
+			{
+				"title": "Automated Approvals",
+				"text": "step4.md",
+				"background": "step4_background.sh"
+			},
+			{
+				"title": "Release Validation",
+				"text": "step5.md",
+				"background": "step5_background.sh"
+			},
+			{
+				"title": "Self Healing",
+				"text": "step6.md",
+				"background": "step6_background.sh"
+			}
+		],
+		"intro": {
+			"text": "intro.md",
+			"foreground": "intro_foreground.sh",
+			"background": "intro_background.sh"
+		},
+		"finish": {
+			"text": "finish.md",
+			"background": "finish_background.sh"
+		},
+		"assets": {
+			"host01": [{
+				"file": "scripts/set_git_details.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/setup_keptn.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/print_bridge_login_details.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/add_approval_step.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/quality_gated_release.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/release_validation.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/self_healing.sh",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/keptn_setup/shipyard.yaml",
+				"target": "~/",
+				"chmod": "+x"
+			},{
+				"file": "scripts/keptn_setup/helm/helloservice.tgz",
+				"target": "~/helm",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/keptn_setup/job-executor/job-executor-config.yaml",
+				"target": "~/job-executor",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/keptn_setup/job-executor/workloadClusterRoles.yaml",
+				"target": "~/job-executor",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/keptn_setup/locust/basic.py",
+				"target": "~/locust",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/keptn_setup/locust/locust.conf",
+				"target": "~/locust",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/keptn_setup/prometheus/sli.yaml",
+				"target": "~/prometheus",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/add_approval/shipyard.yaml",
+				"target": "~/add_approval",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/quality_gated_release/shipyard.yaml",
+				"target": "~/quality_gated_release",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/quality_gated_release/slo.yaml",
+				"target": "~/quality_gated_release",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/release_validation/shipyard.yaml",
+				"target": "~/release_validation",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/shipyard.yaml",
+				"target": "~/self_healing",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/remediation.yaml",
+				"target": "~/self_healing",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/self_healing/remediation_trigger.json",
+				"target": "~/self_healing",
+				"chmod": "+x"
+			}, {
+				"file": "scripts/portforward.sh",
+				"target": "~/",
+				"chmod": "+x"
+			}]
+		}
+	},
+	"environment": {
+		"showdashboard": true,
+		"dashboard": "Dashboard",
+		"uilayout": "terminal"
+	},
+	"backend": {
+		"imageid": "kubernetes-kubeadm-2nodes"
+	}
+}
