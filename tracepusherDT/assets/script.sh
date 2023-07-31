@@ -20,8 +20,8 @@ do
   time_end=$SECONDS
   duration=$(( $time_end - $time_start ))
 
-  docker run --network host gardnera/tracepusher:v0.6.0 \
-    --endpoint=http://0.0.0.0:4318 \
+  tracepusher \
+    --endpoint=http://localhost:4318 \
     --service-name service1 \
     --span-name "subspan${counter}" \
     --duration ${duration} \
@@ -39,8 +39,8 @@ main_time_end=$SECONDS
 
 duration=$(( (main_time_end - main_time_start) + 1))
 
-docker run --network host gardnera/tracepusher:v0.6.0 \
-  --endpoint http://0.0.0.0:4318 \
+tracepusher \
+  --endpoint http://localhost:4318 \
   --service-name service1 \
   --span-name script.sh \
   --duration ${duration} \
