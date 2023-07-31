@@ -21,7 +21,7 @@ do
   duration=$(( $time_end - $time_start ))
 
   tracepusher \
-    --endpoint=http://jaeger:4318 \
+    --endpoint=http://localhost:4318 \
     --service-name service1 \
     --span-name "subspan${counter}" \
     --duration ${duration} \
@@ -39,7 +39,7 @@ main_time_end=$SECONDS
 duration=$(( (main_time_end - main_time_start) + 1))
 
 tracepusher \
-  --endpoint http://jaeger:4318 \
+  --endpoint http://localhost:4318 \
   --service-name service1 \
   --span-name script.sh \
   --duration ${duration} \
