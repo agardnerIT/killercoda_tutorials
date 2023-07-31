@@ -8,7 +8,7 @@ Start Jaeger and an OpenTelemetry collector now.
 jaeger-all-in-one
 ```{{exec}}
 
-Leave it running and open Tab 2 to continue.
+Leave it running and open a new Tab (click the `+`{{}} button) to continue.
 
 ## Run tracepusher
 
