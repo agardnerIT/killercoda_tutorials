@@ -8,6 +8,8 @@ Start Jaeger and an OpenTelemetry collector now.
 jaeger-all-in-one
 ```{{exec}}
 
+Leave it running and open Tab 2 to continue.
+
 ## Run tracepusher
 
 Use tracepusher to generate and send a trace to Jaeger via the OpenTelemetry collector that is built into the Jaeger "all-in-one" image (and exposed on port 4318).
