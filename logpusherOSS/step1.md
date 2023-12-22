@@ -14,7 +14,7 @@ The OpenTelemetry collector is configured to send that log line to Loki.
 You can also push logs with attributes:
 ```
 ./logpusher \
- --endpoint http://otelcol:4318 \
+ --endpoint http://0.0.0.0:4318 \
  --content "This is my log line" \
  --attributes foo=bar userID=123=intValue \
  --insecure true
