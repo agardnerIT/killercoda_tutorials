@@ -1,9 +1,9 @@
 # Keptn Multistage Delivery and Self-Healing with Helm, Prometheus, Locust and SLO-based Quality Gates
 
 > ⚠️ Keptn v1 (the product used in this tutorial) is now End of Life.
-> ⚠️We suggest immediately migrating to [Keptn](https://keptn.sh/latest/)
-> ⚠️More information on this decision is [here](https://medium.com/keptn/keptn-lifecycle-toolkit-is-now-keptn-e0812217bf46)
-> ⚠️This tutorial is no longer maintained
+> We suggest immediately migrating to [Keptn](https://keptn.sh/latest/)
+> More information on this decision is [here](https://medium.com/keptn/keptn-lifecycle-toolkit-is-now-keptn-e0812217bf46)
+> This tutorial is no longer maintained ⚠️
 
 The goal of this tutorial is to:
 
