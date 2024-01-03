@@ -107,8 +107,12 @@ spec:
           ports:
             - containerPort: 30000
           env:
+            - name: FLAGD_HOST_WEB
+              value: "FLAGD_HOST_WEB_PLACEHOLDER"
             - name: FLAGD_PORT_WEB
-              value: "30002"
+              value: "443"
+            - name: FLAGD_TLS_WEB
+              value: "true"
 ---
 # Service to expose our application
 apiVersion: v1
