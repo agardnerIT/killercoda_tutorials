@@ -2,13 +2,7 @@
     "title": "Testing ground",
     "description": "Space for tests / WIP. Expect to be broken.",
     "details": {
-      "steps": [{
-              "title": "OpenFeature Operator",
-              "text": "step1.md"
-          }, {
-              "title": "OpenFeature Hooks",
-              "text": "step2.md"
-          }],
+      "steps": [],
       "intro": {
         "text": "intro.md",
               "foreground": "assets/scripts/intro_foreground.sh"
