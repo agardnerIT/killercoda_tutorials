@@ -1,4 +1,4 @@
-DEBUG_VERSION=2
+DEBUG_VERSION=3
 DEMO_APP_PORT=30000
 CERT_MANAGER_VERSION=v1.13.2
 OPENFEATURE_OPERATOR_VERSION=v0.5.3
@@ -27,8 +27,10 @@ kubectl wait --timeout=60s --for condition=Available=True deploy --all -n 'open-
 FLAGD_HOST_WEB=$(cat /etc/killercoda/host)
 # replace string literal "PORT" with the port (30002)
 FLAGD_HOST_WEB_REPLACED=$(echo "${FLAGD_HOST_WEB/PORT/"30002"}")
+# and remove "https://" (flagd adds it due to `FLAGD_TLS_WEB: true` in end-to-end.yaml)
+FLAGD_HOST_WEB_REPLACED=$(echo "${FLAGD_HOST_WEB_REPLACED/"https://"/""}")
 # Overwrite placeholder with dynamic value in ~/end-to-end.yaml
-sed -i "s/FLAGD_HOST_WEB_PLACEHOLDER/$FLAGD_HOST_WEB_REPLACED/g" ~/end-to-end.yaml
+sed -i "s#FLAGD_HOST_WEB_PLACEHOLDER#$FLAGD_HOST_WEB_REPLACED#g" ~/end-to-end.yaml
 
 # Apply workload and config
 kubectl apply -f ~/end-to-end.yaml
