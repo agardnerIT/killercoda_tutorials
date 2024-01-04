@@ -19,8 +19,8 @@ helm install \
 kubectl apply -f ~/open-feature-operator-namespace.yaml
 
 # Install OFO
-helm repo add openfeature https://open-feature.github.io/open-feature-operator/
-helm install openfeature-operator openfeature/open-feature-operator --version ${OPENFEATURE_OPERATOR_VERSION} --namespace open-feature-operator-system --wait
+kubectl apply -f https://github.com/open-feature/open-feature-operator/releases/download/v0.5.3/release.yaml && \
+kubectl wait --timeout=60s --for condition=Available=True deploy --all -n 'open-feature-operator-system'
 
 # Apply workload and config
 kubectl apply -f ~/end-to-end.yaml
