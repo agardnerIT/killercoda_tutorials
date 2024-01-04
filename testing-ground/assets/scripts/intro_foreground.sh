@@ -34,4 +34,4 @@ sed -i "s#FLAGD_HOST_WEB_PLACEHOLDER#$FLAGD_HOST_WEB_REPLACED#g" ~/end-to-end.ya
 
 # Apply workload and config
 kubectl apply -f ~/end-to-end.yaml
-kubectl wait --timeout=60s deployment --for condition=Available=True -l 'app=open-feature-demo' -n 'default'
+kubectl wait --timeout=120s deployment --for condition=Available=True -l 'app=open-feature-demo' -n 'default'
