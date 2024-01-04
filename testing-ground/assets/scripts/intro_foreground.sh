@@ -16,11 +16,11 @@ helm install \
   --wait
 
 # Create OFO namespace
-kubectl apply -f ~/open-feature-operator-namespace.yml
+kubectl apply -f ~/open-feature-operator-namespace.yaml
 
 # Install OFO
 helm repo add openfeature https://open-feature.github.io/open-feature-operator/
-helm install ofo openfeature/open-feature-operator --version ${OPENFEATURE_OPERATOR_VERSION} --wait
+helm install openfeature-operator openfeature/open-feature-operator --version ${OPENFEATURE_OPERATOR_VERSION} --namespace open-feature-operator-system --wait
 
 # Apply workload and config
 kubectl apply -f ~/end-to-end.yaml
