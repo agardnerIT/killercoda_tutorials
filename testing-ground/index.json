@@ -2,18 +2,38 @@
     "title": "Testing ground",
     "description": "Space for tests / WIP. Expect to be broken.",
     "details": {
+      "steps": [{
+              "title": "OpenFeature Operator",
+              "text": "step1.md"
+          }, {
+              "title": "OpenFeature Hooks",
+              "text": "step2.md"
+          }],
       "intro": {
-        "title": "Intro",
         "text": "intro.md",
-        "foreground": "intro_foreground.sh"
+              "foreground": "assets/scripts/intro_foreground.sh"
       },
-      "steps": [],
       "finish": {
         "text": "finish.md"
-      }
+      },
+          "assets": {
+              "host01": [{
+                  "file": "end-to-end.yaml",
+                  "chmod": "+x",
+                  "target": "~"
+              },{
+                  "file": "open-feature-operator-namespace.yaml",
+                  "target": "~"
+              }]
+          }
+    },
+    "environment": {
+      "showdashboard": true,
+      "dashboard": "Dashboard",
+      "uilayout": "terminal"
     },
     "backend": {
-      "imageid": "ubuntu"
+      "imageid": "kubernetes-kubeadm-1node"
     }
 }
   
