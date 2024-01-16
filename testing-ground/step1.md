@@ -6,14 +6,14 @@
 
 For this demo, we get flag definitions from the `FeatureFlag`{{}} custom resource definitions (CRDs) (see `end-to-end.yaml`{{}}).
 
-The resource type is FeatureFlag and there are two instances defined:
+The resource type is `FeatureFlag`{{}} and there are two instances defined:
 
 - `ui-flags` (for the front-end)
 - `app-flags` (for the back-end).
 
 Below, you'll see how you can modify these instances to change your feature flags.
 
-The `~/end-to-end.yaml`{{}} file also contains service and deployment definitions, but these need not be modified as part of this demo. You may be interested in the openfeature.dev/* annotations though, which the OpenFeature operator uses to detect which workloads require flagd.
+The `~/end-to-end.yaml`{{}} file also contains service and deployment definitions, but these need not be modified as part of this demo. You may be interested in the `openfeature.dev/*`{{}} annotations though, which the OpenFeature operator uses to detect which workloads require flagd.
 
 - `openfeature.dev/enabled` setting this to true make operator to inject flagd as a sidecar
 - `openfeature.dev/featureflagsource` refers to the FeatureFlagSource CRD which define flagd configurations, including its feature flag sources
@@ -32,6 +32,6 @@ Modify `~/end-to-end.yaml` (use `nano`{{}} or open the editor pane) and change t
 kubectl apply -n default -f ~/end-to-end.yaml
 ```{{exec}}
 
-Notice that the welcome message has changed from "Welcome to FaaS: Fibonacci as a Service!" to "Welcome to Fib3r: Fibonacci as a Service!".
+Notice that the welcome message has changed from "Welcome to FaaS: Fibonacci as a Service!" to "Fib3r: Math at the speed of the internet!".
 
 Great! Now let's help the design team experiment with new color palette...

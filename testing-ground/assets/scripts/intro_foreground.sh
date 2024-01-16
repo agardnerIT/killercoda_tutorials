@@ -1,4 +1,4 @@
-DEBUG_VERSION=4
+DEBUG_VERSION=6
 DEMO_APP_PORT=30000
 CERT_MANAGER_VERSION=v1.13.2
 OPENFEATURE_OPERATOR_VERSION=v0.5.3
@@ -19,7 +19,7 @@ helm install \
 kubectl apply -f ~/open-feature-operator-namespace.yaml
 
 # Install OFO
-kubectl apply -f https://github.com/open-feature/open-feature-operator/releases/download/v0.5.3/release.yaml && \
+kubectl apply -f https://github.com/open-feature/open-feature-operator/releases/download/${OPENFEATURE_OPERATOR_VERSION}/release.yaml && \
 kubectl wait --timeout=60s --for condition=Available=True deploy --all -n 'open-feature-operator-system'
 
 # Get external URL
@@ -35,3 +35,8 @@ sed -i "s#FLAGD_HOST_WEB_PLACEHOLDER#$FLAGD_HOST_WEB_REPLACED#g" ~/end-to-end.ya
 # Apply workload and config
 kubectl apply -f ~/end-to-end.yaml
 kubectl wait --timeout=120s deployment --for condition=Available=True -l 'app=open-feature-demo' -n 'default'
+
+# ---------------------------------------------#
+#       🎉 Installation Complete 🎉           #
+#           Please proceed now...              #
+# ---------------------------------------------#

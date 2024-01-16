@@ -7,7 +7,7 @@
         "text": "step1.md",
         "background": "assets/scripts/step1_background.sh"
     }, {
-        "title": "OpenFeature Hooks",
+        "title": "Make Flag Changes",
         "text": "step2.md",
         "background": "assets/scripts/step2_background.sh"
     }],
